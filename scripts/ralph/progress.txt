@@ -1,0 +1,29 @@
+## Codebase Patterns
+- Components live in `web/src/components/` with co-located test files (`ComponentName.test.tsx`)
+- Data types and static data in `web/src/data/games.ts`
+- Pages in `web/src/app/` (Next.js App Router, "use client" for interactive pages)
+- Test files use Vitest + Testing Library with `vi.fn()` for mocks and `userEvent` for interactions
+- Components use controlled props pattern (value + onChange callback lifted to parent)
+- Tailwind CSS only for styling; no hardcoded pixel values
+- Filter components are stateless — parent (page.tsx) owns all filter state via useState
+---
+
+## 2026-04-12 - US-001 - Search bar with live text filtering
+- What was implemented:
+  - SearchBar component: controlled text input with placeholder "Search games...", sr-only label for accessibility, conditional clear button (X icon) that resets query to empty
+  - GameGrid updated: added optional `searchQuery` prop with case-insensitive filtering on game name and description; zero-results message changed to "No games found. Try a different search or category."
+  - page.tsx wired: SearchBar rendered between CategoryFilter and GameGrid; searchQuery state lifted to Home component
+- Files changed:
+  - web/src/components/SearchBar.tsx (new)
+  - web/src/components/SearchBar.test.tsx (new, 5 tests)
+  - web/src/components/GameGrid.tsx (modified — added searchQuery prop and combined filter logic)
+  - web/src/components/GameGrid.test.tsx (new, 6 tests)
+  - web/src/app/page.tsx (modified — added SearchBar import, searchQuery state, wiring)
+  - .gitignore (new — excludes node_modules, .next, tsbuildinfo, coverage, etc.)
+- Learnings for future iterations:
+  - GameGrid accepts searchQuery as optional string with default "" so existing usages don't break
+  - Category and search filters are AND-combined in a single .filter() call
+  - SearchBar uses aria-label "Clear search" for the clear button — tests rely on this exact accessible name
+  - The "No games found" zero-state message must contain "no games found" (case-insensitive regex in tests)
+  - Tests pass searchQuery directly to GameGrid rather than simulating typing — they test the filtering logic, not the input wiring
+---
