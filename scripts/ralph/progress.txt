@@ -53,3 +53,32 @@
 - Gotcha: `CHROMIUM_PATH` is not a Playwright built-in env var — must be read and set as
   `executablePath` in the playwright.config.ts project definition.
 ---
+
+## 2026-04-12 - US-001 - qa-failed fix (Docker glibc/musl binary mismatch)
+- Root cause of PERSISTENT CI failures (Unit Tests failed even with Debian image):
+  - The `package-lock.json` was generated on an Alpine/musl machine. npm ci is deterministic
+    and installs the EXACT packages from the lock file, including platform-specific native binaries.
+  - On Alpine (musl): `@rolldown/binding-linux-x64-musl` was installed (Rolldown is Vite 8's
+    Rust-based bundler, required for Vitest to start).
+  - On Debian glibc (Docker CI): npm ci installed the SAME musl Rolldown binary from the lock
+    file. The musl binary cannot load correctly on glibc — Vitest crashes at startup before any
+    test runs.
+  - The 'Docker Build' CI job uses a multi-stage Dockerfile with `npm ci --omit=dev`, which
+    avoids devDeps like Rolldown, so it passed. Only the test images (which install devDeps) failed.
+- What was fixed:
+  - Created separate Dockerfile.unit-tests (bookworm-slim, no browser) and
+    Dockerfile.e2e-tests (bookworm-slim + Chromium apt package).
+  - Both use `npm install --no-audit --no-fund` instead of `npm ci`. npm install resolves
+    native binaries for the CURRENT platform, picking `@rolldown/binding-linux-x64-gnu` on
+    Debian. This is the correct binary and Rolldown loads successfully.
+  - Updated docker-compose.yml to use the new Dockerfiles per service.
+- Files changed:
+  - web/Dockerfile.unit-tests (new)
+  - web/Dockerfile.e2e-tests (new)
+  - docker-compose.yml (unit-tests and e2e-tests now use separate Dockerfiles)
+- ## KEY PATTERN for all future agents:
+  - NEVER commit a package-lock.json generated on Alpine/musl when Docker tests run on Debian/glibc.
+  - If using npm ci in Dockerfiles: the lock file MUST be generated on the SAME platform as the container.
+  - Prefer `npm install` in test Dockerfiles when cross-platform (musl dev machine → glibc CI).
+  - Rolldown (Vite 8+) has mandatory native binaries — platform mismatch = silent Vitest crash.
+---
