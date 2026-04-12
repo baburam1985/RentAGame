@@ -1,9 +1,11 @@
 FROM node:20-bookworm-slim
 WORKDIR /app
 
-# No system deps needed — Vitest runs in jsdom (pure JS), no real browser
-COPY package.json package-lock.json ./
-RUN npm ci
+# Use npm install (not npm ci) so npm selects glibc binaries for this platform.
+# The package-lock.json was generated on Alpine/musl; npm ci would install the
+# musl Rolldown/Tailwind Oxide binaries which crash on Debian glibc at runtime.
+COPY package.json ./
+RUN npm install --no-audit --no-fund
 
 COPY . .
 
