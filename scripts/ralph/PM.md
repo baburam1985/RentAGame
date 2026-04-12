@@ -49,15 +49,11 @@ For any story where `qaAttempts >= 2` AND `status == "qa-failed"`:
 
 ### Step 5 — Top up backlog if needed
 
-Epics are loaded in this order:
-1. Discovery (DISC-001 to DISC-005)
-2. Checkout & Payments (CHKP-001 to CHKP-004)
-3. User Accounts (UACC-001 to UACC-004)
-4. Admin Dashboard (ADMD-001 to ADMD-004)
-
-An epic is "loaded" if any of its story IDs exist in prd.json.
-Load the next unloaded epic only when `pending` < 3.
-Do NOT load all epics at once — feed them in order.
+Stories are globally sequenced US-001 through US-017 across 4 epics:
+1. Discovery        — US-001 to US-005
+2. Checkout & Payments — US-006 to US-009
+3. User Accounts    — US-010 to US-013
+4. Admin Dashboard  — US-014 to US-017
 
 **Note:** prd.json already contains all 17 stories pre-loaded. On first runs,
 simply verify the stories are there and the backlog is healthy.
@@ -71,7 +67,7 @@ If you made any changes (rewrote criteria, etc.), write the updated prd.json.
 ```bash
 cd /home/user/RentAGame
 git add scripts/ralph/prd.json
-git commit -m "chore: PM backlog update - [summary of changes]"
+git commit -m "chore: PM backlog update - [US-NNN] [summary of changes]"
 git push origin main
 ```
 

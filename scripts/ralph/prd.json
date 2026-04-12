@@ -2,7 +2,7 @@
   "branchName": "main",
   "stories": [
     {
-      "id": "DISC-001",
+      "id": "US-001",
       "epic": "Discovery",
       "title": "Search bar with live text filtering",
       "description": "Add a search input above the game grid. As the user types, filter games by name and description in real time (client-side). Clear button resets the filter. Works in combination with the existing category filter.",
@@ -23,7 +23,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "DISC-002",
+      "id": "US-002",
       "epic": "Discovery",
       "title": "Price range slider filter",
       "description": "Add a dual-handle price range slider (min/max) in the filter bar. Games outside the selected range are hidden. Default: full range. Show the selected range as '$X – $Y / day'. No external slider library — build with two range inputs overlaid.",
@@ -44,7 +44,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "DISC-003",
+      "id": "US-003",
       "epic": "Discovery",
       "title": "Sort games by price or name",
       "description": "Add a sort dropdown to the filter bar with options: 'Featured' (default order), 'Price: Low to High', 'Price: High to Low', 'Name: A–Z'. Sort applies on top of any active search/category/price filters.",
@@ -65,7 +65,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "DISC-004",
+      "id": "US-004",
       "epic": "Discovery",
       "title": "Player count filter chips",
       "description": "Add a 'Players' filter chip group: 2, 4, 6, 8+. Selecting a chip shows only games whose players range includes that count. Multiple chips can be active (OR logic). Parse existing players strings in games.ts.",
@@ -86,7 +86,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "DISC-005",
+      "id": "US-005",
       "epic": "Discovery",
       "title": "Active filter summary bar with clear-all",
       "description": "When any filter (search, category, price, players, sort) is non-default, show a horizontal summary bar below the filter row listing each active filter as a removable chip. Include a 'Clear all' button.",
@@ -107,7 +107,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "CHKP-001",
+      "id": "US-006",
       "epic": "Checkout & Payments",
       "title": "Multi-step checkout wizard",
       "description": "Replace the single RentalForm with a 3-step wizard: Step 1 — Date selection. Step 2 — Contact info. Step 3 — Review & confirm. Progress indicator at top. Back/Next buttons. Form state persists between steps.",
@@ -129,7 +129,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "CHKP-002",
+      "id": "US-007",
       "epic": "Checkout & Payments",
       "title": "Order confirmation page",
       "description": "After 'Place Order', navigate to /order-confirmation. Show order reference, game name, rental dates, total price, and customer email. Include a 'Browse More Games' link back to /.",
@@ -150,7 +150,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "CHKP-003",
+      "id": "US-008",
       "epic": "Checkout & Payments",
       "title": "Rental cart for multiple games",
       "description": "Add a cart system. 'Add to Cart' button on each GameCard and GameModal. Cart icon in Navbar shows item count badge. Cart drawer slides in from right with date pickers per item and a running total.",
@@ -172,7 +172,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "CHKP-004",
+      "id": "US-009",
       "epic": "Checkout & Payments",
       "title": "Availability calendar per game",
       "description": "Add an availability calendar to GameModal. Show a month calendar with unavailable dates highlighted. Hard-code a few unavailable date ranges per game in games.ts. Date picker in checkout blocks unavailable dates.",
@@ -193,7 +193,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "UACC-001",
+      "id": "US-010",
       "epic": "User Accounts",
       "title": "Sign up and log in pages",
       "description": "Create /signup and /login pages with email+password forms. Store mock user in localStorage. Validate email format and password min 8 chars. Navbar shows user's first name when logged in.",
@@ -217,7 +217,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "UACC-002",
+      "id": "US-011",
       "epic": "User Accounts",
       "title": "User profile page",
       "description": "Create /profile page (auth-gated). Show avatar (initial-based), name, email, member since. Edit name inline. Log out button clears localStorage and redirects to /.",
@@ -240,7 +240,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "UACC-003",
+      "id": "US-012",
       "epic": "User Accounts",
       "title": "Order history on profile",
       "description": "Add an Order History section to /profile. Store completed orders in localStorage on checkout. Display as a table: Order #, Game, Dates, Total, Status.",
@@ -261,7 +261,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "UACC-004",
+      "id": "US-013",
       "epic": "User Accounts",
       "title": "Wishlist and saved games",
       "description": "Add a heart toggle on GameCard and GameModal. Logged-in users can wishlist games (localStorage). Logged-out users see a prompt. Saved Games tab on /profile.",
@@ -284,7 +284,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "ADMD-001",
+      "id": "US-014",
       "epic": "Admin Dashboard",
       "title": "Admin layout and auth gate",
       "description": "Create /admin route group with sidebar navigation (Overview, Inventory, Orders, Settings). Auth gate: redirect to /login if not admin. admin@rentagame.com gets admin:true on login.",
@@ -305,7 +305,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "ADMD-002",
+      "id": "US-015",
       "epic": "Admin Dashboard",
       "title": "Inventory management page",
       "description": "At /admin/inventory, show all games in an editable table. Allow inline price editing and status toggle (available/hidden). Edit side panel for all game fields. Changes persisted in localStorage.",
@@ -327,7 +327,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "ADMD-003",
+      "id": "US-016",
       "epic": "Admin Dashboard",
       "title": "Orders management page",
       "description": "At /admin/orders, list all orders from localStorage. Status dropdown per row. Filter by status and date range. Export as CSV. Aggregate stats at top.",
@@ -349,7 +349,7 @@
       "qaAttempts": 0
     },
     {
-      "id": "ADMD-004",
+      "id": "US-017",
       "epic": "Admin Dashboard",
       "title": "Overview dashboard with KPI cards",
       "description": "At /admin, show 4 KPI stat cards, a CSS/SVG bar chart of orders per game, and a Recent Orders table (last 5). Auto-refreshes every 30 seconds.",

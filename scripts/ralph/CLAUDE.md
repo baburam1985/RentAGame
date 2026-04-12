@@ -51,15 +51,19 @@ This prevents another Dev instance from double-picking the same story.
 
 ```bash
 git add scripts/ralph/prd.json
-git commit -m "chore: [STORY-ID] mark in-progress"
+git commit -m "chore: [US-NNN] mark in-progress"
 git push origin main
 ```
 
 ### Step 4 — Create feature branch
 
+Branch name format: `feat/US-NNN-short-title` (kebab-case, max 5 words after the number).
+
 ```bash
-git checkout -b feat/STORY-ID-short-title
-# Example: feat/DISC-001-search-filter
+git checkout -b feat/US-NNN-short-title
+# Example: feat/US-001-search-filter
+#          feat/US-006-checkout-wizard
+#          feat/US-014-admin-layout
 ```
 
 ### Step 5 — TDD RED phase (write failing tests first)
@@ -83,8 +87,8 @@ Commit ONLY test files:
 ```bash
 cd /home/user/RentAGame
 git add web/src/**/*.test.*
-git commit -m "test: [STORY-ID] RED - failing tests"
-git push origin feat/STORY-ID-short-title
+git commit -m "test: [US-NNN] RED - failing tests"
+git push origin feat/US-NNN-short-title
 ```
 
 Update prd.json: `status: "tests-written"`, push to main:
@@ -93,9 +97,9 @@ git checkout main
 git pull origin main
 # edit prd.json status -> "tests-written"
 git add scripts/ralph/prd.json
-git commit -m "chore: [STORY-ID] tests written (RED)"
+git commit -m "chore: [US-NNN] tests written (RED)"
 git push origin main
-git checkout feat/STORY-ID-short-title
+git checkout feat/US-NNN-short-title
 ```
 
 ### Step 6 — TDD GREEN phase (implement to make tests pass)
@@ -125,8 +129,8 @@ Commit ALL implementation files (not test files — they're already committed):
 ```bash
 cd /home/user/RentAGame
 git add web/src/
-git commit -m "feat: [STORY-ID] GREEN - implementation"
-git push origin feat/STORY-ID-short-title
+git commit -m "feat: [US-NNN] GREEN - implementation"
+git push origin feat/US-NNN-short-title
 ```
 
 ### Step 7 — Update prd.json
@@ -140,12 +144,12 @@ git pull origin main
 
 Edit prd.json for this story:
 - `status`: `"dev-complete"`
-- `branch`: `"feat/STORY-ID-short-title"`
+- `branch`: `"feat/US-NNN-short-title"`
 - `devNotes`: brief summary of what was implemented and files changed
 
 ```bash
 git add scripts/ralph/prd.json
-git commit -m "chore: [STORY-ID] dev-complete"
+git commit -m "chore: [US-NNN] dev-complete"
 git push origin main
 ```
 

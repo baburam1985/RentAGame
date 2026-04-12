@@ -46,13 +46,16 @@ git pull origin feat/STORY-ID-short-title
 
 ### Check 1 — TDD Integrity: RED commit exists before GREEN commit
 
+Story IDs follow the format US-NNN (e.g. US-001, US-012). Use the story's `id`
+field from prd.json as STORY_ID in all commands below.
+
 ```bash
-git log --oneline | grep "\[STORY-ID\]"
+git log --oneline | grep "\[STORY_ID\]"
 ```
 
 Verify:
-- A commit matching `test: [STORY-ID] RED` exists
-- A commit matching `feat: [STORY-ID] GREEN` exists
+- A commit matching `test: [US-NNN] RED` exists
+- A commit matching `feat: [US-NNN] GREEN` exists
 - The RED commit is **older** than the GREEN commit
 
 **FAIL if:** Either commit is missing, or GREEN predates RED.
@@ -60,8 +63,8 @@ Verify:
 ### Check 2 — Test files unchanged between RED and GREEN
 
 ```bash
-RED_SHA=$(git log --oneline | grep "test: \[STORY-ID\] RED" | awk '{print $1}')
-GREEN_SHA=$(git log --oneline | grep "feat: \[STORY-ID\] GREEN" | awk '{print $1}')
+RED_SHA=$(git log --oneline | grep "test: \[US-NNN\] RED" | awk '{print $1}')
+GREEN_SHA=$(git log --oneline | grep "feat: \[US-NNN\] GREEN" | awk '{print $1}')
 git diff $RED_SHA $GREEN_SHA -- "*.test.*" -- "*.spec.*"
 ```
 
@@ -127,13 +130,13 @@ docker-compose down
 cd /home/user/RentAGame
 git checkout main
 git pull origin main
-git merge --no-ff feat/STORY-ID-short-title \
-  -m "merge: [STORY-ID] [Story Title] - QA passed"
+git merge --no-ff feat/US-NNN-short-title \
+  -m "merge: [US-NNN] [Story Title] - QA passed"
 git push origin main
 
 # Clean up feature branch
-git branch -d feat/STORY-ID-short-title
-git push origin --delete feat/STORY-ID-short-title
+git branch -d feat/US-NNN-short-title
+git push origin --delete feat/US-NNN-short-title
 ```
 
 Update prd.json:
@@ -143,14 +146,14 @@ Update prd.json:
 
 ```bash
 git add scripts/ralph/prd.json
-git commit -m "chore: [STORY-ID] qa-passed, merged to main"
+git commit -m "chore: [US-NNN] qa-passed, merged to main"
 git push origin main
 ```
 
 Output:
 ```
-QA PASSED: [STORY-ID] - [Title]
-Merged feat/STORY-ID-short-title → main
+QA PASSED: [US-NNN] - [Title]
+Merged feat/US-NNN-short-title → main
 All 8 checks passed.
 ```
 
@@ -167,7 +170,7 @@ Do NOT merge. Update prd.json:
 ```bash
 git checkout main
 git add scripts/ralph/prd.json
-git commit -m "chore: [STORY-ID] qa-failed (attempt N)"
+git commit -m "chore: [US-NNN] qa-failed (attempt N)"
 git push origin main
 ```
 
@@ -175,7 +178,7 @@ git push origin main
 
 Output:
 ```
-QA FAILED: [STORY-ID] - [Title]
+QA FAILED: [US-NNN] - [Title]
 Failed checks:
   - Check N: [description of failure]
   - Check N: [description of failure]
