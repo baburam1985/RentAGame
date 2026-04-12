@@ -37,7 +37,7 @@
         "Price filter works simultaneously with search and category filters"
       ],
       "priority": 2,
-      "status": "pending",
+      "status": "in-progress",
       "passes": false,
       "branch": "",
       "devNotes": "",
