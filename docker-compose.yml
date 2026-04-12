@@ -31,4 +31,3 @@ services:
     environment:
       - BASE_URL=http://app:3000
       - CI=true
-      - CHROMIUM_PATH=/usr/bin/chromium
