@@ -605,6 +605,161 @@
       "qaFeedback": "",
       "qaAttempts": 0,
       "prNumber": 0
+    },
+    {
+      "id": "US-028",
+      "epic": "Discovery",
+      "title": "Skeleton loading state for game grid",
+      "description": "Replace the flash of unstyled content on initial page load with a CSS pulsing skeleton loader. Render 8 grey card placeholders while JS hydrates. Required by PRODUCT.md design principle 5: no layout shift on load.",
+      "acceptanceCriteria": [
+        "8 skeleton card placeholders render on initial page load before games are displayed",
+        "Skeleton cards use a pulsing grey animation (CSS only, no external library)",
+        "Skeleton cards match the approximate dimensions of real GameCards to prevent layout shift",
+        "Real game cards replace skeleton cards without visible flash or layout shift",
+        "Skeleton loader is removed entirely once games are ready to render",
+        "Skeleton state is accessible: aria-busy='true' on the grid container while loading"
+      ],
+      "priority": 28,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-029",
+      "epic": "Discovery",
+      "title": "'Most Popular' and social proof badges on game cards",
+      "description": "Add a hardcoded badge field to the Game type in games.ts (e.g. 'Most Popular', 'Fan Favourite', 'Perfect for Weddings'). Assign a badge to 2–3 games. Render the badge as a coloured pill overlay on the GameCard image to reduce decision paralysis.",
+      "acceptanceCriteria": [
+        "Game type in games.ts gains an optional 'badge' string field",
+        "2 to 3 games have badge values assigned (e.g. 'Most Popular', 'Fan Favourite')",
+        "GameCard renders the badge as a pill overlay on the top-left corner of the card image",
+        "Badge pill has sufficient colour contrast (WCAG AA) against the card image",
+        "Games without a badge render with no overlay or extra space",
+        "TypeScript compiles cleanly with 'badge' as an optional field"
+      ],
+      "priority": 29,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-030",
+      "epic": "Discovery",
+      "title": "Rental form inputs: visible focus rings and ARIA error associations",
+      "description": "Form inputs currently lose their visible focus ring in some browsers due to outline:none. Each input also needs aria-describedby pointing to its associated error message element. Both are required for WCAG 2.1 AA compliance and keyboard usability.",
+      "acceptanceCriteria": [
+        "All rental form inputs have a visible focus ring (2px or greater) when focused via keyboard",
+        "Focus ring is not suppressed by outline:none or equivalent CSS on any input",
+        "Each input has an aria-describedby attribute pointing to the ID of its error message element",
+        "Each error message element has a matching id attribute used by aria-describedby",
+        "Focus ring style is consistent across all form inputs (name, email, phone, date fields)",
+        "Focus ring colour meets WCAG AA contrast ratio (3:1 minimum against adjacent colours)"
+      ],
+      "priority": 30,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-031",
+      "epic": "Discovery",
+      "title": "Service area notice in hero section",
+      "description": "Customers landing on the site do not know if the service covers their area, causing wasted time on bookings that cannot be fulfilled. Add a short 'Serving [City/Region] and surrounding areas' line in the hero section as a static configurable constant.",
+      "acceptanceCriteria": [
+        "A service area line renders visibly in the Hero section below or near the hero subtitle",
+        "Service area text is implemented as a named constant (e.g. SERVICE_AREA) in a shared constants file, not hardcoded inline",
+        "The line is visible without scrolling on both desktop and mobile (375px) layouts",
+        "Service area text meets WCAG AA colour contrast requirements against the hero background",
+        "The line includes a location pin icon or similar visual affordance alongside the text",
+        "No delivery tracking or logistics functionality is implied or implemented"
+      ],
+      "priority": 31,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-032",
+      "epic": "Discovery",
+      "title": "Setup space callout in game modal",
+      "description": "Customers booking for events need to know if a game fits their space. The Game type already has a dimensions field but GameModal does not visually highlight it. Add a prominent 'Setup space needed' callout with an icon inside GameModal to answer this pre-booking question.",
+      "acceptanceCriteria": [
+        "GameModal renders a 'Setup space needed' callout displaying the game's dimensions value",
+        "The callout uses an appropriate icon (e.g. ruler or expand arrows) alongside the dimensions text",
+        "Callout is positioned clearly before the rental form within the modal",
+        "Callout is visible without scrolling when the modal first opens on desktop and mobile (375px)",
+        "Callout text meets WCAG AA colour contrast requirements",
+        "No new fields are added to games.ts — the existing dimensions field is reused"
+      ],
+      "priority": 32,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-033",
+      "epic": "Discovery",
+      "title": "Occasion-based quick-filter links on homepage",
+      "description": "Add 3 occasion-based quick-filter buttons above the game grid (Wedding, Corporate, Kids Party) so customers can find relevant games by use case instead of scrolling through category chips. Each button pre-applies a tag-based filter derived from game data. Implemented entirely client-side.",
+      "acceptanceCriteria": [
+        "Three occasion buttons render above the game grid: 'Wedding', 'Corporate', 'Kids Party'",
+        "Clicking an occasion button filters the game grid to games tagged for that occasion",
+        "Occasion tags are stored as an optional string[] field on the Game type in games.ts",
+        "All 8 games have appropriate occasion tags assigned",
+        "Active occasion button is visually highlighted; clicking it again deselects and restores all games",
+        "Occasion filter combines with existing category, search, and price filters (AND logic)",
+        "Occasion filter buttons are keyboard accessible with ARIA pressed state"
+      ],
+      "priority": 33,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-034",
+      "epic": "Discovery",
+      "title": "Testimonials with star ratings and location for authenticity",
+      "description": "The current testimonials section shows 3 hardcoded reviews with no star rating or location, making them look generic. Add a star rating (1–5) and a city/state string to each testimonial data object so cards display '★★★★★ — Sarah M., Austin TX'. This increases perceived authenticity and trust.",
+      "acceptanceCriteria": [
+        "Each testimonial data object gains a 'rating' number (1–5) and a 'location' string field",
+        "All 3 existing testimonials have rating: 5 and a realistic city, state value",
+        "Testimonial cards render star icons corresponding to the rating value",
+        "Star icons use filled vs outline style to represent the rating visually",
+        "Location string is displayed below the reviewer name (e.g. 'Austin, TX')",
+        "Star icons and location text meet WCAG AA colour contrast requirements"
+      ],
+      "priority": 34,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
     }
   ]
 }

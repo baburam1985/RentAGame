@@ -130,9 +130,9 @@
       "source": "Competitor analysis: gigantogames.com; trust signal research: mobiloud.com/blog/trust-signals-cart-abandonment",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-029"
     },
     {
       "id": "R-012",
@@ -142,8 +142,8 @@
       "source": "UX best practice; e-commerce modal patterns: uxpin.com/studio/blog/web-layout-best-practices",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: backlog is healthy at 25+ pending stories; this is a medium-confidence UX preference (some users expect backdrop-to-close) rather than a clear usability defect — defer to a future run when priority stories are cleared",
       "convertedToStory": ""
     },
     {
@@ -154,21 +154,21 @@
       "source": "Car rental booking UX: unicornplatform.com/blog/car-rental-booking-pages-in-2026; e-commerce UX: digitalapplied.com/blog/ecommerce-checkout-optimization-2026",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; US-021 already provides live price in the rental form; adding a redundant price widget on the card risks cluttering the grid UI; defer until post-US-021 user testing reveals a gap",
       "convertedToStory": ""
     },
     {
       "id": "R-014",
       "type": "performance",
       "title": "Skeleton loading state for game grid on initial page load",
-      "description": "The game grid renders all at once after JS hydration, causing a flash of unstyled content on slow connections. Adding a CSS skeleton loader (pulsing grey card outlines) prevents layout shift and makes the page feel faster. Required by PRODUCT.md design principle 5.",
+      "description": "The game grid renders all at once after JS hydration, causing a flash of unstyled content on slow connections. Adding a CSS skeleton loader (pulsing grey card outlines) prevents layout shift and makes the page felt faster. Required by PRODUCT.md design principle 5.",
       "source": "PRODUCT.md design principle 5: 'no layout shift on load'; core web vitals CLS best practices",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-028"
     },
     {
       "id": "R-015",
@@ -178,9 +178,9 @@
       "source": "Competitor pattern: all competitor sites prominently show service city (dallaslawngames.com, sanantoniolawngames.com); customer frustration research",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: static informational text in the hero, not delivery tracking or logistics; addresses a key early-funnel conversion barrier; feasible as a shared constant in Next.js",
+      "convertedToStory": "US-031"
     },
     {
       "id": "R-016",
@@ -190,8 +190,8 @@
       "source": "Mobile conversion optimization: parallelhq.com/blog/ux-design-to-improve-website-conversions; mobile-first booking UX: goodshuffle.com/blog/event-rental-website-builder",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: run cap of 5 stories reached; medium confidence — sticky bars on modals can cause z-index conflicts and layout issues; defer to next PM run after existing modal stories (US-025, US-027) are dev-complete so the interaction can be assessed together",
       "convertedToStory": ""
     },
     {
@@ -202,8 +202,8 @@
       "source": "WCAG 2.1 form accessibility guidelines; accessible booking: simplyscheduleappointments.com/accessibility-booking-plugin",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: duplicate of US-030 (Rental form inputs: visible focus rings and ARIA error associations) which already covers focus ring restoration and aria-describedby linkage for all form inputs",
       "convertedToStory": ""
     },
     {
@@ -214,9 +214,9 @@
       "source": "Competitor UX: bookextraordinary.com, rusticvibegames.com; event planning trends: tentandtable.net/blog/post/trends-in-party-rentals",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: occasion-based discovery is a genuine new capability not covered by existing category/player/search filters; feasible as client-side tag filtering with a new optional field on Game type; addresses real competitor gap",
+      "convertedToStory": "US-033"
     },
     {
       "id": "R-019",
@@ -238,8 +238,8 @@
       "source": "Customer pain point research: uncertainty about physical setup requirements; competitor analysis showing setup details prominently",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: duplicate of US-032 (Setup space callout in game modal) which already covers a prominent dimensions callout with icon inside GameModal reusing the existing dimensions field",
       "convertedToStory": ""
     },
     {
@@ -250,9 +250,9 @@
       "source": "Trust signal research: mobiloud.com/blog/trust-signals-cart-abandonment; B2C trust patterns for service businesses",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: PRODUCT.md explicitly states 'trust signals matter'; small effort change to static data that increases social proof authenticity; no external services or analytics required",
+      "convertedToStory": "US-034"
     },
     {
       "id": "R-022",
@@ -262,8 +262,8 @@
       "source": "Event planning trends 2025-2026: tentandtable.net/blog/post/trends-in-party-rentals, accio.com/business/event-rental-trends; e-commerce cross-sell patterns",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; backlog is healthy at 27 pending stories; cross-sell recommendation logic adds complexity to cart/modal interaction that should be deferred until the cart (US-008) is dev-complete and user-tested; risk of clutter in modal alongside US-025 and US-027",
       "convertedToStory": ""
     }
   ]
