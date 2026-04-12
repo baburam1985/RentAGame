@@ -15,12 +15,12 @@
         "Zero-results state shows a friendly 'No games found' message"
       ],
       "priority": 1,
-      "status": "ci-pending",
+      "status": "qa-failed",
       "passes": false,
       "branch": "feat/US-001-search-filter",
       "devNotes": "SearchBar component with controlled text input, clear button, and sr-only label. GameGrid updated with optional searchQuery prop for case-insensitive name+description filtering. page.tsx wires SearchBar above the game grid alongside CategoryFilter. Files: SearchBar.tsx, SearchBar.test.tsx, GameGrid.tsx (modified), GameGrid.test.tsx (new), page.tsx (modified).",
-      "qaFeedback": "CI still running — Unit Tests in_progress on both workflow runs (24317247695, 24317246992). Docker Build and E2E Tests completed with failure on older runs but Unit Tests still pending on latest. Waiting for CI to finish before proceeding.",
-      "qaAttempts": 1,
+      "qaFeedback": "CI failed on PR #1 (run 24317335213): Unit Tests job failed (conclusion: failure) and E2E Tests job failed (conclusion: failure). Docker Build passed. Two of three required CI jobs failed — local checks 1-8 cannot proceed until CI is green. Dev must investigate and fix the failing Unit Tests and E2E Tests in the Docker test environment, then push to feat/US-001-search-filter to trigger a new CI run.",
+      "qaAttempts": 2,
       "prNumber": 1
     },
     {
