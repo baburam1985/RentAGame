@@ -1,0 +1,10 @@
+FROM node:20-bookworm-slim
+WORKDIR /app
+
+# No system deps needed — Vitest runs in jsdom (pure JS), no real browser
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+CMD ["npm", "run", "test:run"]
