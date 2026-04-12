@@ -1,0 +1,37 @@
+services:
+  app:
+    build:
+      context: ./web
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 30s
+
+  unit-tests:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.test
+    command: npm run test:run
+    environment:
+      - CI=true
+
+  e2e-tests:
+    build:
+      context: ./web
+      dockerfile: Dockerfile.test
+    command: npm run test:e2e
+    depends_on:
+      app:
+        condition: service_healthy
+    environment:
+      - BASE_URL=http://app:3000
+      - CI=true
+      - PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+      - CHROMIUM_PATH=/usr/bin/chromium-browser

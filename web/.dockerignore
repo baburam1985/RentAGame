@@ -1,0 +1,16 @@
+node_modules
+.next
+.git
+e2e
+coverage
+playwright-report
+test-results
+*.test.ts
+*.test.tsx
+*.spec.ts
+*.spec.tsx
+Dockerfile*
+.dockerignore
+README.md
+vitest.config.ts
+playwright.config.ts
