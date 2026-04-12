@@ -18,7 +18,7 @@
       "status": "ci-pending",
       "passes": false,
       "branch": "feat/US-001-search-filter",
-      "devNotes": "SearchBar + GameGrid search filtering implemented. CI Docker fix: root cause was xvfb and udev listed in Dockerfile.test apk install — these packages do not exist in Alpine repos. Removed them; kept chromium, nss, freetype, harfbuzz, ca-certificates, ttf-freefont (all valid Alpine packages). Headless Chromium does not need xvfb or udev. Also fixed playwright.config.ts to skip webServer when BASE_URL is set. Files changed: Dockerfile.test, playwright.config.ts, SearchBar.tsx, GameGrid.tsx, page.tsx.",
+      "devNotes": "SearchBar + GameGrid search filtering implemented. Root cause of persistent Docker CI failures: package-lock.json was generated on Alpine/musl, so npm ci installed musl Rolldown/Tailwind-Oxide native binaries. Debian/glibc Docker containers load the musl binary, which crashes at startup. Fix: switched to separate Dockerfile.unit-tests and Dockerfile.e2e-tests (Debian slim), using npm install (not npm ci) so npm selects glibc-correct binaries for the container platform. Files changed: Dockerfile.unit-tests, Dockerfile.e2e-tests, docker-compose.yml, SearchBar.tsx, GameGrid.tsx, page.tsx, playwright.config.ts, smoke.test.ts.",
       "qaFeedback": "",
       "qaAttempts": 3,
       "prNumber": 1
