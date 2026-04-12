@@ -26,6 +26,14 @@ before starting. Key existing patterns:
 
 ## Your Task Every Run
 
+### Step 0 — Read the product spec
+
+Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
+It defines what the product is, the non-negotiables, and what is out of scope.
+Every implementation decision must be consistent with it. If a story asks you
+to violate a non-negotiable (e.g. add a real backend, use an external library),
+do not implement it — set `status: "blocked"` and note the conflict in `devNotes`.
+
 ### Step 1 — Git sync
 
 ```bash

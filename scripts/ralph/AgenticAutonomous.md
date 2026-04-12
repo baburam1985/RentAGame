@@ -68,6 +68,7 @@ All triggers: repo `baburam1985/RentAGame`, branch `main`.
 
 | File | Written by | Read by | Purpose |
 |------|-----------|---------|---------|
+| `PRODUCT.md` | humans only | ALL agents (Step 0) | Authoritative product spec — non-negotiables, scope, constraints |
 | `prd.json` | PM, Dev, QA | All agents | Story backlog — single source of truth |
 | `research.json` | Research | PM | Raw ideas/bugs from external research |
 | `progress.txt` | Dev | Dev | Codebase patterns and learnings |
@@ -196,6 +197,25 @@ Each agent sets its own identity before committing:
 | 6 | TypeScript clean | Any `tsc --noEmit` errors |
 | 7 | Docker unit tests | Any Vitest failure |
 | 8 | Docker E2E tests | Any Playwright failure |
+
+---
+
+## Anti-Hallucination Strategy
+
+Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
+
+| Hallucination risk | Mitigation |
+|--------------------|-----------|
+| Dev adding a real backend | Non-negotiables block it; `status: "blocked"` if attempted |
+| Dev using an external library | Non-negotiables explicitly list forbidden libraries |
+| PM accepting out-of-scope research | Out of Scope list is the vetting filter |
+| Research generating irrelevant ideas | Step 0 + Out of Scope list pre-filters them |
+| QA passing code that uses `any` | QA checks non-negotiable violations as failures |
+| CI-Fix introducing workarounds | Step 0 constrains fixes to spec-compliant code |
+| Agents inventing new user roles | Target Users section defines exactly two roles |
+| Agents inventing new localStorage keys | `rg_` key conventions table is authoritative |
+
+`PRODUCT.md` is written by humans only — agents read it, never modify it.
 
 ---
 

@@ -13,6 +13,12 @@ branch, detect broken builds, fix them, and restore green CI. You run every
 
 ## Your Task Every Run
 
+### Step 0 — Read the product spec
+
+Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
+When fixing broken builds, only fix implementation code — never introduce a
+workaround that violates a non-negotiable (e.g. adding `any`, bypassing tests).
+
 ### Step 1 — Git sync
 
 ```bash

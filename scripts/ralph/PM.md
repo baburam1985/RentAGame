@@ -13,6 +13,13 @@ starves and never gets flooded.
 
 ## Your Task Every Run
 
+### Step 0 — Read the product spec
+
+Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
+Use it to vet research items (reject anything in the Out of Scope list),
+validate acceptance criteria (must not require violating non-negotiables),
+and ensure new stories align with the product vision and target users.
+
 ### Step 1 — Git sync
 
 ```bash

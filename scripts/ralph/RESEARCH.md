@@ -66,6 +66,14 @@ Search for:
 
 ## Research Process
 
+### Step 0 — Read the product spec
+
+Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before researching.
+The Out of Scope section is your filter — do NOT generate ideas for anything
+listed there (real payments, email, multi-vendor, etc.). The Non-Negotiables
+section tells you the tech constraints ideas must respect. The Target Users
+section tells you who to design for.
+
 ### Step 1 — Read current app state
 
 Read these files to know what already exists before generating ideas:

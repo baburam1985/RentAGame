@@ -17,6 +17,13 @@ specific feedback.
 
 ## Your Task Every Run
 
+### Step 0 — Read the product spec
+
+Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
+During validation, flag any implementation that violates a non-negotiable
+(e.g. uses `any`, imports an external UI library, writes to a non-`rg_`
+localStorage key). Treat non-negotiable violations as QA failures.
+
 ### Step 1 — Git sync
 
 ```bash
