@@ -15,11 +15,11 @@
         "Zero-results state shows a friendly 'No games found' message"
       ],
       "priority": 1,
-      "status": "qa-failed",
+      "status": "dev-complete",
       "passes": false,
       "branch": "feat/US-001-search-filter",
-      "devNotes": "SearchBar component with controlled text input, clear button, and sr-only label. GameGrid updated with optional searchQuery prop for case-insensitive name+description filtering. page.tsx wires SearchBar above the game grid alongside CategoryFilter. CI fix: Dockerfile.test was using node:20-alpine which lacks xvfb/udev packages, causing Docker image build to fail for both unit-tests and e2e-tests jobs. Switched to node:20-bookworm-slim (Debian) with proper chromium apt package. Also fixed playwright.config.ts to skip webServer when BASE_URL env var is set (Docker CI has app running at http://app:3000, not localhost), and wired CHROMIUM_PATH to executablePath for system Chromium. Files changed: Dockerfile.test, playwright.config.ts.",
-      "qaFeedback": "CI failed on PR #1 (run 24317843486): Unit Tests job failed (conclusion: failure) and E2E Tests job failed (conclusion: failure). Docker Build passed. Two of three required CI jobs failed — local checks 1-8 cannot proceed until CI is green. Dev must investigate and fix the failing Unit Tests and E2E Tests in the Docker test environment, then push to feat/US-001-search-filter to trigger a new CI run. Check run URLs: Unit Tests https://github.com/baburam1985/RentAGame/actions/runs/24317843486/job/70998582248 — E2E Tests https://github.com/baburam1985/RentAGame/actions/runs/24317843486/job/70998582244.",
+      "devNotes": "SearchBar + GameGrid search filtering implemented. CI Docker fix: root cause was xvfb and udev listed in Dockerfile.test apk install — these packages do not exist in Alpine repos. Removed them; kept chromium, nss, freetype, harfbuzz, ca-certificates, ttf-freefont (all valid Alpine packages). Headless Chromium does not need xvfb or udev. Also fixed playwright.config.ts to skip webServer when BASE_URL is set. Files changed: Dockerfile.test, playwright.config.ts, SearchBar.tsx, GameGrid.tsx, page.tsx.",
+      "qaFeedback": "",
       "qaAttempts": 3,
       "prNumber": 1
     },
