@@ -22,9 +22,9 @@
       "source": "UX research: unicornplatform.com/blog/car-rental-booking-pages-in-2026; Baymard checkout optimization",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-021"
     },
     {
       "id": "R-003",
@@ -34,9 +34,9 @@
       "source": "PRODUCT.md mobile-first principle; Smashing Magazine booking UX case study",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-020"
     },
     {
       "id": "R-004",
@@ -46,9 +46,9 @@
       "source": "WCAG 2.1 AA audit guidance: boia.org/blog/web-accessibility-for-travel-agencies; accessibe.com accessible rental properties",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-022"
     },
     {
       "id": "R-005",
@@ -118,9 +118,9 @@
       "source": "Equipment rental UX: eliftech.com/insights/how-to-improve-booking-experience; hotel booking engine problems: traveltekpro.com",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-019"
     },
     {
       "id": "R-011",
@@ -226,9 +226,9 @@
       "source": "PRODUCT.md design principle; e-commerce empty state UX best practices",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-018"
     },
     {
       "id": "R-020",

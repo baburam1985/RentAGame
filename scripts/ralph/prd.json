@@ -385,6 +385,115 @@
       "qaFeedback": "",
       "qaAttempts": 0,
       "prNumber": 0
+    },
+    {
+      "id": "US-018",
+      "epic": "Discovery",
+      "title": "Add 'Browse all' CTA to zero-results empty state",
+      "description": "When all filters return zero results, the 'No games found' message is a dead end. Add a 'Browse all games' button that clears all active filters and a short prompt 'Try clearing some filters'. Per PRODUCT.md design principle: empty states must always include a CTA.",
+      "acceptanceCriteria": [
+        "Zero-results state shows a 'Browse all games' button below the 'No games found' message",
+        "Clicking 'Browse all games' resets all filters (search, category) to defaults",
+        "A short friendly tip ('Try clearing some filters') is shown near the button",
+        "The button is keyboard accessible and has an accessible label",
+        "Empty state renders only when filtered results are empty, not when the catalog itself is empty"
+      ],
+      "priority": 18,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-019",
+      "epic": "Checkout & Payments",
+      "title": "Inline date validation on rental form",
+      "description": "The rental form currently accepts invalid date combinations — past start dates, end dates before start dates, same-day rentals. Add inline validation: start date ≥ today, end date > start date, with friendly inline error messages on blur and on submit.",
+      "acceptanceCriteria": [
+        "Start date input shows an inline error if the selected date is in the past",
+        "End date input shows an inline error if it is before or equal to the start date",
+        "Error messages appear on blur and on submit attempt",
+        "Error messages are friendly: 'Start date must be today or later', 'End date must be after start date'",
+        "Form cannot be submitted while either date field has an active error",
+        "Error messages are linked to inputs via aria-describedby for screen reader users"
+      ],
+      "priority": 19,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-020",
+      "epic": "Discovery",
+      "title": "Category filter chips horizontally scrollable on mobile",
+      "description": "On 375px mobile screens the 6 category pills overflow their container. Implement a horizontally scrollable single-row pill bar with hidden scrollbar on desktop and touch scrolling on mobile.",
+      "acceptanceCriteria": [
+        "All category pills render in a single horizontal row on all screen sizes",
+        "On 375px screens the pill row is horizontally scrollable with touch swipe",
+        "Scrollbar is hidden (no visible scrollbar on desktop or mobile)",
+        "Category filter works correctly after scrolling",
+        "No pills wrap to a second row at any viewport width ≥ 320px",
+        "A fade gradient on the right edge indicates more pills are scrollable"
+      ],
+      "priority": 20,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-021",
+      "epic": "Checkout & Payments",
+      "title": "Live total price calculation in rental form",
+      "description": "After a customer selects start and end dates in the rental form, show a live calculated total price (pricePerDay × numberOfDays) updating in real time. Display prominently above the submit button.",
+      "acceptanceCriteria": [
+        "Total price updates in real time as start or end date changes",
+        "Total displays as '$X for N days' showing both total and per-day rate",
+        "Total only shows when both dates are valid (start < end)",
+        "If no game is pre-selected, price area shows a friendly placeholder",
+        "Total price is visually prominent with larger or bolder styling",
+        "Minimum rental is 1 day; same-day selection triggers date validation error"
+      ],
+      "priority": 21,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
+    },
+    {
+      "id": "US-022",
+      "epic": "Discovery",
+      "title": "Descriptive alt text for all game images",
+      "description": "Game images in GameCard and GameModal use only the game name as alt text. Replace with descriptive alt text that conveys scene content for screen reader users. Alt text stored in games.ts as a required imageAlt field. Required for WCAG 2.1 AA compliance.",
+      "acceptanceCriteria": [
+        "Game type in games.ts gains a required imageAlt string field",
+        "All 8 games have descriptive imageAlt values describing the visual scene (20–80 chars)",
+        "GameCard passes game.imageAlt to the Image alt attribute",
+        "GameModal passes game.imageAlt to any game images displayed",
+        "Alt text describes the scene, not just the product name",
+        "TypeScript compiles cleanly with imageAlt as a required non-optional field"
+      ],
+      "priority": 22,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0,
+      "prNumber": 0
     }
   ]
 }
