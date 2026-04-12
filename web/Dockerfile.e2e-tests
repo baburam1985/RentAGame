@@ -25,11 +25,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
 ENV CHROMIUM_PATH=/usr/bin/chromium
 
-# Use npm install (not npm ci) so npm selects glibc binaries for this platform.
-# The package-lock.json was generated on Alpine/musl — npm ci installs the wrong
-# native binaries (musl Rolldown/Oxide) which crash on Debian glibc at runtime.
-COPY package.json ./
-RUN npm install --no-audit --no-fund
+# Install all deps (including dev) using the lock file for deterministic installs.
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 

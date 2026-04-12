@@ -1,11 +1,11 @@
 FROM node:20-bookworm-slim
 WORKDIR /app
 
-# Use npm install (not npm ci) so npm selects glibc binaries for this platform.
-# The package-lock.json was generated on Alpine/musl; npm ci would install the
-# musl Rolldown/Tailwind Oxide binaries which crash on Debian glibc at runtime.
-COPY package.json ./
-RUN npm install --no-audit --no-fund
+# Install all deps (including dev) using the lock file for deterministic installs.
+# Both @rolldown/binding-linux-x64-gnu and musl variants are optional deps in the
+# lock file; Rolldown loads the correct one at runtime based on the system libc.
+COPY package.json package-lock.json ./
+RUN npm ci
 
 COPY . .
 
