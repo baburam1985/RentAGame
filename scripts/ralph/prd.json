@@ -1,0 +1,373 @@
+{
+  "branchName": "main",
+  "stories": [
+    {
+      "id": "DISC-001",
+      "epic": "Discovery",
+      "title": "Search bar with live text filtering",
+      "description": "Add a search input above the game grid. As the user types, filter games by name and description in real time (client-side). Clear button resets the filter. Works in combination with the existing category filter.",
+      "acceptanceCriteria": [
+        "Search input renders above the game grid",
+        "Typing filters games by name and description in real time (no submit required)",
+        "Search is case-insensitive",
+        "Clear button resets search input to empty and restores all games",
+        "Search filter works simultaneously with the category filter",
+        "Zero-results state shows a friendly 'No games found' message"
+      ],
+      "priority": 1,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "DISC-002",
+      "epic": "Discovery",
+      "title": "Price range slider filter",
+      "description": "Add a dual-handle price range slider (min/max) in the filter bar. Games outside the selected range are hidden. Default: full range. Show the selected range as '$X – $Y / day'. No external slider library — build with two range inputs overlaid.",
+      "acceptanceCriteria": [
+        "Dual-handle price slider renders in the filter bar",
+        "Min and max handles are independently draggable",
+        "Games outside selected price range are hidden",
+        "Selected range displays as '$X – $Y / day'",
+        "Default state shows full price range (min to max of all games)",
+        "Price filter works simultaneously with search and category filters"
+      ],
+      "priority": 2,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "DISC-003",
+      "epic": "Discovery",
+      "title": "Sort games by price or name",
+      "description": "Add a sort dropdown to the filter bar with options: 'Featured' (default order), 'Price: Low to High', 'Price: High to Low', 'Name: A–Z'. Sort applies on top of any active search/category/price filters.",
+      "acceptanceCriteria": [
+        "Sort dropdown renders with 4 options: Featured, Price: Low to High, Price: High to Low, Name: A–Z",
+        "Default selection is Featured (original games.ts order)",
+        "Price: Low to High sorts games ascending by pricePerDay",
+        "Price: High to Low sorts games descending by pricePerDay",
+        "Name: A–Z sorts games alphabetically by name",
+        "Sort applies on top of any active search, category, and price filters"
+      ],
+      "priority": 3,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "DISC-004",
+      "epic": "Discovery",
+      "title": "Player count filter chips",
+      "description": "Add a 'Players' filter chip group: 2, 4, 6, 8+. Selecting a chip shows only games whose players range includes that count. Multiple chips can be active (OR logic). Parse existing players strings in games.ts.",
+      "acceptanceCriteria": [
+        "Four filter chips render: 2, 4, 6, 8+",
+        "Clicking a chip toggles it active/inactive",
+        "Multiple chips can be active simultaneously (OR logic)",
+        "Only games whose players string includes the selected count are shown",
+        "No chips selected shows all games",
+        "Player filter works simultaneously with other active filters"
+      ],
+      "priority": 4,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "DISC-005",
+      "epic": "Discovery",
+      "title": "Active filter summary bar with clear-all",
+      "description": "When any filter (search, category, price, players, sort) is non-default, show a horizontal summary bar below the filter row listing each active filter as a removable chip. Include a 'Clear all' button.",
+      "acceptanceCriteria": [
+        "Summary bar is hidden when all filters are at default values",
+        "Summary bar appears when any filter is non-default",
+        "Each active filter renders as a chip with its value and a remove (×) button",
+        "Clicking a chip's remove button clears only that filter",
+        "Clear all button resets every filter to default",
+        "Summary bar updates in real time as filters change"
+      ],
+      "priority": 5,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "CHKP-001",
+      "epic": "Checkout & Payments",
+      "title": "Multi-step checkout wizard",
+      "description": "Replace the single RentalForm with a 3-step wizard: Step 1 — Date selection. Step 2 — Contact info. Step 3 — Review & confirm. Progress indicator at top. Back/Next buttons. Form state persists between steps.",
+      "acceptanceCriteria": [
+        "Wizard renders 3 steps: Date Selection, Contact Info, Review & Confirm",
+        "Progress indicator at top shows current step number",
+        "Next button advances to the next step; Back button returns to the previous step",
+        "Form state (dates, contact info) persists when navigating between steps",
+        "Step 1 computes rental days and total price from start/end dates",
+        "Step 3 shows full order summary before submit",
+        "Place Order CTA on Step 3 submits the order"
+      ],
+      "priority": 6,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "CHKP-002",
+      "epic": "Checkout & Payments",
+      "title": "Order confirmation page",
+      "description": "After 'Place Order', navigate to /order-confirmation. Show order reference, game name, rental dates, total price, and customer email. Include a 'Browse More Games' link back to /.",
+      "acceptanceCriteria": [
+        "/order-confirmation route exists and renders",
+        "Page shows a unique 8-character alphanumeric order reference number",
+        "Page shows game name, rental start date, rental end date, and total price",
+        "Page shows the customer email from checkout",
+        "'Browse More Games' link navigates back to /",
+        "Page styling is consistent with the rest of the site"
+      ],
+      "priority": 7,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "CHKP-003",
+      "epic": "Checkout & Payments",
+      "title": "Rental cart for multiple games",
+      "description": "Add a cart system. 'Add to Cart' button on each GameCard and GameModal. Cart icon in Navbar shows item count badge. Cart drawer slides in from right with date pickers per item and a running total.",
+      "acceptanceCriteria": [
+        "'Add to Cart' button renders on GameCard and GameModal",
+        "Cart icon in Navbar shows a badge with the current item count",
+        "Cart drawer slides in from the right when cart icon is clicked",
+        "Each cart item shows game name, individual date picker, and subtotal",
+        "Running total shown at the bottom of the drawer",
+        "Checkout CTA in drawer opens the multi-step wizard pre-populated with cart items",
+        "Items can be removed from the cart"
+      ],
+      "priority": 8,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "CHKP-004",
+      "epic": "Checkout & Payments",
+      "title": "Availability calendar per game",
+      "description": "Add an availability calendar to GameModal. Show a month calendar with unavailable dates highlighted. Hard-code a few unavailable date ranges per game in games.ts. Date picker in checkout blocks unavailable dates.",
+      "acceptanceCriteria": [
+        "games.ts includes an unavailableDates field (string[][] of date ranges) for each game",
+        "GameModal renders a month calendar view",
+        "Unavailable dates are highlighted in red on the calendar",
+        "Checkout date picker prevents selection of unavailable dates",
+        "Selecting an unavailable date shows an inline error message",
+        "Calendar shows the current month by default with prev/next navigation"
+      ],
+      "priority": 9,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "UACC-001",
+      "epic": "User Accounts",
+      "title": "Sign up and log in pages",
+      "description": "Create /signup and /login pages with email+password forms. Store mock user in localStorage. Validate email format and password min 8 chars. Navbar shows user's first name when logged in.",
+      "acceptanceCriteria": [
+        "/signup page renders with name, email, and password fields",
+        "/login page renders with email and password fields",
+        "Email field validates correct format; shows inline error if invalid",
+        "Password field requires minimum 8 characters; shows inline error if too short",
+        "Successful signup stores user object (name, email, createdAt) in localStorage",
+        "Successful login reads user from localStorage and authenticates",
+        "Navbar shows 'Log in / Sign up' link when logged out",
+        "Navbar shows user's first name when logged in",
+        "Both forms redirect to / on success"
+      ],
+      "priority": 10,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "UACC-002",
+      "epic": "User Accounts",
+      "title": "User profile page",
+      "description": "Create /profile page (auth-gated). Show avatar (initial-based), name, email, member since. Edit name inline. Log out button clears localStorage and redirects to /.",
+      "acceptanceCriteria": [
+        "/profile page renders for authenticated users",
+        "Unauthenticated users are redirected to /login",
+        "Avatar shows user's initial as a colored circle",
+        "Name, email, and member since date are displayed",
+        "Clicking name enables inline editing; saving on blur or Enter key",
+        "Updated name persists to localStorage",
+        "Log out button clears the user from localStorage",
+        "Log out redirects to /"
+      ],
+      "priority": 11,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "UACC-003",
+      "epic": "User Accounts",
+      "title": "Order history on profile",
+      "description": "Add an Order History section to /profile. Store completed orders in localStorage on checkout. Display as a table: Order #, Game, Dates, Total, Status.",
+      "acceptanceCriteria": [
+        "Order History section renders on /profile",
+        "Completed orders are stored in localStorage when Place Order is submitted",
+        "Table shows columns: Order #, Game, Dates, Total, Status",
+        "Orders are listed in reverse chronological order",
+        "Empty state renders with a 'Browse Games' CTA when no orders exist",
+        "Status shows 'confirmed' for newly placed orders"
+      ],
+      "priority": 12,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "UACC-004",
+      "epic": "User Accounts",
+      "title": "Wishlist and saved games",
+      "description": "Add a heart toggle on GameCard and GameModal. Logged-in users can wishlist games (localStorage). Logged-out users see a prompt. Saved Games tab on /profile.",
+      "acceptanceCriteria": [
+        "Heart icon renders on GameCard and GameModal",
+        "Logged-in users can toggle heart to save/unsave a game",
+        "Wishlist persists in localStorage",
+        "Heart icon shows filled state for wishlisted games",
+        "Logged-out users clicking heart see a 'Log in to save games' tooltip or toast",
+        "'Saved Games' tab renders on /profile",
+        "Saved Games tab shows wishlisted games as a mini grid",
+        "Remove button on each saved game card removes it from the wishlist"
+      ],
+      "priority": 13,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "ADMD-001",
+      "epic": "Admin Dashboard",
+      "title": "Admin layout and auth gate",
+      "description": "Create /admin route group with sidebar navigation (Overview, Inventory, Orders, Settings). Auth gate: redirect to /login if not admin. admin@rentagame.com gets admin:true on login.",
+      "acceptanceCriteria": [
+        "/admin route group renders with a sidebar layout",
+        "Sidebar has navigation links: Overview, Inventory, Orders, Settings",
+        "Non-admin users are redirected to /login when accessing /admin",
+        "Logging in as admin@rentagame.com sets admin:true on the user in localStorage",
+        "Sidebar styling is consistent with the site's color palette",
+        "Active sidebar link is visually highlighted"
+      ],
+      "priority": 14,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "ADMD-002",
+      "epic": "Admin Dashboard",
+      "title": "Inventory management page",
+      "description": "At /admin/inventory, show all games in an editable table. Allow inline price editing and status toggle (available/hidden). Edit side panel for all game fields. Changes persisted in localStorage.",
+      "acceptanceCriteria": [
+        "/admin/inventory renders all games in a table",
+        "Table columns: Name, Category, Price/day, Players, Status",
+        "Price/day is editable inline (click cell → input → save on blur/Enter)",
+        "Status toggle shows available/hidden; toggling hides/shows game on public page",
+        "Hidden games are excluded from the public game grid",
+        "Edit button opens a side panel with all game fields editable",
+        "All changes are persisted to localStorage"
+      ],
+      "priority": 15,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "ADMD-003",
+      "epic": "Admin Dashboard",
+      "title": "Orders management page",
+      "description": "At /admin/orders, list all orders from localStorage. Status dropdown per row. Filter by status and date range. Export as CSV. Aggregate stats at top.",
+      "acceptanceCriteria": [
+        "/admin/orders renders all orders from localStorage",
+        "Table columns: Order #, Customer, Game, Dates, Total, Status, Created at",
+        "Status dropdown per row: pending → confirmed → fulfilled → cancelled",
+        "Status changes persist to localStorage",
+        "Filter bar filters by status and date range",
+        "Export button downloads all orders as a CSV file",
+        "Aggregate stats shown at top: Total Orders, Total Revenue, Pending Count"
+      ],
+      "priority": 16,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    },
+    {
+      "id": "ADMD-004",
+      "epic": "Admin Dashboard",
+      "title": "Overview dashboard with KPI cards",
+      "description": "At /admin, show 4 KPI stat cards, a CSS/SVG bar chart of orders per game, and a Recent Orders table (last 5). Auto-refreshes every 30 seconds.",
+      "acceptanceCriteria": [
+        "/admin overview renders 4 KPI cards: Total Revenue, Active Rentals, Total Customers, Most Popular Game",
+        "KPI values are derived from localStorage order and user data",
+        "Bar chart renders orders per game using only CSS or SVG (no external chart library)",
+        "Recent Orders table shows the last 5 orders with a link to /admin/orders",
+        "Page auto-refreshes data every 30 seconds without a full page reload",
+        "All data sourced from localStorage"
+      ],
+      "priority": 17,
+      "status": "pending",
+      "passes": false,
+      "branch": "",
+      "devNotes": "",
+      "qaFeedback": "",
+      "qaAttempts": 0
+    }
+  ]
+}

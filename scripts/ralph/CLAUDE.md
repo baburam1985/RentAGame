@@ -1,105 +1,182 @@
-# Ralph Agent Instructions
+# Dev Agent Instructions (TDD)
 
-You are an autonomous coding agent working on a software project.
+You are an autonomous coding agent for the RentAGame project. You follow strict
+Test-Driven Development: **tests first, implementation second, never modify
+tests after the RED commit.**
 
-## Your Task
+## Project Context
 
-1. Read the PRD at `prd.json` (in the same directory as this file)
-2. Read the progress log at `progress.txt` (check Codebase Patterns section first)
-3. Check you're on the correct branch from PRD `branchName`. If not, check it out or create from main.
-4. Pick the **highest priority** user story where `passes: false`
-5. Implement that single user story
-6. Run quality checks (e.g., typecheck, lint, test - use whatever your project requires)
-7. Update CLAUDE.md files if you discover reusable patterns (see below)
-8. If checks pass, commit ALL changes with message: `feat: [Story ID] - [Story Title]`
-9. Push immediately after every commit: `git push origin HEAD`
-10. Update the PRD to set `passes: true` for the completed story
-11. Append your progress to `progress.txt`
+- Next.js 19 + TypeScript + Tailwind CSS
+- Source: `/home/user/RentAGame/web/`
+- Tests: Vitest + Testing Library (`npm run test:run`)
+- E2E: Playwright (`npm run test:e2e`)
+- Docker: `docker-compose.yml` at `/home/user/RentAGame/`
+- Shared state: `/home/user/RentAGame/scripts/ralph/prd.json`
+- Base branch: `main`
 
-## Progress Report Format
+## Codebase Patterns
 
-APPEND to progress.txt (never replace, always append):
+Read `progress.txt` (if it exists) for patterns discovered in previous runs
+before starting. Key existing patterns:
+- Components live in `web/src/components/`
+- Data types in `web/src/data/games.ts`
+- Pages in `web/src/app/` (Next.js App Router)
+- Test files co-located: `ComponentName.test.tsx`
+- Testing Library + Vitest — see existing test files for patterns
+
+## Your Task Every Run
+
+### Step 1 — Git sync
+
+```bash
+cd /home/user/RentAGame
+git config user.email "dev-agent@rentagame.ai"
+git config user.name "Dev Agent"
+git checkout main
+git pull origin main
 ```
-## [Date/Time] - [Story ID]
+
+### Step 2 — Pick a story
+
+Read `prd.json`. Pick the **highest priority** story where:
+- `status == "pending"` OR
+- `status == "qa-failed"` (these take priority over pending — fix before moving on)
+
+If no such story exists, output "No stories available." and STOP.
+
+### Step 3 — Lock the story
+
+Set `status: "in-progress"` in prd.json and write it back immediately.
+This prevents another Dev instance from double-picking the same story.
+
+```bash
+git add scripts/ralph/prd.json
+git commit -m "chore: [STORY-ID] mark in-progress"
+git push origin main
+```
+
+### Step 4 — Create feature branch
+
+```bash
+git checkout -b feat/STORY-ID-short-title
+# Example: feat/DISC-001-search-filter
+```
+
+### Step 5 — TDD RED phase (write failing tests first)
+
+Read the story's `acceptanceCriteria`. If `status` was `qa-failed`, also read
+`qaFeedback` — your tests must cover the failed criteria specifically.
+
+Write a test file that:
+- Has one `it()` block per acceptance criterion
+- Tests must **FAIL** before any implementation exists
+- Follow patterns from existing test files (Vitest + Testing Library)
+- File naming: `ComponentName.test.tsx` or `page.test.tsx` co-located with impl
+
+Verify tests fail:
+```bash
+cd /home/user/RentAGame/web && npm run test:run -- --reporter=verbose 2>&1 | tail -30
+```
+You must see failures. If tests pass already, your tests are too weak — rewrite them.
+
+Commit ONLY test files:
+```bash
+cd /home/user/RentAGame
+git add web/src/**/*.test.*
+git commit -m "test: [STORY-ID] RED - failing tests"
+git push origin feat/STORY-ID-short-title
+```
+
+Update prd.json: `status: "tests-written"`, push to main:
+```bash
+git checkout main
+git pull origin main
+# edit prd.json status -> "tests-written"
+git add scripts/ralph/prd.json
+git commit -m "chore: [STORY-ID] tests written (RED)"
+git push origin main
+git checkout feat/STORY-ID-short-title
+```
+
+### Step 6 — TDD GREEN phase (implement to make tests pass)
+
+Write the minimum implementation to make ALL tests pass.
+
+**Hard rules:**
+- NEVER modify test files after the RED commit
+- NEVER use `test.skip`, `it.skip`, or `describe.skip`
+- NEVER cast to `any` to silence TypeScript errors
+- NEVER write workarounds in production code just to pass a test — fix the code properly
+
+Run tests frequently during implementation:
+```bash
+cd /home/user/RentAGame/web && npm run test:run 2>&1 | tail -20
+```
+
+When all tests pass locally, run in Docker for a clean-environment check:
+```bash
+cd /home/user/RentAGame
+docker-compose run --rm unit-tests 2>&1 | tail -30
+```
+
+Both must be green before committing.
+
+Commit ALL implementation files (not test files — they're already committed):
+```bash
+cd /home/user/RentAGame
+git add web/src/
+git commit -m "feat: [STORY-ID] GREEN - implementation"
+git push origin feat/STORY-ID-short-title
+```
+
+### Step 7 — Update prd.json
+
+Switch to main, update prd.json, push:
+
+```bash
+git checkout main
+git pull origin main
+```
+
+Edit prd.json for this story:
+- `status`: `"dev-complete"`
+- `branch`: `"feat/STORY-ID-short-title"`
+- `devNotes`: brief summary of what was implemented and files changed
+
+```bash
+git add scripts/ralph/prd.json
+git commit -m "chore: [STORY-ID] dev-complete"
+git push origin main
+```
+
+### Step 8 — Update progress.txt
+
+Append to `/home/user/RentAGame/scripts/ralph/progress.txt`:
+
+```
+## [Date] - [STORY-ID] - [Title]
 - What was implemented
 - Files changed
-- **Learnings for future iterations:**
-  - Patterns discovered (e.g., "this codebase uses X for Y")
-  - Gotchas encountered (e.g., "don't forget to update Z when changing W")
-  - Useful context (e.g., "the evaluation panel is in component X")
+- Learnings for future iterations:
+  - Patterns discovered
+  - Gotchas
+  - Useful context
 ---
 ```
 
-The learnings section is critical - it helps future iterations avoid repeating mistakes and understand the codebase better.
-
-## Consolidate Patterns
-
-If you discover a **reusable pattern** that future iterations should know, add it to the `## Codebase Patterns` section at the TOP of progress.txt (create it if it doesn't exist). This section should consolidate the most important learnings:
-
-```
-## Codebase Patterns
-- Example: Use `sql<number>` template for aggregations
-- Example: Always use `IF NOT EXISTS` for migrations
-- Example: Export types from actions.ts for UI components
-```
-
-Only add patterns that are **general and reusable**, not story-specific details.
-
-## Update CLAUDE.md Files
-
-Before committing, check if any edited files have learnings worth preserving in nearby CLAUDE.md files:
-
-1. **Identify directories with edited files** - Look at which directories you modified
-2. **Check for existing CLAUDE.md** - Look for CLAUDE.md in those directories or parent directories
-3. **Add valuable learnings** - If you discovered something future developers/agents should know:
-   - API patterns or conventions specific to that module
-   - Gotchas or non-obvious requirements
-   - Dependencies between files
-   - Testing approaches for that area
-   - Configuration or environment requirements
-
-**Examples of good CLAUDE.md additions:**
-- "When modifying X, also update Y to keep them in sync"
-- "This module uses pattern Z for all API calls"
-- "Tests require the dev server running on PORT 3000"
-- "Field names must match the template exactly"
-
-**Do NOT add:**
-- Story-specific implementation details
-- Temporary debugging notes
-- Information already in progress.txt
-
-Only update CLAUDE.md if you have **genuinely reusable knowledge** that would help future work in that directory.
+If you discovered a reusable pattern, add it to the `## Codebase Patterns`
+section at the TOP of progress.txt (create section if it doesn't exist).
 
 ## Quality Requirements
 
-- ALL commits must pass your project's quality checks (typecheck, lint, test)
-- Do NOT commit broken code
-- Keep changes focused and minimal
-- Follow existing code patterns
-
-## Browser Testing (If Available)
-
-For any story that changes UI, verify it works in the browser if you have browser testing tools configured (e.g., via MCP):
-
-1. Navigate to the relevant page
-2. Verify the UI changes work as expected
-3. Take a screenshot if helpful for the progress log
-
-If no browser tools are available, note in your progress report that manual browser verification is needed.
+- ALL commits must have passing unit tests (green Docker run)
+- NEVER commit broken TypeScript (`npx tsc --noEmit` must pass)
+- Keep changes focused — only touch files needed for this story
+- Follow existing code patterns — read nearby files before writing new ones
 
 ## Stop Condition
 
-After completing a user story, check if ALL stories have `passes: true`.
-
-If ALL stories are complete and passing, reply with:
-<promise>COMPLETE</promise>
-
-If there are still stories with `passes: false`, end your response normally (another iteration will pick up the next story).
-
-## Important
-
-- Work on ONE story per iteration
-- Commit frequently
-- Keep CI green
-- Read the Codebase Patterns section in progress.txt before starting
+After completing a story:
+- If all stories in prd.json have `status: "qa-passed"`, output:
+  `<promise>COMPLETE</promise>`
+- Otherwise, end your response normally — the next run picks up the next story.
