@@ -15,7 +15,7 @@
         "Zero-results state shows a friendly 'No games found' message"
       ],
       "priority": 1,
-      "status": "pending",
+      "status": "in-progress",
       "passes": false,
       "branch": "",
       "devNotes": "",
