@@ -10,9 +10,9 @@
       "source": "Competitor analysis: trianglelawngames.com, reventals.com; cart abandonment research: foursixty.com/blog",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-023"
     },
     {
       "id": "R-002",
@@ -58,9 +58,9 @@
       "source": "WCAG 2.1 accessible booking flow guidelines: frontdesksuite.com/en/product/accessibility",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-024"
     },
     {
       "id": "R-006",
@@ -70,9 +70,9 @@
       "source": "Competitor analysis: bookextraordinary.com; rental UX: techspokes.com/blog/vacation-rental-website-conversions",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-025"
     },
     {
       "id": "R-007",
@@ -82,8 +82,8 @@
       "source": "Competitor analysis: bookextraordinary.com, reventals.com/blog/lawn-game-rental-ideas",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: bundle pricing requires multi-game discount logic outside the per-day pricing model; out of current product scope and risks scope creep into the discount/promo system explicitly excluded in PRODUCT.md",
       "convertedToStory": ""
     },
     {
@@ -94,9 +94,9 @@
       "source": "Baymard Institute checkout UX; alfdesigngroup.com/post/checkout-ux; quape.com/checkout-ux-cart-abandonment",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-026"
     },
     {
       "id": "R-009",
@@ -106,9 +106,9 @@
       "source": "Customer pain point: vendor communication frustration (reventals.com customer research); competitor UX patterns",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-027"
     },
     {
       "id": "R-010",
