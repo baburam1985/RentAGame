@@ -1,16 +1,12 @@
-FROM node:20-bookworm-slim
+FROM node:20-alpine
 WORKDIR /app
 
-# Install system dependencies for Playwright (Chromium)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    chromium \
-    fonts-freefont-ttf \
-    ca-certificates \
-    && rm -rf /var/lib/apt/lists/*
+# Install Chromium from Alpine repos (headless — no xvfb or udev needed)
+RUN apk add --no-cache chromium
 
-# Tell Playwright to use the installed Chromium
+# Tell Playwright to use the system-installed Chromium instead of downloading
 ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-ENV CHROMIUM_PATH=/usr/bin/chromium
+ENV CHROMIUM_PATH=/usr/bin/chromium-browser
 
 # Install all deps (including dev)
 COPY package.json package-lock.json ./
