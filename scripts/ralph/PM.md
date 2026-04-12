@@ -17,6 +17,8 @@ starves and never gets flooded.
 
 ```bash
 cd /home/user/RentAGame
+git config user.email "pm-agent@rentagame.ai"
+git config user.name "PM Agent"
 git checkout main
 git pull origin main
 ```
@@ -32,6 +34,7 @@ Count stories by status:
 - `in-progress` — Dev is working on it
 - `tests-written` — RED commit done, waiting for Dev to implement
 - `dev-complete` — waiting for QA
+- `ci-pending` — PR created, waiting for GitHub CI
 - `qa-failed` — needs Dev to fix (counts as active work, not starvation)
 - `qa-passed` — done ✓
 

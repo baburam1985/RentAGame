@@ -39,10 +39,12 @@ git pull origin main
 ### Step 2 — Pick a story
 
 Read `prd.json`. Pick the **highest priority** story where:
-- `status == "pending"` OR
-- `status == "qa-failed"` (these take priority over pending — fix before moving on)
+- `status == "qa-failed"` — HIGHEST priority, fix before anything new
+- `status == "pending"` — next in queue
 
 If no such story exists, output "No stories available." and STOP.
+
+Note whether the picked story is `qa-failed` or `pending` — this changes Steps 3–5.
 
 ### Step 3 — Lock the story
 
@@ -55,10 +57,11 @@ git commit -m "chore: [US-NNN] mark in-progress"
 git push origin main
 ```
 
-### Step 4 — Create feature branch
+### Step 4 — Branch setup
 
-Branch name format: `feat/US-NNN-short-title` (kebab-case, max 5 words after the number).
+**If story was `pending` (new work):**
 
+Create a new feature branch from main:
 ```bash
 git checkout -b feat/US-NNN-short-title
 # Example: feat/US-001-search-filter
@@ -66,12 +69,20 @@ git checkout -b feat/US-NNN-short-title
 #          feat/US-014-admin-layout
 ```
 
-### Step 5 — TDD RED phase (write failing tests first)
+**If story was `qa-failed` (fix existing work):**
 
-Read the story's `acceptanceCriteria`. If `status` was `qa-failed`, also read
-`qaFeedback` — your tests must cover the failed criteria specifically.
+The branch and PR already exist — do NOT create a new branch.
+Checkout the existing branch from the story's `branch` field in prd.json:
+```bash
+git fetch origin
+git checkout feat/US-NNN-short-title
+git pull origin feat/US-NNN-short-title
+```
+Then skip Step 5 entirely and go straight to Step 6.
 
-Write a test file that:
+### Step 5 — TDD RED phase (new stories only — skip if qa-failed)
+
+Read the story's `acceptanceCriteria`. Write a test file that:
 - Has one `it()` block per acceptance criterion
 - Tests must **FAIL** before any implementation exists
 - Follow patterns from existing test files (Vitest + Testing Library)
@@ -105,6 +116,9 @@ git checkout feat/US-NNN-short-title
 ### Step 6 — TDD GREEN phase (implement to make tests pass)
 
 Write the minimum implementation to make ALL tests pass.
+
+**If story was `qa-failed`:** Read `qaFeedback` in prd.json first. Fix only
+what the QA agent flagged — do not refactor unrelated code.
 
 **Hard rules:**
 - NEVER modify test files after the RED commit

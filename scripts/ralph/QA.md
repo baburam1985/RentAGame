@@ -29,8 +29,9 @@ git pull origin main
 
 ### Step 2 — Pick a story
 
-Read `prd.json`. Pick the **highest priority** story where
-`status == "dev-complete"`.
+Read `prd.json`. Pick the **highest priority** story where:
+- `status == "dev-complete"` — needs full validation (Checks 0–8)
+- `status == "ci-pending"` — PR already created, jump straight to Check 0
 
 If none exists, output "Nothing to validate." and STOP.
 
@@ -259,7 +260,9 @@ qaAttempts: N
 
 ## Stop Condition
 
-After completing validation, check if ALL 17 stories have `status: "qa-passed"`.
+After completing validation, check if ALL stories in prd.json have
+`status: "qa-passed"` (count dynamically — Research agent may have added
+stories beyond the original 17).
 
 If yes:
 ```
