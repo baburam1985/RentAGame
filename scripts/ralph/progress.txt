@@ -54,6 +54,24 @@
   `executablePath` in the playwright.config.ts project definition.
 ---
 
+## [2026-04-12] - US-002 - Price range slider filter
+- What was implemented:
+  - PriceRangeSlider component: dual-handle slider using two overlaid native `<input type="range">` elements (no external library). Includes onKeyDown handlers for ArrowRight/ArrowLeft/ArrowUp/ArrowDown to ensure Testing Library userEvent compatibility. Price range label rendered as a single template-literal text node (`$25 – $50 / day`) — do NOT use nested `<span>` elements or JSX text interpolation that splits the string, as Testing Library's getByText regex matcher requires the full string in one text node.
+  - GameGrid updated: added optional `minPrice` and `maxPrice` props; all three filters (category, search, price) are AND-combined in a single `.filter()` pass.
+  - page.tsx updated: added PriceRangeSlider import, PRICE_MIN/PRICE_MAX constants derived from games array, minPrice/maxPrice state initialized to full range, all passed down to GameGrid. SearchBar logic also moved inline into page.tsx (no separate SearchBar component import needed).
+- Files changed:
+  - web/src/components/PriceRangeSlider.tsx (new)
+  - web/src/components/PriceRangeSlider.test.tsx (new, 7 tests — RED committed first)
+  - web/src/components/GameGrid.tsx (modified — added minPrice/maxPrice props)
+  - web/src/components/GameGrid.test.tsx (new, 13 tests including price filter tests — RED committed first)
+  - web/src/app/page.tsx (modified — wired PriceRangeSlider + search state)
+- Learnings/patterns discovered:
+  - Testing Library `getByText` with a regex requires the matched text to live in a SINGLE DOM text node. If the display string is split across elements (e.g., `$30 <span>/ day</span>`), the regex will not match — use a template literal in a single `<span>` instead.
+  - `userEvent.type(input, "{arrowright}")` fires `keydown`/`keypress`/`keyup` events but does NOT fire the native `change` event on a range input in jsdom. Must add an `onKeyDown` handler that manually calls the change callback.
+  - Range input `onChange` does fire correctly when using `fireEvent.change(input, {target: {value: '30'}})`, but arrow keys require the explicit keyboard handler approach.
+  - Price filter state (minPrice/maxPrice) defaults to the actual min/max of the games catalog — derive with `Math.min/max(...games.map(g => g.pricePerDay))` at module scope to avoid recalculation on every render.
+---
+
 ## 2026-04-12 - US-001 - qa-failed fix (Docker glibc/musl binary mismatch)
 - Root cause of PERSISTENT CI failures (Unit Tests failed even with Debian image):
   - The `package-lock.json` was generated on an Alpine/musl machine. npm ci is deterministic
