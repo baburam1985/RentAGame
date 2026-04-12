@@ -108,7 +108,6 @@ export default function RentalForm({ defaultGame = "" }: Props) {
 
         {submitted ? (
           <div className="rounded-2xl bg-green-50 border border-green-200 p-8 text-center">
-            <div className="text-4xl mb-3">🎉</div>
             <h3 className="text-xl font-bold text-green-800 mb-2">
               Request Received!
             </h3>
@@ -137,7 +136,6 @@ export default function RentalForm({ defaultGame = "" }: Props) {
               {field("address", "Event Address")}
             </div>
 
-            {/* Games wanted */}
             <div className="flex flex-col gap-1">
               <label htmlFor="games" className="text-sm font-medium text-gray-700">
                 Game(s) Wanted<span className="text-red-500 ml-0.5">*</span>
@@ -160,7 +158,6 @@ export default function RentalForm({ defaultGame = "" }: Props) {
               )}
             </div>
 
-            {/* Notes */}
             <div className="flex flex-col gap-1">
               <label htmlFor="notes" className="text-sm font-medium text-gray-700">
                 Additional Notes
