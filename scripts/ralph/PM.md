@@ -58,39 +58,81 @@ Stories are globally sequenced US-001 through US-017 across 4 epics:
 **Note:** prd.json already contains all 17 stories pre-loaded. On first runs,
 simply verify the stories are there and the backlog is healthy.
 
-### Step 6 — Write prd.json back
+### Step 6 — Process research queue
 
-If you made any changes (rewrote criteria, etc.), write the updated prd.json.
+Read `/home/user/RentAGame/scripts/ralph/research.json`.
 
-### Step 7 — Commit and push if changed
+Find all items where `status == "pending"`. For each one, apply your PM
+judgement to decide whether it becomes a user story:
+
+**Vetting criteria — accept if ALL of these are true:**
+- Relevant to RentAGame's core rental workflow (not a completely different product)
+- Not already covered by an existing story in prd.json (check titles + descriptions)
+- Technically feasible in Next.js + localStorage (no backend required)
+- Adds genuine customer value (not just a nice-to-have engineering idea)
+
+**Scoring guidance:**
+- High confidence + small effort → almost always accept
+- High confidence + large effort → accept if it solves a real pain point
+- Low confidence + small effort → accept if it's quick and harmless
+- Low confidence + large effort → reject unless it's clearly strategic
+
+**For each item, set:**
+- `pmVerdict`: `"accepted"` or `"rejected: <one line reason>"`
+- `status`: `"accepted"` or `"rejected"`
+- If accepted: `convertedToStory`: the new story ID (see below)
+
+**Converting accepted items to stories:**
+
+For each accepted item, create a new story in prd.json. Continue the US-NNN
+sequence from the current highest ID. Write full `acceptanceCriteria` (3-6
+criteria). Set `priority` higher than existing pending stories so the Dev
+queue stays ordered by value.
+
+**Limit:** Convert at most 5 research items per PM run to avoid flooding the
+backlog. Save the rest for future runs.
+
+### Step 7 — Write both files back
+
+Write updated `prd.json` (new stories added) and updated `research.json`
+(items marked accepted/rejected) if anything changed.
+
+### Step 8 — Commit and push if changed
 
 ```bash
 cd /home/user/RentAGame
-git add scripts/ralph/prd.json
-git commit -m "chore: PM backlog update - [US-NNN] [summary of changes]"
+git add scripts/ralph/prd.json scripts/ralph/research.json
+git commit -m "chore: PM processed research queue - N accepted, N rejected"
 git push origin main
 ```
 
 Only commit if you actually changed something.
 
-### Step 8 — Report
+### Step 9 — Report
 
 Output a summary:
 ```
 PM Run Complete
 ---------------
-Pending:      X stories
-In-progress:  X stories
-Dev-complete: X stories
-QA-failed:    X stories
-QA-passed:    X / 17 stories
-Rewrites:     [list any IDs rewritten, or "none"]
-Action taken: [topped up backlog / rewrote criteria / no action needed]
+Pending:        X stories
+In-progress:    X stories
+Dev-complete:   X stories
+QA-failed:      X stories
+QA-passed:      X / N stories
+Rewrites:       [list any IDs rewritten, or "none"]
+Research queue: N pending items reviewed
+  Accepted:     N → converted to US-NNN, US-NNN, ...
+  Rejected:     N items
+Action taken:   [summary]
 ```
 
 ## Stop Condition
 
-When ALL 17 stories have `status: "qa-passed"`, output:
+The PM never stops — new research items arrive continuously and the backlog
+always needs tending. This agent runs indefinitely.
+
+When all *currently known* stories are `qa-passed` and the research queue is
+empty, output:
 ```
-<promise>COMPLETE</promise>
+PM idle — backlog clear, research queue empty. Waiting for Research agent.
 ```
