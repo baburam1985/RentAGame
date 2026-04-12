@@ -56,7 +56,7 @@ start, stop, or extend it.
 |-------|-------------|----------|----------------|
 | Research | `RESEARCH.md` | Every 6h — `0 */6 * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/RESEARCH.md` |
 | PM | `PM.md` | Every 10 min — `*/10 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/PM.md` |
-| Dev | `CLAUDE.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/CLAUDE.md` |
+| Dev | `DEV.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/DEV.md` |
 | QA | `QA.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/QA.md` |
 | CI-Fix | `CI.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/CI.md` |
 
