@@ -20,18 +20,19 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-002",
       "epic": "Discovery",
       "title": "Price range slider filter",
-      "description": "Add a dual-handle price range slider (min/max) in the filter bar. Games outside the selected range are hidden. Default: full range. Show the selected range as '$X – $Y / day'. No external slider library — build with two range inputs overlaid.",
+      "description": "Add a dual-handle price range slider (min/max) in the filter bar. Games outside the selected range are hidden. Default: full range. Show the selected range as '$X \u2013 $Y / day'. No external slider library \u2014 build with two range inputs overlaid.",
       "acceptanceCriteria": [
         "Dual-handle price slider renders in the filter bar",
         "Min and max handles are independently draggable",
         "Games outside selected price range are hidden",
-        "Selected range displays as '$X – $Y / day'",
+        "Selected range displays as '$X \u2013 $Y / day'",
         "Default state shows full price range (min to max of all games)",
         "Price filter works simultaneously with search and category filters"
       ],
@@ -41,19 +42,20 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-003",
       "epic": "Discovery",
       "title": "Sort games by price or name",
-      "description": "Add a sort dropdown to the filter bar with options: 'Featured' (default order), 'Price: Low to High', 'Price: High to Low', 'Name: A–Z'. Sort applies on top of any active search/category/price filters.",
+      "description": "Add a sort dropdown to the filter bar with options: 'Featured' (default order), 'Price: Low to High', 'Price: High to Low', 'Name: A\u2013Z'. Sort applies on top of any active search/category/price filters.",
       "acceptanceCriteria": [
-        "Sort dropdown renders with 4 options: Featured, Price: Low to High, Price: High to Low, Name: A–Z",
+        "Sort dropdown renders with 4 options: Featured, Price: Low to High, Price: High to Low, Name: A\u2013Z",
         "Default selection is Featured (original games.ts order)",
         "Price: Low to High sorts games ascending by pricePerDay",
         "Price: High to Low sorts games descending by pricePerDay",
-        "Name: A–Z sorts games alphabetically by name",
+        "Name: A\u2013Z sorts games alphabetically by name",
         "Sort applies on top of any active search, category, and price filters"
       ],
       "priority": 3,
@@ -62,7 +64,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-004",
@@ -83,7 +86,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-005",
@@ -93,7 +97,7 @@
       "acceptanceCriteria": [
         "Summary bar is hidden when all filters are at default values",
         "Summary bar appears when any filter is non-default",
-        "Each active filter renders as a chip with its value and a remove (×) button",
+        "Each active filter renders as a chip with its value and a remove (\u00d7) button",
         "Clicking a chip's remove button clears only that filter",
         "Clear all button resets every filter to default",
         "Summary bar updates in real time as filters change"
@@ -104,13 +108,14 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-006",
       "epic": "Checkout & Payments",
       "title": "Multi-step checkout wizard",
-      "description": "Replace the single RentalForm with a 3-step wizard: Step 1 — Date selection. Step 2 — Contact info. Step 3 — Review & confirm. Progress indicator at top. Back/Next buttons. Form state persists between steps.",
+      "description": "Replace the single RentalForm with a 3-step wizard: Step 1 \u2014 Date selection. Step 2 \u2014 Contact info. Step 3 \u2014 Review & confirm. Progress indicator at top. Back/Next buttons. Form state persists between steps.",
       "acceptanceCriteria": [
         "Wizard renders 3 steps: Date Selection, Contact Info, Review & Confirm",
         "Progress indicator at top shows current step number",
@@ -126,7 +131,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-007",
@@ -147,7 +153,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-008",
@@ -169,7 +176,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-009",
@@ -190,7 +198,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-010",
@@ -214,7 +223,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-011",
@@ -237,7 +247,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-012",
@@ -258,7 +269,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-013",
@@ -281,7 +293,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-014",
@@ -302,7 +315,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-015",
@@ -312,7 +326,7 @@
       "acceptanceCriteria": [
         "/admin/inventory renders all games in a table",
         "Table columns: Name, Category, Price/day, Players, Status",
-        "Price/day is editable inline (click cell → input → save on blur/Enter)",
+        "Price/day is editable inline (click cell \u2192 input \u2192 save on blur/Enter)",
         "Status toggle shows available/hidden; toggling hides/shows game on public page",
         "Hidden games are excluded from the public game grid",
         "Edit button opens a side panel with all game fields editable",
@@ -324,7 +338,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-016",
@@ -334,7 +349,7 @@
       "acceptanceCriteria": [
         "/admin/orders renders all orders from localStorage",
         "Table columns: Order #, Customer, Game, Dates, Total, Status, Created at",
-        "Status dropdown per row: pending → confirmed → fulfilled → cancelled",
+        "Status dropdown per row: pending \u2192 confirmed \u2192 fulfilled \u2192 cancelled",
         "Status changes persist to localStorage",
         "Filter bar filters by status and date range",
         "Export button downloads all orders as a CSV file",
@@ -346,7 +361,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     },
     {
       "id": "US-017",
@@ -367,7 +383,8 @@
       "branch": "",
       "devNotes": "",
       "qaFeedback": "",
-      "qaAttempts": 0
+      "qaAttempts": 0,
+      "prNumber": 0
     }
   ]
 }
