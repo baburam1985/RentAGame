@@ -6,6 +6,9 @@
 - Components use controlled props pattern (value + onChange callback lifted to parent)
 - Tailwind CSS only for styling; no hardcoded pixel values
 - Filter components are stateless — parent (page.tsx) owns all filter state via useState
+- Docker test image uses `node:20-bookworm-slim` (Debian), NOT Alpine — Alpine lacks `xvfb`/`udev` causing build failure
+- E2E playwright.config.ts: skip `webServer` when `BASE_URL` env var is set (Docker CI uses http://app:3000)
+- Playwright system Chromium: set `executablePath: process.env.CHROMIUM_PATH` when that env var is present
 ---
 
 ## 2026-04-12 - US-001 - Search bar with live text filtering
@@ -26,4 +29,27 @@
   - SearchBar uses aria-label "Clear search" for the clear button — tests rely on this exact accessible name
   - The "No games found" zero-state message must contain "no games found" (case-insensitive regex in tests)
   - Tests pass searchQuery directly to GameGrid rather than simulating typing — they test the filtering logic, not the input wiring
+
+## 2026-04-12 - US-001 - qa-failed fix (Docker CI environment)
+- Root cause of CI failures (Unit Tests + E2E Tests both failed, Docker Build passed):
+  - Dockerfile.test used `node:20-alpine` which does NOT have `xvfb` or `udev` Alpine packages.
+    The `apk add xvfb udev` step failed with "package not found", causing the Docker image build
+    to error out. Since both unit-tests and e2e-tests use Dockerfile.test, both CI jobs failed.
+  - playwright.config.ts had an unconditional `webServer` that tried to start `npm run dev` on
+    localhost:3000, even in Docker CI where the app runs at http://app:3000 (separate service).
+- What was fixed:
+  - Dockerfile.test: switched base image to `node:20-bookworm-slim` (Debian). Replaced `apk add`
+    with `apt-get install chromium fonts-freefont-ttf ca-certificates`. Debian has official
+    Playwright support. Corrected CHROMIUM_PATH to `/usr/bin/chromium` (Debian binary location).
+  - playwright.config.ts: added `useExternalServer` flag based on `BASE_URL` env var. When
+    `BASE_URL` is set, `webServer` block is omitted so Playwright doesn't try to start a local
+    dev server. Also wired `CHROMIUM_PATH` env var to `executablePath` in the chromium project.
+- Files changed:
+  - web/Dockerfile.test
+  - web/playwright.config.ts
+- Gotcha: Alpine Linux (`node:*-alpine`) does NOT have `xvfb` — use `xorg-server-xvfb` or
+  switch to Debian. Playwright officially doesn't support Alpine for E2E. Always use
+  `node:20-bookworm-slim` or `node:20` for test images that need a browser.
+- Gotcha: `CHROMIUM_PATH` is not a Playwright built-in env var — must be read and set as
+  `executablePath` in the playwright.config.ts project definition.
 ---
