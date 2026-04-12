@@ -118,6 +118,10 @@ git push origin main
 
 Only commit if you actually changed something.
 
+**Note:** PM only ever pushes state files (`prd.json`, `research.json`) directly
+to `main`. Implementation code must **never** be pushed directly to `main` —
+all code reaches `main` exclusively through PRs merged by the QA agent.
+
 ### Step 9 — Report
 
 Output a summary:

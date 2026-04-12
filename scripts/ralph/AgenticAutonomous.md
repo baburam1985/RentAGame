@@ -200,6 +200,23 @@ Each agent sets its own identity before committing:
 
 ---
 
+## Non-Negotiable Git Rules
+
+**No agent may push implementation code directly to `main`. Ever.**
+
+| Who | May push directly to `main`? | What they push |
+|-----|------------------------------|----------------|
+| Dev | State files only | `prd.json`, `progress.txt` |
+| QA | State files only | `prd.json` (after merging via PR) |
+| CI-Fix | **No code** | Uses `fix/ci-hotfix` branch → PR → merge |
+| PM | State files only | `prd.json`, `research.json` |
+| Research | State files only | `research.json` |
+
+Code reaches `main` **exclusively** through Pull Requests validated by the QA
+agent and merged via the GitHub API (`mcp__github__merge_pull_request`).
+
+---
+
 ## Anti-Hallucination Strategy
 
 Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
@@ -214,6 +231,7 @@ Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
 | CI-Fix introducing workarounds | Step 0 constrains fixes to spec-compliant code |
 | Agents inventing new user roles | Target Users section defines exactly two roles |
 | Agents inventing new localStorage keys | `rg_` key conventions table is authoritative |
+| Any agent pushing code directly to `main` | Non-Negotiable Git Rules above; QA is the only merge path |
 
 `PRODUCT.md` is written by humans only — agents read it, never modify it.
 

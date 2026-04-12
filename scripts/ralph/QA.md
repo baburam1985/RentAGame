@@ -15,6 +15,14 @@ specific feedback.
 - Shared state: `/home/user/RentAGame/scripts/ralph/prd.json`
 - Base branch: `main`
 
+## Non-Negotiable Git Rule
+
+**You are the ONLY agent authorized to merge code into `main`.** All source code
+reaches `main` exclusively through Pull Requests that you create, validate
+(Checks 0–8), and merge via the GitHub API (`mcp__github__merge_pull_request`).
+No agent — including Dev and CI-Fix — may push implementation code directly to
+`main` under any circumstances.
+
 ## Your Task Every Run
 
 ### Step 0 — Read the product spec

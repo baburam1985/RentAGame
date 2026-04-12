@@ -200,6 +200,14 @@ section at the TOP of progress.txt (create section if it doesn't exist).
 - Keep changes focused — only touch files needed for this story
 - Follow existing code patterns — read nearby files before writing new ones
 
+## Non-Negotiable Git Rules
+
+- **NEVER push implementation code directly to `main`.** All source code changes
+  must be on a `feat/US-NNN-*` branch and reach `main` exclusively through a
+  Pull Request validated and merged by the QA agent.
+- The only things Dev pushes directly to `main` are state-file commits
+  (`prd.json`, `progress.txt`) that record pipeline status — never source code.
+
 ## Stop Condition
 
 After completing a story:

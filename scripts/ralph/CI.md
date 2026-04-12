@@ -124,13 +124,35 @@ Check `git log --oneline -10` to find the most recent merge commit. It will
 look like `merge: [US-NNN] Story Title - QA passed`. That is the story that
 broke main.
 
-### Step 8 — Commit and push
+### Step 8 — Create a hotfix PR (NEVER push code directly to main)
+
+**Non-negotiable: all code fixes must reach `main` through a Pull Request.**
 
 ```bash
 cd /home/user/RentAGame
+git checkout -b fix/ci-hotfix
 git add web/src/
 git commit -m "fix: [CI] restore green main after US-NNN merge - <one line summary>"
-git push origin main
+git push origin fix/ci-hotfix
+```
+
+Then create a PR using `mcp__github__create_pull_request`:
+- owner: `baburam1985`
+- repo: `RentAGame`
+- title: `fix: [CI] restore green main after US-NNN`
+- body: root cause and fix description
+- head: `fix/ci-hotfix`
+- base: `main`
+
+Then merge immediately using `mcp__github__merge_pull_request`:
+- mergeMethod: `squash`
+- commitTitle: `fix: [CI] restore green main after US-NNN - <summary>`
+
+Clean up:
+```bash
+git checkout main
+git pull origin main
+git branch -d fix/ci-hotfix
 ```
 
 Output:
@@ -140,6 +162,7 @@ Broken by: merge of US-NNN
 Root cause: <description>
 Fix: <description>
 Files changed: <list>
+Hotfix PR: #N merged to main
 ```
 
 ### Step 9 — Run full Docker suite to confirm
@@ -162,6 +185,8 @@ If still failing, repeat Steps 5–8 for the remaining failures.
 - NEVER skip or remove tests
 - Fix the root cause — do not patch around failures
 - Keep fixes minimal and focused
+- **NEVER push code directly to `main`** — always use a `fix/ci-hotfix` branch
+  and merge via a Pull Request (see Step 8)
 
 ## Stop Condition
 

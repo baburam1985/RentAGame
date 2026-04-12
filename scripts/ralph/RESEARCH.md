@@ -150,6 +150,10 @@ git commit -m "research: add N new items from customer research run"
 git push origin main
 ```
 
+**Note:** Research only ever pushes state files (`research.json`) directly to
+`main`. Implementation code must **never** be pushed directly to `main` — all
+code reaches `main` exclusively through PRs merged by the QA agent.
+
 ### Step 7 — Output summary
 
 ```
