@@ -15,9 +15,9 @@
         "Zero-results state shows a friendly 'No games found' message"
       ],
       "priority": 1,
-      "status": "in-progress",
+      "status": "tests-written",
       "passes": false,
-      "branch": "",
+      "branch": "feat/US-001-search-filter",
       "devNotes": "",
       "qaFeedback": "",
       "qaAttempts": 0,
