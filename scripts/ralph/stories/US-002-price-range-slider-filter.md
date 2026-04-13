@@ -2,10 +2,10 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** dev-complete
+- **Status:** ci-pending
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider-v2
-- **PR:** #7
+- **PR:** #35
 - **QA Attempts:** 2
 
 ## Description

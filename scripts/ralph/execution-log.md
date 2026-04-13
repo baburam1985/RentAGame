@@ -242,3 +242,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:15 | US-029 | dev-complete | dev | GREEN commit — badge?: string in Game type, 2 badges assigned, pill overlay in GameCard, 52 tests pass |
 | 2026-04-13 11:13 | US-030 | tests-written | qa | recovered orphaned branch feat/US-030-focus-rings-aria-errors |
 | 2026-04-13 11:21 | US-007 | qa-failed | qa | Check 2 (rental-form.spec.ts modified RED→GREEN) + Check 9 (existing E2E spec modified) — attempt 4 |
+| 2026-04-13 11:25 | US-002 | ci-pending | qa | PR #35 created for feat/US-002-price-slider-v2, waiting for CI |
