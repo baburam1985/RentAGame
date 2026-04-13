@@ -244,3 +244,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:22 | US-030 | dev-complete | dev | GREEN commit — aria-describedby on inputs, id on error messages, 52 tests pass |
 | 2026-04-13 11:28 | US-031 | dev-complete | dev | GREEN commit — SERVICE_AREA constant in constants.ts, Hero renders notice with location icon, 52 tests pass |
 | 2026-04-13 11:30 | US-032 | in-progress | dev | starting new story — setup space callout in game modal |
+| 2026-04-13 11:32 | US-032 | tests-written | dev | RED commit — 6 tests for setup space callout; 4 fail, 2 pass |
