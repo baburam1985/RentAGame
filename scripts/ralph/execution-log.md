@@ -287,3 +287,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:19 | US-033 | in-progress | dev | starting new story — occasion-based quick filters |
 | 2026-04-13 12:20 | US-033 | tests-written | dev | RED commit pushed — 7 failing tests for OccasionFilter |
 | 2026-04-13 12:23 | US-033 | dev-complete | dev | GREEN commit — OccasionFilter 3 buttons, occasions field added to all 12 games, 53 tests pass |
+| 2026-04-13 12:24 | US-034 | in-progress | dev | starting new story — testimonials with star ratings and location |
