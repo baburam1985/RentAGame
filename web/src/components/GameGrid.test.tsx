@@ -3,6 +3,16 @@ import { render, screen } from "@testing-library/react";
 import GameGrid from "./GameGrid";
 import type { Game } from "@/data/games";
 
+// Games and their prices (from games.ts):
+// Giant Jenga: $45 (Lawn Games)
+// Cornhole Set: $35 (Lawn Games)
+// Lawn Bowling Set: $40 (Lawn Games)
+// Giant 4-in-a-Row: $40 (Party Games)
+// English Garden Croquet: $50 (Lawn Games)
+// Ladder Toss: $25 (Party Games)
+// Bocce Ball Set: $30 (Team Games)
+// Spikeball Set: $35 (Team Games)
+
 describe("GameGrid — search filtering", () => {
   it("typing filters games by name in real time", () => {
     render(
@@ -175,5 +185,103 @@ describe("GameGrid — sorting", () => {
     // Just verify it renders without error and shows some games
     const headings = screen.getAllByRole("heading", { level: 3 });
     expect(headings.length).toBeGreaterThan(0);
+  });
+});
+
+// AC3: Games outside selected price range are hidden
+describe("GameGrid — price range filtering", () => {
+  it("hides games outside selected price range", () => {
+    // $35–$40 range: Cornhole($35), Lawn Bowling($40), Giant 4-in-a-Row($40), Spikeball($35)
+    // excluded: Ladder Toss($25), Bocce Ball($30), Giant Jenga($45), Croquet($50)
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        minPrice={35}
+        maxPrice={40}
+      />
+    );
+    expect(screen.getByText("Cornhole Set")).toBeInTheDocument();
+    expect(screen.getByText("Lawn Bowling Set")).toBeInTheDocument();
+    expect(screen.getByText("Giant 4-in-a-Row")).toBeInTheDocument();
+    expect(screen.getByText("Spikeball Set")).toBeInTheDocument();
+    expect(screen.queryByText("Ladder Toss")).not.toBeInTheDocument();
+    expect(screen.queryByText("Bocce Ball Set")).not.toBeInTheDocument();
+    expect(screen.queryByText("Giant Jenga")).not.toBeInTheDocument();
+    expect(screen.queryByText("English Garden Croquet")).not.toBeInTheDocument();
+  });
+
+  it("shows all games when price range covers full range", () => {
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        minPrice={25}
+        maxPrice={50}
+      />
+    );
+    expect(screen.getByText("Ladder Toss")).toBeInTheDocument();
+    expect(screen.getByText("English Garden Croquet")).toBeInTheDocument();
+  });
+
+  it("shows only the single cheapest game at minimum price boundary", () => {
+    // Only Ladder Toss at exactly $25
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        minPrice={25}
+        maxPrice={25}
+      />
+    );
+    expect(screen.getByText("Ladder Toss")).toBeInTheDocument();
+    expect(screen.queryByText("Bocce Ball Set")).not.toBeInTheDocument();
+  });
+
+  // AC6: Price filter works simultaneously with search and category filters
+  it("price filter works simultaneously with category filter", () => {
+    // Lawn Games + $40 max: Giant Jenga($45) excluded, Cornhole($35) included
+    render(
+      <GameGrid
+        activeCategory="Lawn Games"
+        onSelect={() => {}}
+        minPrice={25}
+        maxPrice={40}
+      />
+    );
+    expect(screen.getByText("Cornhole Set")).toBeInTheDocument();
+    expect(screen.getByText("Lawn Bowling Set")).toBeInTheDocument();
+    expect(screen.queryByText("Giant Jenga")).not.toBeInTheDocument();
+    expect(screen.queryByText("English Garden Croquet")).not.toBeInTheDocument();
+  });
+
+  it("price filter works simultaneously with search filter", () => {
+    // Search "set" + $25-$35 max: Cornhole Set($35), Bocce Ball Set($30), Spikeball Set($35)
+    // Lawn Bowling Set($40) excluded by price, Giant Jenga not matching "set"
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        searchQuery="set"
+        minPrice={25}
+        maxPrice={35}
+      />
+    );
+    expect(screen.getByText("Cornhole Set")).toBeInTheDocument();
+    expect(screen.getByText("Bocce Ball Set")).toBeInTheDocument();
+    expect(screen.getByText("Spikeball Set")).toBeInTheDocument();
+    expect(screen.queryByText("Lawn Bowling Set")).not.toBeInTheDocument();
+  });
+
+  it("shows no games message when price filter excludes all games", () => {
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        minPrice={100}
+        maxPrice={200}
+      />
+    );
+    expect(screen.getByText(/no games found/i)).toBeInTheDocument();
   });
 });
