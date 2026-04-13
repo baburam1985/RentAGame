@@ -2,9 +2,9 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 26
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-026-inline-blur-validation
 - **PR:** (none)
 - **QA Attempts:** 0
 
