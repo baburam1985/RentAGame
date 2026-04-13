@@ -9,6 +9,7 @@ export type Game = {
   players: string;
   dimensions: string;
   howToPlay: string[];
+  occasions?: string[];
 };
 
 export const CATEGORIES = [
@@ -39,6 +40,7 @@ export const games: Game[] = [
     ],
     players: "2–10 players",
     dimensions: "4 ft tall when fully stacked",
+    occasions: ["Wedding", "Corporate", "Kids Party"],
     howToPlay: [
       "Stack all 54 blocks into a tower — 18 levels of 3 blocks each, alternating direction every level.",
       "Players take turns removing one block at a time using only one hand.",
@@ -64,6 +66,7 @@ export const games: Game[] = [
     ],
     players: "2–4 players",
     dimensions: "4 ft × 2 ft boards",
+    occasions: ["Wedding", "Corporate"],
     howToPlay: [
       "Place boards 27 feet apart (hole-to-hole) on a flat surface.",
       "Teams of 2 stand at the same board and throw toward the opposite board.",
@@ -89,6 +92,7 @@ export const games: Game[] = [
     ],
     players: "2–8 players",
     dimensions: "107 mm balls, standard court",
+    occasions: ["Wedding", "Corporate"],
     howToPlay: [
       "Toss the small white pallino onto the court to set the target.",
       "Teams alternate rolling bocce balls, trying to land closest to the pallino.",
@@ -114,6 +118,7 @@ export const games: Game[] = [
     ],
     players: "2 players",
     dimensions: "4 ft wide × 3.5 ft tall",
+    occasions: ["Wedding", "Kids Party"],
     howToPlay: [
       "Each player picks a color (yellow or red discs) — one color per player.",
       "Players take turns dropping one disc at a time into any column from the top.",
@@ -139,6 +144,7 @@ export const games: Game[] = [
     ],
     players: "4 players (2v2)",
     dimensions: "3 ft diameter net",
+    occasions: ["Corporate", "Kids Party"],
     howToPlay: [
       "Set up the circular net on the ground between two teams of two.",
       "Serve by bouncing the ball off the net to the opposing team.",
@@ -164,6 +170,7 @@ export const games: Game[] = [
     ],
     players: "2–4 players",
     dimensions: "Stakes 40 ft apart",
+    occasions: ["Wedding", "Corporate"],
     howToPlay: [
       "Drive two stakes into the ground 40 feet apart, leaning slightly toward each other.",
       "Each player stands beside one stake and throws both horseshoes underhand toward the opposite stake.",
@@ -189,6 +196,7 @@ export const games: Game[] = [
     ],
     players: "4 players (2v2)",
     dimensions: "Goals 50 ft apart",
+    occasions: ["Corporate", "Wedding"],
     howToPlay: [
       "Set up the two goal cans 50 feet apart. Teams of 2 stand at opposite goals.",
       "The thrower launches the flying disc toward the opponent's goal.",
@@ -214,6 +222,7 @@ export const games: Game[] = [
     ],
     players: "2–4 players",
     dimensions: "Two 3 ft tall ladder frames, set 15 ft apart",
+    occasions: ["Wedding", "Kids Party"],
     howToPlay: [
       "Set the two ladder frames 15 feet apart on level ground.",
       "Each team stands behind their own ladder and takes turns tossing all 3 bolas underhand toward the opponent's ladder.",
@@ -239,6 +248,7 @@ export const games: Game[] = [
     ],
     players: "4–20+ players",
     dimensions: "50 cones, 9 in tall each",
+    occasions: ["Kids Party", "Corporate"],
     howToPlay: [
       "Lay out cones in any pattern — straight lines for relay races, zigzags for slalom, circles for drills.",
       "Relay race: split into teams, run to the far cone and back, tag the next teammate — first team to finish wins.",
@@ -264,6 +274,7 @@ export const games: Game[] = [
     ],
     players: "2–4 players",
     dimensions: "Net 20 ft wide × 5 ft tall",
+    occasions: ["Wedding", "Kids Party"],
     howToPlay: [
       "Set up the net across the middle of your play area — full court is 44 ft long, but any length works casually.",
       "Serve diagonally underhand from behind your back boundary line to start each rally.",
@@ -289,6 +300,7 @@ export const games: Game[] = [
     ],
     players: "2–4 players",
     dimensions: "Net 22 ft wide, court 44 ft × 20 ft",
+    occasions: ["Corporate", "Wedding"],
     howToPlay: [
       "Set up the net at 36 inches on the sides and 34 inches in the center. Mark the 7-ft no-volley zone (the 'kitchen') on each side.",
       "Serve underhand diagonally cross-court — the ball must bounce once on the receiver's side before they return it.",
@@ -314,6 +326,7 @@ export const games: Game[] = [
     ],
     players: "2 players",
     dimensions: "King piece 18 in tall, 8×8 board",
+    occasions: ["Wedding", "Corporate"],
     howToPlay: [
       "Set up the 8×8 board with each side's pieces in starting position — rooks in corners, knights next, then bishops, queen on her color, king in the last square.",
       "White always moves first. Players alternate turns moving one piece per turn.",
