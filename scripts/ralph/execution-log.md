@@ -107,3 +107,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 08:17 | US-011 | qa-failed | qa | Check 2 (test modified RED->GREEN) + Check 5 (7 tests < 8 AC) + Check 9 (out-of-scope E2E) |
 | 2026-04-13 08:19 | US-012 | qa-failed | qa | Check 5 (5 tests < 6 AC) + Check 9 (protected GameCard.tsx modified + out-of-scope changes) |
 | 2026-04-13 08:21 | US-015 | qa-failed | qa | env-failure: CI E2E systemic failure; all local checks pass — routed to CI-Fix |
+| 2026-04-13 08:23 | US-016 | qa-failed | qa | code-failure: 4/9 unit tests fail (ambiguous combobox/Pending text selectors) |
