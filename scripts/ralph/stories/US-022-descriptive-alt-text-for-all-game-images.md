@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 22
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-022-descriptive-alt-text
 - **PR:** (none)
@@ -14,10 +14,23 @@ Game images in GameCard and GameModal use only the game name as alt text. Replac
 
 ## Acceptance Criteria
 
-- [ ] Game type in games.ts gains a required imageAlt string field
-- [ ] All 8 games have descriptive imageAlt values describing the visual scene (20–80 chars)
-- [ ] GameCard passes game.imageAlt to the Image alt attribute
-- [ ] GameModal passes game.imageAlt to any game images displayed
-- [ ] Alt text describes the scene, not just the product name
-- [ ] TypeScript compiles cleanly with imageAlt as a required non-optional field
+- [x] Game type in games.ts gains a required imageAlt string field
+- [x] All 8 games have descriptive imageAlt values describing the visual scene (20–80 chars)
+- [x] GameCard passes game.imageAlt to the Image alt attribute
+- [x] GameModal passes game.imageAlt to any game images displayed
+- [x] Alt text describes the scene, not just the product name
+- [x] TypeScript compiles cleanly with imageAlt as a required non-optional field
+
+## Dev Notes
+
+Added `imageAlt: string` as a required field to the `Game` type in `games.ts`. Added descriptive scene-based alt text (20–80 chars each) to all 12 games in the catalog. Updated `GameCard.tsx` and `GameModal.tsx` to use `game.imageAlt` instead of `game.name` for image alt attributes. Updated existing test mocks in `GameCard.test.tsx` and `GameModal.test.tsx` to include `imageAlt` (required by TypeScript strict mode). All 54 unit tests pass, TypeScript compiles cleanly.
+
+## Files Changed
+
+- `web/src/data/games.ts` — added `imageAlt` to Game type; added imageAlt values for all 12 games
+- `web/src/components/GameCard.tsx` — img alt changed from `game.name` to `game.imageAlt`
+- `web/src/components/GameModal.tsx` — Image alt changed from `game.name` to `game.imageAlt`
+- `web/src/components/GameCard.test.tsx` — added imageAlt to mock; updated alt assertion
+- `web/src/components/GameModal.test.tsx` — added imageAlt to mock
+- `web/src/components/GameAltText.test.tsx` — new test file (RED commit)
 
