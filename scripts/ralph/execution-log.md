@@ -346,3 +346,5 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 13:49 | US-040 | in-progress | dev | starting new story — minimum rental period label on game card |
 | 2026-04-13 13:50 | US-040 | tests-written | dev | RED commit — 1 failing test for Min. 1 day label |
 | 2026-04-13 13:52 | US-040 | dev-complete | dev | GREEN commit — minRentalDays:number in Game type, all 12 games set to 1, Min. 1 day label in GameCard, 47 tests pass |
+| 2026-04-13 13:58 | US-041 | in-progress | dev | starting new story — FAQ accordion section on homepage |
+| 2026-04-13 13:59 | US-041 | tests-written | dev | RED commit — 6 failing tests for FAQ accordion (toggle, aria-expanded, aria-controls, heading) |
