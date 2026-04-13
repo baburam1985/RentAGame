@@ -3,16 +3,20 @@
 import { games } from "@/data/games";
 import GameCard from "./GameCard";
 
+import type { Game } from "@/data/games";
+
 type Props = {
   activeCategory: string;
   searchQuery?: string;
   sortOrder?: string;
+  onSelect?: (game: Game) => void;
 };
 
 export default function GameGrid({
   activeCategory,
   searchQuery = "",
   sortOrder = "featured",
+  onSelect,
 }: Props) {
   const query = searchQuery.toLowerCase();
 
@@ -43,7 +47,7 @@ export default function GameGrid({
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sorted.map((game) => (
-              <GameCard key={game.id} game={game} />
+              <GameCard key={game.id} game={game} onSelect={onSelect} />
             ))}
           </div>
 
