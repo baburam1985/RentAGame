@@ -9,8 +9,8 @@ import GameGrid from "@/components/GameGrid";
 import GameModal from "@/components/GameModal";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
-import RentalForm from "@/components/RentalForm";
 import type { Game } from "@/data/games";
+import CheckoutWizard from "@/components/CheckoutWizard";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -53,7 +53,7 @@ export default function Home() {
 
       <HowItWorks />
       <Testimonials />
-      <RentalForm defaultGame={prefilledGame} />
+      <CheckoutWizard />
 
       <GameModal
         game={selectedGame}

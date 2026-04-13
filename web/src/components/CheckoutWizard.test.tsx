@@ -6,7 +6,7 @@ import CheckoutWizard from "./CheckoutWizard";
 describe("CheckoutWizard", () => {
   it("renders Step 1 — Date Selection on initial render", () => {
     render(<CheckoutWizard />);
-    expect(screen.getByText(/date selection/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /date selection/i })).toBeInTheDocument();
   });
 
   it("shows a progress indicator with step 1 of 3 initially", () => {
@@ -18,7 +18,7 @@ describe("CheckoutWizard", () => {
     const user = userEvent.setup();
     render(<CheckoutWizard />);
     await user.click(screen.getByRole("button", { name: /next/i }));
-    expect(screen.getByText(/contact info/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /contact info/i })).toBeInTheDocument();
   });
 
   it("Back button on Step 2 returns to Date Selection", async () => {
@@ -26,7 +26,7 @@ describe("CheckoutWizard", () => {
     render(<CheckoutWizard />);
     await user.click(screen.getByRole("button", { name: /next/i }));
     await user.click(screen.getByRole("button", { name: /back/i }));
-    expect(screen.getByText(/date selection/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /date selection/i })).toBeInTheDocument();
   });
 
   it("form state persists when navigating between steps", async () => {
@@ -57,7 +57,7 @@ describe("CheckoutWizard", () => {
     render(<CheckoutWizard />);
     await user.click(screen.getByRole("button", { name: /next/i }));
     await user.click(screen.getByRole("button", { name: /next/i }));
-    expect(screen.getByText(/review & confirm/i)).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: /review & confirm/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /place order/i })).toBeInTheDocument();
   });
 
