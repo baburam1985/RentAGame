@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 11
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-011-user-profile-page
 - **PR:** #16
-- **QA Attempts:** 2
+- **QA Attempts:** 3
 
 ## Description
 
@@ -54,6 +54,15 @@ Create a `/profile` page that is auth-gated. Authenticated users see their avata
 
 **Check 9 — SCOPE VIOLATION:**
 `catalog.spec.ts`, `modal.spec.ts`, and `rental-form.spec.ts` were modified (networkidle waits, selector changes). These are not in scope.
+
+## QA Feedback (Attempt 3)
+
+**Check 0 — CI E2E FAILED:**
+- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
+- Job: E2E Tests
+- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339153448/job/71063475088
+- All local checks 1–6 and 9 pass. Branch needs CI E2E to pass before QA can approve.
+- Route to CI-Fix to resolve systemic E2E failure.
 
 ## Dev Notes
 

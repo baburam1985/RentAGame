@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
-- **QA Attempts:** 2
+- **QA Attempts:** 3
 
 ## Description
 
@@ -46,6 +46,15 @@ Story scope: OrderHistory component on /profile, localStorage order storage in R
 **Required fixes:**
 1. Remove all changes to `GameCard.tsx`, `GameGrid.tsx`, `app/page.tsx`, and the three E2E specs from this branch
 2. Add a test for AC #6: "Status shows 'confirmed' for newly placed orders"
+
+## QA Feedback (Attempt 3)
+
+**Check 0 — CI E2E FAILED:**
+- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
+- Job: E2E Tests
+- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339157386/job/71063489254
+- All local checks 1–6 and 9 pass. Branch needs CI E2E to pass before QA can approve.
+- Route to CI-Fix to resolve systemic E2E failure.
 
 ## Dev Notes
 

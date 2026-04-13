@@ -248,3 +248,6 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:32 | US-006 | qa-failed | qa | Check 2 (CheckoutWizard.test.tsx modified RED→GREEN) + CI env-failure — attempt 4 |
 | 2026-04-13 11:32 | US-008 | qa-failed | qa | Check 2 (CartDrawer.test.tsx + GameModal.test.tsx modified RED→GREEN) + CI env-failure — attempt 4 |
 | 2026-04-13 11:32 | US-009 | qa-failed | qa | Check 2 (AvailabilityCalendar.test.tsx modified RED→GREEN) + CI env-failure — attempt 4 |
+| 2026-04-13 11:35 | US-010 | qa-failed | qa | Check 2 (Navbar.test.tsx modified RED→GREEN) + CI env-failure — attempt 4 |
+| 2026-04-13 11:35 | US-011 | qa-failed | qa | Check 0 env-failure: systemic E2E — local checks 1-6,9 all pass — attempt 3 |
+| 2026-04-13 11:35 | US-012 | qa-failed | qa | Check 0 env-failure: systemic E2E — local checks 1-6,9 all pass — attempt 3 |
