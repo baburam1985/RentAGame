@@ -227,3 +227,5 @@ humans and the Retro agent a clear timeline of what happened and when.
 - **Pipeline health:** stable — recurring env-failure pattern now documented and preventable
 ---
 | 2026-04-13 10:46 | US-004 | dev-complete | dev | rebuilt on fresh branch from main, all 58 tests pass, 3 files changed |
+| 2026-04-13 10:50 | US-026 | in-progress | dev | starting new story — inline on-blur validation for rental form |
+| 2026-04-13 10:52 | US-026 | tests-written | dev | RED commit pushed — 7 failing tests for blur validation |
