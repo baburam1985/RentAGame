@@ -4,6 +4,16 @@ import userEvent from "@testing-library/user-event";
 import GameCard from "./GameCard";
 import type { Game } from "@/data/games";
 
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    href,
+  }: {
+    children: React.ReactNode;
+    href: string;
+  }) => <a href={href}>{children}</a>,
+}));
+
 const mockGame: Game = {
   id: "test-game",
   name: "Test Game",
@@ -11,8 +21,10 @@ const mockGame: Game = {
   description: "A fun test game.",
   pricePerDay: 42,
   image: "https://images.unsplash.com/photo-test",
+  images: ["https://images.unsplash.com/photo-test"],
   players: "2–6 players",
   dimensions: "5 ft wide",
+  howToPlay: ["Step one.", "Step two."],
 };
 
 describe("GameCard", () => {

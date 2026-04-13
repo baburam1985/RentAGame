@@ -1,16 +1,21 @@
 import Image from "next/image";
+import Link from "next/link";
 import type { Game } from "@/data/games";
 
 type Props = {
   game: Game;
-  onSelect: (game: Game) => void;
+  onSelect?: (game: Game) => void;
 };
 
 export default function GameCard({ game, onSelect }: Props) {
   return (
     <div className="group flex flex-col rounded-2xl overflow-hidden bg-white border border-gray-100 shadow-sm hover:shadow-md transition-shadow duration-200">
       {/* Image */}
-      <div className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100">
+      <Link
+        href={`/games/${game.id}`}
+        aria-label={`View details for ${game.name}`}
+        className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100 block"
+      >
         <Image
           src={game.image}
           alt={game.name}
@@ -18,7 +23,7 @@ export default function GameCard({ game, onSelect }: Props) {
           sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="object-cover group-hover:scale-105 transition-transform duration-300"
         />
-      </div>
+      </Link>
 
       {/* Content */}
       <div className="flex flex-col flex-1 p-4 gap-2">
@@ -28,9 +33,11 @@ export default function GameCard({ game, onSelect }: Props) {
         </span>
 
         {/* Name */}
-        <h3 className="font-semibold text-gray-900 text-base leading-snug">
-          {game.name}
-        </h3>
+        <Link href={`/games/${game.id}`} className="hover:underline">
+          <h3 className="font-semibold text-gray-900 text-base leading-snug">
+            {game.name}
+          </h3>
+        </Link>
 
         {/* Price + CTA */}
         <div className="mt-auto flex items-center justify-between pt-3">
@@ -39,7 +46,7 @@ export default function GameCard({ game, onSelect }: Props) {
             <span className="text-gray-400">/day</span>
           </span>
           <button
-            onClick={() => onSelect(game)}
+            onClick={() => onSelect?.(game)}
             className="rounded-full px-4 py-1.5 text-sm font-semibold text-gray-900 hover:brightness-95 transition-all"
             style={{ backgroundColor: "var(--color-accent)" }}
           >
