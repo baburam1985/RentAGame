@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** feat/US-002-price-slider
+- **Branch:** feat/US-002-price-slider-v2
 - **PR:** #7
 - **QA Attempts:** 2
 
@@ -33,5 +33,11 @@ CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337817088/job/71
 
 ## Dev Notes
 
-E2E fix: removed console.log from RentalForm.tsx handleSubmit — violated PRODUCT.md no-console-log non-negotiable and caused Playwright E2E tests to fail in CI. The console.log was present in the feature branch but had been removed on main as a separate fix. All unit tests (71) pass, TypeScript clean, production build succeeds. Files changed: web/src/components/RentalForm.tsx (removed 1 console.log line). PriceRangeSlider implementation unchanged — dual-handle slider with two overlaid range inputs, onKeyDown handlers, template-literal price label, GameGrid minPrice/maxPrice filtering, page.tsx wired with full-range defaults.
+Rebuilt on fresh branch from main (feat/US-002-price-slider-v2) to resolve systemic E2E env-failure. Old branch had 96 divergent commits that couldn't be rebased. New TDD cycle: RED commit (PriceRangeSlider.test.tsx + GameGrid.test.tsx price range tests) followed by GREEN implementation. All 59 unit tests pass, TypeScript clean. Files changed: PriceRangeSlider.tsx (new component), GameGrid.tsx (minPrice/maxPrice props), page.tsx (wired slider with useState).
+
+## Files Changed
+
+- `web/src/components/PriceRangeSlider.tsx` — new dual-handle slider component
+- `web/src/components/GameGrid.tsx` — added minPrice/maxPrice filter props
+- `web/src/app/page.tsx` — wired PriceRangeSlider with state management
 
