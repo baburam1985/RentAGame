@@ -243,3 +243,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:13 | US-030 | tests-written | qa | recovered orphaned branch feat/US-030-focus-rings-aria-errors |
 | 2026-04-13 11:22 | US-030 | dev-complete | dev | GREEN commit — aria-describedby on inputs, id on error messages, 52 tests pass |
 | 2026-04-13 11:28 | US-031 | dev-complete | dev | GREEN commit — SERVICE_AREA constant in constants.ts, Hero renders notice with location icon, 52 tests pass |
+| 2026-04-13 11:30 | US-032 | in-progress | dev | starting new story — setup space callout in game modal |
