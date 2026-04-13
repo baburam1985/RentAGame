@@ -7,7 +7,7 @@ US-005,Discovery,"Active filter summary bar with clear-all",5,dev-complete,false
 US-006,Checkout & Payments,"Multi-step checkout wizard",6,dev-complete,false,feat/US-006-multi-step-checkout-wizard,0,0
 US-007,Checkout & Payments,"Order confirmation page",7,dev-complete,false,feat/US-007-order-confirmation-page,0,0
 US-008,Checkout & Payments,"Rental cart for multiple games",8,dev-complete,false,feat/US-008-rental-cart-drawer,0,0
-US-009,Checkout & Payments,"Availability calendar per game",9,in-progress,false,feat/US-009-availability-calendar,0,0
+US-009,Checkout & Payments,"Availability calendar per game",9,dev-complete,false,feat/US-009-availability-calendar,0,0
 US-010,User Accounts,"Sign up and log in pages",10,pending,false,,0,0
 US-011,User Accounts,"User profile page",11,pending,false,,0,0
 US-012,User Accounts,"Order history on profile",12,pending,false,,0,0
