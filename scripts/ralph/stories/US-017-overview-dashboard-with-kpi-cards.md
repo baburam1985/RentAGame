@@ -2,7 +2,7 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 17
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** (not started)
 - **PR:** (none)
@@ -20,4 +20,3 @@ At /admin, show 4 KPI stat cards, a CSS/SVG bar chart of orders per game, and a 
 - [ ] Recent Orders table shows the last 5 orders with a link to /admin/orders
 - [ ] Page auto-refreshes data every 30 seconds without a full page reload
 - [ ] All data sourced from localStorage
-
