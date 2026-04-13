@@ -317,3 +317,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:00 | US-009 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
 | 2026-04-13 14:00 | US-010 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
 | 2026-04-13 14:00 | US-013 | dev-complete | ci | env-failure fixed: added node CMD healthcheck + docker inspect exact-equality health-wait in docker-compose.yml and ci.yml |
+| 2026-04-13 13:25 | US-006 | dev-complete | dev | recovered orphaned branch — prd.csv was stale, GREEN commit confirmed on feat/US-006-multi-step-checkout-wizard |

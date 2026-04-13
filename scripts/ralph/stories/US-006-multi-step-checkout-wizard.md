@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 6
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-006-multi-step-checkout-wizard
 - **PR:** #11
