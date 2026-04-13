@@ -4,11 +4,8 @@ test.describe("Game detail modal", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.waitForSelector("#catalog");
-    // Wait for React hydration: check that React fiber is attached to a game card
-    await page.waitForFunction(() => {
-      const card = document.querySelector("#catalog .group");
-      return card !== null && Object.keys(card).some((k) => k.startsWith("__reactFiber"));
-    });
+    // Wait for React hydration (useEffect sets data-hydrated after React mounts)
+    await page.waitForSelector('main[data-hydrated]', { timeout: 30000 });
   });
 
   test("clicking first game card opens modal with game name", async ({ page }) => {

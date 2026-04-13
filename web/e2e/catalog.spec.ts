@@ -5,12 +5,8 @@ test.describe("Game catalog", () => {
     await page.goto("/");
     // Wait for catalog to be visible (present in SSR HTML immediately)
     await page.waitForSelector("#catalog");
-    // Wait for React hydration: check that React fiber is attached to a game card
-    // (React sets __reactFiber$... properties on DOM nodes only after hydration)
-    await page.waitForFunction(() => {
-      const card = document.querySelector("#catalog .group");
-      return card !== null && Object.keys(card).some((k) => k.startsWith("__reactFiber"));
-    });
+    // Wait for React hydration (useEffect sets data-hydrated after React mounts)
+    await page.waitForSelector('main[data-hydrated]', { timeout: 30000 });
   });
 
   test("shows at least 8 game cards", async ({ page }) => {
