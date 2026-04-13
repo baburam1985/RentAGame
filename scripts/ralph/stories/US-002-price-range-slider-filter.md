@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider
 - **PR:** #7

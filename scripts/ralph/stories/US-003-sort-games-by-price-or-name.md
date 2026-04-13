@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 3
-- **Status:** in-progress
-- **Passes:** false
-- **Branch:** feat/US-003-sort-games
+- **Status:** qa-passed
+- **Passes:** true
+- **Branch:** feat/US-003-sort-games-rebased-merged
 - **PR:** #6
 - **QA Attempts:** 1
 
