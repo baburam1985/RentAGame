@@ -59,7 +59,7 @@
         "Sort applies on top of any active search, category, and price filters"
       ],
       "priority": 3,
-      "status": "pending",
+      "status": "in-progress",
       "passes": false,
       "branch": "",
       "devNotes": "",
