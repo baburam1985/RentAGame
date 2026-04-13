@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 41
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-041-faq-accordion
 - **PR:** 
 - **QA Attempts:** 0
 
