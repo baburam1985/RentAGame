@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useCart } from "@/context/CartContext";
 
 const navLinks = [
@@ -13,6 +14,7 @@ const navLinks = [
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { totalCount } = useCart();
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 w-full z-50 bg-yellow-400 shadow-[0_20px_40px_rgba(119,99,0,0.08)]">
@@ -33,7 +35,9 @@ export default function Navbar() {
               key={link.label}
               href={link.href}
               className={
-                i === 0
+                pathname === link.href
+                  ? "text-blue-800 underline font-semibold transition-all duration-300"
+                  : i === 0
                   ? "text-blue-800 border-b-4 border-orange-500 pb-1 transition-all duration-300"
                   : "text-blue-800/80 hover:text-blue-900 transition-all duration-300 hover:scale-105"
               }
@@ -47,7 +51,7 @@ export default function Navbar() {
         <div className="flex items-center gap-2">
           <Link
             href="/cart"
-            className="p-2 rounded-full hover:bg-white/20 transition-all duration-300 relative active:scale-95 cursor-pointer inline-flex"
+            className={`p-2 rounded-full hover:bg-white/20 transition-all duration-300 relative active:scale-95 cursor-pointer inline-flex${pathname === "/cart" ? " underline" : ""}`}
             aria-label={`Cart — ${totalCount} items`}
           >
             <span className="material-symbols-outlined text-blue-700">shopping_cart</span>
