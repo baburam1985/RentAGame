@@ -11,6 +11,30 @@
 - Playwright system Chromium: set `executablePath: process.env.CHROMIUM_PATH` when that env var is present
 - Sort tests: pass a `games` prop with minimal mock data to GameGrid for deterministic ordering tests; use `getAllByRole("heading", { level: 3 })` to get card names in DOM order
 - GameGrid accepts optional `games` override prop — lets tests inject controlled data without mocking modules
+- CRITICAL: console.log in any component causes E2E Playwright tests to fail in CI — ALWAYS remove before pushing. PRODUCT.md non-negotiable: no console.log in production code.
+---
+
+## 2026-04-13 - US-002 - Price range slider filter (qa-failed fix)
+- Root cause of E2E CI failure:
+  - `console.log("Rental request:", form)` was present in `RentalForm.tsx` handleSubmit.
+  - This violates the PRODUCT.md non-negotiable: no console.log in production code.
+  - The line was introduced during the initial implementation and causes Playwright E2E
+    tests to fail in CI (all tests fail — catalog, modal, rental-form, smoke).
+  - The same fix was applied to main separately (commit 1147227) but not to the feature branch.
+- What was fixed:
+  - Removed the single `console.log` line from `web/src/components/RentalForm.tsx`.
+- Files changed:
+  - web/src/components/RentalForm.tsx (removed 1 console.log line)
+- Learnings:
+  - When rebasing or creating feature branches, always check that no console.log was
+    introduced anywhere — even in unrelated components that the story touches.
+  - console.log causes E2E failures in CI even though it has no visible effect locally
+    or in unit tests. Hypothesis: Playwright or the CI Docker environment treats console
+    output as a signal of failure, OR the console.log output corrupts stdout in a way
+    that breaks the test runner's output parsing.
+  - Before pushing a qa-failed fix, diff the branch against main to find ALL differences,
+    not just the story's own files. Check RentalForm.tsx, page.tsx, and any other shared
+    files for regressions introduced by the initial implementation.
 ---
 
 ## 2026-04-13 - US-003 - Sort games by price or name
