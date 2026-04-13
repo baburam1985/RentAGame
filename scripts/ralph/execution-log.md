@@ -251,3 +251,7 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:35 | US-010 | qa-failed | qa | Check 2 (Navbar.test.tsx modified RED→GREEN) + CI env-failure — attempt 4 |
 | 2026-04-13 11:35 | US-011 | qa-failed | qa | Check 0 env-failure: systemic E2E — local checks 1-6,9 all pass — attempt 3 |
 | 2026-04-13 11:35 | US-012 | qa-failed | qa | Check 0 env-failure: systemic E2E — local checks 1-6,9 all pass — attempt 3 |
+| 2026-04-13 11:48 | CI-Fix | main | ci | env-failure fixed: systemic E2E failure resolved — added Docker healthcheck (node http) to app service, depends_on: service_healthy for e2e-tests, replaced curl host health-wait with docker inspect exact-equality status check (PR #37) |
+| 2026-04-13 11:48 | US-005 | dev-complete | ci | env-failure fixed: branch rebased on main with CI healthcheck fix |
+| 2026-04-13 11:48 | US-011 | dev-complete | ci | env-failure fixed: branch rebased on main with CI healthcheck fix |
+| 2026-04-13 11:48 | US-012 | dev-complete | ci | env-failure fixed: branch rebased on main with CI healthcheck fix |
