@@ -179,6 +179,17 @@ export default function RentalForm({ defaultGame = "" }: Props) {
             >
               Send Rental Request
             </button>
+
+            {/* Instant Confirmation trust badge */}
+            <div className="flex items-center gap-2 justify-center mt-1">
+              <span className="material-symbols-outlined text-green-600" style={{ fontSize: "18px" }}>
+                verified
+              </span>
+              <div>
+                <p className="text-xs font-semibold text-green-700">Instant Confirmation</p>
+                <p className="text-xs text-gray-500">Your booking is confirmed immediately</p>
+              </div>
+            </div>
           </form>
         )}
       </div>
