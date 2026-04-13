@@ -27,7 +27,7 @@ US-025,Discovery,Cancellation policy statement in game modal,25,dev-complete,fal
 US-026,Checkout & Payments,Inline on-blur validation for rental form contact fields,26,dev-complete,false,feat/US-026-inline-blur-validation,0,0
 US-027,Discovery,Game modal 'What's included' section,27,dev-complete,false,feat/US-027-whats-included-section,0,0
 US-028,Discovery,Skeleton loading state for game grid,28,dev-complete,false,feat/US-028-skeleton-loading,0,0
-US-029,Discovery,'Most Popular' and social proof badges on game cards,29,in-progress,false,feat/US-029-social-proof-badges,0,0
+US-029,Discovery,'Most Popular' and social proof badges on game cards,29,tests-written,false,feat/US-029-social-proof-badges,0,0
 US-030,Discovery,Rental form inputs: visible focus rings and ARIA error associations,30,pending,false,,0,0
 US-031,Discovery,Service area notice in hero section,31,pending,false,,0,0
 US-032,Discovery,Setup space callout in game modal,32,pending,false,,0,0

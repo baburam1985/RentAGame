@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 29
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
 - **Branch:** feat/US-029-social-proof-badges
 - **PR:** (none)
