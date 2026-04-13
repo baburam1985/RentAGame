@@ -63,3 +63,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 07:24 | US-007 | dev-complete | dev | rebased on main after env-failure fix, all 53 tests pass |
 | 2026-04-13 07:24 | US-008 | in-progress | dev | picking up qa-failed story for env-failure fix |
 | 2026-04-13 07:26 | US-008 | dev-complete | dev | rebased on main after env-failure fix, all 54 tests pass |
+| 2026-04-13 07:26 | US-009 | in-progress | dev | picking up qa-failed story for env-failure fix |
