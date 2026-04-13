@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Hero from "@/components/Hero";
 import CategoryFilter from "@/components/CategoryFilter";
 import SearchBar from "@/components/SearchBar";
@@ -31,11 +31,9 @@ export default function Home() {
     }, 100);
   }
 
-  const [hydrated, setHydrated] = useState(false);
-  useEffect(() => { setHydrated(true); }, []);
 
   return (
-    <main className="min-h-screen" style={{ background: "#fffde1" }} data-hydrated={hydrated ? "true" : undefined}>
+    <main className="min-h-screen" style={{ background: "#fffde1" }}>
       <Hero />
 
       <section id="catalog">
