@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
-import RecentlyViewed from "./RecentlyViewed";
+import RecentlyViewed, { addRecentView } from "./RecentlyViewed";
 import { CartProvider } from "@/context/CartContext";
 import { games } from "@/data/games";
 
@@ -58,7 +58,6 @@ describe("RecentlyViewed", () => {
 
   it("adds game ID to rg_recent_views via addRecentView utility", () => {
     // Test the exported addRecentView function
-    const { addRecentView } = require("./RecentlyViewed");
     addRecentView("bocce-ball-set");
     const stored = JSON.parse(localStorage.getItem("rg_recent_views") ?? "[]");
     expect(stored).toContain("bocce-ball-set");
