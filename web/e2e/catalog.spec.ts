@@ -41,4 +41,3 @@ test.describe("Game catalog", () => {
     expect(count).toBeGreaterThanOrEqual(8);
   });
 });
-
