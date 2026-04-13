@@ -11,6 +11,7 @@ import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import type { Game } from "@/data/games";
 import CheckoutWizard from "@/components/CheckoutWizard";
+import RentalForm from "@/components/RentalForm";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -55,6 +56,7 @@ export default function Home() {
       <HowItWorks />
       <Testimonials />
       <CheckoutWizard />
+      <RentalForm defaultGame={prefilledGame} />
 
       <GameModal
         game={selectedGame}
