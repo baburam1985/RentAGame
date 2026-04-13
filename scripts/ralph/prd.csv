@@ -4,7 +4,7 @@ US-002,Discovery,"Price range slider filter",2,ci-pending,false,feat/US-002-pric
 US-003,Discovery,"Sort games by price or name",3,qa-passed,true,feat/US-003-sort-games-rebased-merged,1,6
 US-004,Discovery,"Player count filter chips",4,ci-pending,false,feat/US-004-player-count-filter-chips,1,8
 US-005,Discovery,"Active filter summary bar with clear-all",5,dev-complete,false,feat/US-005-active-filter-summary-bar,0,0
-US-006,Checkout & Payments,"Multi-step checkout wizard",6,pending,false,,0,0
+US-006,Checkout & Payments,"Multi-step checkout wizard",6,in-progress,false,feat/US-006-multi-step-checkout-wizard,0,0
 US-007,Checkout & Payments,"Order confirmation page",7,pending,false,,0,0
 US-008,Checkout & Payments,"Rental cart for multiple games",8,pending,false,,0,0
 US-009,Checkout & Payments,"Availability calendar per game",9,pending,false,,0,0
