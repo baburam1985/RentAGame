@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 30
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-030-focus-rings-aria-errors
 - **PR:** (none)
 - **QA Attempts:** 0
 
