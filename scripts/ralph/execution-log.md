@@ -241,3 +241,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:08 | US-028 | dev-complete | dev | GREEN commit — GameGridSkeleton 8 cards animate-pulse, GameGrid useState+setTimeout skeleton, GameGrid.test.tsx updated to waitFor, 52 tests pass |
 | 2026-04-13 11:15 | US-029 | dev-complete | dev | GREEN commit — badge?: string in Game type, 2 badges assigned, pill overlay in GameCard, 52 tests pass |
 | 2026-04-13 11:18 | US-030 | in-progress | dev | starting new story — focus rings and ARIA error associations for rental form |
+| 2026-04-13 11:20 | US-030 | tests-written | dev | RED commit — 6 tests for aria-describedby and focus ring; 5 fail (missing aria-describedby), 1 passes |
