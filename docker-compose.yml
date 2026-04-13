@@ -8,10 +8,10 @@ services:
     environment:
       - NODE_ENV=production
     healthcheck:
-      test: ["CMD", "wget", "-qO-", "http://localhost:3000"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+      test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:3000', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))"]
+      interval: 5s
+      timeout: 10s
+      retries: 24
       start_period: 30s
 
   unit-tests:
