@@ -2,10 +2,10 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 21
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
-- **PR:** (none)
+- **Branch:** feat/US-021-live-price-calculation
+- **PR:** 0
 - **QA Attempts:** 0
 
 ## Description
