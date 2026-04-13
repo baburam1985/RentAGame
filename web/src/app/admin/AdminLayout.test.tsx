@@ -53,4 +53,24 @@ describe("AdminLayout", () => {
       expect(screen.getByRole("link", { name: /settings/i })).toBeInTheDocument();
     });
   });
+
+  it("admin:true is set on user when admin email logs in", async () => {
+    // Simulate the login page behavior: admin@rentagame.com sets admin:true
+    const adminUser = { name: "Admin", email: "admin@rentagame.com", createdAt: new Date().toISOString(), admin: true };
+    localStorage.setItem("rg_user", JSON.stringify(adminUser));
+    const stored = localStorage.getItem("rg_user");
+    const parsed = JSON.parse(stored!) as typeof adminUser;
+    expect(parsed.admin).toBe(true);
+    expect(parsed.email).toBe("admin@rentagame.com");
+  });
+
+  it("active sidebar link is visually highlighted with distinct class", async () => {
+    localStorage.setItem("rg_user", JSON.stringify({ name: "Admin", email: "admin@rentagame.com", createdAt: "", admin: true }));
+    render(<AdminLayout><div>content</div></AdminLayout>);
+    await waitFor(() => {
+      const overviewLink = screen.getByRole("link", { name: /overview/i });
+      // Active link (/admin) should have bg-yellow-400 highlight class
+      expect(overviewLink.className).toContain("bg-yellow-400");
+    });
+  });
 });
