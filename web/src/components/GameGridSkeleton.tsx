@@ -13,8 +13,17 @@ export default function GameGridSkeleton() {
           <div
             key={i}
             data-testid="skeleton-card"
-            className="animate-pulse bg-gray-200 rounded-2xl h-[320px]"
-          />
+            className="animate-pulse rounded-2xl bg-gray-200 overflow-hidden"
+          >
+            <div className="aspect-[4/3] bg-gray-300" />
+            <div className="p-4 flex flex-col gap-3">
+              <div className="h-4 bg-gray-300 rounded w-1/3" />
+              <div className="h-5 bg-gray-300 rounded w-2/3" />
+              <div className="h-4 bg-gray-300 rounded w-full" />
+              <div className="h-4 bg-gray-300 rounded w-3/4" />
+              <div className="h-9 bg-gray-300 rounded-full mt-2" />
+            </div>
+          </div>
         ))}
       </div>
     </div>

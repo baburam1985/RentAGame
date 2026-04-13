@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useDeferredValue } from "react";
+import { useState, useEffect } from "react";
 import { games } from "@/data/games";
 import GameCard from "./GameCard";
 import GameGridSkeleton from "./GameGridSkeleton";
@@ -20,16 +20,14 @@ export default function GameGrid({
   sortOrder = "featured",
   onSelect,
 }: Props) {
-  const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const raf = requestAnimationFrame(() => {
-      setMounted(true);
-    });
-    return () => cancelAnimationFrame(raf);
+    const id = setTimeout(() => setLoading(false), 0);
+    return () => clearTimeout(id);
   }, []);
 
-  if (!mounted) {
+  if (loading) {
     return <GameGridSkeleton />;
   }
 
@@ -55,8 +53,8 @@ export default function GameGrid({
   return (
     <div
       role="region"
+      aria-label="Games catalog"
       aria-busy="false"
-      aria-label="Game catalog"
       className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8"
     >
       {sorted.length === 0 ? (
