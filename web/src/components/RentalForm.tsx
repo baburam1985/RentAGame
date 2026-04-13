@@ -70,6 +70,7 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     type: string = "text",
     required = true
   ) {
+    const errorId = `${id}-error`;
     return (
       <div className="flex flex-col gap-1">
         <label htmlFor={id} className="text-sm font-medium text-gray-700">
@@ -80,6 +81,7 @@ export default function RentalForm({ defaultGame = "" }: Props) {
           id={id}
           type={type}
           value={form[id]}
+          aria-describedby={errors[id] ? errorId : undefined}
           onChange={(e) => {
             setForm((prev) => ({ ...prev, [id]: e.target.value }));
             if (errors[id]) setErrors((prev) => ({ ...prev, [id]: undefined }));
@@ -89,7 +91,7 @@ export default function RentalForm({ defaultGame = "" }: Props) {
           }`}
         />
         {errors[id] && (
-          <p className="text-xs text-red-500">{errors[id]}</p>
+          <p id={errorId} className="text-xs text-red-500">{errors[id]}</p>
         )}
       </div>
     );
