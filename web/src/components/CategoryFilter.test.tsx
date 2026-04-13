@@ -13,16 +13,16 @@ describe("CategoryFilter", () => {
     });
   });
 
-  it("active category pill has aria-pressed=true", () => {
+  it("active category pill has aria-checked=true", () => {
     render(<CategoryFilter activeCategory="Lawn Games" onCategoryChange={() => {}} />);
-    const active = screen.getByText("Lawn Games").closest("button");
-    expect(active).toHaveAttribute("aria-pressed", "true");
+    const active = screen.getByRole("radio", { name: "Lawn Games" });
+    expect(active).toHaveAttribute("aria-checked", "true");
   });
 
-  it("inactive pills have aria-pressed=false", () => {
+  it("inactive pills have aria-checked=false", () => {
     render(<CategoryFilter activeCategory="All" onCategoryChange={() => {}} />);
-    const inactive = screen.getByText("Lawn Games").closest("button");
-    expect(inactive).toHaveAttribute("aria-pressed", "false");
+    const inactive = screen.getByRole("radio", { name: "Lawn Games" });
+    expect(inactive).toHaveAttribute("aria-checked", "false");
   });
 
   it("clicking a different pill calls onCategoryChange with correct value", async () => {
