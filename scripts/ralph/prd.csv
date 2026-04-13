@@ -5,11 +5,11 @@ US-003,Discovery,"Sort games by price or name",3,qa-passed,true,feat/US-003-sort
 US-004,Discovery,"Player count filter chips",4,dev-complete,false,feat/US-004-player-count-filter-chips,2,8
 US-005,Discovery,"Active filter summary bar with clear-all",5,dev-complete,false,feat/US-005-active-filter-summary-bar,2,10
 US-006,Checkout & Payments,"Multi-step checkout wizard",6,dev-complete,false,feat/US-006-multi-step-checkout-wizard,2,11
-US-007,Checkout & Payments,"Order confirmation page",7,qa-failed,false,feat/US-007-order-confirmation-page,2,12
+US-007,Checkout & Payments,"Order confirmation page",7,qa-failed,false,feat/US-007-order-confirmation-page,0,12
 US-008,Checkout & Payments,"Rental cart for multiple games",8,dev-complete,false,feat/US-008-rental-cart-drawer,2,13
 US-009,Checkout & Payments,"Availability calendar per game",9,dev-complete,false,feat/US-009-availability-calendar,2,14
 US-010,User Accounts,"Sign up and log in pages",10,dev-complete,false,feat/US-010-signup-login-pages,2,15
-US-011,User Accounts,"User profile page",11,qa-failed,false,feat/US-011-user-profile-page,2,16
+US-011,User Accounts,"User profile page",11,qa-failed,false,feat/US-011-user-profile-page,0,16
 US-012,User Accounts,"Order history on profile",12,qa-failed,false,feat/US-012-order-history-profile,1,17
 US-013,User Accounts,"Wishlist and saved games",13,dev-complete,false,feat/US-013-wishlist-saved-games,1,18
 US-014,Admin Dashboard,"Admin layout and auth gate",14,qa-failed,false,feat/US-014-admin-layout,1,19

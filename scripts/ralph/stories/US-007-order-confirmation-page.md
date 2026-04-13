@@ -6,20 +6,24 @@
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
-- **QA Attempts:** 2
+- **QA Attempts:** 0
 
 ## Description
 
-After 'Place Order', navigate to /order-confirmation. Show order reference, game name, rental dates, total price, and customer email. Include a 'Browse More Games' link back to /.
+After submitting the rental form, redirect to `/order-confirmation`. The page reads order data from `localStorage` (`rg_orders`) and displays the most recent order's details. Include a 'Browse More Games' link back to `/`. Only files in `web/src/app/order-confirmation/` and `web/src/components/RentalForm.tsx` (and their test files) are in scope — do not modify any other E2E specs or components.
 
 ## Acceptance Criteria
 
-- [ ] /order-confirmation route exists and renders
-- [ ] Page shows a unique 8-character alphanumeric order reference number
-- [ ] Page shows game name, rental start date, rental end date, and total price
-- [ ] Page shows the customer email from checkout
-- [ ] 'Browse More Games' link navigates back to /
-- [ ] Page styling is consistent with the rest of the site
+- [ ] A `"use client"` component at `web/src/app/order-confirmation/page.tsx` renders without error when `rg_orders` contains at least one order
+- [ ] The page displays the order reference: a unique 8-character alphanumeric string (e.g. `A1B2C3D4`) stored on the order object in `rg_orders`
+- [ ] The page displays the game name, rental start date (formatted `YYYY-MM-DD`), rental end date (formatted `YYYY-MM-DD`), and total price (formatted as `$XX.XX`) from the most recent entry in `rg_orders`
+- [ ] The page displays the customer email address stored on the order object
+- [ ] A link or button labelled exactly `'Browse More Games'` navigates the user to `/` (home page)
+- [ ] The RED commit test file already includes all mocks required for the tests to compile (e.g. `vi.mock("next/navigation", ...)` must be present in the RED commit, not added during GREEN)
+
+## TDD Notes
+
+Write tests first in `web/src/app/order-confirmation/OrderConfirmationPage.test.tsx`. The RED commit must have all mocks in place so tests fail due to missing implementation only. The GREEN commit must not modify test files. Do not modify `web/e2e/catalog.spec.ts`, `web/e2e/modal.spec.ts`, or any E2E file unrelated to the order-confirmation flow.
 
 ## QA Feedback (Attempt 2)
 

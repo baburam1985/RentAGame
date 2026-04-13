@@ -6,22 +6,26 @@
 - **Passes:** false
 - **Branch:** feat/US-011-user-profile-page
 - **PR:** #16
-- **QA Attempts:** 2
+- **QA Attempts:** 0
 
 ## Description
 
-Create /profile page (auth-gated). Show avatar (initial-based), name, email, member since. Edit name inline. Log out button clears localStorage and redirects to /.
+Create a `/profile` page that is auth-gated. Authenticated users see their avatar (initial-based), name, email, and member-since date. They can edit their name inline. A log-out button clears the user from `localStorage` (`rg_user`) and redirects to `/`. Only `web/src/app/profile/` files are in scope — do not modify catalog, modal, or rental-form E2E specs.
 
 ## Acceptance Criteria
 
-- [ ] /profile page renders for authenticated users
-- [ ] Unauthenticated users are redirected to /login
-- [ ] Avatar shows user's initial as a colored circle
-- [ ] Name, email, and member since date are displayed
-- [ ] Clicking name enables inline editing; saving on blur or Enter key
-- [ ] Updated name persists to localStorage
-- [ ] Log out button clears the user from localStorage
-- [ ] Log out redirects to /
+- [ ] A `"use client"` component at `web/src/app/profile/page.tsx` renders the profile UI when `rg_user` in `localStorage` contains a valid user object (standalone test required for this criterion alone)
+- [ ] When no user is found in `rg_user`, the component redirects to `/login` using `router.push('/login')` before rendering any profile content
+- [ ] An avatar element displays the first letter of the user's name as uppercase text inside a solid-colored circle (color may be hardcoded or derived from the name)
+- [ ] The page displays the user's full name, email address, and member-since date (formatted `YYYY-MM-DD`) read from `rg_user`
+- [ ] Clicking the displayed name replaces it with a text input pre-filled with the current name; the input is focused automatically
+- [ ] Pressing Enter or blurring the input saves the new name to `rg_user` in `localStorage` and switches back to display mode
+- [ ] Clicking the 'Log out' button removes `rg_user` from `localStorage`
+- [ ] After logout, the user is redirected to `/` via `router.push('/')`
+
+## TDD Notes
+
+Write 8 tests in `web/src/app/profile/ProfilePage.test.tsx` — one test per acceptance criterion. The RED commit must include `async`/`waitFor` patterns in the test file so all 8 tests fail at RED due to missing implementation only. The GREEN commit must not modify test files. Do not modify `web/e2e/catalog.spec.ts`, `web/e2e/modal.spec.ts`, `web/e2e/rental-form.spec.ts`, or any E2E file outside the profile flow.
 
 ## QA Feedback (Attempt 2)
 
