@@ -4,6 +4,7 @@ test.describe("Rental request form", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/#contact");
     await page.waitForSelector("#contact");
+    // Wait for React hydration (useEffect sets data-hydrated after React mounts)
   });
 
   test("submitting empty form shows validation errors", async ({ page }) => {
