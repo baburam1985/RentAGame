@@ -138,3 +138,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 09:05 | US-007 | in-progress | dev | fixing qa-failed: TDD integrity + scope violations |
 | 2026-04-13 09:13 | US-007 | tests-written | dev | RED commit with 5 OrderConfirmationPage tests + RentalForm redirect test |
 | 2026-04-13 09:16 | US-007 | dev-complete | dev | rebuilt branch with proper RED/GREEN commits, fixed TDD integrity and scope violations, 52 tests pass |
+| 2026-04-13 09:17 | US-011 | in-progress | dev | fixing qa-failed: TDD integrity, test count (8 tests), scope violations |
