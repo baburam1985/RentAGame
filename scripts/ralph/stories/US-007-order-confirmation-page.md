@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 7
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
-- **QA Attempts:** 3
+- **QA Attempts:** 4
 
 ## Description
 
@@ -34,19 +34,23 @@ After submitting the rental form, redirect to `/order-confirmation`. The page re
 2. **GREEN commit:** Implement `page.tsx` and update `RentalForm.tsx` to redirect. Do NOT change any test files (`*.test.tsx`, `*.spec.ts`) between the RED and GREEN commits — not even imports, not even formatting. Zero changes to test files in GREEN.
 3. **E2E boundary:** You may add a new `web/e2e/order-confirmation.spec.ts` file if desired. You must never modify `catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, or any other existing E2E spec.
 
-## QA Feedback (Attempt 2)
+## QA Feedback (Attempt 4)
 
-**Check 0 — CI FAILED:**
-- Classification: code-failure
+**Check 0 — CI E2E FAILED:**
+- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
 - Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332401616/job/71041077897
+- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339129484/job/71063397142
 
 **Check 2 — TDD INTEGRITY FAILED:**
-`web/src/components/RentalForm.test.tsx` was modified between the RED commit (`9306a2b test: [US-007] RED`) and the GREEN commit (`ce3a85c feat: [US-007] GREEN`). A `vi.mock("next/navigation", ...)` import and useRouter mock were added in the GREEN commit. The test mock must be present in the RED commit.
+`web/e2e/rental-form.spec.ts` was modified between the RED commit (`cdd2677 test: [US-007] RED`) and the GREEN commit (`459b553 feat: [US-007] GREEN`). Two tests were renamed and their assertions changed. Zero changes to test files are permitted between RED and GREEN — not even to E2E specs.
 
 **Check 9 — SCOPE VIOLATION:**
-- `web/e2e/catalog.spec.ts` — modified (not in scope)
-- `web/e2e/modal.spec.ts` — modified (not in scope)
+- `web/e2e/rental-form.spec.ts` — modified despite story explicitly stating "You must never modify `catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, or any other existing E2E spec."
+
+**Required fix:**
+1. In the RED commit, do NOT modify `web/e2e/rental-form.spec.ts`. Leave the existing tests ("valid submission shows success message", "form fields are cleared after successful submit") unchanged.
+2. You may create a new `web/e2e/order-confirmation.spec.ts` if desired, but only as a NEW file, never modifying existing specs.
+3. Rebuild the branch from a clean RED (no E2E spec changes) → GREEN (implementation only, no test file changes).
 
 ## Dev Notes
 
