@@ -2,9 +2,9 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 43
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-043-checkout-progress-indicator
 - **PR:** 
 - **QA Attempts:** 0
 

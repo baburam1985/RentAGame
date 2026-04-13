@@ -354,3 +354,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:05 | US-042 | dev-complete | dev | GREEN commit — usePathname in Navbar, underline class on cart link and nav links when pathname matches, 50 tests pass |
 | 2026-04-13 14:07 | US-043 | in-progress | dev | starting new story — step progress indicator in checkout wizard |
 | 2026-04-13 14:08 | US-043 | tests-written | dev | RED commit — 6 failing tests for CheckoutProgress (currentStep label, completed steps, aria-labels) |
+| 2026-04-13 14:09 | US-043 | dev-complete | dev | GREEN commit — CheckoutProgress.tsx with step circles, completed indicator, aria-labels; 52 tests pass |
