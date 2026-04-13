@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 32
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-032-setup-space-callout
 - **PR:** (none)
