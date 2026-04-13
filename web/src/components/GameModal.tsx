@@ -61,14 +61,26 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
           <p className="text-gray-600 leading-relaxed">{game.description}</p>
 
           {/* Specs */}
-          <div className="grid grid-cols-2 gap-3 text-sm">
+          <div className="grid grid-cols-1 gap-3 text-sm">
             <div className="rounded-xl bg-gray-50 p-3">
               <p className="text-gray-400 text-xs mb-1">Players</p>
               <p className="font-medium text-gray-800">{game.players}</p>
             </div>
-            <div className="rounded-xl bg-gray-50 p-3">
-              <p className="text-gray-400 text-xs mb-1">Dimensions</p>
-              <p className="font-medium text-gray-800">{game.dimensions}</p>
+          </div>
+
+          {/* Setup space callout */}
+          <div
+            data-testid="setup-space-callout"
+            className="flex items-center gap-3 rounded-xl bg-amber-50 border border-amber-200 p-4"
+          >
+            <span className="material-symbols-outlined text-amber-600 text-xl flex-shrink-0">
+              straighten
+            </span>
+            <div>
+              <p className="text-xs font-semibold text-amber-700 uppercase tracking-wide mb-0.5">
+                Setup space needed
+              </p>
+              <p className="text-sm font-medium text-amber-900">{game.dimensions}</p>
             </div>
           </div>
 
