@@ -17,7 +17,7 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
       className="fixed inset-0 z-50 flex items-center justify-center p-4"
       role="dialog"
       aria-modal="true"
-      aria-label={game.name}
+      aria-labelledby="game-modal-title"
     >
       {/* Backdrop */}
       <div
@@ -54,7 +54,7 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
             <span className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 mb-2">
               {game.category}
             </span>
-            <h2 className="text-2xl font-bold text-gray-900">{game.name}</h2>
+            <h2 id="game-modal-title" className="text-2xl font-bold text-gray-900">{game.name}</h2>
           </div>
 
           {/* Description */}
