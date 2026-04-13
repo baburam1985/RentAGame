@@ -5,7 +5,6 @@ test.describe("Rental request form", () => {
     await page.goto("/#contact");
     await page.waitForSelector("#contact");
     // Wait for React hydration (useEffect sets data-hydrated after React mounts)
-    await page.waitForSelector('main[data-hydrated]', { timeout: 30000 });
   });
 
   test("submitting empty form shows validation errors", async ({ page }) => {
