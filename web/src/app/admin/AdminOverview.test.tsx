@@ -137,7 +137,7 @@ describe("AdminOverview", () => {
     render(<AdminOverview />);
     const links = screen.getAllByRole("link");
     const ordersLink = links.find((l) => l.getAttribute("href") === "/admin/orders");
-    expect(ordersLink).toBeDefined();
+    expect(ordersLink).toBeInTheDocument();
   });
 
   it("auto-refreshes data every 30 seconds", async () => {
