@@ -179,6 +179,20 @@ export default function RentalForm({ defaultGame = "" }: Props) {
             >
               Send Rental Request
             </button>
+
+            <div
+              data-testid="trust-statement"
+              className="flex items-center justify-center gap-1.5 text-xs text-gray-500"
+            >
+              <span
+                className="material-symbols-outlined"
+                style={{ fontSize: "14px" }}
+                aria-hidden="true"
+              >
+                verified_user
+              </span>
+              No hidden fees — total shown before you confirm
+            </div>
           </form>
         )}
       </div>
