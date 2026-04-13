@@ -188,4 +188,5 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:29 | US-007 | in-progress | dev | fixing qa-failed: TDD integrity + scope violation |
 | 2026-04-13 10:33 | US-007 | dev-complete | dev | qa-failed fixed: reverted out-of-scope E2E mods, rebased on main, all tests pass |
 | 2026-04-13 10:33 | US-011 | in-progress | dev | fixing qa-failed: TDD integrity + test count + scope violation |
+| 2026-04-13 10:38 | US-011 | dev-complete | dev | reverted catalog.spec.ts scope violation, 54 tests pass, rebased + force-pushed |
 | 2026-04-13 10:33 | US-002 | in-progress | dev | fixing qa-failed: systemic env-failure — rebasing on main |
