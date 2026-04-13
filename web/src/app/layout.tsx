@@ -42,8 +42,16 @@ export default function RootLayout({
       </head>
       <body className="min-h-full flex flex-col">
         <CartProvider>
+          <a
+            href="#main-content"
+            className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded focus:shadow"
+          >
+            Skip to main content
+          </a>
           <Navbar />
-          {children}
+          <main id="main-content" tabIndex={-1}>
+            {children}
+          </main>
           <Footer />
         </CartProvider>
       </body>
