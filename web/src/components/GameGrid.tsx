@@ -5,10 +5,47 @@ import GameCard from "./GameCard";
 
 import type { Game } from "@/data/games";
 
+/**
+ * Parse a players string like "2–10 players", "4 players (2v2)", "4–20+ players"
+ * and return { min, max } where max === Infinity means unbounded.
+ */
+function parsePlayers(playersStr: string): { min: number; max: number } {
+  // Match range like "2–10" or "4–20+"
+  const rangeMatch = playersStr.match(/(\d+)\s*[–-]\s*(\d+)\+?/);
+  if (rangeMatch) {
+    const min = parseInt(rangeMatch[1], 10);
+    const max = parseInt(rangeMatch[2], 10);
+    // If the original string contains "20+" or similar unbounded marker
+    const unbounded = playersStr.includes("+");
+    return { min, max: unbounded ? Infinity : max };
+  }
+  // Match a single number like "2 players" or "4 players (2v2)"
+  const singleMatch = playersStr.match(/^(\d+)/);
+  if (singleMatch) {
+    const n = parseInt(singleMatch[1], 10);
+    return { min: n, max: n };
+  }
+  return { min: 0, max: Infinity };
+}
+
+/**
+ * Returns true if the game's player range includes the requested chip count.
+ * Chip "8+" means the game supports 8 or more players.
+ */
+function playerCountMatches(game: Game, chip: string): boolean {
+  const { min, max } = parsePlayers(game.players);
+  if (chip === "8+") {
+    return max >= 8 || max === Infinity;
+  }
+  const count = parseInt(chip, 10);
+  return count >= min && count <= max;
+}
+
 type Props = {
   activeCategory: string;
   searchQuery?: string;
   sortOrder?: string;
+  selectedPlayerCounts?: string[];
   onSelect?: (game: Game) => void;
 };
 
@@ -16,6 +53,7 @@ export default function GameGrid({
   activeCategory,
   searchQuery = "",
   sortOrder = "featured",
+  selectedPlayerCounts = [],
   onSelect,
 }: Props) {
   const query = searchQuery.toLowerCase();
@@ -27,7 +65,10 @@ export default function GameGrid({
       query === "" ||
       g.name.toLowerCase().includes(query) ||
       g.description.toLowerCase().includes(query);
-    return matchesCategory && matchesSearch;
+    const matchesPlayers =
+      selectedPlayerCounts.length === 0 ||
+      selectedPlayerCounts.some((chip) => playerCountMatches(g, chip));
+    return matchesCategory && matchesSearch && matchesPlayers;
   });
 
   const sorted = [...filtered].sort((a, b) => {
