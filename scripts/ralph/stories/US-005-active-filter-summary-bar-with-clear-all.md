@@ -2,10 +2,10 @@
 
 - **Epic:** Discovery
 - **Priority:** 5
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** (not started)
-- **PR:** (none)
+- **Branch:** feat/US-005-active-filter-summary-bar
+- **PR:** #0
 - **QA Attempts:** 0
 
 ## Description
