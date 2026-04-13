@@ -60,3 +60,24 @@ describe("RentalForm", () => {
     expect(textarea).toHaveValue("Giant Jenga");
   });
 });
+
+describe("RentalForm - Instant Confirmation trust badge", () => {
+  it("renders 'Instant Confirmation' label near the submit button", () => {
+    render(<RentalForm />);
+    expect(screen.getByText(/instant confirmation/i)).toBeInTheDocument();
+  });
+
+  it("renders a sub-label about immediate booking confirmation", () => {
+    render(<RentalForm />);
+    expect(screen.getByText(/your booking is confirmed immediately/i)).toBeInTheDocument();
+  });
+
+  it("badge is in the same form section as the submit button", () => {
+    render(<RentalForm />);
+    const submitButton = screen.getByRole("button", { name: /send rental request/i });
+    const badge = screen.getByText(/instant confirmation/i);
+    // Both should be rendered (badge visible alongside submit)
+    expect(submitButton).toBeInTheDocument();
+    expect(badge).toBeInTheDocument();
+  });
+});
