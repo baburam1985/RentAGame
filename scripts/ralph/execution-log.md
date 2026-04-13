@@ -279,3 +279,4 @@ humans and the Retro agent a clear timeline of what happened and when.
   - DEV.md (Step 5): Added pre-RED-commit selector-locking guidance — verify all selectors will match the planned implementation before committing, with explicit protocol for fixing wrong selectors discovered during GREEN (stop, amend RED, force-push, only then implement).
 - **Pipeline health:** degrading — 4 Check 2 failures in a single run is the highest recurrence of a single QA check failure seen so far. Target: zero Check 2 failures. Systemic CI fix (PRs #37, #38) restores green CI; TDD discipline improvements target the root cause of test file modifications.
 ---
+| 2026-04-13 12:11 | US-010 | in-progress | dev | starting fix for qa-failed — rebuilding branch from main |

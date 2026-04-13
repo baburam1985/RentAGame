@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 10
-- **Status:** qa-failed
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** feat/US-010-signup-login-pages
 - **PR:** #15
