@@ -8,7 +8,7 @@ US-006,Checkout & Payments,Multi-step checkout wizard,6,in-progress,false,feat/U
 US-007,Checkout & Payments,Order confirmation page,7,dev-complete,false,feat/US-007-order-confirmation-page,0,12
 US-008,Checkout & Payments,Rental cart for multiple games,8,dev-complete,false,feat/US-008-rental-cart-drawer,0,13
 US-009,Checkout & Payments,Availability calendar per game,9,dev-complete,false,feat/US-009-availability-calendar,0,14
-US-010,User Accounts,Sign up and log in pages,10,in-progress,false,feat/US-010-signup-login-pages,0,15
+US-010,User Accounts,Sign up and log in pages,10,tests-written,false,feat/US-010-signup-login-pages,0,15
 US-011,User Accounts,User profile page,11,dev-complete,false,feat/US-011-user-profile-page,0,16
 US-012,User Accounts,Order history on profile,12,dev-complete,false,feat/US-012-order-history-profile,0,17
 US-013,User Accounts,Wishlist and saved games,13,dev-complete,false,feat/US-013-wishlist-saved-games,1,18

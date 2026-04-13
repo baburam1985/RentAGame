@@ -280,3 +280,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 - **Pipeline health:** degrading — 4 Check 2 failures in a single run is the highest recurrence of a single QA check failure seen so far. Target: zero Check 2 failures. Systemic CI fix (PRs #37, #38) restores green CI; TDD discipline improvements target the root cause of test file modifications.
 ---
 | 2026-04-13 12:11 | US-010 | in-progress | dev | starting fix for qa-failed — rebuilding branch from main |
+| 2026-04-13 12:12 | US-010 | tests-written | dev | RED commit pushed — 4 failing tests for SignupPage |
