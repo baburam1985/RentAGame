@@ -2,9 +2,9 @@
 
 - **Epic:** User Accounts
 - **Priority:** 10
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-010-signup-login-pages
 - **PR:** (none)
 - **QA Attempts:** 0
 
