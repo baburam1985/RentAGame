@@ -9,7 +9,7 @@ US-007,Checkout & Payments,"Order confirmation page",7,dev-complete,false,feat/U
 US-008,Checkout & Payments,"Rental cart for multiple games",8,dev-complete,false,feat/US-008-rental-cart-drawer,2,13
 US-009,Checkout & Payments,"Availability calendar per game",9,dev-complete,false,feat/US-009-availability-calendar,2,14
 US-010,User Accounts,"Sign up and log in pages",10,dev-complete,false,feat/US-010-signup-login-pages,2,15
-US-011,User Accounts,"User profile page",11,in-progress,false,feat/US-011-user-profile-page,0,16
+US-011,User Accounts,"User profile page",11,tests-written,false,feat/US-011-user-profile-page,0,16
 US-012,User Accounts,"Order history on profile",12,qa-failed,false,feat/US-012-order-history-profile,1,17
 US-013,User Accounts,"Wishlist and saved games",13,dev-complete,false,feat/US-013-wishlist-saved-games,1,18
 US-014,Admin Dashboard,"Admin layout and auth gate",14,qa-failed,false,feat/US-014-admin-layout,1,19
