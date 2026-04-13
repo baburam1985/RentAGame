@@ -1,0 +1,41 @@
+## Codebase Patterns
+- Game data lives in `web/src/data/games.ts` — no API calls, pure static data
+- Tests use vitest + @testing-library/react; `next/image` is mocked in `src/test/setup.ts`; `next/link` must be mocked per-test-file
+- ESLint config was missing; added `web/eslint.config.js` using `eslint-config-next` flat config
+- The layout wraps everything in `<CartProvider>` so all pages can access cart state
+- GameDetailClient renders `GameDetails` twice (desktop sidebar + mobile stacked) — use `getAllByText` in tests
+- `aria-pressed` cannot be on elements with `role="listitem"`; use `<ul><li><button aria-pressed>` structure instead
+
+---
+
+## 2026-04-13 - US-001
+- What was implemented:
+  - Extended `Game` type and all 8 game records in `games.ts` with `images: string[]` and `howToPlay: string[]` fields
+  - Created `CartContext` at `web/src/context/CartContext.tsx` (CartProvider + useCart hook) supporting addItem, removeItem, clearCart
+  - Wrapped root layout in `<CartProvider>`
+  - Created `/games/[id]` route with:
+    - `page.tsx` (server component, generateStaticParams, generateMetadata)
+    - `GameDetailClient.tsx` (interactive gallery with thumbnail swap, desktop sidebar + mobile sticky bar with day selector and Add to Cart)
+    - `not-found.tsx` (friendly 404 with Browse Games link)
+  - Updated `GameCard.tsx` to link image and title to `/games/[id]`; "Rent Now" button still calls optional `onSelect`
+  - Created `eslint.config.js` (project had none)
+  - Added 16 unit tests in `GameDetailClient.test.tsx` covering gallery swap, day selector range, and Add to Cart invocation
+  - Updated `GameCard.test.tsx` and `GameModal.test.tsx` mock objects for new required Game fields
+- Files changed:
+  - `web/src/data/games.ts` — added images[], howToPlay[] to type and all records
+  - `web/src/context/CartContext.tsx` — new file
+  - `web/src/app/layout.tsx` — added CartProvider wrapper
+  - `web/src/app/games/[id]/page.tsx` — new file
+  - `web/src/app/games/[id]/GameDetailClient.tsx` — new file
+  - `web/src/app/games/[id]/GameDetailClient.test.tsx` — new file
+  - `web/src/app/games/[id]/not-found.tsx` — new file
+  - `web/src/components/GameCard.tsx` — added next/link for image and title
+  - `web/src/components/GameCard.test.tsx` — updated mock Game object
+  - `web/src/components/GameModal.test.tsx` — updated mock Game object
+  - `web/eslint.config.js` — new file
+- **Learnings for future iterations:**
+  - `next/link` needs to be mocked in test files that render components using it (add `vi.mock("next/link", ...)`)
+  - When the Game type gains new required fields, all test mock objects across the codebase need updating
+  - The detail page renders GameDetails in two places (desktop + mobile), causing duplicate text in tests — always use getAllByText or a more specific query
+  - CartContext (US-002) was bootstrapped here as a minimal implementation; US-002 should build the full Cart Page on top of it
+---
