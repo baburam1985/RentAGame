@@ -1,14 +1,14 @@
 id,epic,title,priority,status,passes,branch,qaAttempts,prNumber
 US-001,Discovery,"Search bar with live text filtering",1,qa-passed,true,feat/US-001-search-filter-merged,3,1
-US-002,Discovery,"Price range slider filter",2,ci-pending,false,feat/US-002-price-slider,0,7
+US-002,Discovery,"Price range slider filter",2,qa-failed,false,feat/US-002-price-slider,1,7
 US-003,Discovery,"Sort games by price or name",3,qa-passed,true,feat/US-003-sort-games-rebased-merged,1,6
-US-004,Discovery,"Player count filter chips",4,ci-pending,false,feat/US-004-player-count-filter-chips,1,8
-US-005,Discovery,"Active filter summary bar with clear-all",5,ci-pending,false,feat/US-005-active-filter-summary-bar,1,10
-US-006,Checkout & Payments,"Multi-step checkout wizard",6,ci-pending,false,feat/US-006-multi-step-checkout-wizard,1,11
+US-004,Discovery,"Player count filter chips",4,qa-failed,false,feat/US-004-player-count-filter-chips,2,8
+US-005,Discovery,"Active filter summary bar with clear-all",5,qa-failed,false,feat/US-005-active-filter-summary-bar,2,10
+US-006,Checkout & Payments,"Multi-step checkout wizard",6,qa-failed,false,feat/US-006-multi-step-checkout-wizard,2,11
 US-007,Checkout & Payments,"Order confirmation page",7,ci-pending,false,feat/US-007-order-confirmation-page,1,12
-US-008,Checkout & Payments,"Rental cart for multiple games",8,ci-pending,false,feat/US-008-rental-cart-drawer,1,13
+US-008,Checkout & Payments,"Rental cart for multiple games",8,qa-failed,false,feat/US-008-rental-cart-drawer,2,13
 US-009,Checkout & Payments,"Availability calendar per game",9,ci-pending,false,feat/US-009-availability-calendar,1,14
-US-010,User Accounts,"Sign up and log in pages",10,ci-pending,false,feat/US-010-signup-login-pages,1,15
+US-010,User Accounts,"Sign up and log in pages",10,qa-failed,false,feat/US-010-signup-login-pages,2,15
 US-011,User Accounts,"User profile page",11,ci-pending,false,feat/US-011-user-profile-page,1,16
 US-012,User Accounts,"Order history on profile",12,ci-pending,false,feat/US-012-order-history-profile,0,17
 US-013,User Accounts,"Wishlist and saved games",13,ci-pending,false,feat/US-013-wishlist-saved-games,0,18
