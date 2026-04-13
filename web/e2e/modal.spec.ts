@@ -4,7 +4,11 @@ test.describe("Game detail modal", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.waitForSelector("#catalog");
-    await page.waitForLoadState("networkidle");
+    // Wait for React hydration: check that React fiber is attached to a game card
+    await page.waitForFunction(() => {
+      const card = document.querySelector("#catalog .group");
+      return card !== null && Object.keys(card).some((k) => k.startsWith("__reactFiber"));
+    });
   });
 
   test("clicking first game card opens modal with game name", async ({ page }) => {
