@@ -9,7 +9,7 @@ test.describe("Game catalog", () => {
 
   test("shows at least 8 game cards", async ({ page }) => {
     const cards = page.locator("#catalog .group");
-    await expect(cards).toHaveCount(8);
+    await expect(cards).toHaveCount(12);
   });
 
   test("each game card shows a price matching $X/day", async ({ page }) => {
@@ -36,6 +36,6 @@ test.describe("Game catalog", () => {
     await page.getByRole("button", { name: "All" }).click();
     await page.waitForTimeout(300);
     const cards = page.locator("#catalog .group");
-    await expect(cards).toHaveCount(8);
+    await expect(cards).toHaveCount(12);
   });
 });
