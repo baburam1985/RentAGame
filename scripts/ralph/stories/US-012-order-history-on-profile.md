@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
@@ -72,9 +72,11 @@ Fixed all QA-flagged issues:
 
 PM Tier-1 rewrite (run 8): tightened AC wording to be explicit about prop-based design (OrderHistory receives orders prop, does not read localStorage directly); added explicit callout that GameCard.tsx is PROTECTED and will result in immediate failure; pinned selector guidance; reinforced 6-test count with all 6 ACs enumerated; added explicit prohibition on E2E spec creation.
 
+**Fix (QA Attempt 2 - rebuild):** Rebuilt branch from main. Proper RED commit with 6 tests all failing, GREEN commit with only OrderHistory.tsx + RentalForm.tsx change + profile/page.tsx. No test file changes between RED and GREEN. No scope violations. 52 unit tests pass.
+
 ## Files Changed
 
-- `web/src/components/OrderHistory.tsx` — new OrderHistory component
-- `web/src/components/OrderHistory.test.tsx` — 6 unit tests (one per AC)
-- `web/src/components/RentalForm.tsx` — save order to rg_orders localStorage on submit
-- `web/src/app/profile/page.tsx` — new /profile page with user info + OrderHistory section
+- `web/src/components/OrderHistory.tsx` — new pure presentational OrderHistory component receiving orders prop
+- `web/src/components/OrderHistory.test.tsx` — 6 unit tests (one per AC, locked at RED)
+- `web/src/components/RentalForm.tsx` — add localStorage.setItem for rg_orders on successful submit
+- `web/src/app/profile/page.tsx` — profile page with auth gate, user info, inline name edit, logout, OrderHistory section

@@ -336,3 +336,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 13:33 | US-011 | dev-complete | dev | branch verified clean: 8 tests, no test changes RED→GREEN, correct scope, 54 unit tests pass |
 | 2026-04-13 13:34 | US-012 | in-progress | dev | fixing qa-failed — rebuilding branch from scratch |
 | 2026-04-13 13:36 | US-012 | tests-written | dev | RED commit — 6 failing tests for OrderHistory (one per AC) |
+| 2026-04-13 13:39 | US-012 | dev-complete | dev | rebuilt branch: 6 tests (one per AC), proper RED/GREEN, no scope violations, 52 unit tests pass |
