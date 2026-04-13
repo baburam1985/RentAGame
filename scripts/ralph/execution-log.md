@@ -71,3 +71,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 07:29 | US-011 | dev-complete | dev | rebased on main after env-failure fix, all 53 tests pass |
 | 2026-04-13 07:29 | US-015 | in-progress | dev | starting new story - inventory management page |
 | 2026-04-13 07:31 | US-015 | tests-written | dev | RED tests committed for inventory management page |
+| 2026-04-13 07:35 | US-015 | dev-complete | dev | inventory page built with table, inline price edit, status toggle, edit panel; 56 tests pass |
