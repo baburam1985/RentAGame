@@ -1,0 +1,32 @@
+{
+  "capturedAt": "2026-04-13T03:44:06.131Z",
+  "baseUrl": "http://localhost:3000",
+  "viewport": "1280x800",
+  "pages": [
+    {
+      "name": "01-homepage",
+      "filename": "01-homepage.png",
+      "description": "Homepage above the fold"
+    },
+    {
+      "name": "02-homepage-full",
+      "filename": "02-homepage-full.png",
+      "description": "Homepage full page"
+    },
+    {
+      "name": "03-cart-empty",
+      "filename": "03-cart-empty.png",
+      "description": "Cart page (empty state)"
+    },
+    {
+      "name": "04-game-detail",
+      "filename": "04-game-detail.png",
+      "description": "Game detail page"
+    },
+    {
+      "name": "05-game-detail-full",
+      "filename": "05-game-detail-full.png",
+      "description": "Game detail full page"
+    }
+  ]
+}

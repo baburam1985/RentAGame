@@ -257,8 +257,30 @@ Update prd.json:
 - `qaFeedback`: `""`
 - `branch`: `"feat/US-NNN-short-title-merged"` (reflects the renamed branch)
 
+### Post-merge: Capture UI screenshots
+
+After every merge, capture fresh screenshots of all key pages. These are
+committed to the repo so anyone can see how the UI looks at any point in git
+history — no need to run the app.
+
 ```bash
-git add scripts/ralph/prd.json
+cd /home/user/RentAGame/web
+npm run screenshots
+git add screenshots/
+```
+
+This runs `scripts/capture-screenshots.mjs` which captures:
+- Homepage (above fold + full page)
+- Cart page (empty state)
+- Game detail page (above fold + full page)
+
+The screenshots and `screenshots/manifest.json` are committed alongside the
+prd.json update so each merge has a visual snapshot.
+
+To add new pages: edit the `PAGES` array in `scripts/capture-screenshots.mjs`.
+
+```bash
+git add scripts/ralph/prd.json web/screenshots/
 git commit -m "chore: [US-NNN] qa-passed, merged to main"
 git push origin main
 ```
@@ -267,7 +289,8 @@ Output:
 ```
 QA PASSED: [US-NNN] - [Title]
 PR #N merged to main (squash)
-All 9 checks passed (CI + 8 local).
+All checks passed (CI + 9 local).
+Screenshots updated: web/screenshots/
 ```
 
 ---
