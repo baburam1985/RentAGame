@@ -18,6 +18,8 @@ type FormState = {
 };
 
 type Errors = Partial<Record<keyof FormState, string>>;
+type Touched = Partial<Record<keyof FormState, boolean>>;
+type BlurErrors = Partial<Record<keyof FormState, string>>;
 
 const empty: FormState = {
   name: "",
@@ -30,9 +32,34 @@ const empty: FormState = {
   notes: "",
 };
 
+function validateBlurField(
+  id: "name" | "email" | "phone",
+  value: string
+): string | undefined {
+  if (id === "name") {
+    if (!value.trim()) return "Name is required";
+    return undefined;
+  }
+  if (id === "email") {
+    if (value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+      return "Enter a valid email address";
+    }
+    return undefined;
+  }
+  if (id === "phone") {
+    if (value.trim() && !/^[\d\s().+\-]{7,}$/.test(value)) {
+      return "Enter a valid phone number";
+    }
+    return undefined;
+  }
+  return undefined;
+}
+
 export default function RentalForm({ defaultGame = "" }: Props) {
   const [form, setForm] = useState<FormState>({ ...empty, games: defaultGame });
   const [errors, setErrors] = useState<Errors>({});
+  const [blurErrors, setBlurErrors] = useState<BlurErrors>({});
+  const [touched, setTouched] = useState<Touched>({});
   const [submitted, setSubmitted] = useState(false);
 
   function validate(): Errors {
@@ -55,6 +82,12 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     return e;
   }
 
+  function handleBlur(id: "name" | "email" | "phone") {
+    setTouched((prev) => ({ ...prev, [id]: true }));
+    const err = validateBlurField(id, form[id]);
+    setBlurErrors((prev) => ({ ...prev, [id]: err }));
+  }
+
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const errs = validate();
@@ -62,6 +95,65 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     if (Object.keys(errs).length > 0) return;
     setSubmitted(true);
     setForm({ ...empty, games: defaultGame });
+    setBlurErrors({});
+    setTouched({});
+  }
+
+  function isValid(id: "name" | "email" | "phone"): boolean {
+    return !!(touched[id] && !blurErrors[id] && form[id].trim());
+  }
+
+  function blurField(
+    id: "name" | "email" | "phone",
+    label: string,
+    type: string = "text"
+  ) {
+    const errorId = `${id}-blur-error`;
+    const hasBlurError = !!blurErrors[id];
+    const hasSubmitError = !!errors[id];
+    const hasError = hasBlurError || hasSubmitError;
+    const green = isValid(id);
+
+    return (
+      <div className="flex flex-col gap-1">
+        <label htmlFor={id} className="text-sm font-medium text-gray-700">
+          {label}
+          <span className="text-red-500 ml-0.5">*</span>
+        </label>
+        <input
+          id={id}
+          type={type}
+          value={form[id]}
+          aria-describedby={hasBlurError ? errorId : undefined}
+          onChange={(e) => {
+            const newVal = e.target.value;
+            setForm((prev) => ({ ...prev, [id]: newVal }));
+            if (errors[id]) setErrors((prev) => ({ ...prev, [id]: undefined }));
+            // Clear blur error in real time as user types
+            if (blurErrors[id]) {
+              const err = validateBlurField(id, newVal);
+              setBlurErrors((prev) => ({ ...prev, [id]: err }));
+            }
+          }}
+          onBlur={() => handleBlur(id)}
+          className={`rounded-xl border px-4 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:ring-2 focus:ring-yellow-400 ${
+            hasError
+              ? "border-red-400 bg-red-50"
+              : green
+              ? "border-green-400 bg-white"
+              : "border-gray-200 bg-white"
+          }`}
+        />
+        {hasBlurError && (
+          <p id={errorId} className="text-xs text-red-500">
+            {blurErrors[id]}
+          </p>
+        )}
+        {hasSubmitError && (
+          <p className="text-xs text-red-500">{errors[id]}</p>
+        )}
+      </div>
+    );
   }
 
   function field(
@@ -127,9 +219,9 @@ export default function RentalForm({ defaultGame = "" }: Props) {
             className="bg-gray-50 rounded-2xl p-8 flex flex-col gap-5 border border-gray-100 shadow-sm"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-              {field("name", "Your Name")}
-              {field("email", "Email", "email")}
-              {field("phone", "Phone", "tel")}
+              {blurField("name", "Your Name")}
+              {blurField("email", "Email", "email")}
+              {blurField("phone", "Phone", "tel")}
               {field("eventDate", "Event Date", "date")}
               {field("returnDate", "Return Date", "date")}
               {field("address", "Event Address")}
