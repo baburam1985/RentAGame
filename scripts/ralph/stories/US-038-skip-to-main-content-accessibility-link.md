@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 38
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-038-skip-to-main-content
 - **PR:** 
@@ -25,3 +25,12 @@ Keyboard and screen reader users must Tab through all Navbar links on every page
 ## Dev Notes
 
 Edit `web/src/app/layout.tsx`. Before the `<Navbar />` render, add: `<a href="#main-content" className="sr-only focus:not-sr-only focus:absolute focus:z-50 focus:top-4 focus:left-4 focus:bg-white focus:text-black focus:px-4 focus:py-2 focus:rounded focus:shadow">Skip to main content</a>`. Then wrap the `{children}` in `<main id="main-content" tabIndex={-1}>`. This is a protected file — only add the skip link and the id/tabIndex to main; do not change CartProvider, font loading, or any other layout logic.
+
+## Implementation Notes
+
+Added skip link before Navbar in layout.tsx and wrapped children in `<main id="main-content" tabIndex={-1}>`. 6 tests all pass. Only layout.tsx changed.
+
+## Files Changed
+
+- `web/src/app/layout.tsx` — skip link before Navbar, main element with id and tabIndex
+- `web/src/app/layout.test.tsx` — 6 unit tests (one per AC)
