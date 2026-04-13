@@ -82,7 +82,8 @@ describe("OrdersPage", () => {
     render(<OrdersPage />);
     expect(screen.getByText(/total orders/i)).toBeInTheDocument();
     expect(screen.getByText(/total revenue/i)).toBeInTheDocument();
-    expect(screen.getByText(/pending/i)).toBeInTheDocument();
+    // Use getAllByText to handle "Pending" appearing in both the stat label and filter option
+    expect(screen.getAllByText(/pending/i).length).toBeGreaterThanOrEqual(1);
     // Total orders = 2
     expect(screen.getByText("2")).toBeInTheDocument();
   });
@@ -90,16 +91,18 @@ describe("OrdersPage", () => {
   it("shows status dropdown for each order", () => {
     seedOrders(mockOrders);
     render(<OrdersPage />);
-    const selects = screen.getAllByRole("combobox");
-    expect(selects.length).toBe(2);
+    // 2 row selects + 1 filter select = 3 total comboboxes
+    const rowSelects = screen.getAllByRole("combobox", { name: /change status for order/i });
+    expect(rowSelects.length).toBe(2);
   });
 
   it("status dropdown has all four status options", () => {
     seedOrders([mockOrders[0]]);
     render(<OrdersPage />);
-    const select = screen.getByRole("combobox");
+    // Scope to the row status select using its aria-label
+    const select = screen.getByRole("combobox", { name: /change status for order ABC12345/i });
     expect(select).toBeInTheDocument();
-    const options = screen.getAllByRole("option");
+    const options = Array.from(select.querySelectorAll("option"));
     const optionTexts = options.map((o) => o.textContent?.toLowerCase());
     expect(optionTexts.some((t) => t?.includes("pending"))).toBe(true);
     expect(optionTexts.some((t) => t?.includes("confirmed"))).toBe(true);
@@ -110,7 +113,8 @@ describe("OrdersPage", () => {
   it("changing status persists to localStorage", async () => {
     seedOrders([mockOrders[0]]);
     render(<OrdersPage />);
-    const select = screen.getByRole("combobox");
+    // Scope to the row status select using its aria-label
+    const select = screen.getByRole("combobox", { name: /change status for order ABC12345/i });
     fireEvent.change(select, { target: { value: "confirmed" } });
     await waitFor(() => {
       const stored = localStorage.getItem("rg_orders");
