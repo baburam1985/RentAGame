@@ -2,7 +2,7 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 16
-- **Status:** qa-failed
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** feat/US-016-orders-management-page
 - **PR:** #22
