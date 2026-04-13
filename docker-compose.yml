@@ -7,6 +7,12 @@ services:
       - "3000:3000"
     environment:
       - NODE_ENV=production
+    healthcheck:
+      test: ["CMD-SHELL", "node -e \"require('http').get('http://localhost:3000', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))\""]
+      interval: 5s
+      timeout: 5s
+      retries: 12
+      start_period: 30s
 
   unit-tests:
     build:
@@ -20,7 +26,8 @@ services:
       context: ./web
       dockerfile: Dockerfile.e2e-tests
     depends_on:
-      - app
+      app:
+        condition: service_healthy
     environment:
       - BASE_URL=http://app:3000
       - CI=true
