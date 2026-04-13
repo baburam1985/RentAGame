@@ -145,6 +145,7 @@ describe("GameDetailClient", () => {
         gameName: "Test Game",
         pricePerDay: 30,
         days: 1,
+        image: "https://images.unsplash.com/photo-test-1",
       });
     });
 
@@ -162,6 +163,7 @@ describe("GameDetailClient", () => {
         gameName: "Test Game",
         pricePerDay: 30,
         days: 3,
+        image: "https://images.unsplash.com/photo-test-1",
       });
     });
 

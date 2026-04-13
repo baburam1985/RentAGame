@@ -5,6 +5,7 @@ import {
   useContext,
   useState,
   useEffect,
+  useRef,
   ReactNode,
 } from "react";
 
@@ -29,31 +30,33 @@ const STORAGE_KEY = "rg_cart";
 
 const CartContext = createContext<CartContextValue | null>(null);
 
-export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
-  const [hydrated, setHydrated] = useState(false);
-
-  // Rehydrate from localStorage on mount
-  useEffect(() => {
-    try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw) as CartItem[];
-        if (Array.isArray(parsed)) {
-          setItems(parsed);
-        }
-      }
-    } catch {
-      // ignore parse errors
+function loadFromStorage(): CartItem[] {
+  try {
+    const raw =
+      typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
+    if (raw) {
+      const parsed = JSON.parse(raw) as CartItem[];
+      if (Array.isArray(parsed)) return parsed;
     }
-    setHydrated(true);
-  }, []);
+  } catch {
+    // ignore parse errors
+  }
+  return [];
+}
 
-  // Persist to localStorage whenever items change (after hydration)
+export function CartProvider({ children }: { children: ReactNode }) {
+  const [items, setItems] = useState<CartItem[]>(loadFromStorage);
+  const isFirstRender = useRef(true);
+
+  // Persist to localStorage whenever items change (skip the very first render
+  // to avoid immediately overwriting the value we just read on mount)
   useEffect(() => {
-    if (!hydrated) return;
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
     localStorage.setItem(STORAGE_KEY, JSON.stringify(items));
-  }, [items, hydrated]);
+  }, [items]);
 
   function addItem(newItem: CartItem) {
     setItems((prev) => {
