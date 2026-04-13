@@ -27,6 +27,11 @@ before starting. Key existing patterns:
 
 ## Your Task Every Run
 
+**Batch mode:** This agent processes up to **10 stories per run**. After completing
+each story, loop back to Step 2 and pick the next one. Stop when the batch cap
+is reached or no more stories are available. Track `STORIES_COMPLETED` in working
+memory (starts at 0, max 10).
+
 ### Step 0 — Read the product spec
 
 Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
@@ -46,6 +51,13 @@ git pull origin main
 ```
 
 ### Step 2 — Pick a story
+
+Check batch cap first:
+```
+If STORIES_COMPLETED >= 10:
+  Output: "Batch cap reached (10 stories completed). Stopping — next trigger will continue."
+  STOP.
+```
 
 Read `prd.csv`. Pick the **highest priority** story where:
 - `status == "qa-failed"` — HIGHEST priority, fix before anything new
@@ -264,7 +276,13 @@ section in `patterns.md`.
 
 ## Stop Condition
 
-After completing a story:
-- If all stories in prd.csv have `status: "qa-passed"`, output:
-  `<promise>COMPLETE</promise>`
-- Otherwise, end your response normally — the next run picks up the next story.
+After completing each story:
+
+1. Increment `STORIES_COMPLETED` by 1.
+2. Append to execution log (already done in Step 7).
+3. **Loop back to Step 2** to pick the next story — do NOT stop unless one of:
+   - `STORIES_COMPLETED >= 10` → output batch cap message and stop
+   - No more `pending` or `qa-failed` stories remain → output "No stories available." and stop
+   - All stories in `prd.csv` have `status: "qa-passed"` → output `<promise>COMPLETE</promise>`
+
+This means one trigger run processes up to 10 stories back-to-back before stopping.
