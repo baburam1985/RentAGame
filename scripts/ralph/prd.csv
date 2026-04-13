@@ -47,7 +47,7 @@ US-045,Discovery,Recently viewed games horizontal strip,45,dev-complete,false,fe
 US-046,Admin Dashboard,Admin settings page for service copy,46,dev-complete,false,feat/US-046-admin-settings,0,0
 US-047,Checkout & Payments,Instant confirmation trust badge on rental form,47,dev-complete,false,feat/US-047-trust-badge,0,0
 US-048,Discovery,Back to top floating button,48,dev-complete,false,feat/US-048-back-to-top,0,0
-US-049,Discovery,Game comparison panel (select 2-3 games side-by-side),49,pending,false,,0,0
+US-049,Discovery,Game comparison panel (select 2-3 games side-by-side),49,in-progress,false,,0,0
 US-050,User Accounts,Wishlist toast notifications for add/remove actions,50,pending,false,,0,0
 US-051,Discovery,How it works compact strip above game catalog,51,pending,false,,0,0
 US-052,Checkout & Payments,HTML autocomplete attributes on rental form fields,52,pending,false,,0,0
