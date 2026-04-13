@@ -1,8 +1,8 @@
-# Stage 1: Install dependencies
+# Stage 1: Install all dependencies (dev deps needed for build)
 FROM node:20-alpine AS deps
 WORKDIR /app
-COPY package.json package-lock.json* ./
-RUN npm ci --omit=dev
+COPY package.json package-lock.json ./
+RUN npm ci
 
 # Stage 2: Build the application
 FROM node:20-alpine AS builder

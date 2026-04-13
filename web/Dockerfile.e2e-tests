@@ -1,0 +1,15 @@
+FROM node:20-bookworm
+WORKDIR /app
+
+# Install all deps (including dev) using the lock file for deterministic installs.
+COPY package.json package-lock.json ./
+RUN npm ci
+
+# Let Playwright install its own Chromium + all required system dependencies.
+# This is the officially supported way — avoids missing-library failures with
+# system-installed Chromium on different Debian versions.
+RUN npx playwright install --with-deps chromium
+
+COPY . .
+
+CMD ["npm", "run", "test:e2e"]

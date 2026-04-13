@@ -1,0 +1,12 @@
+FROM node:20-bookworm-slim
+WORKDIR /app
+
+# Install all deps (including dev) using the lock file for deterministic installs.
+# Both @rolldown/binding-linux-x64-gnu and musl variants are optional deps in the
+# lock file; Rolldown loads the correct one at runtime based on the system libc.
+COPY package.json package-lock.json ./
+RUN npm ci
+
+COPY . .
+
+CMD ["npm", "run", "test:run"]

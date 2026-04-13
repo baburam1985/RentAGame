@@ -17,21 +17,17 @@ services:
   unit-tests:
     build:
       context: ./web
-      dockerfile: Dockerfile.test
-    command: npm run test:run
+      dockerfile: Dockerfile.unit-tests
     environment:
       - CI=true
 
   e2e-tests:
     build:
       context: ./web
-      dockerfile: Dockerfile.test
-    command: npm run test:e2e
+      dockerfile: Dockerfile.e2e-tests
     depends_on:
       app:
         condition: service_healthy
     environment:
       - BASE_URL=http://app:3000
       - CI=true
-      - PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-      - CHROMIUM_PATH=/usr/bin/chromium-browser

@@ -92,31 +92,31 @@
   - Price filter state (minPrice/maxPrice) defaults to the actual min/max of the games catalog — derive with `Math.min/max(...games.map(g => g.pricePerDay))` at module scope to avoid recalculation on every render.
 ---
 
-## 2026-04-12 - US-001 - qa-failed fix (Docker glibc/musl binary mismatch)
-- Root cause of PERSISTENT CI failures (Unit Tests failed even with Debian image):
-  - The `package-lock.json` was generated on an Alpine/musl machine. npm ci is deterministic
-    and installs the EXACT packages from the lock file, including platform-specific native binaries.
-  - On Alpine (musl): `@rolldown/binding-linux-x64-musl` was installed (Rolldown is Vite 8's
-    Rust-based bundler, required for Vitest to start).
-  - On Debian glibc (Docker CI): npm ci installed the SAME musl Rolldown binary from the lock
-    file. The musl binary cannot load correctly on glibc — Vitest crashes at startup before any
-    test runs.
-  - The 'Docker Build' CI job uses a multi-stage Dockerfile with `npm ci --omit=dev`, which
-    avoids devDeps like Rolldown, so it passed. Only the test images (which install devDeps) failed.
+## 2026-04-12 - US-001 - qa-failed fix (true root cause: .dockerignore excludes test files)
+- Root cause of persistent Docker CI failures (Unit Tests failing after EVERY Dockerfile fix):
+  - web/.dockerignore contains: `*.test.ts`, `*.test.tsx`, `vitest.config.ts`, `playwright.config.ts`
+  - These are excluded from the production Docker image (correct). But Docker uses the SAME
+    .dockerignore for ALL Dockerfiles built with the same context directory.
+  - Result: `Dockerfile.unit-tests` built with context `./web` → test files and vitest.config.ts
+    are NOT copied into the container → vitest finds 0 test files → exits with error code 1.
+  - Previous "root cause" about musl/glibc Rolldown binary was a misdiagnosis. Tests actually
+    pass fine with npm ci and both gnu+musl binaries present (Rolldown picks the right one at runtime).
 - What was fixed:
-  - Created separate Dockerfile.unit-tests (bookworm-slim, no browser) and
-    Dockerfile.e2e-tests (bookworm-slim + Chromium apt package).
-  - Both use `npm install --no-audit --no-fund` instead of `npm ci`. npm install resolves
-    native binaries for the CURRENT platform, picking `@rolldown/binding-linux-x64-gnu` on
-    Debian. This is the correct binary and Rolldown loads successfully.
-  - Updated docker-compose.yml to use the new Dockerfiles per service.
+  - Added `web/Dockerfile.unit-tests.dockerignore` — same as .dockerignore but WITHOUT test
+    file and config exclusions. Docker BuildKit's per-Dockerfile dockerignore feature uses
+    `<dockerfile>.dockerignore` when it exists, overriding the global `.dockerignore`.
+  - Added `web/Dockerfile.e2e-tests.dockerignore` — same approach for e2e tests.
+  - Reverted both test Dockerfiles back to `npm ci` (lock file install) — deterministic and
+    no registry calls needed. The `npm install` without lock file approach risked resolving
+    different package versions or failing if fictional package versions aren't on the registry.
 - Files changed:
-  - web/Dockerfile.unit-tests (new)
-  - web/Dockerfile.e2e-tests (new)
-  - docker-compose.yml (unit-tests and e2e-tests now use separate Dockerfiles)
-- ## KEY PATTERN for all future agents:
-  - NEVER commit a package-lock.json generated on Alpine/musl when Docker tests run on Debian/glibc.
-  - If using npm ci in Dockerfiles: the lock file MUST be generated on the SAME platform as the container.
-  - Prefer `npm install` in test Dockerfiles when cross-platform (musl dev machine → glibc CI).
-  - Rolldown (Vite 8+) has mandatory native binaries — platform mismatch = silent Vitest crash.
+  - web/Dockerfile.unit-tests (reverted to npm ci)
+  - web/Dockerfile.e2e-tests (reverted to npm ci)
+  - web/Dockerfile.unit-tests.dockerignore (new)
+  - web/Dockerfile.e2e-tests.dockerignore (new)
+- CRITICAL PATTERN: Docker per-Dockerfile .dockerignore:
+  `Dockerfile.foo` → Docker BuildKit looks for `Dockerfile.foo.dockerignore` first.
+  If found, it REPLACES (not merges with) the global `.dockerignore` for that build.
+  Always create per-Dockerfile .dockerignore files for test Dockerfiles when the project
+  has a .dockerignore that excludes test files (which is correct for production images).
 ---
