@@ -102,11 +102,19 @@ Evaluate each check run's `conclusion` field:
 | `success` for ALL runs | Proceed to Check 1 |
 | `failure` / `cancelled` on any run | FAIL — collect log details, go to On Fail |
 
-**If CI is pending:** update prd.json `status: "ci-pending"`, push to main,
-then exit. On next run, if `status == "ci-pending"`, skip straight to Check 0.
+**If CI is pending:** update prd.json `status: "ci-pending"`. Append to execution log:
+```bash
+TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
+echo "| $TIMESTAMP | US-NNN | ci-pending | qa | PR #N created, waiting for CI |" >> scripts/ralph/execution-log.md
+```
+Push to main, then exit. On next run, if `status == "ci-pending"`, skip straight to Check 0.
 
 **If CI failed:** collect the name of the failing job and any available error
 summary. Set `status: "qa-failed"`, `qaFeedback: "CI failed: <job name> — <details>"`.
+Append to execution log:
+```bash
+echo "| $TIMESTAMP | US-NNN | qa-failed | qa | CI failed: <job name> — <brief reason> |" >> scripts/ralph/execution-log.md
+```
 
 ---
 
@@ -279,8 +287,14 @@ prd.json update so each merge has a visual snapshot.
 
 To add new pages: edit the `PAGES` array in `scripts/capture-screenshots.mjs`.
 
+Append to execution log:
 ```bash
-git add scripts/ralph/prd.json web/screenshots/
+TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
+echo "| $TIMESTAMP | US-NNN | qa-passed | qa | all checks passed, merged to main |" >> scripts/ralph/execution-log.md
+```
+
+```bash
+git add scripts/ralph/prd.json scripts/ralph/execution-log.md web/screenshots/
 git commit -m "chore: [US-NNN] qa-passed, merged to main"
 git push origin main
 ```
@@ -291,6 +305,7 @@ QA PASSED: [US-NNN] - [Title]
 PR #N merged to main (squash)
 All checks passed (CI + 9 local).
 Screenshots updated: web/screenshots/
+Execution log updated.
 ```
 
 ---

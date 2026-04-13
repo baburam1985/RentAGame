@@ -203,6 +203,16 @@ Edit prd.json for this story:
 - `status`: `"dev-complete"`
 - `branch`: `"feat/US-NNN-short-title"`
 - `devNotes`: brief summary of what was implemented and files changed
+- `filesChanged`: array of file paths modified (run `git diff main --name-only` to get the list)
+
+**Also append to `scripts/ralph/execution-log.md`** — one row per status change:
+```bash
+TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
+echo "| $TIMESTAMP | US-NNN | dev-complete | dev | all tests pass, N files changed |" >> scripts/ralph/execution-log.md
+```
+
+Log every status change you make (in-progress, tests-written, dev-complete).
+This gives humans and the Retro agent a readable timeline of the story.
 
 ```bash
 git add scripts/ralph/prd.json

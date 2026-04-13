@@ -59,6 +59,7 @@ start, stop, or extend it.
 | Dev | `DEV.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/DEV.md` |
 | QA | `QA.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/QA.md` |
 | CI-Fix | `CI.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/CI.md` |
+| Retro | `RETRO.md` | Every 30 min — `*/30 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/RETRO.md` |
 
 All triggers: repo `baburam1985/RentAGame`, branch `main`.
 
@@ -71,7 +72,8 @@ All triggers: repo `baburam1985/RentAGame`, branch `main`.
 | `PRODUCT.md` | humans only | ALL agents (Step 0) | Authoritative product spec — non-negotiables, scope, constraints |
 | `prd.json` | PM, Dev, QA | All agents | Story backlog — single source of truth |
 | `research.json` | Research | PM | Raw ideas/bugs from external research |
-| `progress.txt` | Dev | Dev | Codebase patterns and learnings |
+| `progress.txt` | Dev, Retro | Dev, Retro | Codebase patterns and learnings |
+| `execution-log.md` | Dev, QA, PM, CI, Retro | Retro, humans | Human-readable timeline of all status changes |
 
 ---
 
@@ -147,9 +149,41 @@ Each agent sets its own identity before committing:
   "prNumber": 0,
   "devNotes": "",
   "qaFeedback": "",
-  "qaAttempts": 0
+  "qaAttempts": 0,
+  "filesChanged": [],
+  "history": []
 }
 ```
+
+### `filesChanged` field
+
+Dev populates this in Step 7 with the list of files modified for the story:
+```json
+"filesChanged": ["web/src/components/SearchBar.tsx", "web/src/components/GameGrid.tsx", "web/src/app/page.tsx"]
+```
+
+### Execution Log (human-readable timeline)
+
+Instead of a JSON `history` array (hard to read), all agents append to
+`scripts/ralph/execution-log.md` — a markdown table that humans and the
+Retro agent can both scan easily:
+
+```markdown
+| Timestamp | Story | Status | Agent | Note |
+|-----------|-------|--------|-------|------|
+| 2026-04-13 10:00 | US-001 | in-progress | dev | picked up story |
+| 2026-04-13 10:15 | US-001 | tests-written | dev | 6 test cases |
+| 2026-04-13 10:45 | US-001 | dev-complete | dev | all tests pass, 3 files changed |
+| 2026-04-13 11:00 | US-001 | ci-pending | qa | PR #7 created |
+| 2026-04-13 11:30 | US-001 | qa-failed | qa | Check 9: scope violation — Hero.tsx modified |
+| 2026-04-13 12:30 | US-001 | qa-passed | qa | all 10 checks passed |
+```
+
+**Rules:**
+- Agents APPEND a row — never delete or rewrite existing rows
+- Use UTC timestamps: `date -u +"%Y-%m-%d %H:%M"`
+- On QA failure, the Note MUST include which check failed and why
+- The Retro agent reads this log to analyze cycle time and failure patterns
 
 ---
 
