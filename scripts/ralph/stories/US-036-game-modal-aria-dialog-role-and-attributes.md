@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 36
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-036-game-modal-aria-dialog
 - **PR:** 
 - **QA Attempts:** 0
 
