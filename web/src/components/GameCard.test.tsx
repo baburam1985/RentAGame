@@ -16,6 +16,7 @@ const mockGame: Game = {
   description: "A fun test game.",
   pricePerDay: 42,
   image: "https://images.unsplash.com/photo-test",
+  imageAlt: "Players tossing rings onto a wooden peg in a sunny backyard",
   players: "2–6 players",
   dimensions: "5 ft wide",
   howToPlay: ["Step one.", "Step two."],
@@ -46,7 +47,7 @@ describe("GameCard", () => {
 
   it("renders image with correct alt text", () => {
     renderCard();
-    const img = screen.getByAltText("Test Game");
+    const img = screen.getByAltText(mockGame.imageAlt);
     expect(img).toBeInTheDocument();
   });
 

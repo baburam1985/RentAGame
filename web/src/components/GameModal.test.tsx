@@ -11,6 +11,7 @@ const mockGame: Game = {
   description: "Classic bocce ball fun.",
   pricePerDay: 30,
   image: "https://images.unsplash.com/photo-bocce",
+  imageAlt: "Colorful bocce balls lined up near a white pallino on a sandy court",
   players: "2–8 players",
   dimensions: "107 mm balls",
   howToPlay: ["Step 1: Toss the pallino.", "Step 2: Roll your bocce ball."],
