@@ -5,6 +5,7 @@ test.describe("Game catalog", () => {
     await page.goto("/");
     // Wait for catalog to be visible
     await page.waitForSelector("#catalog");
+    await page.waitForLoadState("networkidle");
   });
 
   test("shows at least 8 game cards", async ({ page }) => {
