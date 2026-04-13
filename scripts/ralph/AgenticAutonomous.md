@@ -94,11 +94,18 @@ ci-pending     (waiting for GitHub Actions)
   │  CI passes
   ▼
 [QA checks 1–8]
-  │  All pass          │  Any fail
-  ▼                    ▼
-qa-passed          qa-failed
-(merged to main)   (back to Dev with qaFeedback)
+  │  All pass                    │  Any fail
+  ▼                              ▼
+QA merges feat/US-NNN → main   qa-failed
+  │  merge confirmed             (back to Dev with qaFeedback)
+  ▼
+qa-passed  ← status set ONLY after merge succeeds
+(branch deleted)
 ```
+
+> **Rule**: `qa-passed` is set **after** the merge, never before. A story whose
+> branch has not been merged into `main` is not complete, regardless of QA check
+> results.
 
 ---
 
@@ -215,6 +222,38 @@ Each agent sets its own identity before committing:
 Code reaches `main` **exclusively** through Pull Requests validated by the QA
 agent and merged via the GitHub API (`mcp__github__merge_pull_request`).
 
+**Every feature branch MUST be merged into `main` once its user story reaches
+`qa-passed`. No exceptions.** A story is never considered done until its branch
+is merged. The QA agent is responsible for completing this merge as the final
+step of the QA pass.
+
+---
+
+## Branch Merge Policy
+
+| Rule | Detail |
+|------|--------|
+| Merge is mandatory | Every `feat/US-NNN` branch MUST be merged into `main` after `qa-passed` |
+| No long-lived feature branches | A feature branch must not outlive its user story's QA pass |
+| QA owns the merge | QA calls `mcp__github__merge_pull_request` immediately after all checks pass |
+| Status update is atomic | `prd.json` status is set to `qa-passed` **only after** the merge succeeds |
+| Branch deletion after merge | QA deletes the feature branch via the GitHub API after a successful merge |
+| Blocked merge = story stays `ci-pending` | If the merge fails (conflict, CI red), QA sets status back to `qa-failed` and adds `qaFeedback` for Dev |
+
+### QA Merge Sequence (mandatory order)
+
+```
+1. All 8 QA checks pass
+2. Call mcp__github__merge_pull_request  ← merge feat/US-NNN → main
+3. Confirm merge success (check HTTP 200 / merged: true)
+4. Update prd.json: status → "qa-passed"
+5. Push prd.json to main
+6. Delete remote branch feat/US-NNN
+```
+
+If step 2 fails, **do not** advance the status to `qa-passed`. Set status to
+`qa-failed`, record the merge error in `qaFeedback`, and let Dev retry.
+
 ---
 
 ## Anti-Hallucination Strategy
@@ -232,6 +271,8 @@ Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
 | Agents inventing new user roles | Target Users section defines exactly two roles |
 | Agents inventing new localStorage keys | `rg_` key conventions table is authoritative |
 | Any agent pushing code directly to `main` | Non-Negotiable Git Rules above; QA is the only merge path |
+| QA marking `qa-passed` before merging | Branch Merge Policy: status advances only after `merge_pull_request` succeeds |
+| Feature branch left unmerged after QA | Branch Merge Policy mandates merge + deletion as final QA step |
 
 `PRODUCT.md` is written by humans only — agents read it, never modify it.
 
