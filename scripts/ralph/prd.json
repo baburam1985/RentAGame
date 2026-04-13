@@ -15,8 +15,8 @@
         "Zero-results state shows a friendly 'No games found' message"
       ],
       "priority": 1,
-      "status": "ci-pending",
-      "passes": false,
+      "status": "qa-passed",
+      "passes": true,
       "branch": "feat/US-001-search-filter",
       "devNotes": "SearchBar component with controlled text input, clear button, and sr-only label. GameGrid updated with optional searchQuery prop for case-insensitive name+description filtering. page.tsx wires SearchBar above the game grid alongside CategoryFilter. CI fix (true root cause): web/.dockerignore excludes *.test.ts, *.test.tsx, and vitest.config.ts to keep the production image slim — but Docker uses the same .dockerignore for ALL Dockerfiles in the build context, so the test container had no test files or config and vitest exited with error. Fixed by adding Dockerfile.unit-tests.dockerignore and Dockerfile.e2e-tests.dockerignore (per-Dockerfile dockerignore — BuildKit feature) that do NOT exclude test files. Also: test Dockerfiles reverted to npm ci (deterministic lock-file install). Previous musl/glibc binary hypothesis was wrong — Rolldown installs both gnu+musl variants as optional deps and picks the correct one at runtime.",
       "qaFeedback": "",
