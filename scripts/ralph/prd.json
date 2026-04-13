@@ -59,9 +59,9 @@
         "Sort applies on top of any active search, category, and price filters"
       ],
       "priority": 3,
-      "status": "in-progress",
+      "status": "tests-written",
       "passes": false,
-      "branch": "",
+      "branch": "feat/US-003-sort-games",
       "devNotes": "",
       "qaFeedback": "",
       "qaAttempts": 0,
