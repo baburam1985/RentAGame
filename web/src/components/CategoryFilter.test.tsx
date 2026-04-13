@@ -39,3 +39,48 @@ describe("CategoryFilter", () => {
     expect(onChange).toHaveBeenCalledWith("All");
   });
 });
+
+describe("CategoryFilter — mobile scroll (US-020)", () => {
+  it("pill container has overflow-x-auto for horizontal scroll", () => {
+    const { container } = render(
+      <CategoryFilter activeCategory="All" onCategoryChange={() => {}} />
+    );
+    // The scrollable wrapper element should have overflow-x-auto
+    const scrollable = container.querySelector(".overflow-x-auto");
+    expect(scrollable).toBeInTheDocument();
+  });
+
+  it("pills are in a single non-wrapping flex row (no wrap class)", () => {
+    const { container } = render(
+      <CategoryFilter activeCategory="All" onCategoryChange={() => {}} />
+    );
+    // The flex container should NOT have flex-wrap
+    const flexRow = container.querySelector(".flex");
+    expect(flexRow).toBeInTheDocument();
+    expect(flexRow?.className).not.toMatch(/flex-wrap/);
+  });
+
+  it("each pill has whitespace-nowrap to prevent text wrapping", () => {
+    render(<CategoryFilter activeCategory="All" onCategoryChange={() => {}} />);
+    const allButton = screen.getByText("All").closest("button");
+    expect(allButton?.className).toMatch(/whitespace-nowrap/);
+  });
+
+  it("outer wrapper has 'relative' class to support the fade gradient overlay", () => {
+    const { container } = render(
+      <CategoryFilter activeCategory="All" onCategoryChange={() => {}} />
+    );
+    // The outermost wrapper should be relative-positioned for the fade pseudo-element
+    const outer = container.firstElementChild;
+    expect(outer?.className).toMatch(/relative/);
+  });
+
+  it("a fade gradient element is rendered after the pill row", () => {
+    const { container } = render(
+      <CategoryFilter activeCategory="All" onCategoryChange={() => {}} />
+    );
+    // A gradient overlay element should exist inside the outer wrapper
+    const gradientEl = container.querySelector("[data-fade-gradient]");
+    expect(gradientEl).toBeInTheDocument();
+  });
+});
