@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 20
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-020-mobile-scroll-category-filter
 - **PR:** (none)
 - **QA Attempts:** 0
 
