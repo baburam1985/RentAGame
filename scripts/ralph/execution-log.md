@@ -234,3 +234,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:03 | US-028 | tests-written | dev | RED commit pushed — 6 failing tests for skeleton loading |
 | 2026-04-13 10:47 | US-027 | in-progress | dev | starting new story |
 | 2026-04-13 10:49 | US-027 | tests-written | dev | RED phase — 6 failing tests for what's included section |
+| 2026-04-13 10:57 | US-027 | dev-complete | dev | GREEN commit pushed — required included:string[] on Game type, all 12 games populated, GameModal renders section, 52 tests pass |
