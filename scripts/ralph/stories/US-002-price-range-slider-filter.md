@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider-v2
 - **PR:** #35
@@ -25,10 +25,7 @@ Add a dual-handle price range slider (min/max) in the filter bar. Games outside 
 
 ## QA Feedback
 
-Classification: env-failure
-Job: E2E Tests
-Error: docker-compose.yml uses `wget` for healthcheck which is not available on Alpine (node:20-alpine). Container never reaches `healthy` state so E2E tests never start. Fix: replace `wget` healthcheck with `node -e "require('http').get(...)"` as used in the corrected main branch docker-compose.yml.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24340767884/job/71068854990
+~~Classification: env-failure — FIXED by CI agent: replaced wget healthcheck with node CMD healthcheck in docker-compose.yml. Reset to dev-complete.~~
 
 
 ## Dev Notes
