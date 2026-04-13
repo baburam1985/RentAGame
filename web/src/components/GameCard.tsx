@@ -28,7 +28,10 @@ export default function GameCard({ game, onSelect }: Props) {
         </span>
 
         {/* Name */}
-        <h3 className="font-semibold text-gray-900 text-base leading-snug">
+        <h3
+          data-testid="game-card-name"
+          className="font-semibold text-gray-900 text-base leading-snug"
+        >
           {game.name}
         </h3>
 
