@@ -133,3 +133,4 @@ humans and the Retro agent a clear timeline of what happened and when.
   - patterns.md: Documented the grep substring false-positive pattern with symptoms, root cause, and fix reference (PR #25).
 - **Pipeline health:** improving — systemic CI bug identified and fixed; triage and prevention guidelines added. Target: zero recurrence of this pattern.
 ---
+| 2026-04-13 08:34 | US-015 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected (PR #25 on main). Branch rebased on main. All 56 unit tests pass. TypeScript clean. Status reset for QA re-pick. |
