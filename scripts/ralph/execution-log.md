@@ -264,3 +264,17 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:07 | US-008 | dev-complete | dev | branch rebuilt from main, 4 tests pass, CartDrawer.tsx created |
 | 2026-04-13 12:07 | US-009 | in-progress | dev | starting fix for qa-failed — rebuilding branch from main |
 | 2026-04-13 12:08 | US-009 | tests-written | dev | RED commit pushed — 4 failing tests for AvailabilityCalendar |
+
+## Retro: CI-Fix-PR37-38 - Docker IPv6/IPv4 healthcheck + systemic TDD Check 2 failures
+- **QA attempts:** N/A for CI infrastructure; Check 2 failed on US-006, US-008, US-009, US-010 (4 stories in one run)
+- **Issues found:**
+  - CI environment issue (systemic): PR #37 added a Docker `healthcheck` using `localhost:3000` — on Alpine Linux, `localhost` resolves to IPv6 (`::1`), but Next.js binds to IPv4 only. The app container never became `healthy`, blocking all E2E tests. Fixed in PR #38 by replacing `localhost` with `127.0.0.1` and switching from CMD-SHELL to CMD array form to avoid `sh` quoting ambiguity.
+  - CI environment issue (systemic): The GitHub Actions health-wait step used `curl localhost` from the host network, which also didn't confirm Docker internal network readiness. Fixed in PR #37 by adding `depends_on: condition: service_healthy` so the e2e-tests container waits for the app container's internal healthcheck.
+  - TDD discipline (systemic): 4 stories (US-006, US-008, US-009, US-010) all failed Check 2 — test files were modified between RED and GREEN commits. Root cause: devs discovered wrong selectors during GREEN implementation and "fixed" the test file instead of stopping and amending the RED commit.
+  - API overload: agent sessions crashed mid-story, leaving stories stuck in `in-progress` status with no active agent. Step 1.5 only recovered `pending` stories, not `in-progress` ones.
+- **Improvements applied:**
+  - QA.md (Check 2): Added exact recovery command for Dev in qaFeedback — `git checkout $RED_SHA -- <test-file>` to revert precisely to RED state, with explanation of when to amend RED vs when to rebuild.
+  - DEV.md (Step 1.5): Added stale `in-progress` recovery — when a story is `in-progress` with no active agent (session crash), recover it to `dev-complete`, `tests-written`, or `pending` based on branch state.
+  - DEV.md (Step 5): Added pre-RED-commit selector-locking guidance — verify all selectors will match the planned implementation before committing, with explicit protocol for fixing wrong selectors discovered during GREEN (stop, amend RED, force-push, only then implement).
+- **Pipeline health:** degrading — 4 Check 2 failures in a single run is the highest recurrence of a single QA check failure seen so far. Target: zero Check 2 failures. Systemic CI fix (PRs #37, #38) restores green CI; TDD discipline improvements target the root cause of test file modifications.
+---

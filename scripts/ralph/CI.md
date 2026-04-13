@@ -204,6 +204,26 @@ or use `--format='{{.State.Health.Status}}'` and compare directly.
 When ALL PRs fail E2E with "connection refused" but unit tests pass, treat this
 as an env-failure and check `ci.yml` health-wait script before routing to Dev.
 
+<!-- retro: CI-Fix-PR37-38 -->
+**Docker in-container healthcheck: always use `127.0.0.1`, never `localhost`, on Alpine.**
+PR #37 added a `node http` healthcheck to the `app` service using `localhost:3000` — but
+on Alpine Linux, `localhost` can resolve to IPv6 (`::1`), while Next.js (HOSTNAME=0.0.0.0)
+only binds to IPv4. The healthcheck kept failing with ECONNREFUSED, blocking all E2E tests.
+PR #38 fixed it with two changes:
+1. Replace `localhost` with `127.0.0.1` in any Docker healthcheck URL (forces IPv4).
+2. Use CMD form (array syntax) instead of CMD-SHELL to avoid Alpine `sh` quoting ambiguity.
+**Correct canonical healthcheck for the app service:**
+```yaml
+healthcheck:
+  test: ["CMD", "node", "-e", "require('http').get('http://127.0.0.1:3000', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))"]
+  interval: 5s
+  timeout: 10s
+  retries: 24
+  start_period: 30s
+```
+Never deviate from this template when editing the app healthcheck — the IPv4 binding and
+CMD array form are both required for reliable operation on Alpine CI runners.
+
 <!-- retro: CI-hotfix-2 -->
 **Distinguishing "CI waiting for app" failures from real E2E test failures:**
 | Symptom | Likely cause |

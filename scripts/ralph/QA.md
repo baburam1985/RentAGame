@@ -245,6 +245,18 @@ git diff $RED_SHA $GREEN_SHA -- "*.test.*" -- "*.spec.*"
 
 **FAIL if:** Any test file was modified after the RED commit.
 
+<!-- retro: CI-Fix-PR37-38 -->
+**When Check 2 fails, include this exact recovery command in qaFeedback:**
+```
+Check 2 FAILED: <list each modified test file>
+Fix: revert each test file exactly to its RED commit state — do NOT add new assertions or change selectors:
+  RED_SHA=$(git log --oneline | grep "test: \[US-NNN\] RED" | awk '{print $1}')
+  git checkout $RED_SHA -- web/src/path/to/ComponentName.test.tsx
+Then make the unchanged tests pass using implementation changes only.
+If the RED tests used a wrong selector, you must amend the RED commit (while still before GREEN) to fix the selector — NOT change the test after GREEN work has started.
+```
+This gives Dev a single unambiguous action rather than a general "revert test changes" instruction, which was misinterpreted in US-006, US-008, US-009, and US-010.
+
 ### Check 3 — No skipped tests
 
 ```bash

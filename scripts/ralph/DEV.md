@@ -98,6 +98,29 @@ For **every** story where `status == "pending"` and `branch == ""` in prd.csv:
 This recovery ensures the QA agent sees the correct status and creates PRs
 even when a previous Dev session failed to update `prd.csv`.
 
+<!-- retro: CI-Fix-PR37-38 -->
+**Stale `in-progress` recovery:** API overloads and session crashes can leave a story in
+`status == "in-progress"` with no active agent working on it. When Step 1.5 runs, also
+check for these orphaned locks:
+
+For **every** story where `status == "in-progress"` in prd.csv:
+1. Check when the `in-progress` commit was pushed:
+   ```bash
+   git log --oneline --all | grep "\[US-NNN\] mark in-progress"
+   ```
+2. Check the feature branch for a GREEN commit:
+   ```bash
+   git log --oneline origin/feat/US-NNN-<title> 2>/dev/null | head -5
+   ```
+3. Recovery actions:
+   - GREEN commit exists → set `status: "dev-complete"`, push, log. QA will take it from here.
+   - Only RED commit exists → set `status: "tests-written"`, push, log. Dev will continue GREEN.
+   - No feature branch or no commits beyond chore → set `status: "pending"`, clear `branch`, push, log.
+     This unlocks the story so a new Dev session can pick it up cleanly.
+
+This prevents stories getting permanently stuck in `in-progress` after an API-overload crash,
+which blocks new sessions from picking them up (Step 2 only picks `qa-failed` or `pending`).
+
 ### Step 2 — Pick a story
 
 Check batch cap first:
@@ -195,6 +218,28 @@ Verify tests fail:
 cd /home/user/RentAGame/web && npm run test:run -- --reporter=verbose 2>&1 | tail -30
 ```
 You must see failures. If tests pass already, your tests are too weak — rewrite them.
+
+<!-- retro: CI-Fix-PR37-38 -->
+**Lock in your selectors at RED time — never change test files after this commit.**
+The single most common Check 2 violation (hit in US-006, US-008, US-009, US-010) is
+discovering during the GREEN phase that a selector doesn't work (wrong role, wrong text,
+wrong query) and "fixing" the test file. This is a TDD integrity violation.
+
+Before pushing the RED commit, verify every selector in your tests is correct and will
+match the component you plan to build:
+- Use `getByRole("button", { name: /Rent Now/i })` — not `getByTestId("submit")`
+  (test IDs may not be in the story scope and you may decide not to add them)
+- Use `getByText(/exact-copy-from-AC/i)` only if the AC specifies that exact string
+- Verify ARIA roles match what you will actually render (e.g. `combobox` vs `listbox`)
+
+If during GREEN you realise a RED selector was wrong, you must:
+1. **Stop GREEN work immediately** — do NOT implement anything yet
+2. Amend the RED commit to fix the selector: `git add <test-file> && git commit --amend --no-edit`
+3. Force-push the branch: `git push origin feat/US-NNN-... --force-with-lease`
+4. Only then start GREEN implementation
+
+**Never fix a selector after any implementation code exists on the branch.** If implementation
+already exists, the story must be treated as qa-failed and rebuilt from scratch on a clean branch.
 
 Commit ONLY test files:
 ```bash
@@ -333,6 +378,22 @@ aligned with the implementation. Two common drift patterns:
 Updating E2E specs to reflect changed story behavior is NOT a TDD violation — it keeps
 acceptance tests aligned with acceptance criteria. Failing to update E2E specs causes
 every CI run to fail with text-not-found errors, routing work to CI-Fix unnecessarily.
+
+<!-- retro: CI-Fix-PR37-38 -->
+**Pre-GREEN-commit: verify no test files were modified since the RED commit.**
+Check 2 failed on US-006, US-008, US-009, and US-010 in the same pipeline run — all had
+test files modified after the RED commit. This is the single most common TDD violation.
+Before committing the GREEN implementation, run:
+```bash
+RED_SHA=$(git log --oneline | grep "test: \[US-NNN\] RED" | awk '{print $1}')
+git diff $RED_SHA HEAD -- "*.test.*" "*.spec.*"
+```
+If this produces ANY output, you modified test files after RED. Revert those test
+changes and make the tests pass with implementation changes only. If the tests
+themselves are wrong (bad selectors, wrong mocks), that means the RED commit was
+broken — you must amend the RED commit while still on the feature branch BEFORE
+the GREEN implementation exists, then restart from Step 6.
+**NEVER proceed to the GREEN commit if test files differ from the RED commit.**
 
 <!-- retro: US-001 -->
 **Pre-commit: scan for `console.log` in all modified source files.**

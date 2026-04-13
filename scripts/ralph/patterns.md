@@ -37,6 +37,14 @@ before starting work. The Retro agent maintains this file.
 - Use exact `toHaveCount(N)` only when the count is a semantic contract (e.g. "exactly 4 filter chips"). Use `toBeGreaterThanOrEqual(N)` for "at least N cards/items" catalog checks.
 - If you change default catalog visibility (new filter, price range, etc.) grep `web/e2e/` for `toHaveCount` before pushing.
 
+## Docker Healthcheck IPv4 Requirement (CRITICAL)
+<!-- retro: CI-Fix-PR37-38 -->
+- On Alpine Linux, `localhost` resolves to IPv6 (`::1`). Next.js binds HOSTNAME=0.0.0.0 (IPv4 only). Using `localhost` in a Docker healthcheck on Alpine causes ECONNREFUSED — the healthcheck never becomes `healthy`, blocking all E2E tests.
+- **Always use `127.0.0.1` (not `localhost`) in Docker healthcheck URLs** to force IPv4 resolution.
+- **Always use CMD array form** (not CMD-SHELL) for healthchecks in Alpine containers to avoid `sh` quoting ambiguity.
+- Canonical fix applied in PR #38. Root cause: PR #37 introduced the healthcheck correctly but used `localhost`; PR #38 replaced it with `127.0.0.1` and switched to CMD form.
+- Symptom: app container never reaches `healthy` status → E2E container never starts → all Playwright tests fail with connection errors.
+
 ## CI Health-Wait Pattern (CRITICAL)
 <!-- retro: CI-hotfix-2 -->
 - NEVER use `grep -q "healthy"` to check Docker health status — the substring "healthy" appears
