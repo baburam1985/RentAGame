@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** qa-failed
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips
 - **PR:** #8
