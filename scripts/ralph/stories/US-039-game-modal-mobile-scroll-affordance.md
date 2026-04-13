@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 39
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-039-modal-scroll-affordance
 - **PR:** 
 - **QA Attempts:** 0
 
