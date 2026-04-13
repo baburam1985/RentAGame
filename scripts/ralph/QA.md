@@ -228,18 +228,26 @@ Use `mcp__github__merge_pull_request`:
 - mergeMethod: `squash`
 - commitTitle: `merge: [US-NNN] Story Title - QA passed`
 
-Then clean up the local and remote feature branch:
+Then clean up the feature branch — **both local and remote**. Merged branches
+must be deleted to keep the repo clean and make it clear they are done:
 
 ```bash
 git checkout main
 git pull origin main
 git branch -d feat/US-NNN-short-title
+git push origin --delete feat/US-NNN-short-title
 ```
+
+**Why:** Stale feature branches cause confusion — developers and agents may
+mistake them for in-progress work. Once merged to main via squash, the branch
+has no unique commits and is safe to delete. The squash commit on main is the
+permanent record.
 
 Update prd.json:
 - `status`: `"qa-passed"`
 - `passes`: `true`
 - `qaFeedback`: `""`
+- `branch`: `"merged-to-main"` (overwrite the old branch name to signal deletion)
 
 ```bash
 git add scripts/ralph/prd.json

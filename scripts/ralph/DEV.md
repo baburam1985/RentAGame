@@ -88,6 +88,15 @@ git pull origin feat/US-NNN-short-title
 ```
 Then skip Step 5 entirely and go straight to Step 6.
 
+**Branch lifecycle:**
+- Feature branches are **temporary** — they exist only while the story is in progress.
+- Once QA merges the PR to main (squash merge), QA deletes the branch both
+  locally and on the remote. The prd.json `branch` field is set to `"merged-to-main"`.
+- If you see `branch: "merged-to-main"` in prd.json, that story is done — do NOT
+  try to check out the old branch name; it no longer exists.
+- Never reuse a deleted branch name. If a story needs rework after merge, create
+  a new branch (e.g. `feat/US-001-search-filter-v2`).
+
 ### Step 5 — TDD RED phase (new stories only — skip if qa-failed)
 
 Read the story's `acceptanceCriteria`. Write a test file that:
