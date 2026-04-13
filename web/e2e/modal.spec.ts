@@ -23,7 +23,7 @@ test.describe("Game detail modal", () => {
     const modal = page.getByRole("dialog");
     await expect(modal).toBeVisible();
     // Check that spec grid is visible (players + dimensions)
-    await expect(modal.getByText("Players")).toBeVisible();
+    await expect(modal.getByText("Players", { exact: true })).toBeVisible();
     await expect(modal.getByText("Dimensions")).toBeVisible();
     // Price
     await expect(modal.locator("text=/\\$\\d+/").first()).toBeVisible();
