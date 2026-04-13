@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import type { Game } from "@/data/games";
+import WishlistButton from "./WishlistButton";
 
 type Props = {
   game: Game | null;
@@ -50,11 +51,14 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
         {/* Content */}
         <div className="p-6 flex flex-col gap-4">
           {/* Category + Name */}
-          <div>
-            <span className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 mb-2">
-              {game.category}
-            </span>
-            <h2 className="text-2xl font-bold text-gray-900">{game.name}</h2>
+          <div className="flex items-start justify-between gap-2">
+            <div>
+              <span className="inline-block rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-600 mb-2">
+                {game.category}
+              </span>
+              <h2 className="text-2xl font-bold text-gray-900">{game.name}</h2>
+            </div>
+            <WishlistButton gameId={game.id} gameName={game.name} />
           </div>
 
           {/* Description */}

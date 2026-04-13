@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Game } from "@/data/games";
 import { useCart } from "@/context/CartContext";
+import WishlistButton from "./WishlistButton";
 
 type Props = {
   game: Game;
@@ -53,7 +54,9 @@ export default function GameCard({ game }: Props) {
           </Link>
           <p className="text-xs text-gray-400 mt-0.5">${game.pricePerDay} · day</p>
         </div>
-        <button
+        <div className="flex items-center gap-1">
+          <WishlistButton gameId={game.id} gameName={game.name} />
+          <button
           onClick={handleAddToCart}
           className={`shrink-0 flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
             added
@@ -69,6 +72,7 @@ export default function GameCard({ game }: Props) {
           </span>
           {added ? "Added!" : inCart ? "In Cart" : "Add to Cart"}
         </button>
+        </div>
       </div>
     </div>
   );
