@@ -8,9 +8,10 @@ import { useCart } from "@/context/CartContext";
 
 type Props = {
   game: Game;
+  onSelect?: (game: Game) => void;
 };
 
-export default function GameCard({ game }: Props) {
+export default function GameCard({ game, onSelect }: Props) {
   const { addItem, items } = useCart();
   const router = useRouter();
   const [added, setAdded] = useState(false);
@@ -45,6 +46,9 @@ export default function GameCard({ game }: Props) {
       {/* Content */}
       <div className="flex items-center justify-between px-4 py-3 gap-2">
         <div className="min-w-0">
+          <span className="text-xs font-medium text-blue-700 bg-blue-50 rounded-full px-2 py-0.5 mb-1 inline-block">
+            {game.category}
+          </span>
           <Link
             href={`/games/${game.id}`}
             className="text-sm font-semibold text-gray-900 truncate block hover:text-blue-800 transition-colors"
@@ -53,22 +57,33 @@ export default function GameCard({ game }: Props) {
           </Link>
           <p className="text-xs text-gray-400 mt-0.5">${game.pricePerDay} · day</p>
         </div>
-        <button
-          onClick={handleAddToCart}
-          className={`shrink-0 flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
-            added
-              ? "bg-green-500 text-white scale-95"
-              : inCart
-              ? "bg-blue-900 text-white"
-              : "text-blue-900 hover:brightness-95"
-          }`}
-          style={added || inCart ? undefined : { backgroundColor: "var(--color-accent)" }}
-        >
-          <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
-            {added ? "check" : inCart ? "check_circle" : "add_shopping_cart"}
-          </span>
-          {added ? "Added!" : inCart ? "In Cart" : "Add to Cart"}
-        </button>
+        <div className="flex items-center gap-1.5">
+          {onSelect && (
+            <button
+              onClick={() => onSelect(game)}
+              className="shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold text-gray-900 hover:brightness-95 transition-all shadow-sm"
+              style={{ backgroundColor: "var(--color-accent)" }}
+            >
+              Rent Now
+            </button>
+          )}
+          <button
+            onClick={handleAddToCart}
+            className={`shrink-0 flex items-center gap-1 rounded-full px-3 py-1.5 text-xs font-semibold transition-all ${
+              added
+                ? "bg-green-500 text-white scale-95"
+                : inCart
+                ? "bg-blue-900 text-white"
+                : "text-blue-900 hover:brightness-95"
+            }`}
+            style={added || inCart ? undefined : { backgroundColor: "var(--color-accent)" }}
+          >
+            <span className="material-symbols-outlined" style={{ fontSize: "14px" }}>
+              {added ? "check" : inCart ? "check_circle" : "add_shopping_cart"}
+            </span>
+            {added ? "Added!" : inCart ? "In Cart" : "Add to Cart"}
+          </button>
+        </div>
       </div>
     </div>
   );
