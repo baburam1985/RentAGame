@@ -1,7 +1,9 @@
 "use client";
 
+import { useState, useEffect, useDeferredValue } from "react";
 import { games } from "@/data/games";
 import GameCard from "./GameCard";
+import GameGridSkeleton from "./GameGridSkeleton";
 
 import type { Game } from "@/data/games";
 
@@ -18,6 +20,19 @@ export default function GameGrid({
   sortOrder = "featured",
   onSelect,
 }: Props) {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const raf = requestAnimationFrame(() => {
+      setMounted(true);
+    });
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  if (!mounted) {
+    return <GameGridSkeleton />;
+  }
+
   const query = searchQuery.toLowerCase();
 
   const filtered = games.filter((g) => {
@@ -38,7 +53,12 @@ export default function GameGrid({
   });
 
   return (
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+    <div
+      role="region"
+      aria-busy="false"
+      aria-label="Game catalog"
+      className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8"
+    >
       {sorted.length === 0 ? (
         <p className="text-gray-400 text-center py-16">
           No games found. Try a different search or category.
