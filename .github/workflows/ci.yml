@@ -43,19 +43,20 @@ jobs:
       - name: Start app
         run: docker compose up -d app
 
-      - name: Wait for app to respond
+      - name: Wait for app to be healthy
         run: |
-          echo "Waiting for app to respond on http://localhost:3000 ..."
+          echo "Waiting for app container to reach healthy status ..."
           for i in $(seq 1 60); do
-            HTTP_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost:3000 2>/dev/null || echo "000")
-            echo "Attempt $i/60 — HTTP status: $HTTP_CODE"
-            if [ "$HTTP_CODE" = "200" ] || [ "$HTTP_CODE" = "301" ] || [ "$HTTP_CODE" = "302" ]; then
-              echo "App is responding!"
+            STATUS=$(docker inspect --format='{{.State.Health.Status}}' \
+              $(docker compose ps -q app) 2>/dev/null || echo "unknown")
+            echo "Attempt $i/60 — health status: $STATUS"
+            if [ "$STATUS" = "healthy" ]; then
+              echo "App is healthy!"
               exit 0
             fi
             sleep 5
           done
-          echo "App failed to respond after 5 minutes"
+          echo "App did not reach healthy status after 5 minutes"
           docker compose logs app
           exit 1
 
