@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
   { label: "Games", href: "#catalog" },
@@ -12,6 +14,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { totalItems } = useCart();
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 10);
@@ -43,6 +46,22 @@ export default function Navbar() {
                 {link.label}
               </a>
             ))}
+            <Link
+              href="/cart"
+              aria-label={`Cart${totalItems > 0 ? `, ${totalItems} item${totalItems !== 1 ? "s" : ""}` : ", empty"}`}
+              className="relative p-2 text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <CartIcon />
+              {totalItems > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-gray-900"
+                  style={{ backgroundColor: "var(--color-accent)" }}
+                >
+                  {totalItems}
+                </span>
+              )}
+            </Link>
             <a
               href="#contact"
               className="rounded-full px-5 py-2 text-sm font-semibold text-gray-900 transition-colors hover:brightness-95"
@@ -52,17 +71,35 @@ export default function Navbar() {
             </a>
           </nav>
 
-          {/* Mobile hamburger */}
-          <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
-            onClick={() => setMenuOpen((prev) => !prev)}
-            aria-expanded={menuOpen}
-            aria-label="Toggle menu"
-          >
-            <span className="block w-5 h-0.5 bg-current mb-1" />
-            <span className="block w-5 h-0.5 bg-current mb-1" />
-            <span className="block w-5 h-0.5 bg-current" />
-          </button>
+          {/* Mobile: cart icon + hamburger */}
+          <div className="md:hidden flex items-center gap-2">
+            <Link
+              href="/cart"
+              aria-label={`Cart${totalItems > 0 ? `, ${totalItems} item${totalItems !== 1 ? "s" : ""}` : ", empty"}`}
+              className="relative p-2 text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              <CartIcon />
+              {totalItems > 0 && (
+                <span
+                  aria-hidden="true"
+                  className="absolute -top-0.5 -right-0.5 flex h-5 w-5 items-center justify-center rounded-full text-xs font-bold text-gray-900"
+                  style={{ backgroundColor: "var(--color-accent)" }}
+                >
+                  {totalItems}
+                </span>
+              )}
+            </Link>
+            <button
+              className="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+              onClick={() => setMenuOpen((prev) => !prev)}
+              aria-expanded={menuOpen}
+              aria-label="Toggle menu"
+            >
+              <span className="block w-5 h-0.5 bg-current mb-1" />
+              <span className="block w-5 h-0.5 bg-current mb-1" />
+              <span className="block w-5 h-0.5 bg-current" />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -90,5 +127,26 @@ export default function Navbar() {
         </div>
       )}
     </header>
+  );
+}
+
+function CartIcon() {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="22"
+      height="22"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <circle cx="9" cy="21" r="1" />
+      <circle cx="20" cy="21" r="1" />
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+    </svg>
   );
 }

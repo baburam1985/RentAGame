@@ -22,6 +22,7 @@ export default function GameDetailClient({ game }: Props) {
       gameName: game.name,
       pricePerDay: game.pricePerDay,
       days,
+      image: game.images[0],
     });
     setAdded(true);
     setTimeout(() => setAdded(false), 2000);
