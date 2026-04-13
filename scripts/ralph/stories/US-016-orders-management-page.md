@@ -2,10 +2,10 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 16
-- **Status:** dev-complete
+- **Status:** ci-pending
 - **Passes:** false
 - **Branch:** feat/US-016-orders-management-page
-- **PR:** (none)
+- **PR:** #22
 - **QA Attempts:** 0
 
 ## Description

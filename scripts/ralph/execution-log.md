@@ -78,3 +78,13 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 07:45 | US-017 | in-progress | dev | starting overview dashboard with KPI cards |
 | 2026-04-13 07:47 | US-017 | tests-written | dev | RED tests committed for admin overview dashboard |
 | 2026-04-13 07:52 | US-017 | dev-complete | dev | overview dashboard built; all 10 tests pass; KPI cards, CSS bar chart, recent orders table, 30s auto-refresh |
+| 2026-04-13 08:03 | US-005 | ci-pending | qa | PR #10 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-006 | ci-pending | qa | PR #11 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-007 | ci-pending | qa | PR #12 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-008 | ci-pending | qa | PR #13 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-009 | ci-pending | qa | PR #14 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-010 | ci-pending | qa | PR #15 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-011 | ci-pending | qa | PR #16 exists, CI running with E2E networkidle fixes |
+| 2026-04-13 08:03 | US-015 | ci-pending | qa | PR #21 created, waiting for CI |
+| 2026-04-13 08:03 | US-016 | ci-pending | qa | PR #22 created, waiting for CI |
+| 2026-04-13 08:03 | US-017 | ci-pending | qa | PR #23 created, waiting for CI |
