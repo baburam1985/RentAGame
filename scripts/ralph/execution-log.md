@@ -244,3 +244,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:21 | US-007 | qa-failed | qa | Check 2 (rental-form.spec.ts modified RED→GREEN) + Check 9 (existing E2E spec modified) — attempt 4 |
 | 2026-04-13 11:25 | US-002 | ci-pending | qa | PR #35 created for feat/US-002-price-slider-v2, waiting for CI |
 | 2026-04-13 11:26 | US-004 | ci-pending | qa | PR #36 created for feat/US-004-player-count-filter-chips-v2, local checks 1-6,9 all pass, waiting for CI |
+| 2026-04-13 11:29 | US-005 | qa-failed | qa | Check 0 env-failure: systemic E2E failure across all PRs — local checks 1-6,9 pass — attempt 4 |
