@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 7
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
-- **QA Attempts:** 0
+- **QA Attempts:** 2
 
 ## Description
 
