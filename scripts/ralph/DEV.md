@@ -90,12 +90,14 @@ Then skip Step 5 entirely and go straight to Step 6.
 
 **Branch lifecycle:**
 - Feature branches are **temporary** — they exist only while the story is in progress.
-- Once QA merges the PR to main (squash merge), QA deletes the branch both
-  locally and on the remote. The prd.json `branch` field is set to `"merged-to-main"`.
-- If you see `branch: "merged-to-main"` in prd.json, that story is done — do NOT
-  try to check out the old branch name; it no longer exists.
-- Never reuse a deleted branch name. If a story needs rework after merge, create
-  a new branch (e.g. `feat/US-001-search-filter-v2`).
+- Once QA merges the PR to main (squash merge), QA renames the branch with a
+  `-merged` suffix (e.g. `feat/US-001-search-filter` → `feat/US-001-search-filter-merged`).
+- Branches ending in `-merged` are **read-only history** — never check out,
+  push to, or modify a `-merged` branch.
+- If you see a `-merged` suffix in the prd.json `branch` field, that story is
+  done. Do NOT try to use that branch for new work.
+- If a story needs rework after merge, create a new branch with a `-v2` suffix
+  (e.g. `feat/US-001-search-filter-v2`).
 
 ### Step 5 — TDD RED phase (new stories only — skip if qa-failed)
 

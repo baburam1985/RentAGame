@@ -228,26 +228,34 @@ Use `mcp__github__merge_pull_request`:
 - mergeMethod: `squash`
 - commitTitle: `merge: [US-NNN] Story Title - QA passed`
 
-Then clean up the feature branch — **both local and remote**. Merged branches
-must be deleted to keep the repo clean and make it clear they are done:
+Then rename the feature branch to signal it has been merged. **Do NOT delete
+branches** — rename them with a `-merged` suffix so the history remains
+accessible but agents and developers know the branch is done:
 
 ```bash
 git checkout main
 git pull origin main
-git branch -d feat/US-NNN-short-title
+# Rename local branch
+git branch -m feat/US-NNN-short-title feat/US-NNN-short-title-merged
+# Rename remote branch (push new name, delete old name)
+git push origin feat/US-NNN-short-title-merged
 git push origin --delete feat/US-NNN-short-title
 ```
 
-**Why:** Stale feature branches cause confusion — developers and agents may
-mistake them for in-progress work. Once merged to main via squash, the branch
-has no unique commits and is safe to delete. The squash commit on main is the
-permanent record.
+**Why:** Renaming (not deleting) preserves commit history for future inspection
+while making it clear the branch is no longer active. Agents and developers
+should never check out or push to a `-merged` branch.
+
+**Convention:**
+- Active branch: `feat/US-001-search-filter`
+- After merge: `feat/US-001-search-filter-merged`
+- Any branch ending in `-merged` is read-only history — do not modify it.
 
 Update prd.json:
 - `status`: `"qa-passed"`
 - `passes`: `true`
 - `qaFeedback`: `""`
-- `branch`: `"merged-to-main"` (overwrite the old branch name to signal deletion)
+- `branch`: `"feat/US-NNN-short-title-merged"` (reflects the renamed branch)
 
 ```bash
 git add scripts/ralph/prd.json
