@@ -242,3 +242,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:15 | US-029 | dev-complete | dev | GREEN commit — badge?: string in Game type, 2 badges assigned, pill overlay in GameCard, 52 tests pass |
 | 2026-04-13 11:13 | US-030 | tests-written | qa | recovered orphaned branch feat/US-030-focus-rings-aria-errors |
 | 2026-04-13 11:22 | US-030 | dev-complete | dev | GREEN commit — aria-describedby on inputs, id on error messages, 52 tests pass |
+| 2026-04-13 11:24 | US-031 | in-progress | dev | starting new story — service area notice in hero section |

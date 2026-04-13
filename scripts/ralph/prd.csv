@@ -29,7 +29,7 @@ US-027,Discovery,Game modal 'What's included' section,27,dev-complete,false,feat
 US-028,Discovery,Skeleton loading state for game grid,28,dev-complete,false,feat/US-028-skeleton-loading,0,0
 US-029,Discovery,'Most Popular' and social proof badges on game cards,29,dev-complete,false,feat/US-029-social-proof-badges,0,0
 US-030,Discovery,Rental form inputs: visible focus rings and ARIA error associations,30,dev-complete,false,feat/US-030-focus-rings-aria-errors,0,0
-US-031,Discovery,Service area notice in hero section,31,pending,false,,0,0
+US-031,Discovery,Service area notice in hero section,31,in-progress,false,feat/US-031-service-area-notice,0,0
 US-032,Discovery,Setup space callout in game modal,32,pending,false,,0,0
 US-033,Discovery,Occasion-based quick-filter links on homepage,33,pending,false,,0,0
 US-034,Discovery,Testimonials with star ratings and location for authenticity,34,pending,false,,0,0
