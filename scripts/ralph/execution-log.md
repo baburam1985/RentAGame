@@ -309,3 +309,11 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 13:04 | US-011 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
 | 2026-04-13 13:04 | US-012 | qa-failed | qa | Check 2: catalog.spec.ts modified RED→GREEN + Check 9: E2E spec scope violation (attempt 1) |
 | 2026-04-13 13:07 | US-013 | qa-failed | qa | Check 5: 5 tests < 8 ACs + Check 0: env-failure (old CI config, no healthcheck) — attempt 2 |
+| 2026-04-13 14:00 | US-002 | dev-complete | ci | env-failure fixed: replaced wget healthcheck with node CMD healthcheck in docker-compose.yml |
+| 2026-04-13 14:00 | US-004 | dev-complete | ci | env-failure fixed: replaced wget healthcheck with node CMD healthcheck in docker-compose.yml |
+| 2026-04-13 14:00 | US-005 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
+| 2026-04-13 14:00 | US-007 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
+| 2026-04-13 14:00 | US-008 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
+| 2026-04-13 14:00 | US-009 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
+| 2026-04-13 14:00 | US-010 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
+| 2026-04-13 14:00 | US-013 | dev-complete | ci | env-failure fixed: added node CMD healthcheck + docker inspect exact-equality health-wait in docker-compose.yml and ci.yml |
