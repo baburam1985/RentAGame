@@ -334,3 +334,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 13:29 | US-011 | in-progress | dev | picking qa-failed story for fix |
 | 2026-04-13 13:33 | US-011 | in-progress | dev | fixing qa-failed — verifying branch state |
 | 2026-04-13 13:33 | US-011 | dev-complete | dev | branch verified clean: 8 tests, no test changes RED→GREEN, correct scope, 54 unit tests pass |
+| 2026-04-13 13:34 | US-012 | in-progress | dev | fixing qa-failed — rebuilding branch from scratch |

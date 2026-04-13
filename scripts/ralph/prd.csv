@@ -10,7 +10,7 @@ US-008,Checkout & Payments,Rental cart for multiple games,8,dev-complete,false,f
 US-009,Checkout & Payments,Availability calendar per game,9,dev-complete,false,feat/US-009-availability-calendar,1,14
 US-010,User Accounts,Sign up and log in pages,10,dev-complete,false,feat/US-010-signup-login-pages,1,15
 US-011,User Accounts,User profile page,11,dev-complete,false,feat/US-011-user-profile-page,1,16
-US-012,User Accounts,Order history on profile,12,qa-failed,false,feat/US-012-order-history-profile,1,17
+US-012,User Accounts,Order history on profile,12,in-progress,false,feat/US-012-order-history-profile,1,17
 US-013,User Accounts,Wishlist and saved games,13,dev-complete,false,feat/US-013-wishlist-saved-games,2,18
 US-014,Admin Dashboard,Admin layout and auth gate,14,dev-complete,false,feat/US-014-admin-layout,1,19
 US-015,Admin Dashboard,Inventory management page,15,dev-complete,false,feat/US-015-inventory-management-page,1,21
