@@ -100,3 +100,6 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 08:08 | US-012 | ci-pending | qa | E2E still in progress, will retry next run |
 | 2026-04-13 08:08 | US-013 | ci-pending | qa | E2E still in progress, will retry next run |
 | 2026-04-13 08:08 | US-014 | ci-pending | qa | E2E still in progress, will retry next run |
+| 2026-04-13 08:10 | US-007 | qa-failed | qa | env-failure: E2E fails on all PRs — systemic Docker issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:10 | US-009 | qa-failed | qa | env-failure: E2E fails on all PRs — systemic Docker issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:10 | US-013 | qa-failed | qa | env-failure: E2E fails on all PRs — systemic Docker issue, routed to CI-Fix (attempt 1) |
