@@ -297,3 +297,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:34 | US-036 | tests-written | dev | RED commit pushed — 5 tests, 3 failing (aria-labelledby, heading id, combined check) |
 | 2026-04-13 12:35 | US-036 | dev-complete | dev | GREEN commit — aria-labelledby on dialog, id="game-modal-title" on h2; 51 tests pass |
 | 2026-04-13 12:36 | US-037 | in-progress | dev | starting new story — rental form submit button loading and disabled state |
+| 2026-04-13 12:38 | US-037 | tests-written | dev | RED commit pushed — 5 tests, 2 failing (button not disabled, no Submitting label) |
