@@ -5,6 +5,7 @@ export type Game = {
   description: string;
   pricePerDay: number;
   image: string;
+  imageAlt?: string;
   images: string[];
   players: string;
   dimensions: string;
