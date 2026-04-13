@@ -2,9 +2,9 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 15
-- **Status:** pending
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-015-inventory-management-page
 - **PR:** (none)
 - **QA Attempts:** 0
 
@@ -21,4 +21,3 @@ At /admin/inventory, show all games in an editable table. Allow inline price edi
 - [ ] Hidden games are excluded from the public game grid
 - [ ] Edit button opens a side panel with all game fields editable
 - [ ] All changes are persisted to localStorage
-
