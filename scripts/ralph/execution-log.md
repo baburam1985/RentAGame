@@ -56,3 +56,4 @@ humans and the Retro agent a clear timeline of what happened and when.
   - patterns.md: Documented E2E catalog count fragility pattern with root cause and fix convention.
 - **Pipeline health:** improving — US-003 had 1 QA attempt (down from US-001's 3). Recurring E2E count breakage is now addressed at root (PR #9 + DEV.md check). Target remains ≤1 QA attempt per story.
 ---
+| 2026-04-13 07:19 | US-005 | dev-complete | dev | rebased on main after env-failure fix, all 54 tests pass |
