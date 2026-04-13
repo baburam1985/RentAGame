@@ -52,16 +52,19 @@ start, stop, or extend it.
 
 ## Agent Registry
 
-| Agent | Instructions | Schedule | Trigger Prompt |
-|-------|-------------|----------|----------------|
-| Research | `RESEARCH.md` | Every 6h — `0 */6 * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/RESEARCH.md` |
-| PM | `PM.md` | Every 10 min — `*/10 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/PM.md` |
-| Dev | `DEV.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/DEV.md` |
-| QA | `QA.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/QA.md` |
-| CI-Fix | `CI.md` | Every 5 min — `*/5 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/CI.md` |
-| Retro | `RETRO.md` | Every 30 min — `*/30 * * * *` | `Read and follow /home/user/RentAGame/scripts/ralph/RETRO.md` |
+Run agents **sequentially** in the order listed below. Each agent completes
+its task before the next one starts.
 
-All triggers: repo `baburam1985/RentAGame`, branch `main`.
+| # | Agent | Instructions | Trigger Prompt |
+|---|-------|-------------|----------------|
+| 1 | Research | `RESEARCH.md` | `Read and follow /home/user/RentAGame/scripts/ralph/RESEARCH.md` |
+| 2 | PM | `PM.md` | `Read and follow /home/user/RentAGame/scripts/ralph/PM.md` |
+| 3 | Dev | `DEV.md` | `Read and follow /home/user/RentAGame/scripts/ralph/DEV.md` |
+| 4 | QA | `QA.md` | `Read and follow /home/user/RentAGame/scripts/ralph/QA.md` |
+| 5 | CI-Fix | `CI.md` | `Read and follow /home/user/RentAGame/scripts/ralph/CI.md` |
+| 6 | Retro | `RETRO.md` | `Read and follow /home/user/RentAGame/scripts/ralph/RETRO.md` |
+
+Repo: `baburam1985/RentAGame`, branch `main`.
 
 ---
 
