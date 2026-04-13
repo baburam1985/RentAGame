@@ -154,6 +154,22 @@ Read the failure output carefully. Common failure patterns:
 - Usually a missing import, wrong export, or syntax error
 - Fix the file
 
+<!-- retro: US-001 -->
+**Vitest exits non-zero with zero test results (no assertion failures, no test files found):**
+This means the test Docker image cannot see test files — the global `.dockerignore`
+is excluding `*.test.ts`, `*.test.tsx`, or `vitest.config.ts` from the build context.
+Do NOT treat this as a code-failure and route back to Dev — it is an `env-failure`.
+Fix: verify that `Dockerfile.unit-tests.dockerignore` exists at the repo root and
+does NOT exclude test files or vitest config. This per-Dockerfile override
+(BuildKit feature) takes precedence over the global `.dockerignore` for the
+unit-tests image only, allowing test files into the container without exposing
+them to the production image.
+
+**E2E Playwright test fails immediately on every assertion (not a specific selector):**
+Check CI logs for `console.log` output — Playwright's `failOnConsoleError` (or
+equivalent setup) treats browser console errors and unexpected logs as failures.
+Remove all `console.log` calls from production source files and re-run.
+
 ### Step 6 — Verify fix locally before committing
 
 After fixing, re-run the failing check:

@@ -176,6 +176,16 @@ Both must be green before committing. If either fails, fix and re-run —
 do NOT push a GREEN commit that fails locally. This prevents CI failures
 from reaching GitHub and requiring QA round-trips.
 
+<!-- retro: US-001 -->
+**If Docker unit tests exit with "no test files found" or vitest exits non-zero
+with zero test results (not an assertion failure), do NOT assume a code bug.**
+This almost always means the test Docker image cannot see test files because the
+global `.dockerignore` excludes `*.test.ts`, `*.test.tsx`, or `vitest.config.ts`.
+Fix by ensuring `Dockerfile.unit-tests.dockerignore` exists and does NOT exclude
+test files or vitest config (per-Dockerfile `.dockerignore` is a BuildKit feature
+— `Dockerfile.foo.dockerignore` overrides the global `.dockerignore` for that
+specific Dockerfile). See `patterns.md` § Docker & CI for the authoritative rule.
+
 ### Step 6a — Scope check (before committing implementation)
 
 Before committing, verify you only modified files in scope for this story:
@@ -197,6 +207,18 @@ git checkout -- web/src/components/Navbar.tsx   # example — revert unscoped fi
 ```
 
 Only proceed to commit after you have verified every changed file is in scope.
+
+<!-- retro: US-001 -->
+**Pre-commit: scan for `console.log` in all modified source files.**
+`console.log` in any component — including protected ones like `RentalForm` —
+causes Playwright E2E tests to fail in CI (browser console errors are treated
+as test failures). Run this before every commit:
+
+```bash
+grep -r "console\.log" /home/user/RentAGame/web/src --include="*.ts" --include="*.tsx"
+```
+
+If any matches are found, remove them before committing. This is not optional.
 
 ---
 
