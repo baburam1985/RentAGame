@@ -6,20 +6,22 @@
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider
 - **PR:** #7
-- **QA Attempts:** 2
+- **QA Attempts:** 0
 
 ## Description
 
-Add a dual-handle price range slider (min/max) in the filter bar. Games outside the selected range are hidden. Default: full range. Show the selected range as '$X – $Y / day'. No external slider library — build with two range inputs overlaid.
+Add a dual-handle price range slider (min/max) in the filter bar. Games outside the selected range are hidden. Default: full range ($20–$55/day). Show the selected range as '$X – $Y / day'. No external slider library — build with two range inputs overlaid using CSS positioning.
+
+**Tier-1 PM rewrite (2026-04-13):** Criteria rewritten to be more explicit and directly testable after 2 QA failures. Branch has merge conflicts — Dev must rebase on current main before implementing.
 
 ## Acceptance Criteria
 
-- [ ] Dual-handle price slider renders in the filter bar
-- [ ] Min and max handles are independently draggable
-- [ ] Games outside selected price range are hidden
-- [ ] Selected range displays as '$X – $Y / day'
-- [ ] Default state shows full price range (min to max of all games)
-- [ ] Price filter works simultaneously with search and category filters
+- [ ] A PriceRangeSlider component renders below the CategoryFilter in the filter bar with a visible min and max handle
+- [ ] The price label reads '$X – $Y / day' in real time as either handle is moved (e.g. '$25 – $45 / day')
+- [ ] On initial render, minPrice defaults to 20 ($20 — lowest pricePerDay in games.ts) and maxPrice defaults to 55 ($55 — highest)
+- [ ] Games whose pricePerDay is less than minPrice OR greater than maxPrice are removed from the rendered grid
+- [ ] All games reappear when the slider is reset to full range ($20 – $55)
+- [ ] When search text, category filter, AND price filter are all active simultaneously, only games matching ALL three conditions appear
 
 ## QA Feedback
 

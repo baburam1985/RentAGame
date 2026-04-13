@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 3
-- **Status:** in-progress
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-003-sort-games
 - **PR:** #6

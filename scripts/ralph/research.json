@@ -6,7 +6,7 @@
       "id": "R-001",
       "type": "trust",
       "title": "Add 'No hidden fees' statement near rental form CTA",
-      "description": "Competitors (Triangle Lawn Games, Reventals) explicitly advertise 'no extra fees' as a selling point because customers are often burned by surprise charges. Adding a single line 'No hidden fees \u2014 total shown before you confirm' near the form submit button directly addresses the #1 reason customers abandon rental bookings.",
+      "description": "Competitors (Triangle Lawn Games, Reventals) explicitly advertise 'no extra fees' as a selling point because customers are often burned by surprise charges. Adding a single line 'No hidden fees — total shown before you confirm' near the form submit button directly addresses the #1 reason customers abandon rental bookings.",
       "source": "Competitor analysis: trianglelawngames.com, reventals.com; cart abandonment research: foursixty.com/blog",
       "confidence": "high",
       "effort": "small",
@@ -18,7 +18,7 @@
       "id": "R-002",
       "type": "conversion",
       "title": "Show live total price in rental form as dates are selected",
-      "description": "When a customer picks rental dates in the form, the total price (pricePerDay \u00d7 days) should update in real time and be prominently displayed before the submit button. Research shows dynamic price transparency is the single biggest checkout conversion lever for rental services.",
+      "description": "When a customer picks rental dates in the form, the total price (pricePerDay × days) should update in real time and be prominently displayed before the submit button. Research shows dynamic price transparency is the single biggest checkout conversion lever for rental services.",
       "source": "UX research: unicornplatform.com/blog/car-rental-booking-pages-in-2026; Baymard checkout optimization",
       "confidence": "high",
       "effort": "small",
@@ -30,7 +30,7 @@
       "id": "R-003",
       "type": "ux-bug",
       "title": "Category filter chips overflow on mobile without horizontal scroll",
-      "description": "On 375px screens the 6 category pills wrap onto two rows or overflow, breaking the layout. The filter bar needs a horizontally scrollable single row with touch scrolling on mobile \u2014 common pattern used by Airbnb, Etsy, and all major marketplace apps.",
+      "description": "On 375px screens the 6 category pills wrap onto two rows or overflow, breaking the layout. The filter bar needs a horizontally scrollable single row with touch scrolling on mobile — common pattern used by Airbnb, Etsy, and all major marketplace apps.",
       "source": "PRODUCT.md mobile-first principle; Smashing Magazine booking UX case study",
       "confidence": "high",
       "effort": "small",
@@ -42,7 +42,7 @@
       "id": "R-004",
       "type": "accessibility",
       "title": "All game images need descriptive alt text",
-      "description": "Screen reader users receive no information about game appearance since images have empty or generic alt attributes. Each game card image should have an alt like 'Giant Jenga \u2014 oversized wooden block tower stacked outdoors'. Required for WCAG 2.1 AA compliance.",
+      "description": "Screen reader users receive no information about game appearance since images have empty or generic alt attributes. Each game card image should have an alt like 'Giant Jenga — oversized wooden block tower stacked outdoors'. Required for WCAG 2.1 AA compliance.",
       "source": "WCAG 2.1 AA audit guidance: boia.org/blog/web-accessibility-for-travel-agencies; accessibe.com accessible rental properties",
       "confidence": "high",
       "effort": "small",
@@ -90,7 +90,7 @@
       "id": "R-008",
       "type": "conversion",
       "title": "Inline form field validation (not just on submit)",
-      "description": "Research from Baymard shows that forms validating only on submit cause 22% more errors and take longer to complete. Each field in the rental form should validate on blur \u2014 name required, email format, phone format \u2014 with inline green/red feedback so customers correct errors as they go.",
+      "description": "Research from Baymard shows that forms validating only on submit cause 22% more errors and take longer to complete. Each field in the rental form should validate on blur — name required, email format, phone format — with inline green/red feedback so customers correct errors as they go.",
       "source": "Baymard Institute checkout UX; alfdesigngroup.com/post/checkout-ux; quape.com/checkout-ux-cart-abandonment",
       "confidence": "high",
       "effort": "small",
@@ -102,7 +102,7 @@
       "id": "R-009",
       "type": "idea",
       "title": "Game modal 'What's included' section (setup, pickup/delivery, accessories)",
-      "description": "Customers frequently ask what exactly they're getting with a rental \u2014 is setup included? What accessories come with the game? Adding a short bullet list 'Included: boards, 8 bean bags, carrying bag \u2014 delivery available' inside the GameModal removes a key barrier to booking.",
+      "description": "Customers frequently ask what exactly they're getting with a rental — is setup included? What accessories come with the game? Adding a short bullet list 'Included: boards, 8 bean bags, carrying bag — delivery available' inside the GameModal removes a key barrier to booking.",
       "source": "Customer pain point: vendor communication frustration (reventals.com customer research); competitor UX patterns",
       "confidence": "high",
       "effort": "small",
@@ -114,7 +114,7 @@
       "id": "R-010",
       "type": "ux-bug",
       "title": "Rental form has no inline date validation (past dates accepted)",
-      "description": "The current rental form date inputs allow selecting past dates or end dates before start dates without any feedback. This creates confusing behaviour and erroneous orders. Date fields should validate: start \u2265 today, end \u2265 start + 1, with inline error messages.",
+      "description": "The current rental form date inputs allow selecting past dates or end dates before start dates without any feedback. This creates confusing behaviour and erroneous orders. Date fields should validate: start ≥ today, end ≥ start + 1, with inline error messages.",
       "source": "Equipment rental UX: eliftech.com/insights/how-to-improve-booking-experience; hotel booking engine problems: traveltekpro.com",
       "confidence": "high",
       "effort": "small",
@@ -143,14 +143,14 @@
       "confidence": "medium",
       "effort": "small",
       "status": "rejected",
-      "pmVerdict": "rejected: backlog is healthy at 25+ pending stories; this is a medium-confidence UX preference (some users expect backdrop-to-close) rather than a clear usability defect \u2014 defer to a future run when priority stories are cleared",
+      "pmVerdict": "rejected: backlog is healthy at 25+ pending stories; this is a medium-confidence UX preference (some users expect backdrop-to-close) rather than a clear usability defect — defer to a future run when priority stories are cleared",
       "convertedToStory": ""
     },
     {
       "id": "R-013",
       "type": "idea",
       "title": "Quick 'days' selector on game card showing instant total price",
-      "description": "Add a simple '1 day / 2 days / Weekend' toggle directly on each game card that instantly shows the total price without opening the modal. Car rental sites (Hertz, Enterprise) show this as their primary conversion mechanic \u2014 customers convert 30% faster when they see total price before clicking.",
+      "description": "Add a simple '1 day / 2 days / Weekend' toggle directly on each game card that instantly shows the total price without opening the modal. Car rental sites (Hertz, Enterprise) show this as their primary conversion mechanic — customers convert 30% faster when they see total price before clicking.",
       "source": "Car rental booking UX: unicornplatform.com/blog/car-rental-booking-pages-in-2026; e-commerce UX: digitalapplied.com/blog/ecommerce-checkout-optimization-2026",
       "confidence": "medium",
       "effort": "medium",
@@ -186,12 +186,12 @@
       "id": "R-016",
       "type": "idea",
       "title": "Floating 'Book Now' sticky CTA on mobile product browsing",
-      "description": "On mobile, the 'Rent Now' button inside GameModal is only visible after scrolling down. A sticky bottom bar with 'Rent [Game Name] \u2014 $X/day \u2014 Book Now' pinned to the bottom of the modal on mobile keeps the conversion action always visible without requiring scroll.",
+      "description": "On mobile, the 'Rent Now' button inside GameModal is only visible after scrolling down. A sticky bottom bar with 'Rent [Game Name] — $X/day — Book Now' pinned to the bottom of the modal on mobile keeps the conversion action always visible without requiring scroll.",
       "source": "Mobile conversion optimization: parallelhq.com/blog/ux-design-to-improve-website-conversions; mobile-first booking UX: goodshuffle.com/blog/event-rental-website-builder",
       "confidence": "medium",
       "effort": "small",
       "status": "rejected",
-      "pmVerdict": "rejected: run cap of 5 stories reached; medium confidence \u2014 sticky bars on modals can cause z-index conflicts and layout issues; defer to next PM run after existing modal stories (US-025, US-027) are dev-complete so the interaction can be assessed together",
+      "pmVerdict": "rejected: run cap of 5 stories reached; medium confidence — sticky bars on modals can cause z-index conflicts and layout issues; defer to next PM run after existing modal stories (US-025, US-027) are dev-complete so the interaction can be assessed together",
       "convertedToStory": ""
     },
     {
@@ -222,7 +222,7 @@
       "id": "R-019",
       "type": "conversion",
       "title": "Empty state in game grid should include a CTA to contact or browse all",
-      "description": "When filters return zero results, the 'No games found' message is a dead end \u2014 no link back to all games, no call to action. Per PRODUCT.md design principle 3 ('never a dead end'), the zero-results state needs a 'Browse all games' button and optionally a 'Request a custom game' link.",
+      "description": "When filters return zero results, the 'No games found' message is a dead end — no link back to all games, no call to action. Per PRODUCT.md design principle 3 ('never a dead end'), the zero-results state needs a 'Browse all games' button and optionally a 'Request a custom game' link.",
       "source": "PRODUCT.md design principle; e-commerce empty state UX best practices",
       "confidence": "high",
       "effort": "small",
@@ -234,7 +234,7 @@
       "id": "R-020",
       "type": "trust",
       "title": "Add game dimensions and weight to the modal so customers know what to expect",
-      "description": "Customers booking for events need to know if a game fits their space. The games.ts already has a dimensions field but GameModal doesn't visually highlight it. A prominent 'Setup space needed: 10ft \u00d7 10ft' callout with a simple icon would directly answer a key pre-booking question.",
+      "description": "Customers booking for events need to know if a game fits their space. The games.ts already has a dimensions field but GameModal doesn't visually highlight it. A prominent 'Setup space needed: 10ft × 10ft' callout with a simple icon would directly answer a key pre-booking question.",
       "source": "Customer pain point research: uncertainty about physical setup requirements; competitor analysis showing setup details prominently",
       "confidence": "high",
       "effort": "small",
@@ -269,7 +269,7 @@
     {
       "id": "R-023",
       "type": "ux-bug",
-      "title": "Game modal has no scroll affordance on mobile \u2014 rental form below the fold is missed",
+      "title": "Game modal has no scroll affordance on mobile — rental form below the fold is missed",
       "description": "On 375px screens the GameModal content (description, dimensions, included items, cancellation policy, rental form) is taller than the viewport, but there is no bottom-fade gradient or scroll cue to signal more content below. Customers may never see the rental form. A fade-out shadow at the modal's bottom edge is the standard pattern to signal scrollability.",
       "source": "Mobile UX pattern research: ralabs.org/blog/booking-ux-best-practices; peer-to-peer rental platform patterns (shipturtle.com/blog/peer-to-peer-rental-marketplace)",
       "confidence": "high",
@@ -294,7 +294,7 @@
       "id": "R-025",
       "type": "idea",
       "title": "FAQ accordion section on the homepage answering top pre-booking questions",
-      "description": "Rental service customers consistently ask the same questions before booking: what's included, how delivery works, what if it rains, what's the cancellation policy. A collapsible FAQ section (5\u20137 questions) near the bottom of the homepage reduces support contact and addresses booking objections at the browsing stage, increasing overall conversion.",
+      "description": "Rental service customers consistently ask the same questions before booking: what's included, how delivery works, what if it rains, what's the cancellation policy. A collapsible FAQ section (5–7 questions) near the bottom of the homepage reduces support contact and addresses booking objections at the browsing stage, increasing overall conversion.",
       "source": "Competitor pattern: bookextraordinary.com FAQ section; goodshuffle.com event rental UX; Baymard trust signal research showing policy transparency reduces abandonment (baymard.com/blog/cart-abandonment)",
       "confidence": "high",
       "effort": "small",
@@ -329,8 +329,8 @@
     {
       "id": "R-028",
       "type": "accessibility",
-      "title": "Game modal is missing focus trap \u2014 keyboard users Tab out into background page content",
-      "description": "When GameModal is open, pressing Tab eventually moves focus out of the modal into the hidden page behind it. WCAG 2.1 SC 2.1.2 (No Keyboard Trap in the positive sense \u2014 focus must stay inside the dialog) and the ARIA modal dialog pattern both require focus to cycle within the open modal. Focus must also return to the trigger element on close.",
+      "title": "Game modal is missing focus trap — keyboard users Tab out into background page content",
+      "description": "When GameModal is open, pressing Tab eventually moves focus out of the modal into the hidden page behind it. WCAG 2.1 SC 2.1.2 (No Keyboard Trap in the positive sense — focus must stay inside the dialog) and the ARIA modal dialog pattern both require focus to cycle within the open modal. Focus must also return to the trigger element on close.",
       "source": "WCAG 2.1 SC 2.1.2; ARIA dialog modal pattern: w3.org/WAI/ARIA/apg/patterns/dialog-modal; webability.io/compliance/wcag/wcag-2025-guide",
       "confidence": "high",
       "effort": "small",
@@ -341,7 +341,7 @@
     {
       "id": "R-029",
       "type": "accessibility",
-      "title": "Game modal missing role='dialog', aria-modal, and aria-labelledby \u2014 screen readers get no dialog context",
+      "title": "Game modal missing role='dialog', aria-modal, and aria-labelledby — screen readers get no dialog context",
       "description": "Without role='dialog', aria-modal='true', and aria-labelledby pointing to the modal title, NVDA and VoiceOver users hear no indication they've entered a modal context and cannot use dialog-specific navigation shortcuts. This is a straightforward ARIA annotation fix that unblocks screen reader users from using the entire booking flow.",
       "source": "ARIA dialog pattern: w3.org/WAI/ARIA/apg/patterns/dialog-modal; WCAG 2.1 AA; accessibility audit guidance: webability.io/compliance/wcag/wcag-2025-guide",
       "confidence": "high",
@@ -354,7 +354,7 @@
       "id": "R-030",
       "type": "conversion",
       "title": "Add a step progress indicator to the planned multi-step checkout wizard",
-      "description": "Baymard research shows checkout abandonment drops when customers can see remaining steps. The planned 3-step rental wizard (US-006) should include a visible progress bar or step label ('Step 2 of 3 \u2014 Contact Info') at the top so customers know they are nearly done. Removing completion uncertainty is one of the highest-ROI checkout optimisations.",
+      "description": "Baymard research shows checkout abandonment drops when customers can see remaining steps. The planned 3-step rental wizard (US-006) should include a visible progress bar or step label ('Step 2 of 3 — Contact Info') at the top so customers know they are nearly done. Removing completion uncertainty is one of the highest-ROI checkout optimisations.",
       "source": "Baymard Institute checkout UX: baymard.com/lists/cart-abandonment-rate; booking UX best practices 2025: ralabs.org/blog/booking-ux-best-practices; ulansoftware.com/blog/ux-tips-improve-travel-booking-conversion",
       "confidence": "high",
       "effort": "small",
@@ -366,7 +366,7 @@
       "id": "R-031",
       "type": "idea",
       "title": "Weather disclaimer on outdoor game cards nudging customers to ask about rain contingency",
-      "description": "Event planners booking outdoor games (Cornhole, Giant Jenga, Bocce Ball) frequently worry about rain contingency \u2014 this concern surfaced consistently in wedding planning communities. A small informational tag 'Outdoor game \u2014 ask about indoor setup options' on applicable game cards addresses this objection at the decision stage and reduces last-minute cancellations.",
+      "description": "Event planners booking outdoor games (Cornhole, Giant Jenga, Bocce Ball) frequently worry about rain contingency — this concern surfaced consistently in wedding planning communities. A small informational tag 'Outdoor game — ask about indoor setup options' on applicable game cards addresses this objection at the decision stage and reduces last-minute cancellations.",
       "source": "WeddingWire community discussions: weddingwire.com/wedding-forums/lawn-games-yay-or-nay; The Knot reddit wedding planning: theknot.com/content/reddit-wedding-planning; competitor analysis",
       "confidence": "medium",
       "effort": "small",
@@ -389,25 +389,25 @@
     {
       "id": "R-033",
       "type": "ux-bug",
-      "title": "Rental form submit button has no loading/disabled state \u2014 double-submits create duplicate orders",
+      "title": "Rental form submit button has no loading/disabled state — double-submits create duplicate orders",
       "description": "After tapping 'Submit' on the rental form, if the button has no disabled or loading state, customers who tap it twice (or on a slow device) will create duplicate order entries in localStorage. Adding a spinner and disabling the button on first click prevents duplicate orders and gives clear feedback that the request is being processed.",
       "source": "Form UX best practices: Baymard Institute; checkout UX: alfdesigngroup.com/post/checkout-ux; booking flow UX: paylode.com/use-cases/booking-flows",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-037"
     },
     {
       "id": "R-034",
       "type": "idea",
       "title": "Recently viewed games horizontal strip persisted in localStorage",
-      "description": "Customers who browse multiple games and later want to return to one they liked must re-scroll the entire grid. A 'Recently Viewed' horizontal strip (max 4 games) below the main grid, persisted in localStorage, reduces back-and-forth navigation. Zero backend required \u2014 add/retrieve a rg_recent_views key following existing localStorage key conventions.",
+      "description": "Customers who browse multiple games and later want to return to one they liked must re-scroll the entire grid. A 'Recently Viewed' horizontal strip (max 4 games) below the main grid, persisted in localStorage, reduces back-and-forth navigation. Zero backend required — add/retrieve a rg_recent_views key following existing localStorage key conventions.",
       "source": "E-commerce UX: Airbnb, Viator recently-viewed patterns; peer-to-peer rental platform UX: shipturtle.com/blog/peer-to-peer-rental-marketplace-platform",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; backlog has 52 pending stories; recently-viewed is a nice-to-have deferred until wishlist (US-013) is qa-passed and user behaviour data supports it",
       "convertedToStory": ""
     },
     {
@@ -418,27 +418,27 @@
       "source": "WCAG 2.1 SC 2.4.1 Bypass Blocks; web accessibility guide 2026: webability.io/blog/wcag-ada-2025-making-websites-accessible-for-all; inclusiveweb.co/understanding-wcag",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-038"
     },
     {
       "id": "R-036",
       "type": "idea",
       "title": "Admin settings page for live-editing service area text and cancellation policy copy",
-      "description": "The service area notice (US-031) and cancellation policy (US-025) are hardcoded constants. A simple /admin/settings page with two editable text fields \u2014 persisted to localStorage using rg_settings \u2014 lets the business owner update key customer-facing copy without a code deploy. This is the highest-value admin self-service capability after inventory management.",
+      "description": "The service area notice (US-031) and cancellation policy (US-025) are hardcoded constants. A simple /admin/settings page with two editable text fields — persisted to localStorage using rg_settings — lets the business owner update key customer-facing copy without a code deploy. This is the highest-value admin self-service capability after inventory management.",
       "source": "Event rental software trends 2026: gomomentus.com/blog/revolutionizing-event-and-venue-management-event-trends; party rental platform admin self-service patterns",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; admin settings page should follow the admin epic (US-014–US-017) being dev-complete; defer to next PM run after admin stories are qa-passed",
       "convertedToStory": ""
     },
     {
       "id": "R-037",
       "type": "conversion",
       "title": "Add 'Instant Confirmation' trust badge near the rental form submit button",
-      "description": "A key anxiety for first-time rental customers is 'will someone actually confirm this or does it sit in a queue for days?' Adding an 'Instant Confirmation' badge or a one-line note ('Your booking is confirmed immediately') near the form CTA directly addresses this fear. Airbnb and Viator use this pattern prominently \u2014 it removes one of the last reasons to hesitate before submitting.",
+      "description": "A key anxiety for first-time rental customers is 'will someone actually confirm this or does it sit in a queue for days?' Adding an 'Instant Confirmation' badge or a one-line note ('Your booking is confirmed immediately') near the form CTA directly addresses this fear. Airbnb and Viator use this pattern prominently — it removes one of the last reasons to hesitate before submitting.",
       "source": "Airbnb Experiences and Viator 'Instant Confirmation' trust badge patterns; rental trust signals: accessibe.com/blog/knowledgebase/accessible-short-term-rental-property; conversion optimisation: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "high",
       "effort": "small",
@@ -450,12 +450,12 @@
       "id": "R-038",
       "type": "idea",
       "title": "Add 'Backyard BBQ' and 'Beach Day' as occasion filter options to capture micro-event demand",
-      "description": "2025\u20132026 party rental trend data shows strong growth in informal micro-events and outdoor gatherings beyond weddings and corporate events. Adding 'Backyard BBQ' and 'Beach Day' occasion tags (extending the occasions system from US-033) captures this growing customer segment and differentiates from competitors still primarily targeting formal events.",
+      "description": "2025–2026 party rental trend data shows strong growth in informal micro-events and outdoor gatherings beyond weddings and corporate events. Adding 'Backyard BBQ' and 'Beach Day' occasion tags (extending the occasions system from US-033) captures this growing customer segment and differentiates from competitors still primarily targeting formal events.",
       "source": "Party rental trends 2025: tentandtable.net/blog/post/trends-in-party-rentals; event rental trends: accio.com/business/event-rental-trends; event industry 2026: whova.com/blog/top-event-industry-trends-2025-incorporate-events",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: defer until US-033 (occasion quick-filters) is qa-passed; adding more occasions before the core filter is built risks scope creep and implementation rework",
       "convertedToStory": ""
     },
     {
@@ -466,56 +466,56 @@
       "source": "Mobile UX patterns: medium.com/@myousufraza/car-rental-mobile-app-ui-ux-design-in-2025; mobile booking conversion: ulansoftware.com/blog/ux-tips-improve-travel-booking-conversion",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; backlog has 52 pending stories; back-to-top is a minor UX convenience with lower priority than existing accessibility and conversion stories",
       "convertedToStory": ""
     },
     {
       "id": "R-040",
       "type": "idea",
-      "title": "Game comparison panel: select 2\u20133 games to compare price, players, and dimensions side-by-side",
-      "description": "Customers booking for parties often compare 2\u20133 similar games (e.g. Giant Jenga vs Giant Connect Four) before deciding. A lightweight comparison panel \u2014 triggered by a 'Compare' checkbox on game cards, showing a side-by-side table of price, players, dimensions, and included items \u2014 helps indecisive customers commit without bouncing to a competitor.",
+      "title": "Game comparison panel: select 2–3 games to compare price, players, and dimensions side-by-side",
+      "description": "Customers booking for parties often compare 2–3 similar games (e.g. Giant Jenga vs Giant Connect Four) before deciding. A lightweight comparison panel — triggered by a 'Compare' checkbox on game cards, showing a side-by-side table of price, players, dimensions, and included items — helps indecisive customers commit without bouncing to a competitor.",
       "source": "E-commerce comparison UX patterns; rental marketplace UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; peer-to-peer rental: shipturtle.com/blog/peer-to-peer-rental-marketplace",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; comparison panel is a complex feature; defer until core catalog filters (US-002–US-005) are all qa-passed",
       "convertedToStory": ""
     },
     {
       "id": "R-041",
       "type": "ux-bug",
-      "title": "No toast or success feedback after wishlist toggle \u2014 users don't know if the action worked",
+      "title": "No toast or success feedback after wishlist toggle — users don't know if the action worked",
       "description": "When the planned wishlist feature (US-013) is built, toggling a heart on a game card must provide immediate feedback. Without a toast notification ('Added to wishlist' / 'Removed from wishlist'), especially on mobile where heart icons are small, users tap the button repeatedly unsure if the action registered. A 2-second toast is the industry standard for silent-state toggles.",
       "source": "Mobile UX feedback patterns: Airbnb, Viator wishlist interactions; e-commerce micro-interaction best practices: mobiloud.com/blog/trust-signals-cart-abandonment",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: wishlist toast should be incorporated into US-013 (Wishlist and saved games) acceptance criteria rather than a separate story; PM will update US-013 criteria when that story is picked up",
       "convertedToStory": ""
     },
     {
       "id": "R-042",
       "type": "idea",
       "title": "Game detail page at /games/[id] as an alternative to modal-only flow",
-      "description": "The current GameModal approach means games have no shareable URL \u2014 customers can't send a friend a link to a specific game or bookmark it. Creating a /games/[id] static page for each game (using Next.js dynamic routes) enables sharing, improves SEO for the game names, and gives an alternative non-modal flow on mobile where modals can be finicky.",
+      "description": "The current GameModal approach means games have no shareable URL — customers can't send a friend a link to a specific game or bookmark it. Creating a /games/[id] static page for each game (using Next.js dynamic routes) enables sharing, improves SEO for the game names, and gives an alternative non-modal flow on mobile where modals can be finicky.",
       "source": "Rental platform UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; peer-to-peer rental SEO patterns (shipturtle.com); vacation rental booking engines: martalebre.com/blog/best-vacation-rental-booking-engines",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: already implemented — /games/[id] detail page exists in PRODUCT.md feature inventory (web/src/app/games/[id]/page.tsx) and GameDetailClient.tsx; no story needed",
       "convertedToStory": ""
     },
     {
       "id": "R-043",
       "type": "trust",
       "title": "Add a compact 'How it works' step-summary above the game grid to orient first-time visitors",
-      "description": "The existing HowItWorks section is at the bottom of the page \u2014 far below where most browsing decisions are made. Many first-time visitors start interacting with game cards without understanding the rental process. A compact 3-icon strip ('Browse \u2192 Book Online \u2192 Delivered to You') above the game grid orients customers before they engage with the catalog and sets positive expectations.",
+      "description": "The existing HowItWorks section is at the bottom of the page — far below where most browsing decisions are made. Many first-time visitors start interacting with game cards without understanding the rental process. A compact 3-icon strip ('Browse → Book Online → Delivered to You') above the game grid orients customers before they engage with the catalog and sets positive expectations.",
       "source": "Competitor UX: trianglelawngames.com and wonderflygames.com both show process steps near the top; conversion UX: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; a compact How It Works strip above the grid risks visual clutter given the existing HowItWorks section; defer until US-028 (skeleton loading) and US-033 (occasions) are qa-passed to assess page layout",
       "convertedToStory": ""
     },
     {
@@ -526,9 +526,9 @@
       "source": "WCAG 2.1 SC 2.1.1 Keyboard; W3C accessible carousel/gallery pattern: w3.org/WAI/ARIA/apg/patterns/carousel; webability.io/compliance/wcag/wcag-2025-guide",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-047"
     },
     {
       "id": "R-045",
@@ -538,9 +538,9 @@
       "source": "Baymard Institute form UX research; baymard.com/lists/cart-abandonment-rate; inline form validation patterns: alfdesigngroup.com/post/checkout-ux",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-048"
     },
     {
       "id": "R-046",
@@ -550,9 +550,9 @@
       "source": "Competitor analysis: Triangle Lawn Games explicitly advertises free cancellation 'up to 24h prior'; Wonderfly Games booking policy; event rental customer research: 901memphiseventrentals.com",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-049"
     },
     {
       "id": "R-047",
@@ -562,9 +562,9 @@
       "source": "Baymard Institute checkout abandonment research: baymard.com/lists/cart-abandonment-rate; statista.com cart abandonment reasons 2025 US; rental UX: greenmoov.app/articles/en/how-to-improve-booking-conversion-rates",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-045"
     },
     {
       "id": "R-048",
@@ -574,9 +574,9 @@
       "source": "Standard rental/booking platform pattern: Airbnb, Viator, VRBO all show booking reference IDs; post-booking trust research: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-046"
     },
     {
       "id": "R-049",
@@ -598,9 +598,9 @@
       "source": "Mobile UX patterns: Airbnb gallery swipe gestures; Viator experience photo galleries; peer-to-peer rental app UX 2025: shipturtle.com/blog/peer-to-peer-rental-marketplace; mobile booking UX: ralabs.org/blog/booking-ux-best-practices",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-047"
     },
     {
       "id": "R-051",
@@ -634,9 +634,9 @@
       "source": "WCAG 2.1 SC 4.1.3 Status Messages; shopping cart live region patterns; screen reader UX: simplyscheduleappointments.com/accessibility-booking-plugin",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-052"
     },
     {
       "id": "R-054",
@@ -706,9 +706,9 @@
       "source": "Competitor: upstatejamboree.com white glove setup service; event planner feedback research; booking UX: ralabs.org/blog/booking-ux-best-practices",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-051"
     },
     {
       "id": "R-060",
@@ -754,9 +754,9 @@
       "source": "Small business rental management: gomomentus.com; event rental software trends 2026: pro.goodshuffle.com/blog/event-rental-software-trends-2026-roadmap; admin self-service patterns",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-050"
     }
   ]
 }
