@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { notFound, useParams } from "next/navigation";
 import Link from "next/link";
 import { games } from "@/data/games";
@@ -30,11 +31,13 @@ export default function GameDetailPage() {
           <div className="flex flex-col gap-3">
             {/* Main image */}
             <div className="relative w-full aspect-[4/3] rounded-3xl overflow-hidden bg-gray-100 shadow-md">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
+              <Image
                 src={game.images[activeImage]}
                 alt={`${game.name} — view ${activeImage + 1}`}
-                className="w-full h-full object-cover transition-opacity duration-300"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover transition-opacity duration-300"
+                priority={activeImage === 0}
               />
               {/* Category badge */}
               <span className="absolute top-4 left-4 bg-yellow-400 text-blue-900 text-xs font-black px-3 py-1 rounded-full uppercase tracking-wide">
@@ -55,11 +58,12 @@ export default function GameDetailPage() {
                   }`}
                   aria-label={`View image ${i + 1}`}
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
+                  <Image
                     src={src}
                     alt={`${game.name} thumbnail ${i + 1}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="25vw"
+                    className="object-cover"
                   />
                 </button>
               ))}

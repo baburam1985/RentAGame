@@ -37,7 +37,6 @@ describe("GameCard next/image migration", () => {
     // priority prop must exist on GameCard Props — TypeScript will error if missing
     render(
       <CartProvider>
-        {/* @ts-expect-error priority not yet in Props — this test is the RED indicator */}
         <GameCard game={mockGame} priority={true} />
       </CartProvider>
     );

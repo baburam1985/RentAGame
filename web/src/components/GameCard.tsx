@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import type { Game } from "@/data/games";
@@ -9,9 +10,10 @@ import { useCart } from "@/context/CartContext";
 type Props = {
   game: Game;
   onSelect?: (game: Game) => void;
+  priority?: boolean;
 };
 
-export default function GameCard({ game, onSelect }: Props) {
+export default function GameCard({ game, onSelect, priority = false }: Props) {
   const { addItem, items } = useCart();
   const router = useRouter();
   const [added, setAdded] = useState(false);
@@ -35,11 +37,13 @@ export default function GameCard({ game, onSelect }: Props) {
         href={`/games/${game.id}`}
         className="relative w-full aspect-[4/3] overflow-hidden bg-gray-100 block"
       >
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={game.image}
-          alt={game.name}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          alt={(game as { imageAlt?: string }).imageAlt ?? game.name}
+          fill
+          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-300"
+          priority={priority}
         />
       </Link>
 
