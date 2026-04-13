@@ -52,12 +52,25 @@ starving. Top up by loading the next unloaded epic.
 
 ### Step 4 — Check for qa-failed stories needing rewrite
 
-For any story where `qaAttempts >= 2` AND `status == "qa-failed"`:
-- The acceptance criteria may be unclear
-- Rewrite the story's `description` and `acceptanceCriteria` to be more
-  explicit and actionable
-- Reset `qaAttempts` to 0 so Dev gets a fresh attempt
-- Log: "Rewrote acceptance criteria for [ID]: [reason]"
+Apply progressive simplification based on `qaAttempts`:
+
+**Tier 1 — `qaAttempts >= 2` (standard rewrite):**
+- The acceptance criteria may be unclear or ambiguous
+- Rewrite `description` and `acceptanceCriteria` to be more explicit and actionable
+- Keep the same feature scope — just make the criteria testable and unambiguous
+- Reset `qaAttempts` to 0
+- Log: "Tier-1 rewrite for [ID]: [reason]"
+
+**Tier 2 — `qaAttempts >= 4` (radical simplification):**
+- The feature may be too complex or the approach is fundamentally wrong
+- Strip the story down to its absolute MVP — reduce acceptance criteria to 1–2
+  simple, trivially verifiable behaviours
+- Remove any criterion that requires complex state, edge cases, or integration
+- The goal is a passing story, not a perfect one — simpler is better than blocked
+- Reset `qaAttempts` to 0
+- Log: "Tier-2 radical simplification for [ID]: stripped to MVP — [what was removed]"
+
+No story is ever marked `blocked`. The pipeline always moves forward.
 
 ### Step 5 — Top up backlog if needed
 
