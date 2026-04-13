@@ -1,35 +1,55 @@
-const testimonials = [
+type Testimonial = {
+  quote: string;
+  name: string;
+  event: string;
+  rating: number;
+  location: string;
+};
+
+const testimonials: Testimonial[] = [
   {
     quote:
       "The Giant Jenga was an absolute hit at our wedding reception. Everyone from grandparents to kids was playing. Delivery was on time and setup was effortless.",
     name: "Sarah & Mike T.",
     event: "Wedding Reception",
+    rating: 5,
+    location: "Austin, TX",
   },
   {
     quote:
       "We rented the Cornhole and Bocce Ball sets for our company picnic. Super easy process — they dropped everything off in the morning and picked it up that evening.",
     name: "James R.",
     event: "Corporate Picnic",
+    rating: 5,
+    location: "Denver, CO",
   },
   {
     quote:
       "My son's birthday party was a blast thanks to RentAGame. The Spikeball and 4-in-a-Row kept the teenagers entertained for hours. Will definitely book again!",
     name: "Lisa M.",
     event: "Birthday Party",
+    rating: 5,
+    location: "Seattle, WA",
   },
 ];
 
-function Stars() {
+function StarRating({ rating }: { rating: number }) {
   return (
-    <div className="flex gap-0.5 mb-3">
+    <div
+      className="flex gap-0.5 mb-3"
+      aria-label={`${rating} out of 5 stars`}
+    >
       {Array.from({ length: 5 }).map((_, i) => (
         <svg
           key={i}
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 20 20"
-          fill="currentColor"
+          fill={i < rating ? "currentColor" : "none"}
+          stroke="currentColor"
+          strokeWidth={i < rating ? "0" : "1"}
           className="w-4 h-4"
           style={{ color: "var(--color-accent)" }}
+          aria-label="star"
         >
           <path
             fillRule="evenodd"
@@ -61,12 +81,18 @@ export default function Testimonials() {
               key={t.name}
               className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm flex flex-col"
             >
-              <Stars />
+              <StarRating rating={t.rating} />
               <p className="text-gray-600 leading-relaxed text-sm flex-1">
                 &ldquo;{t.quote}&rdquo;
               </p>
               <div className="mt-5 pt-4 border-t border-gray-100">
                 <p className="font-semibold text-gray-900 text-sm">{t.name}</p>
+                <p
+                  data-testid="testimonial-location"
+                  className="text-xs text-gray-500 mt-0.5"
+                >
+                  {t.location}
+                </p>
                 <p className="text-xs text-gray-400">{t.event}</p>
               </div>
             </div>
