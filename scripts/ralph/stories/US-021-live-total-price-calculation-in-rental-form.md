@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 21
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** (not started)
 - **PR:** (none)
