@@ -2,9 +2,9 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 23
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-023-no-hidden-fees-trust-statement
 - **PR:** (none)
 - **QA Attempts:** 0
 
