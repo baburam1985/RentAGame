@@ -7,6 +7,7 @@ import SearchBar from "@/components/SearchBar";
 import SortDropdown from "@/components/SortDropdown";
 import GameGrid from "@/components/GameGrid";
 import GameModal from "@/components/GameModal";
+import ActiveFilterBar from "@/components/ActiveFilterBar";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import RentalForm from "@/components/RentalForm";
@@ -43,6 +44,19 @@ export default function Home() {
           />
           <SortDropdown value={sortOrder} onChange={setSortOrder} />
         </div>
+        <ActiveFilterBar
+          activeCategory={activeCategory}
+          onCategoryChange={setActiveCategory}
+          searchQuery={searchQuery}
+          onSearchChange={setSearchQuery}
+          sortOrder={sortOrder}
+          onSortChange={setSortOrder}
+          onClearAll={() => {
+            setActiveCategory("All");
+            setSearchQuery("");
+            setSortOrder("featured");
+          }}
+        />
         <GameGrid
           activeCategory={activeCategory}
           searchQuery={searchQuery}
