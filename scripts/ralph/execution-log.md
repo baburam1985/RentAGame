@@ -233,6 +233,7 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:00 | US-028 | in-progress | dev | starting new story — skeleton loading state for game grid |
 | 2026-04-13 11:03 | US-028 | tests-written | dev | RED commit pushed — 6 failing tests for skeleton loading |
 | 2026-04-13 11:07 | US-028 | dev-complete | dev | GREEN commit — GameGridSkeleton component + requestAnimationFrame hydration, 52 tests pass |
+| 2026-04-13 11:10 | US-029 | in-progress | dev | starting new story — Most Popular social proof badges on game cards |
 | 2026-04-13 10:47 | US-027 | in-progress | dev | starting new story |
 | 2026-04-13 10:49 | US-027 | tests-written | dev | RED phase — 6 failing tests for what's included section |
 | 2026-04-13 10:57 | US-027 | dev-complete | dev | GREEN commit pushed — required included:string[] on Game type, all 12 games populated, GameModal renders section, 52 tests pass |
