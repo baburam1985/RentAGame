@@ -9,6 +9,8 @@ type Props = {
   activeCategory: string;
   searchQuery?: string;
   sortOrder?: string;
+  minPrice?: number;
+  maxPrice?: number;
   onSelect?: (game: Game) => void;
 };
 
@@ -16,6 +18,8 @@ export default function GameGrid({
   activeCategory,
   searchQuery = "",
   sortOrder = "featured",
+  minPrice,
+  maxPrice,
   onSelect,
 }: Props) {
   const query = searchQuery.toLowerCase();
@@ -27,7 +31,9 @@ export default function GameGrid({
       query === "" ||
       g.name.toLowerCase().includes(query) ||
       g.description.toLowerCase().includes(query);
-    return matchesCategory && matchesSearch;
+    const matchesMin = minPrice === undefined || g.pricePerDay >= minPrice;
+    const matchesMax = maxPrice === undefined || g.pricePerDay <= maxPrice;
+    return matchesCategory && matchesSearch && matchesMin && matchesMax;
   });
 
   const sorted = [...filtered].sort((a, b) => {
