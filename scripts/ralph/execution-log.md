@@ -143,3 +143,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 09:21 | US-011 | dev-complete | dev | rebuilt branch: 8 tests (AC-7/AC-8 separate), proper RED/GREEN, no scope violations, 54 tests pass |
 | 2026-04-13 09:21 | US-012 | in-progress | dev | fixing qa-failed: missing test AC#6 status confirmed, scope violations |
 | 2026-04-13 09:31 | US-012 | dev-complete | dev | all tests pass (52), fixed QA issues: removed scope violations, added missing AC#6 test, created /profile page |
+| 2026-04-13 09:31 | US-014 | in-progress | dev | picking up qa-failed story |
