@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 20
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-020-mobile-scroll-category-filter
 - **PR:** (none)
@@ -14,10 +14,24 @@ On 375px mobile screens the 6 category pills overflow their container. Implement
 
 ## Acceptance Criteria
 
-- [ ] All category pills render in a single horizontal row on all screen sizes
-- [ ] On 375px screens the pill row is horizontally scrollable with touch swipe
-- [ ] Scrollbar is hidden (no visible scrollbar on desktop or mobile)
-- [ ] Category filter works correctly after scrolling
-- [ ] No pills wrap to a second row at any viewport width ≥ 320px
-- [ ] A fade gradient on the right edge indicates more pills are scrollable
+- [x] All category pills render in a single horizontal row on all screen sizes
+- [x] On 375px screens the pill row is horizontally scrollable with touch swipe
+- [x] Scrollbar is hidden (no visible scrollbar on desktop or mobile)
+- [x] Category filter works correctly after scrolling
+- [x] No pills wrap to a second row at any viewport width ≥ 320px
+- [x] A fade gradient on the right edge indicates more pills are scrollable
 
+## Dev Notes
+
+Updated `CategoryFilter.tsx` structure:
+
+- Outer `<div>` now has `relative w-full` for positioning the gradient overlay
+- Scroll wrapper `<div>` has `overflow-x-auto scrollbar-hide` for touch scrolling with hidden scrollbar
+- Pills remain in flex row with `whitespace-nowrap` and `min-w-max` to prevent wrapping
+- Added `data-fade-gradient` div: absolutely positioned right-side fade overlay (`from-[#fffde1]` matching body bg, `pointer-events-none`, `aria-hidden`)
+
+All 51 tests pass (0 failures).
+
+## Files Changed
+
+- `web/src/components/CategoryFilter.tsx`
