@@ -146,3 +146,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 09:31 | US-014 | in-progress | dev | picking up qa-failed story |
 | 2026-04-13 09:34 | US-014 | dev-complete | dev | all tests pass (6 AdminLayout tests), fixed QA: reverted scope violations, added AC#4+AC#6 tests |
 | 2026-04-13 09:35 | US-016 | in-progress | dev | picking up qa-failed story |
+| 2026-04-13 09:38 | US-016 | dev-complete | dev | all 9 tests pass, fixed: reverted GameCard.tsx, fixed combobox/Pending ambiguity in tests |
