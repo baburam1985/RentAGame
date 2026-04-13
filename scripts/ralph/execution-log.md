@@ -148,3 +148,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 09:35 | US-016 | in-progress | dev | picking up qa-failed story |
 | 2026-04-13 09:38 | US-016 | dev-complete | dev | all 9 tests pass, fixed: reverted GameCard.tsx, fixed combobox/Pending ambiguity in tests |
 | 2026-04-13 09:38 | US-017 | in-progress | dev | picking up qa-failed story |
+| 2026-04-13 09:41 | US-017 | dev-complete | dev | all 10 tests pass, fixed: reverted GameCard.tsx, changed toBeDefined to toBeInTheDocument |

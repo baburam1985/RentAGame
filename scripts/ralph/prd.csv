@@ -15,7 +15,7 @@ US-013,User Accounts,"Wishlist and saved games",13,dev-complete,false,feat/US-01
 US-014,Admin Dashboard,"Admin layout and auth gate",14,dev-complete,false,feat/US-014-admin-layout,1,19
 US-015,Admin Dashboard,"Inventory management page",15,dev-complete,false,feat/US-015-inventory-management-page,1,21
 US-016,Admin Dashboard,"Orders management page",16,dev-complete,false,feat/US-016-orders-management-page,1,22
-US-017,Admin Dashboard,"Overview dashboard with KPI cards",17,in-progress,false,feat/US-017-admin-overview-dashboard,1,23
+US-017,Admin Dashboard,"Overview dashboard with KPI cards",17,dev-complete,false,feat/US-017-admin-overview-dashboard,1,23
 US-018,Discovery,"Add 'Browse all' CTA to zero-results empty state",18,pending,false,,0,0
 US-019,Checkout & Payments,"Inline date validation on rental form",19,pending,false,,0,0
 US-020,Discovery,"Category filter chips horizontally scrollable on mobile",20,pending,false,,0,0
