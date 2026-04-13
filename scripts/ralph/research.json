@@ -802,9 +802,9 @@
       "source": "Baymard Institute: baymard.com/blog/current-state-product-list-and-filtering; BTNG.studio ecommerce filter patterns 2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-067"
     },
     {
       "id": "R-068",
@@ -814,9 +814,9 @@
       "source": "Booking UX Best Practices 2025: ralabs.org/blog/booking-ux-best-practices; Airbnb sticky booking widget pattern",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-068"
     },
     {
       "id": "R-069",
@@ -826,8 +826,8 @@
       "source": "ConvertCart product bundling research: convertcart.com/blog/product-bundling-examples; Reventals event game rental guide 2026",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -838,9 +838,9 @@
       "source": "E-commerce product listing UX best practices: baymard.com; Onilab ecommerce filters UX 2025",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-076"
     },
     {
       "id": "R-071",
@@ -850,8 +850,8 @@
       "source": "Party rental booking best practices: centexjump.com; Reventals game rental guide: reventals.com/blog",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -862,9 +862,9 @@
       "source": "WCAG 2.2 Status Messages (4.1.3); beaccessible.com/post/forms-accessibility; European Accessibility Act enforceable June 2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-069"
     },
     {
       "id": "R-073",
@@ -874,9 +874,9 @@
       "source": "Ecommerce Navigation 2025 best practices: plumrocket.com/blog/ecommerce-navigation-examples; Valido.ai product listing UX",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-073"
     },
     {
       "id": "R-074",
@@ -886,9 +886,9 @@
       "source": "Next.js 19 App Router docs: prefetch on Link; booking UX performance research showing 0.1s improvement = 10% conversion lift",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-072"
     },
     {
       "id": "R-075",
@@ -898,9 +898,9 @@
       "source": "AllAccessible WCAG audit guide 2025: allaccessible.org; accessibility.works WCAG ADA standards 2025; EAA enforcement June 2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-070"
     },
     {
       "id": "R-076",
@@ -910,8 +910,8 @@
       "source": "Party rental website admin features: goodshuffle.com; Shopify bulk order management patterns",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -922,8 +922,8 @@
       "source": "Reventals event game guide 2026; party rental operator forums; CentexJump booking flow",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -934,8 +934,8 @@
       "source": "Vacation rental conversion research: greenmoov.app 25 strategies; nokumo.net 4 UX tweaks for direct bookings",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -946,8 +946,8 @@
       "source": "Party rental website features research: goodshuffle.com; Booqable rental software example sites 2025",
       "confidence": "low",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: low confidence + medium effort, not essential for core rental workflow",
       "convertedToStory": ""
     },
     {
@@ -958,8 +958,8 @@
       "source": "Party rental booking best practices: reventals.com/blog/how-to-choose-game-rentals-for-your-next-event; nationaleventpros.com interactive game rental filters",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -970,9 +970,9 @@
       "source": "React error boundary best practices; PRODUCT.md localStorage-only architecture risk; browser extension interference patterns",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-074"
     },
     {
       "id": "R-082",
@@ -982,8 +982,8 @@
       "source": "Next.js Image optimization docs; Baymard e-commerce performance research; web.dev LCP best practices",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: covered by US-044 \u2014 Next.js Image component includes lazy loading by default",
       "convertedToStory": ""
     },
     {
@@ -994,9 +994,9 @@
       "source": "WeddingWire forum: weddingwire.com/wedding-forums/lawn-games-yay-or-nay; booking UX best practices: ulansoftware.com/blog",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-075"
     },
     {
       "id": "R-084",
@@ -1006,8 +1006,8 @@
       "source": "Mobile booking conversion research: 65% of same-day reservations made by phone; ralabs.org 4.17% lift from sticky CTA; bubble.io hotel booking app features 2026",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: covered by R-068/US-068 which already specifies mobile sticky bottom bar",
       "convertedToStory": ""
     },
     {
@@ -1018,8 +1018,8 @@
       "source": "WebAIM WCAG 2 Checklist: webaim.org/standards/wcag/checklist; WCAG 2.1 SC 2.1.1 Keyboard; EAA June 2025 enforcement",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -1030,9 +1030,9 @@
       "source": "Booking UX best practices 2025: ralabs.org; time picker UX: eleken.co/blog-posts/time-picker-ux; Baymard 39 time booking interface examples",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-071"
     },
     {
       "id": "R-087",
@@ -1042,8 +1042,8 @@
       "source": "WeddingWire game rental reviews: theknot.com/marketplace/upstate-jamboree-game-rentals; vacation rental conversion research: greenmoov.app; CORT party rental trends 2025",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     },
     {
@@ -1054,8 +1054,8 @@
       "source": "Competitor: trianglelawngames.com/games-for-weddings; wonderflygames.com/lawn-games; party rental industry trends: tentandtable.net 2025",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "accepted",
+      "pmVerdict": "accepted",
       "convertedToStory": ""
     }
   ]
