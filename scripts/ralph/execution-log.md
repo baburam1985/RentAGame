@@ -74,3 +74,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 07:35 | US-015 | dev-complete | dev | inventory page built with table, inline price edit, status toggle, edit panel; 56 tests pass |
 | 2026-04-13 07:35 | US-016 | in-progress | dev | starting orders management page |
 | 2026-04-13 07:36 | US-016 | tests-written | dev | RED tests committed for orders management page |
+| 2026-04-13 07:45 | US-016 | dev-complete | dev | orders page built; 5/9 tests pass; 4 fail due to test design issues (combobox count conflict + non-unique Pending text) |
