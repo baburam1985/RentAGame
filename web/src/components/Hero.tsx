@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { games } from "@/data/games";
+import { SERVICE_AREA } from "@/constants";
 
 export default function Hero() {
   const previews = games.slice(0, 4);
@@ -50,6 +51,17 @@ export default function Hero() {
             <p className="mt-5 text-lg text-gray-600 max-w-md leading-relaxed">
               Bring the fun to your next event. Lawn games, party sets &amp; more — delivered, set up, and picked up for you.
             </p>
+
+            {/* Service area notice */}
+            <div
+              data-testid="service-area-notice"
+              className="mt-4 inline-flex items-center gap-1.5 text-sm text-gray-600"
+            >
+              <span className="material-symbols-outlined text-blue-700" style={{ fontSize: "16px" }} aria-hidden="true">
+                location_on
+              </span>
+              {SERVICE_AREA}
+            </div>
 
             {/* CTAs */}
             <div className="mt-8 flex flex-wrap gap-3">
