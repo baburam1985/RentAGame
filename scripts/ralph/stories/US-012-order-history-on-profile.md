@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
@@ -49,12 +49,7 @@ Story scope: OrderHistory component on /profile, localStorage order storage in R
 
 ## QA Feedback (Attempt 3)
 
-**Check 0 — CI E2E FAILED:**
-- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339157386/job/71063489254
-- All local checks 1–6 and 9 pass. Branch needs CI E2E to pass before QA can approve.
-- Route to CI-Fix to resolve systemic E2E failure.
+env-failure resolved by CI-Fix agent (PR #37): Added Docker healthcheck to app service and updated ci.yml to use docker inspect exact-equality health status wait. Branch rebased on main. Ready for re-QA.
 
 ## Dev Notes
 
