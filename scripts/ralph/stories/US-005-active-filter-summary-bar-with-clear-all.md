@@ -27,9 +27,9 @@ Show a 'Clear all filters' button below the filter row whenever any filter (sear
 
 ## TDD Rules — Read Before Writing Any Code
 
-1. **RED commit:** Create `ActiveFilterBar.test.tsx` with exactly **3 tests** — one per AC above. All 3 tests must fail at RED because the component does not exist yet.
-2. **GREEN commit:** Implement the component and wire it into `page.tsx`. Do NOT change `ActiveFilterBar.test.tsx` at all between RED and GREEN. Zero test file changes in GREEN.
-3. **E2E boundary:** Do NOT modify any existing E2E spec files (`catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, etc.).
+1. **RED commit:** Create `ActiveFilterBar.test.tsx` with exactly **3 tests** — one per AC above. All 3 tests must fail at RED because the component does not exist yet. The assertion selectors you write in RED must NOT change in GREEN — pick them carefully (e.g. `getByRole('button', { name: /clear all filters/i })`).
+2. **GREEN commit:** Implement the component and wire it into `page.tsx`. Do NOT change `ActiveFilterBar.test.tsx` at all between RED and GREEN — zero changes, not even formatting or imports.
+3. **E2E boundary:** Do NOT modify any existing E2E spec files (`catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, etc.). Do not create new E2E specs.
 
 ## QA Feedback (Attempt 4)
 
@@ -40,6 +40,8 @@ env-failure resolved by CI-Fix agent (PR #37): Added Docker healthcheck to app s
 Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. Branch rebased on main. All 54 unit tests pass. TypeScript clean. Branch force-pushed to reflect rebased commits.
 
 PM Tier-2 rewrite (run 7): stripped to MVP — removed per-filter chip rendering and individual chip remove buttons; replaced with a single 'Clear all filters' button and 3 simple ACs; reduced TDD test count from 6 to 3.
+
+PM Tier-2 rewrite (run 8): reinforced TDD selector stability rule — dev must commit to selector strategy in RED and must not change it in GREEN; reiterated E2E boundary (no new E2E specs either).
 
 ## Files Changed
 

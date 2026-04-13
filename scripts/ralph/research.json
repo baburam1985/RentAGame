@@ -1,6 +1,6 @@
 {
-  "lastRun": "2026-04-13T10:00:00Z",
-  "totalRuns": 6,
+  "lastRun": "2026-04-13T12:00:00Z",
+  "totalRuns": 7,
   "items": [
     {
       "id": "R-001",
@@ -924,7 +924,7 @@
       "effort": "small",
       "status": "accepted",
       "pmVerdict": "accepted",
-      "convertedToStory": ""
+      "convertedToStory": "US-084"
     },
     {
       "id": "R-078",
@@ -936,7 +936,7 @@
       "effort": "small",
       "status": "accepted",
       "pmVerdict": "accepted",
-      "convertedToStory": ""
+      "convertedToStory": "US-085"
     },
     {
       "id": "R-079",

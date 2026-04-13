@@ -10,28 +10,29 @@
 
 ## Description
 
-Replace the single RentalForm with a 2-step checkout wizard: Step 1 — enter contact details (name, email, phone). Step 2 — review summary and place order. A step label at the top shows which step is active. Back/Next buttons navigate between steps.
+A standalone `CheckoutWizard` component with 2 steps: Step 1 — contact form (name, email, phone). Step 2 — review summary and place order. A step label at the top shows the active step. Back/Next navigate between steps.
 
 **Scope is strictly limited to:**
 - `web/src/components/CheckoutWizard.tsx` (new component)
 - `web/src/components/CheckoutWizard.test.tsx` (new test file)
 - `web/src/app/page.tsx` (replace RentalForm with CheckoutWizard)
 
-**Do NOT touch any other files.** In particular, do not modify any E2E spec files (`catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`).
+**Do NOT touch any other files.** Do not modify `web/e2e/modal.spec.ts`, `web/e2e/catalog.spec.ts`, `web/e2e/rental-form.spec.ts`, or any other existing file.
 
 ## Acceptance Criteria
 
-- [ ] AC-1: The wizard renders a step label showing 'Step 1 of 2' on initial render
-- [ ] AC-2: Step 1 renders name, email, and phone input fields
-- [ ] AC-3: Clicking the 'Next' button on Step 1 renders the Step 2 review screen showing the values entered in Step 1
-- [ ] AC-4: Clicking the 'Back' button on Step 2 returns to Step 1 with the previously entered values still present in the fields
-- [ ] AC-5: Clicking 'Place Order' on Step 2 submits the form (calls a provided onSubmit callback or saves to rg_orders in localStorage)
+- [ ] AC-1: On initial render the wizard displays the text 'Step 1 of 2'
+- [ ] AC-2: Step 1 renders three inputs: one with placeholder 'Name', one with placeholder 'Email', one with placeholder 'Phone'
+- [ ] AC-3: Clicking the 'Next' button on Step 1 renders the text 'Step 2 of 2'
+- [ ] AC-4: On Step 2, clicking the 'Back' button renders the text 'Step 1 of 2' again
 
-## TDD Rules — Read Before Writing Any Code
+## TDD Rules — CRITICAL — Read Every Word Before Writing Any Code
 
-1. **RED commit:** Create `CheckoutWizard.test.tsx` with exactly **5 tests** — one per AC above. All 5 tests must fail at RED because the component does not exist yet. Use `getByRole("heading", ...)` or `getByText(...)` consistently from the start — do not change selectors between RED and GREEN.
-2. **GREEN commit:** Implement `CheckoutWizard.tsx` and update `page.tsx`. Do NOT change `CheckoutWizard.test.tsx` at all — not imports, not async/await, not test names, not assertions. Zero test file changes in GREEN.
-3. **E2E boundary:** Do NOT modify any existing E2E spec files.
+1. **RED commit:** Create `CheckoutWizard.test.tsx` with exactly **4 tests** — one per AC above. All 4 tests must fail at RED because `CheckoutWizard.tsx` does not exist yet.
+   - Choose your selectors once and lock them in: use `getByText('Step 1 of 2')` for AC-1 and AC-4; use `getByPlaceholderText('Name')` for AC-2; use `getByText('Step 2 of 2')` for AC-3. These exact selectors must be in both RED and GREEN unchanged.
+   - Do NOT import from files that do not yet exist — the RED commit must compile (tests fail at runtime, not at import).
+2. **GREEN commit:** Create `CheckoutWizard.tsx` and update `page.tsx`. The GREEN commit must contain **zero changes to any test file** — not `CheckoutWizard.test.tsx`, not `Navbar.test.tsx`, not any `*.spec.ts`. If you need to change a test to make it pass, that is a RED commit fix, not a GREEN fix — stop and restart.
+3. **E2E boundary:** Do NOT touch any existing E2E spec file. Do NOT create new E2E spec files for this story.
 
 ## QA Feedback (Attempt 4)
 
@@ -47,11 +48,6 @@ Replace the single RentalForm with a 2-step checkout wizard: Step 1 — enter co
 
 Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. Branch rebased on main. All 54 unit tests pass (includes 7 CheckoutWizard tests). TypeScript clean. Branch force-pushed.
 
-PM Tier-2 rewrite (run 7): reduced from 3-step to 2-step wizard; removed date selection step (moved to cart/game detail), price calculation step, and calendar integration; simplified to 5 ACs covering only contact entry and review flow; added explicit TDD selector guidance to prevent RED→GREEN test drift.
+PM Tier-2 rewrite (run 7): reduced from 3-step to 2-step wizard; removed date selection step, price calculation step, and calendar integration; simplified to 5 ACs covering only contact entry and review flow; added explicit TDD selector guidance to prevent RED→GREEN test drift.
 
-## Files Changed
-
-- web/src/components/CheckoutWizard.tsx
-- web/src/components/CheckoutWizard.test.tsx
-- web/src/app/page.tsx
-- web/e2e/modal.spec.ts
+PM Tier-2 rewrite (run 8): reduced to 4 ACs (removed Place Order AC which caused side-effects); pinned exact selector strings in ACs; added CRITICAL TDD rule: any test change must be a RED commit fix, never a GREEN fix; removed all E2E spec creation from scope.

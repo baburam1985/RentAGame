@@ -6,23 +6,33 @@
 - **Passes:** false
 - **Branch:** feat/US-010-signup-login-pages
 - **PR:** #15
-- **QA Attempts:** 4
+- **QA Attempts:** 0
 
 ## Description
 
-Create /signup and /login pages with email+password forms. Store mock user in localStorage. Validate email format and password min 8 chars. Navbar shows user's first name when logged in.
+Create a `/signup` page with a form. On submit, store a mock user object in `localStorage` under `rg_user` and redirect to `/`. The page requires only name, email, and password fields.
+
+**Scope is strictly limited to:**
+- `web/src/app/signup/page.tsx` (new file)
+- `web/src/app/signup/SignupPage.test.tsx` (new test file)
+
+**Do NOT touch any other files.** Do not modify `Navbar.tsx`, `Navbar.test.tsx`, `login/page.tsx`, or any E2E spec file.
 
 ## Acceptance Criteria
 
-- [ ] /signup page renders with name, email, and password fields
-- [ ] /login page renders with email and password fields
-- [ ] Email field validates correct format; shows inline error if invalid
-- [ ] Password field requires minimum 8 characters; shows inline error if too short
-- [ ] Successful signup stores user object (name, email, createdAt) in localStorage
-- [ ] Successful login reads user from localStorage and authenticates
-- [ ] Navbar shows 'Log in / Sign up' link when logged out
-- [ ] Navbar shows user's first name when logged in
-- [ ] Both forms redirect to / on success
+- [ ] AC-1: A `"use client"` component at `web/src/app/signup/page.tsx` renders a form with a `Name` input, an `Email` input, and a `Password` input
+- [ ] AC-2: Submitting the form with valid values stores an object `{ name, email, createdAt }` in `localStorage` under the key `rg_user`
+- [ ] AC-3: If the email field value is not a valid email format (does not contain `@`), an inline error message is shown and the form is not submitted
+- [ ] AC-4: If the password field value is fewer than 8 characters, an inline error message is shown and the form is not submitted
+
+## TDD Rules — CRITICAL — Read Every Word Before Writing Any Code
+
+1. **RED commit:** Create `SignupPage.test.tsx` with exactly **4 tests** — one per AC above. All 4 must fail at RED because `page.tsx` does not exist yet.
+   - Include `vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }))` at the top.
+   - Use `getByPlaceholderText('Name')` or `getByLabelText('Name')` for AC-1 (pick one and keep it); use `localStorage.getItem('rg_user')` in the AC-2 test to verify storage; check for an error message element for AC-3 and AC-4.
+   - Lock these selectors in RED — do NOT change them in GREEN.
+2. **GREEN commit:** Create `page.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file** — not `Navbar.tsx`, not `Navbar.test.tsx`, not any `*.spec.ts`.
+3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
 ## QA Feedback (Attempt 4)
 
@@ -32,18 +42,10 @@ Create /signup and /login pages with email+password forms. Store mock user in lo
 - CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339174263/job/71063543849
 
 **Check 2 — TDD INTEGRITY FAILED:**
-`web/src/components/Navbar.test.tsx` was modified between RED commit (`f09f20b test: [US-010] RED`) and GREEN commit (`3d8fa3a feat: [US-010] GREEN`). Zero changes to test files are permitted between RED and GREEN.
-
-**Required fix:**
-1. Include the Navbar.test.tsx changes in the RED commit (the tests for the auth state display must be failing in RED).
-2. The GREEN commit must contain ONLY production code changes — no test file modifications.
+`web/src/components/Navbar.test.tsx` was modified between the RED and GREEN commits. Zero changes to test files are permitted between RED and GREEN.
 
 ## Dev Notes
 
 Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. Branch rebased on main. All 57 unit tests pass (includes auth page tests). TypeScript clean. Branch force-pushed.
 
-## Files Changed
-
-- web/src/app/signup/page.tsx
-- web/src/app/login/page.tsx
-- web/src/components/Navbar.tsx
+PM Tier-2 rewrite (run 8): stripped scope to signup page only (removed login page and Navbar auth display); reduced to 4 ACs covering form rendering, localStorage write, and inline validation; explicitly prohibited Navbar.tsx and Navbar.test.tsx modifications; pinned selector strategies; scope reduced to 2 new files only.
