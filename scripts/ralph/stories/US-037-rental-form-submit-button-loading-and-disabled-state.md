@@ -2,9 +2,9 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 37
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-037-submit-button-loading
 - **PR:** 
 - **QA Attempts:** 0
 
