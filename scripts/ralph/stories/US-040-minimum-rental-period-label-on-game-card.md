@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 40
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
 - **Branch:** feat/US-040-min-rental-period-label
 - **PR:** 

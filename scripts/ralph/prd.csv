@@ -38,7 +38,7 @@ US-036,Discovery,Game modal ARIA dialog role and attributes,36,dev-complete,fals
 US-037,Checkout & Payments,Rental form submit button loading and disabled state,37,dev-complete,false,feat/US-037-submit-button-loading,0,0
 US-038,Discovery,Skip to main content accessibility link,38,dev-complete,false,feat/US-038-skip-to-main-content,0,0
 US-039,Discovery,Game modal mobile scroll affordance (bottom fade shadow),39,dev-complete,false,feat/US-039-modal-scroll-affordance,0,0
-US-040,Discovery,Display minimum rental period label on each game card,40,in-progress,false,feat/US-040-min-rental-period-label,0,0
+US-040,Discovery,Display minimum rental period label on each game card,40,tests-written,false,feat/US-040-min-rental-period-label,0,0
 US-041,Discovery,FAQ accordion section on the homepage,41,pending,false,,0,0
 US-042,User Accounts,Navbar active page indicator,42,pending,false,,0,0
 US-043,Checkout & Payments,Step progress indicator in the multi-step checkout wizard,43,pending,false,,0,0
