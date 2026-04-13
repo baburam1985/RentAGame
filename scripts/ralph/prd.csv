@@ -36,7 +36,7 @@ US-034,Discovery,Testimonials with star ratings and location for authenticity,34
 US-035,Discovery,Game modal focus trap for keyboard navigation,35,dev-complete,false,feat/US-035-game-modal-focus-trap,0,0
 US-036,Discovery,Game modal ARIA dialog role and attributes,36,dev-complete,false,feat/US-036-game-modal-aria-dialog,0,0
 US-037,Checkout & Payments,Rental form submit button loading and disabled state,37,dev-complete,false,feat/US-037-submit-button-loading,0,0
-US-038,Discovery,Skip to main content accessibility link,38,pending,false,,0,0
+US-038,Discovery,Skip to main content accessibility link,38,in-progress,false,feat/US-038-skip-to-main-content,0,0
 US-039,Discovery,Game modal mobile scroll affordance (bottom fade shadow),39,pending,false,,0,0
 US-040,Discovery,Display minimum rental period label on each game card,40,pending,false,,0,0
 US-041,Discovery,FAQ accordion section on the homepage,41,pending,false,,0,0

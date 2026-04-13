@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 38
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-038-skip-to-main-content
 - **PR:** 
 - **QA Attempts:** 0
 
