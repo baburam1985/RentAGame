@@ -300,6 +300,24 @@ Exact counts break silently when catalog size changes. Prefer `toBeGreaterThanOr
 for "at least N items" assertions, and `toHaveCount(N)` only when exact count is the
 semantic contract being tested.
 
+<!-- retro: CI-hotfix-2 -->
+**Pre-push: verify the CI health-wait script uses exact equality, not grep substring match.**
+A `grep -q "healthy"` check on Docker health status is a latent false-positive: the string
+`"healthy"` appears inside `"(health: starting)"`, so the loop exits immediately before the
+app is ready. This caused a systemic E2E env-failure across ALL feature branches (PR #25 fix).
+Before pushing any branch, run:
+```bash
+grep -n "grep.*healthy" /home/user/RentAGame/.github/workflows/ci.yml
+```
+If that produces output, the health-wait is using substring matching and must be replaced
+with the exact-equality pattern:
+```bash
+STATUS=$(docker inspect --format='{{.State.Health.Status}}' $(docker compose ps -q app) 2>/dev/null || echo "unknown")
+if [ "$STATUS" = "healthy" ]; then
+```
+This check is especially important after any CI workflow edit — even unrelated ones —
+because a bad health-wait in `ci.yml` will silently fail every E2E run on every branch.
+
 <!-- retro: US-001 -->
 **Pre-commit: scan for `console.log` in all modified source files.**
 `console.log` in any component — including protected ones like `RentalForm` —

@@ -37,6 +37,15 @@ before starting work. The Retro agent maintains this file.
 - Use exact `toHaveCount(N)` only when the count is a semantic contract (e.g. "exactly 4 filter chips"). Use `toBeGreaterThanOrEqual(N)` for "at least N cards/items" catalog checks.
 - If you change default catalog visibility (new filter, price range, etc.) grep `web/e2e/` for `toHaveCount` before pushing.
 
+## CI Health-Wait Pattern (CRITICAL)
+<!-- retro: CI-hotfix-2 -->
+- NEVER use `grep -q "healthy"` to check Docker health status — the substring "healthy" appears
+  inside "(health: starting)" and causes false-positive matches, exiting the wait loop immediately.
+- ALWAYS use exact shell equality: `STATUS=$(docker inspect --format='{{.State.Health.Status}}' ...)` then `[ "$STATUS" = "healthy" ]`
+- Symptom of the bug: ALL Playwright E2E tests fail with "connection refused" / ECONNREFUSED across every PR simultaneously — unit tests pass.
+- Fix: PR #25 replaced `grep -q "healthy"` with `docker inspect --format` + exact `= "healthy"` comparison in `.github/workflows/ci.yml`.
+- When ALL PRs fail E2E at once, suspect this pattern before routing any story back to Dev.
+
 ## Styling
 - Tailwind CSS v4 with `@import "tailwindcss"` — requires `postcss.config.mjs` with `@tailwindcss/postcss`
 - CSS vars in `:root` in globals.css, reference via `var()` in components

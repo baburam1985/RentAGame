@@ -171,6 +171,33 @@ Check CI logs for `console.log` output — Playwright's `failOnConsoleError` (or
 equivalent setup) treats browser console errors and unexpected logs as failures.
 Remove all `console.log` calls from production source files and re-run.
 
+<!-- retro: CI-hotfix-2 -->
+**Docker health-check wait loop exits immediately with E2E "connection refused" failures (systemic, affects ALL PRs):**
+This is an env-failure, NOT a code bug. Root cause: the health-wait script used
+`grep -q "healthy"` on `docker inspect` output — the string `"healthy"` appears
+inside `"(health: starting)"` too, so grep matched on the very first attempt and
+the loop exited before the app was actually ready. Playwright then connected to
+a not-yet-serving port and all assertions failed.
+**Correct pattern (exact equality via `docker inspect --format`):**
+```bash
+STATUS=$(docker inspect --format='{{.State.Health.Status}}' $(docker compose ps -q app) 2>/dev/null || echo "unknown")
+if [ "$STATUS" = "healthy" ]; then   # exact string match — NOT grep
+```
+Never use `grep "healthy"` on `docker inspect` raw JSON or formatted output for
+health-wait loops. Always compare `$STATUS` with `= "healthy"` (shell exact match)
+or use `--format='{{.State.Health.Status}}'` and compare directly.
+When ALL PRs fail E2E with "connection refused" but unit tests pass, treat this
+as an env-failure and check `ci.yml` health-wait script before routing to Dev.
+
+<!-- retro: CI-hotfix-2 -->
+**Distinguishing "CI waiting for app" failures from real E2E test failures:**
+| Symptom | Likely cause |
+|---------|-------------|
+| ALL Playwright tests fail with "connection refused" / "ECONNREFUSED" | App never became healthy — check health-wait script in `ci.yml` |
+| Specific Playwright assertions fail (selector not found, wrong text) | Real code failure — route to Dev |
+| ALL assertions fail but unit tests pass and app responds locally | Health-wait race condition in CI — check exact equality in status check |
+Use this triage before classifying any E2E failure as `code-failure`.
+
 ### Step 6 — Verify fix locally before committing
 
 After fixing, re-run the failing check:

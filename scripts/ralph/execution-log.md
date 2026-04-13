@@ -119,3 +119,17 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 08:25 | US-009 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-009-availability-calendar, status reset for QA re-pick |
 | 2026-04-13 08:25 | US-010 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-010-signup-login-pages, status reset for QA re-pick |
 | 2026-04-13 08:25 | US-013 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-013-wishlist-saved-games, status reset for QA re-pick |
+
+## Retro: CI-hotfix-2 - Docker health-check grep false-positive (systemic E2E env-failure)
+- **QA attempts:** N/A — systemic infrastructure bug, not tied to a single story
+- **Issues found:**
+  - CI environment issue (systemic): `ci.yml` health-wait step used `grep -q "healthy"` on `docker inspect` output. The string "healthy" is a substring of "(health: starting)", so the grep matched on the very first loop iteration before the app was ready. All subsequent E2E Playwright tests failed with "connection refused" / ECONNREFUSED across every open PR simultaneously. Unit tests passed (they don't require the app to be running). Root cause misdiagnosed initially as a networking issue — actually a shell substring matching false-positive.
+  - Slow triage: QA routed the systemic failure as "Docker networking issue" across ~10 stories before the CI-Fix agent identified the grep root cause. A triage checklist for "ALL PRs fail E2E at once" was missing from QA.md.
+  - Missing dev pre-push guard: DEV.md had no check to verify the health-wait script uses exact equality before pushing. A single bad ci.yml edit blocks the entire pipeline silently.
+- **Improvements applied:**
+  - CI.md (Step 5): Added "Docker health-check wait loop exits immediately" diagnostic pattern — documents the grep false-positive, the correct `docker inspect --format` + exact equality pattern, and a symptom table distinguishing "CI waiting for app" from real E2E failures.
+  - DEV.md (Step 6a): Added pre-push guard — `grep -n "grep.*healthy" .github/workflows/ci.yml` to catch substring-matching health-wait before any push; includes exact correct replacement snippet.
+  - QA.md (Check 0): Added E2E triage table — when ALL PRs fail E2E simultaneously with ECONNREFUSED, classify as env-failure and check ci.yml health-wait before routing to Dev.
+  - patterns.md: Documented the grep substring false-positive pattern with symptoms, root cause, and fix reference (PR #25).
+- **Pipeline health:** improving — systemic CI bug identified and fixed; triage and prevention guidelines added. Target: zero recurrence of this pattern.
+---

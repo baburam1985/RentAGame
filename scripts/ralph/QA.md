@@ -185,6 +185,18 @@ CI-Fix will detect this and handle it — Dev will NOT be routed this failure.
 then exit. On next run, re-check CI status and classify normally. If it fails
 again, treat as `code-failure` or `env-failure` based on the error.
 
+<!-- retro: CI-hotfix-2 -->
+**E2E triage: "CI waiting for app" vs real test failures.**
+Before routing any E2E CI failure, check the failure pattern across PRs:
+| Observation | Classification | Action |
+|-------------|---------------|--------|
+| ALL open PRs fail E2E with "connection refused" / ECONNREFUSED | `env-failure` | Route to CI-Fix — likely a bad health-wait script in `ci.yml` |
+| Specific selectors fail in one PR, others pass | `code-failure` | Route to Dev with exact assertion details |
+| ALL assertions fail in one PR but the unit test job passed | `env-failure` (health-wait) or `code-failure` (runtime crash) | Check app startup — compare `docker compose logs app` output |
+When ALL PRs fail E2E simultaneously with identical "connection refused" errors,
+ALWAYS classify as `env-failure` and check `ci.yml` for `grep.*healthy` substring
+matching in the health-wait step before routing anything to Dev.
+
 Append to execution log:
 ```bash
 echo "| $TIMESTAMP | US-NNN | qa-failed | qa | CI failed: <classification> — <brief reason> |" >> scripts/ralph/execution-log.md
