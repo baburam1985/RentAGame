@@ -41,7 +41,7 @@ describe("RentalForm", () => {
     await userEvent.type(screen.getByLabelText(/Return Date/i), "2026-07-05");
     await userEvent.click(screen.getByText("Send Rental Request"));
     expect(
-      screen.getByText("Return date must be on or after the event date.")
+      screen.getByText("End date must be after start date")
     ).toBeInTheDocument();
   });
 
