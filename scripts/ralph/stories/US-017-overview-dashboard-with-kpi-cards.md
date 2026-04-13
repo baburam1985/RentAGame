@@ -2,7 +2,7 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 17
-- **Status:** qa-failed
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** feat/US-017-admin-overview-dashboard
 - **PR:** #23
