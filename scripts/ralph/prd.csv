@@ -17,7 +17,7 @@ US-015,Admin Dashboard,"Inventory management page",15,dev-complete,false,feat/US
 US-016,Admin Dashboard,"Orders management page",16,dev-complete,false,feat/US-016-orders-management-page,1,22
 US-017,Admin Dashboard,"Overview dashboard with KPI cards",17,dev-complete,false,feat/US-017-admin-overview-dashboard,1,23
 US-018,Discovery,"Add 'Browse all' CTA to zero-results empty state",18,dev-complete,false,feat/US-018-browse-all-empty-state,0,0
-US-019,Checkout & Payments,"Inline date validation on rental form",19,in-progress,false,,0,0
+US-019,Checkout & Payments,"Inline date validation on rental form",19,tests-written,false,feat/US-019-inline-date-validation,0,0
 US-020,Discovery,"Category filter chips horizontally scrollable on mobile",20,pending,false,,0,0
 US-021,Checkout & Payments,"Live total price calculation in rental form",21,pending,false,,0,0
 US-022,Discovery,"Descriptive alt text for all game images",22,pending,false,,0,0
