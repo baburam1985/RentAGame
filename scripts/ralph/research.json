@@ -394,8 +394,8 @@
       "source": "Form UX best practices: Baymard Institute; checkout UX: alfdesigngroup.com/post/checkout-ux; booking flow UX: paylode.com/use-cases/booking-flows",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: duplicate of US-037 (Rental form submit button loading and disabled state) which already covers disabled state, spinner feedback, and double-submit prevention",
       "convertedToStory": ""
     },
     {
@@ -406,9 +406,9 @@
       "source": "E-commerce UX: Airbnb, Viator recently-viewed patterns; peer-to-peer rental platform UX: shipturtle.com/blog/peer-to-peer-rental-marketplace-platform",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: genuine discovery aid not covered by existing stories; small effort localStorage feature; directly addresses back-and-forth navigation friction on mobile",
+      "convertedToStory": "US-045"
     },
     {
       "id": "R-035",
@@ -418,8 +418,8 @@
       "source": "WCAG 2.1 SC 2.4.1 Bypass Blocks; web accessibility guide 2026: webability.io/blog/wcag-ada-2025-making-websites-accessible-for-all; inclusiveweb.co/understanding-wcag",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: duplicate of US-038 (Skip to main content accessibility link) which already covers WCAG 2.1 SC 2.4.1 Bypass Blocks with the visually-hidden anchor link pattern",
       "convertedToStory": ""
     },
     {
@@ -430,9 +430,9 @@
       "source": "Event rental software trends 2026: gomomentus.com/blog/revolutionizing-event-and-venue-management-event-trends; party rental platform admin self-service patterns",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: genuine admin self-service value; US-031 and US-025 create hardcoded copy that admins should be able to change; feasible as a localStorage-backed settings page within the admin section",
+      "convertedToStory": "US-046"
     },
     {
       "id": "R-037",
@@ -442,9 +442,9 @@
       "source": "Airbnb Experiences and Viator 'Instant Confirmation' trust badge patterns; rental trust signals: accessibe.com/blog/knowledgebase/accessible-short-term-rental-property; conversion optimisation: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence conversion trust signal; small effort static UI component near form CTA; directly addresses confirmed top anxiety for first-time rental customers",
+      "convertedToStory": "US-047"
     },
     {
       "id": "R-038",
@@ -454,8 +454,8 @@
       "source": "Party rental trends 2025: tentandtable.net/blog/post/trends-in-party-rentals; event rental trends: accio.com/business/event-rental-trends; event industry 2026: whova.com/blog/top-event-industry-trends-2025-incorporate-events",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: US-033 (occasion-based quick-filter links) is still pending; adding tag extensions before the base feature is built risks scope creep; defer until US-033 is qa-passed and occasion tag data model is established",
       "convertedToStory": ""
     },
     {
@@ -466,9 +466,9 @@
       "source": "Mobile UX patterns: medium.com/@myousufraza/car-rental-mobile-app-ui-ux-design-in-2025; mobile booking conversion: ulansoftware.com/blog/ux-tips-improve-travel-booking-conversion",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: genuine mobile UX friction on long game catalogs; small effort scroll-aware component; no conflict with existing stories",
+      "convertedToStory": "US-048"
     },
     {
       "id": "R-040",
@@ -478,9 +478,9 @@
       "source": "E-commerce comparison UX patterns; rental marketplace UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; peer-to-peer rental: shipturtle.com/blog/peer-to-peer-rental-marketplace",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: reduces indecision for customers comparing similar games; feasible as client-side comparison panel using existing game data; genuine gap vs. competitors",
+      "convertedToStory": "US-049"
     },
     {
       "id": "R-041",
@@ -490,9 +490,9 @@
       "source": "Mobile UX feedback patterns: Airbnb, Viator wishlist interactions; e-commerce micro-interaction best practices: mobiloud.com/blog/trust-signals-cart-abandonment",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence UX defect for US-013 (wishlist); small effort toast component; required to make the wishlist feature feel complete and responsive",
+      "convertedToStory": "US-050"
     },
     {
       "id": "R-042",
@@ -502,8 +502,8 @@
       "source": "Rental platform UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; peer-to-peer rental SEO patterns (shipturtle.com); vacation rental booking engines: martalebre.com/blog/best-vacation-rental-booking-engines",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: game detail pages at /games/[id] already exist in the codebase (PRODUCT.md lists web/src/app/games/[id]/page.tsx as a built feature); this feature is already implemented",
       "convertedToStory": ""
     },
     {
@@ -514,9 +514,9 @@
       "source": "Competitor UX: trianglelawngames.com and wonderflygames.com both show process steps near the top; conversion UX: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: distinct from the existing HowItWorks section (which is at bottom); adds orientation context above the catalog where browsing decisions are made; small effort new component",
+      "convertedToStory": "US-051"
     },
     {
       "id": "R-044",
@@ -526,9 +526,9 @@
       "source": "Baymard Institute mobile checkout best practices; blikket.co/checkout-ux-best-practices-2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort HTML-only change; directly addresses Baymard top-10 mobile form failure; zero risk, measurable friction reduction for mobile users",
+      "convertedToStory": "US-052"
     },
     {
       "id": "R-045",
@@ -538,9 +538,9 @@
       "source": "E-commerce search UX: designstudiouiux.com/blog/ecommerce-checkout-ux-best-practices; booking UX best practices: ralabs.org/blog/booking-ux-best-practices",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: distinct from US-001 live filter (which hides non-matching games); type-ahead dropdown is a discovery aid for customers who know what they want; client-side, no backend",
+      "convertedToStory": "US-053"
     },
     {
       "id": "R-046",
@@ -550,9 +550,9 @@
       "source": "PRODUCT.md design principle 3; shopping cart empty state UX: onilab.com/blog/shopping-cart-ux",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; directly mandated by PRODUCT.md design principle 3 (never a dead end); addresses empty cart dead end in US-008",
+      "convertedToStory": "US-054"
     },
     {
       "id": "R-047",
