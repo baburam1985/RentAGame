@@ -58,6 +58,9 @@ export default function GameCard({ game, onSelect }: Props) {
             </Link>
           </h3>
           <p className="text-xs text-gray-400 mt-0.5">${game.pricePerDay} · day</p>
+          <p className="text-xs text-gray-500 mt-0.5">
+            Min. {game.minRentalDays} {game.minRentalDays === 1 ? "day" : "days"}
+          </p>
         </div>
         <div className="flex items-center gap-1.5">
           {onSelect && (

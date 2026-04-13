@@ -18,6 +18,7 @@ const mockGame: Game = {
     "https://images.unsplash.com/photo-bocce",
     "https://images.unsplash.com/photo-bocce2",
   ],
+  minRentalDays: 1,
 };
 
 describe("GameModal", () => {

@@ -23,6 +23,7 @@ const mockGame: Game = {
     "https://images.unsplash.com/photo-test",
     "https://images.unsplash.com/photo-test2",
   ],
+  minRentalDays: 1,
 };
 
 function renderCard() {

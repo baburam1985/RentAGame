@@ -9,6 +9,7 @@ export type Game = {
   players: string;
   dimensions: string;
   howToPlay: string[];
+  minRentalDays: number;
 };
 
 export const CATEGORIES = [
@@ -46,6 +47,7 @@ export const games: Game[] = [
       "You may tap a block to test stability before committing to pull it.",
       "The player who causes the tower to fall loses — pick it back up and go again!",
     ],
+    minRentalDays: 1,
   },
   {
     id: "cornhole-set",
@@ -71,6 +73,7 @@ export const games: Game[] = [
       "Bag in the hole = 3 points. Bag on the board = 1 point. Cancel your opponent's points each round.",
       "First team to reach exactly 21 points wins. Going over resets you to 15.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "bocce-ball-set",
@@ -96,6 +99,7 @@ export const games: Game[] = [
       "The team that scored last throws the pallino to start the next frame.",
       "First team to reach 12 points wins the match.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "giant-connect-four",
@@ -121,6 +125,7 @@ export const games: Game[] = [
       "First player to connect 4 of their discs in a row — horizontal, vertical, or diagonal — wins!",
       "Pull the release lever at the bottom to drop all discs and start a new game.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "spikeball-set",
@@ -146,6 +151,7 @@ export const games: Game[] = [
       "No boundaries — play moves 360 degrees around the net at all times.",
       "A team scores when the opposing team can't return the ball cleanly. First to 21 (win by 2) wins.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "horseshoes-set",
@@ -171,6 +177,7 @@ export const games: Game[] = [
       "If no ringers, the closest horseshoe within 6 inches of the stake scores 1 point. Cancel scoring applies.",
       "First player or team to reach 21 points wins the game.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "kan-jam",
@@ -196,6 +203,7 @@ export const games: Game[] = [
       "Scoring: Deflector hits the can = 1 pt · Thrower hits the can = 2 pts · Deflector tips it into the slot = 3 pts · Disc goes straight into the slot = instant win!",
       "First team to exactly 21 points wins. Going over resets to 15.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "ladder-toss",
@@ -221,6 +229,7 @@ export const games: Game[] = [
       "Bolas must stay wrapped around a rung at the end of the round to score — knocked-off bolas don't count.",
       "Cancel scoring applies: subtract the other team's points from yours each round. First team to exactly 21 wins.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "agility-cone-set",
@@ -246,6 +255,7 @@ export const games: Game[] = [
       "Four Corners: place a cone at each corner of a square; one player in the middle tries to tag others as they swap corners.",
       "Mix and match activities to keep energy high — the cones reset in seconds for a brand-new game.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "outdoor-badminton",
@@ -271,6 +281,7 @@ export const games: Game[] = [
       "A point is scored when the shuttle lands in bounds on the opponent's side or they hit it out/into the net.",
       "Singles games go to 21 points (win by 2). Doubles use the same scoring with both players sharing the court.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "beginner-pickleball",
@@ -296,6 +307,7 @@ export const games: Game[] = [
       "Once the two-bounce rule is satisfied, players can volley freely — except inside the kitchen (no-volley zone).",
       "Games go to 11 points (win by 2) and only the serving team can score. Rally scoring is a beginner-friendly alternative where every rally scores a point.",
     ],
+    minRentalDays: 1,
   },
   {
     id: "giant-chess",
@@ -321,5 +333,6 @@ export const games: Game[] = [
       "Capture opponent pieces by landing on their square. Protect your king at all times.",
       "The game ends when a player's king is in checkmate — put your opponent in check with no escape to win!",
     ],
+    minRentalDays: 1,
   },
 ];
