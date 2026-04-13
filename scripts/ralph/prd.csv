@@ -1,6 +1,6 @@
 id,title,epic,status,priority,qaAttempts
 US-001,Game Detail Page,Discovery,complete,100,1
-US-002,Cart Context & Cart Page,Checkout & Payments,pending,95,0
+US-002,Cart Context & Cart Page,Checkout & Payments,complete,95,1
 US-003,Checkout Flow - Step 1 Dates & Contact,Checkout & Payments,pending,90,0
 US-004,Checkout Flow - Step 2 Review Order,Checkout & Payments,pending,85,0
 US-005,Order Confirmation Page,Checkout & Payments,pending,80,0

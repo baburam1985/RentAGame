@@ -5,7 +5,32 @@
 - The layout wraps everything in `<CartProvider>` so all pages can access cart state
 - GameDetailClient renders `GameDetails` twice (desktop sidebar + mobile stacked) — use `getAllByText` in tests
 - `aria-pressed` cannot be on elements with `role="listitem"`; use `<ul><li><button aria-pressed>` structure instead
+- Use `useState(lazyInitFn)` for localStorage hydration — calling `setItems` inside a `useEffect` triggers `react-hooks/set-state-in-effect` lint error
+- ESLint `--max-warnings=0` is enforced; plain `<a href="/">` triggers `@next/next/no-html-link-for-pages` — always use `<Link>` from next/link for internal routes
+- For vi.mock calls in test files, the mock must be at the top level (not inside a function) due to hoisting; use a mutable module-level variable to control per-test mock state
 
+---
+
+## 2026-04-13 - US-002
+- What was implemented:
+  - Refactored `CartContext` to use a lazy `useState` initializer (`loadFromStorage`) instead of a `useEffect` for localStorage rehydration — eliminates the `react-hooks/set-state-in-effect` lint error
+  - Used `useRef(true)` + an `isFirstRender` guard to skip persisting on the very first render (avoids overwriting localStorage before it's been read)
+  - Added `web/src/context/CartContext.test.tsx` — unit tests for `addItem`, `removeItem`, `updateDays`, `clearCart`, localStorage persistence, and rehydration on mount
+  - Added `web/src/app/cart/CartPageClient.test.tsx` — unit tests for empty-state UI, item rendering, line totals, subtotal, Proceed to Checkout link, Remove button, Clear cart, and day increment/decrement
+  - Fixed `Navbar.tsx` logo link from `<a href="/">` to `<Link href="/">` to satisfy `@next/next/no-html-link-for-pages` lint rule
+  - Fixed `Navbar.test.tsx` to mock `@/context/CartContext` and `next/link` (Navbar calls `useCart()` so tests fail without a mock)
+  - Fixed `GameDetailClient.test.tsx` — `addItem` now receives `image` field; updated two test assertions to include it
+- Files changed:
+  - `web/src/context/CartContext.tsx` — lazy init, `useRef` guard, removed hydration effect
+  - `web/src/context/CartContext.test.tsx` — new file (unit tests)
+  - `web/src/app/cart/CartPageClient.test.tsx` — new file (unit tests)
+  - `web/src/components/Navbar.tsx` — logo `<a>` → `<Link>`
+  - `web/src/components/Navbar.test.tsx` — added CartContext + next/link mocks
+  - `web/src/app/games/[id]/GameDetailClient.test.tsx` — added `image` field to addItem assertions
+- **Learnings for future iterations:**
+  - The `react-hooks/set-state-in-effect` rule fires on any `setState` call directly inside `useEffect` body; use lazy initializers or external stores instead
+  - vi.mock is hoisted — placing it inside a helper function still runs it at the top level but references outer variables that don't yet exist; use module-level mutable variables as workaround
+  - CartPageClient renders `$75` in three places (line total + two summary spans) — use `getAllByText` not `getByText`
 ---
 
 ## 2026-04-13 - US-001
