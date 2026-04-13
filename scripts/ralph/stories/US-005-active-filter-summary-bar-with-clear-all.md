@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 5
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-005-active-filter-summary-bar
 - **PR:** #10
@@ -21,14 +21,9 @@ When any filter (search, category, price, players, sort) is non-default, show a 
 - [ ] Clear all button resets every filter to default
 - [ ] Summary bar updates in real time as filters change
 
-## QA Feedback (Attempt 2)
+## QA Feedback
 
-Classification: env-failure
-Job: E2E Tests
-Error: E2E tests fail consistently across ALL open PRs (#7–#23). Unit Tests and Docker Build pass on every run. Prior fixes applied (category badge, networkidle wait, modal selector, catalog count). Root issue is systemic — Playwright e2e-tests container cannot reliably connect to app container at http://app:3000, or there is a Docker networking regression in CI environment. Not a per-story code issue.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332398813/job/71041069244
-
-Routed to CI-Fix agent. PR #10 remains open.
+env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
 
 ## Dev Notes
 

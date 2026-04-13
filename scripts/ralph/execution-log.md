@@ -110,3 +110,12 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 08:23 | US-016 | qa-failed | qa | code-failure: 4/9 unit tests fail (ambiguous combobox/Pending text selectors) |
 | 2026-04-13 08:25 | US-017 | qa-failed | qa | Check 4 trivial assertion (toBeDefined on DOM element); env-failure for CI E2E |
 | 2026-04-13 08:27 | US-014 | qa-failed | qa | Check 5 (4 tests < 6 AC) + Check 9 (protected GameCard.tsx + out-of-scope changes) |
+| 2026-04-13 08:25 | CI | hotfix | ci | env-failure root cause found: grep -q "healthy" matched "(health: starting)" — loop exited immediately before app ready. Fixed with docker inspect exact status check. PR #25 merged to main. |
+| 2026-04-13 08:25 | US-002 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-002-price-slider, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-004 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-004-player-count-filter-chips, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-005 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-005-active-filter-summary-bar, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-006 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-006-multi-step-checkout-wizard, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-008 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-008-rental-cart-drawer, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-009 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-009-availability-calendar, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-010 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-010-signup-login-pages, status reset for QA re-pick |
+| 2026-04-13 08:25 | US-013 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected on feat/US-013-wishlist-saved-games, status reset for QA re-pick |

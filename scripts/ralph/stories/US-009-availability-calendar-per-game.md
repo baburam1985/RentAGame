@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 9
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-009-availability-calendar
 - **PR:** #14
@@ -21,14 +21,9 @@ Add an availability calendar to GameModal. Show a month calendar with unavailabl
 - [ ] Selecting an unavailable date shows an inline error message
 - [ ] Calendar shows the current month by default with prev/next navigation
 
-## QA Feedback (Attempt 2)
+## QA Feedback
 
-Classification: env-failure
-Job: E2E Tests
-Error: E2E tests fail consistently across ALL open PRs (#7–#23). Unit Tests and Docker Build pass on every run. Prior fixes applied (category badge, networkidle wait, modal selector, catalog count). Root issue is systemic — Playwright e2e-tests container cannot reliably connect to app container at http://app:3000, or there is a Docker networking regression in CI environment. Not a per-story code issue.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332403831/job/71041084894
-
-Routed to CI-Fix agent. PR #14 remains open.
+env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
 
 ## Dev Notes
 

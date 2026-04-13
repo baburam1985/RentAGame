@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips
 - **PR:** #8
@@ -10,16 +10,7 @@
 
 ## QA Feedback
 
-**Check 0 FAILED — GitHub CI E2E Tests job (conclusion: failure)**
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E job fails consistently across all open PRs (US-002 through US-017). Unit Tests and Docker Build pass on every run. The failure pattern — same E2E outcome across all feature branches regardless of their changes — indicates a systemic Docker networking or Playwright startup issue, not a per-story code regression.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332345339/job/71040896976
-
-Prior attempts (jobs 71020246167, 71020434164, 71040896976) all show same pattern. catalog.spec.ts count fix and networkidle wait have already been applied to branch; root issue is infrastructure. Routed to CI-Fix agent.
-
-PR #8 remains open.
+env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
 
 ## Dev Notes
 

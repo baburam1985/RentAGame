@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider
 - **PR:** #7
@@ -25,16 +25,7 @@ Add a dual-handle price range slider (min/max) in the filter bar. Games outside 
 
 ## QA Feedback
 
-**Check 0 FAILED — GitHub CI E2E Tests job (conclusion: failure)**
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E job failed consistently across all open PRs — Docker unit tests and build pass, only Playwright E2E fails. Pattern indicates systemic Docker/network issue between e2e-tests container and app container, not a code regression.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332325109/job/71040834074
-
-History of failures: job 71016168942 (attempt 1), job 71040834074 (attempt 2, after networkidle + category badge + modal selector fixes). All passing: Unit Tests, Docker Build. E2E fails on every PR regardless of feature code. This is routed to CI-Fix, not Dev.
-
-PR #7 remains open. CI-Fix should investigate why the Playwright e2e-tests Docker container cannot reach the app container at http://app:3000.
+env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
 
 ## Dev Notes
 

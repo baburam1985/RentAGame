@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 8
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-008-rental-cart-drawer
 - **PR:** #13
@@ -22,14 +22,9 @@ Add a cart system. 'Add to Cart' button on each GameCard and GameModal. Cart ico
 - [ ] Checkout CTA in drawer opens the multi-step wizard pre-populated with cart items
 - [ ] Items can be removed from the cart
 
-## QA Feedback (Attempt 2)
+## QA Feedback
 
-Classification: env-failure
-Job: E2E Tests
-Error: E2E tests fail consistently across ALL open PRs (#7–#23). Unit Tests and Docker Build pass on every run. Prior fixes applied (category badge, networkidle wait, modal selector, catalog count). Root issue is systemic — Playwright e2e-tests container cannot reliably connect to app container at http://app:3000, or there is a Docker networking regression in CI environment. Not a per-story code issue.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332400853/job/71041075370
-
-Routed to CI-Fix agent. PR #13 remains open.
+env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
 
 ## Dev Notes
 
