@@ -44,6 +44,7 @@ type Props = {
   searchQuery?: string;
   sortOrder?: string;
   selectedPlayerCounts?: string[];
+  onSelect?: (game: Game) => void;
 };
 
 export default function GameGrid({
@@ -51,6 +52,7 @@ export default function GameGrid({
   searchQuery = "",
   sortOrder = "featured",
   selectedPlayerCounts = [],
+  onSelect,
 }: Props) {
   const query = searchQuery.toLowerCase();
 
@@ -84,7 +86,7 @@ export default function GameGrid({
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sorted.map((game) => (
-              <GameCard key={game.id} game={game} />
+              <GameCard key={game.id} game={game} onSelect={onSelect} />
             ))}
           </div>
 
