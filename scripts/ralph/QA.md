@@ -26,6 +26,11 @@ No agent — including Dev and CI-Fix — may push implementation code directly 
 
 ## Your Task Every Run
 
+**Batch mode:** This agent validates up to **10 stories per run**. After passing
+or failing a story, loop back to Step 2 and pick the next `dev-complete` or
+`ci-pending` story. Stop when the batch cap is reached or no more stories are
+available. Track `STORIES_VALIDATED` in working memory (starts at 0, max 10).
+
 ### Step 0 — Read the product spec
 
 Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
@@ -44,6 +49,13 @@ git pull origin main
 ```
 
 ### Step 2 — Pick a story
+
+Check batch cap first:
+```
+If STORIES_VALIDATED >= 10:
+  Output: "Batch cap reached (10 stories validated). Stopping — next trigger will continue."
+  STOP.
+```
 
 Read `prd.csv`. Pick the **highest priority** story where:
 - `status == "dev-complete"` — needs full validation (Checks 0–8)
@@ -382,11 +394,12 @@ qaAttempts: N
 
 ## Stop Condition
 
-After completing validation, check if ALL stories in prd.csv have
-`status: "qa-passed"` (count dynamically — Research agent may have added
-stories beyond the original 17).
+After each story (pass or fail):
 
-If yes:
-```
-<promise>COMPLETE</promise>
-```
+1. Increment `STORIES_VALIDATED` by 1.
+2. **Loop back to Step 2** to pick the next story — do NOT stop unless one of:
+   - `STORIES_VALIDATED >= 10` → output batch cap message and stop
+   - No more `dev-complete` or `ci-pending` stories remain → output "Nothing to validate." and stop
+   - All stories in `prd.csv` have `status: "qa-passed"` → output `<promise>COMPLETE</promise>`
+
+This means one trigger run validates up to 10 stories back-to-back before stopping.

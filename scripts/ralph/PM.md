@@ -102,8 +102,8 @@ file with full acceptance criteria (3-6 criteria). Add a row to `prd.csv`.
 Set `priority` higher than existing pending stories so the Dev queue stays
 ordered by value.
 
-**Limit:** Convert at most 5 research items per PM run to avoid flooding the
-backlog. Save the rest for future runs.
+**Limit:** Convert at most 10 research items per PM run to match Dev's batch
+throughput. Save the rest for future runs.
 
 ### Step 7 — Write both files back
 

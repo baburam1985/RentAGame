@@ -31,12 +31,13 @@ git pull origin main
 
 ### Step 2a — Check for env-failure escalations from QA
 
-Before checking main, scan `prd.csv` for any story where:
+Before checking main, scan `prd.csv` for **all** stories where:
 - `status == "qa-failed"`
 - `qaFeedback` contains `Classification: env-failure`
 
+Process each one in sequence (no cap — fix all env-failures found).
 These are CI environment failures that QA could not route to Dev (they are not
-code bugs). Fix the environment issue on the feature branch:
+code bugs). For each story, fix the environment issue on the feature branch:
 
 ```bash
 git fetch origin
