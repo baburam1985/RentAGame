@@ -318,6 +318,22 @@ if [ "$STATUS" = "healthy" ]; then
 This check is especially important after any CI workflow edit — even unrelated ones —
 because a bad health-wait in `ci.yml` will silently fail every E2E run on every branch.
 
+<!-- retro: CI-Fix-batch-01 -->
+**Pre-push: when the story changes user-facing strings or navigation behavior, sync the E2E spec.**
+E2E specs in `web/e2e/` are acceptance tests that verify story behavior. They must stay
+aligned with the implementation. Two common drift patterns:
+- **Validation/error message text changed** (e.g. US-019: new wording for date errors):
+  ```bash
+  grep -rn "old error text" /home/user/RentAGame/web/e2e/
+  ```
+  If matches exist, update them to the new expected string.
+- **Form submission changed from in-page success state to navigation** (e.g. US-007: `router.push`
+  replaced `setSubmitted(true)`): replace `getByText(/Thanks!/i)` checks with
+  `waitForURL("**/target-page")` + heading assertion in the E2E spec.
+Updating E2E specs to reflect changed story behavior is NOT a TDD violation — it keeps
+acceptance tests aligned with acceptance criteria. Failing to update E2E specs causes
+every CI run to fail with text-not-found errors, routing work to CI-Fix unnecessarily.
+
 <!-- retro: US-001 -->
 **Pre-commit: scan for `console.log` in all modified source files.**
 `console.log` in any component — including protected ones like `RentalForm` —

@@ -150,6 +150,21 @@ Read the failure output carefully. Common failure patterns:
 - Check if a component is missing, renamed, or has changed behaviour
 - Fix the implementation
 
+<!-- retro: CI-Fix-batch-01 -->
+**E2E spec drift — unit tests pass but E2E fails with text-not-found on a specific PR:**
+When unit tests pass and the E2E failure is "locator resolved to hidden" or "expected to
+be visible" for a specific text string or URL assertion, the E2E spec is out of sync with
+the feature's implementation. Two patterns:
+1. **Message text changed**: feature changed a validation/error string but E2E spec has
+   the old text. Fix: update the matching `getByText("old text")` in `web/e2e/*.spec.ts`
+   to the new string from the component.
+2. **Navigation changed**: feature changed form submission to use `router.push(path)`
+   instead of in-page state. Fix: replace `getByText(/Thanks!/i)` with
+   `waitForURL("**/<path>")` followed by a heading check on the destination page.
+After updating E2E specs, push to the feature branch — unit tests do NOT need to be
+re-run since no implementation was changed. Reset prd.csv and the story .md to
+`dev-complete` so QA picks up a fresh CI run.
+
 **Build errors (docker build fails):**
 - Read the build log for the first error
 - Usually a missing import, wrong export, or syntax error

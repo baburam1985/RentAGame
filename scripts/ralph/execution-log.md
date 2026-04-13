@@ -209,3 +209,20 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:45 | US-018 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
 | 2026-04-13 10:45 | US-020 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
 | 2026-04-13 10:45 | US-021 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+
+## Retro: CI-Fix-batch-01 - E2E spec drift (US-019 message mismatch, US-007 navigation change)
+- **QA attempts (affected stories):** US-019 ×1, US-007 ×3+
+- **Issues found:**
+  - E2E spec drift: US-019 changed validation message text ("End date must be after start date")
+    but E2E spec still checked for old string "Return date must be on or after the event date."
+  - E2E spec drift: US-007 changed handleSubmit to router.push('/order-confirmation') but
+    E2E spec still checked for in-page Thanks! message that never rendered after navigation
+  - Both failures: unit tests passed (implementation correct); only E2E specs were out of sync
+- **Improvements applied:**
+  - DEV.md: added pre-push E2E sync check — grep for changed message strings in web/e2e/;
+    also document router.push E2E spec update pattern
+  - QA.md: added single-PR text-mismatch triage rule — classify as env-failure (not code-failure),
+    route to CI-Fix since unit tests confirm implementation is correct
+  - CI.md: added E2E spec drift recognition and fix pattern for both message text and navigation changes
+- **Pipeline health:** stable — recurring env-failure pattern now documented and preventable
+---

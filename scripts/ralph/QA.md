@@ -197,6 +197,18 @@ When ALL PRs fail E2E simultaneously with identical "connection refused" errors,
 ALWAYS classify as `env-failure` and check `ci.yml` for `grep.*healthy` substring
 matching in the health-wait step before routing anything to Dev.
 
+<!-- retro: CI-Fix-batch-01 -->
+**E2E single-PR failure: "Locator not found" / text mismatch — E2E spec drift.**
+When a specific PR's E2E tests fail with "locator not found" or "expected to be visible"
+for a particular text string (no connection error, unit tests pass), the E2E spec likely
+checks for a string or page state that the feature changed:
+- Story changed a validation message → E2E spec still has old message text
+- Story changed form submission to navigate (`router.push`) → E2E spec still checks for
+  in-page success text (`Thanks!`)
+Classify as `env-failure` and route to CI-Fix. Do NOT route to Dev as `code-failure`
+since the unit tests confirm the implementation is correct per story ACs; only the
+E2E spec needs updating to match the new behavior.
+
 Append to execution log:
 ```bash
 echo "| $TIMESTAMP | US-NNN | qa-failed | qa | CI failed: <classification> — <brief reason> |" >> scripts/ralph/execution-log.md
