@@ -34,6 +34,16 @@ humans and the Retro agent a clear timeline of what happened and when.
 ---
 | 2026-04-13 05:26 | US-002 | ci-pending | qa | PR #7 updated with clean TDD implementation, waiting for CI |
 | 2026-04-13 05:26 | US-004 | ci-pending | qa | PR #8 updated with E2E count fix, waiting for CI |
+| 2026-04-13 06:00 | US-005 | qa-failed | qa | env-failure: E2E catalog.spec.ts "clicking Lawn Games filter" — GameCard.tsx missing category badge after commit 88e076e; PR #10 |
+| 2026-04-13 06:00 | US-006 | qa-failed | qa | env-failure: same systemic E2E failure; PR #11 |
+| 2026-04-13 06:00 | US-007 | qa-failed | qa | env-failure: same systemic E2E failure; PR #12 |
+| 2026-04-13 06:00 | US-008 | qa-failed | qa | env-failure: same systemic E2E failure; PR #13 |
+| 2026-04-13 06:00 | US-009 | qa-failed | qa | env-failure: same systemic E2E failure; PR #14 |
+| 2026-04-13 06:00 | US-010 | qa-failed | qa | env-failure: same systemic E2E failure; PR #15 |
+| 2026-04-13 06:00 | US-011 | qa-failed | qa | env-failure: same systemic E2E failure; PR #16 |
+| 2026-04-13 06:00 | US-012 | ci-pending | qa | PR #17 created, waiting for CI |
+| 2026-04-13 06:00 | US-013 | ci-pending | qa | PR #18 created, waiting for CI |
+| 2026-04-13 06:00 | US-014 | ci-pending | qa | PR #19 created, waiting for CI |
 
 ## Retro: [US-003] - Sort games by price or name
 - **QA attempts:** 1
