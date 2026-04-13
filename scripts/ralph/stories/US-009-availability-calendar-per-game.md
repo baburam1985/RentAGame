@@ -2,9 +2,9 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 9
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-009-availability-calendar
 - **PR:** (none)
 - **QA Attempts:** 0
 
