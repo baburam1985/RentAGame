@@ -3,9 +3,14 @@ import { test, expect } from "@playwright/test";
 test.describe("Game catalog", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
-    // Wait for catalog to be visible
+    // Wait for catalog to be visible (present in SSR HTML immediately)
     await page.waitForSelector("#catalog");
-    await page.waitForLoadState("networkidle");
+    // Wait for React hydration: check that React fiber is attached to a game card
+    // (React sets __reactFiber$... properties on DOM nodes only after hydration)
+    await page.waitForFunction(() => {
+      const card = document.querySelector("#catalog .group");
+      return card !== null && Object.keys(card).some((k) => k.startsWith("__reactFiber"));
+    });
   });
 
   test("shows at least 8 game cards", async ({ page }) => {
