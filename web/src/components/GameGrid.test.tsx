@@ -1,6 +1,7 @@
 import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import GameGrid from "./GameGrid";
+import type { Game } from "@/data/games";
 
 describe("GameGrid — search filtering", () => {
   it("typing filters games by name in real time", () => {
@@ -66,5 +67,113 @@ describe("GameGrid — search filtering", () => {
     expect(screen.getByText("Giant Jenga")).toBeInTheDocument();
     expect(screen.getByText("Cornhole Set")).toBeInTheDocument();
     expect(screen.getByText("Spikeball Set")).toBeInTheDocument();
+  });
+});
+
+// Minimal mock games for deterministic sort order tests
+const sortTestGames: Game[] = [
+  {
+    id: "game-c",
+    name: "Cornhole Set",
+    category: "Lawn Games",
+    description: "A classic cornhole game.",
+    pricePerDay: 35,
+    image: "https://example.com/cornhole.jpg",
+    players: "2–4 players",
+    dimensions: "4 ft × 2 ft",
+  },
+  {
+    id: "game-a",
+    name: "Bocce Ball Set",
+    category: "Team Games",
+    description: "A classic bocce game.",
+    pricePerDay: 30,
+    image: "https://example.com/bocce.jpg",
+    players: "2–8 players",
+    dimensions: "Standard court",
+  },
+  {
+    id: "game-b",
+    name: "Giant Jenga",
+    category: "Lawn Games",
+    description: "A giant stacking game.",
+    pricePerDay: 45,
+    image: "https://example.com/jenga.jpg",
+    players: "2–10 players",
+    dimensions: "4 ft tall",
+  },
+];
+
+function getSortedCardNames(): string[] {
+  return screen.getAllByRole("heading", { level: 3 }).map((h) => h.textContent ?? "");
+}
+
+describe("GameGrid — sorting", () => {
+  it("Default selection is Featured (original games order preserved)", () => {
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        games={sortTestGames}
+        sortOrder="featured"
+      />
+    );
+    expect(getSortedCardNames()).toEqual(["Cornhole Set", "Bocce Ball Set", "Giant Jenga"]);
+  });
+
+  it("Price: Low to High sorts games ascending by pricePerDay", () => {
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        games={sortTestGames}
+        sortOrder="price-asc"
+      />
+    );
+    expect(getSortedCardNames()).toEqual(["Bocce Ball Set", "Cornhole Set", "Giant Jenga"]);
+  });
+
+  it("Price: High to Low sorts games descending by pricePerDay", () => {
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        games={sortTestGames}
+        sortOrder="price-desc"
+      />
+    );
+    expect(getSortedCardNames()).toEqual(["Giant Jenga", "Cornhole Set", "Bocce Ball Set"]);
+  });
+
+  it("Name: A–Z sorts games alphabetically by name", () => {
+    render(
+      <GameGrid
+        activeCategory="All"
+        onSelect={() => {}}
+        games={sortTestGames}
+        sortOrder="name-asc"
+      />
+    );
+    expect(getSortedCardNames()).toEqual(["Bocce Ball Set", "Cornhole Set", "Giant Jenga"]);
+  });
+
+  it("Sort applies on top of active category filter", () => {
+    render(
+      <GameGrid
+        activeCategory="Lawn Games"
+        onSelect={() => {}}
+        games={sortTestGames}
+        sortOrder="price-asc"
+      />
+    );
+    // Only Lawn Games: Cornhole (35) and Giant Jenga (45) — sorted price asc
+    expect(getSortedCardNames()).toEqual(["Cornhole Set", "Giant Jenga"]);
+  });
+
+  it("sortOrder defaults to featured when not provided (backward compat)", () => {
+    render(<GameGrid activeCategory="All" onSelect={() => {}} />);
+    // Just verify it renders without error and shows some games
+    const headings = screen.getAllByRole("heading", { level: 3 });
+    expect(headings.length).toBeGreaterThan(0);
   });
 });
