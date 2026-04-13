@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 6
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-006-multi-step-checkout-wizard
 - **PR:** #11
-- **QA Attempts:** 0
+- **QA Attempts:** 1
 
 ## Description
 
@@ -34,15 +34,12 @@ A standalone `CheckoutWizard` component with 2 steps: Step 1 — contact form (n
 2. **GREEN commit:** Create `CheckoutWizard.tsx` and update `page.tsx`. The GREEN commit must contain **zero changes to any test file** — not `CheckoutWizard.test.tsx`, not `Navbar.test.tsx`, not any `*.spec.ts`. If you need to change a test to make it pass, that is a RED commit fix, not a GREEN fix — stop and restart.
 3. **E2E boundary:** Do NOT touch any existing E2E spec file. Do NOT create new E2E spec files for this story.
 
-## QA Feedback (Attempt 4)
+## QA Feedback (Attempt 1)
 
-**Check 0 — CI E2E FAILED:**
-- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339138264/job/71063424718
-
-**Check 2 — TDD INTEGRITY FAILED:**
-`web/src/components/CheckoutWizard.test.tsx` was modified between the RED commit (`aef1478 test: [US-006] RED`) and the GREEN commit (`f7b4d10 feat: [US-006] GREEN`). Three assertions were changed from `getByText()` to `getByRole("heading", ...)`. Zero changes to test files are permitted between RED and GREEN.
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Local unit tests and TypeScript clean.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339124693/job/71063381395
 
 ## Dev Notes
 

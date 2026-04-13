@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 11
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-011-user-profile-page
 - **PR:** #16
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## Description
 
@@ -41,26 +41,10 @@ Create a `/profile` page that is auth-gated. Authenticated users see their avata
 
 ## QA Feedback (Attempt 2)
 
-**Check 0 — CI FAILED:**
-- Classification: code-failure
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332405953/job/71041092270
-
-**Check 2 — TDD INTEGRITY FAILED:**
-`ProfilePage.test.tsx` was modified between the RED and GREEN commits: `waitFor` import added, test functions made async, assertions wrapped in `waitFor`. These must be in the RED commit.
-
-**Check 5 — TEST COUNT FAILED:**
-7 tests found, 8 required. AC-7 and AC-8 (logout) were combined into one test — they must be separate.
-
-**Check 9 — SCOPE VIOLATION:**
-`catalog.spec.ts`, `modal.spec.ts`, and `rental-form.spec.ts` were modified. These are not in scope.
-
-## QA Feedback (Attempt 1)
-
 Classification: env-failure
 Job: E2E Tests
-Error: ALL open PRs fail E2E while unit tests pass — systemic CI E2E environment failure. Local checks 1–7, 9 all pass (8 ACs covered by 8 tests, TypeScript clean, 54 unit tests pass). Branch has correct docker-compose.yml (node healthcheck) and ci.yml (docker inspect exact-equality).
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342131248/job/71073425764
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342141119/job/71073457369
 
 ## Dev Notes
 

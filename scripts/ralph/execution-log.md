@@ -361,3 +361,13 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:17 | US-045 | in-progress | dev | starting new story — recently viewed games horizontal strip |
 | 2026-04-13 14:18 | US-045 | tests-written | dev | RED commit — 6 failing tests for RecentlyViewed (localStorage rg_recent_views, ordered strip) |
 | 2026-04-13 14:21 | US-045 | dev-complete | dev | GREEN commit — RecentlyViewed component + addRecentView utility, 52 tests pass |
+| 2026-04-13 14:32 | US-002 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 4), routed to CI-Fix |
+| 2026-04-13 14:32 | US-004 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 5), routed to CI-Fix |
+| 2026-04-13 14:32 | US-005 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:32 | US-006 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 1), routed to CI-Fix |
+| 2026-04-13 14:32 | US-007 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:32 | US-008 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:32 | US-009 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:32 | US-010 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:32 | US-011 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:32 | US-012 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |

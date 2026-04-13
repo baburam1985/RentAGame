@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## Description
 
@@ -37,28 +37,12 @@ Add an `OrderHistory` component that reads from `localStorage` (`rg_orders`) and
 2. **GREEN commit:** Create `OrderHistory.tsx`, make the minimal change to `RentalForm.tsx` (add one `localStorage.setItem` call), and make the minimal change to `profile/page.tsx` (mount `OrderHistory`). The GREEN commit must contain **zero changes to `OrderHistory.test.tsx`** or any other test file or spec file.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 1)
+## QA Feedback (Attempt 2)
 
-**Check 0 — CI FAILED:**
-- Classification: code-failure
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332406136/job/71041092901
-
-**Check 5 — TEST COUNT FAILED:**
-5 tests found in `OrderHistory.test.tsx` but 6 acceptance criteria defined. Missing test for AC #6.
-
-**Check 9 — SCOPE VIOLATION (PROTECTED FILE):**
-`web/src/components/GameCard.tsx` was modified. This is a protected file. Story US-012 does NOT authorize changes to GameCard.tsx. Additional out-of-scope changes: `GameGrid.tsx`, `app/page.tsx`, `catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`.
-
-## QA Feedback (Attempt 1)
-
-**Check 2 — TDD INTEGRITY FAILED:**
-`web/e2e/catalog.spec.ts` was modified between the RED commit (878c828) and the GREEN commit (048c4ab). A functional line was added: `await page.waitForSelector('main[data-hydrated]', { timeout: 30000 })`. This is a test file modification after RED — not permitted. Revert `catalog.spec.ts` to main's version: `git checkout main -- web/e2e/catalog.spec.ts`.
-
-**Check 9 — SCOPE VIOLATION:**
-`web/e2e/catalog.spec.ts` was modified despite the story explicitly prohibiting it ("Do NOT touch any other files. Do not modify... `web/e2e/catalog.spec.ts`..."). Remove this change.
-
-Note: Unit tests (52/52), TypeScript, and scope of implementation files are all correct — only the E2E spec modification needs fixing.
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24346453475/job/71088554610
 
 ## Dev Notes
 

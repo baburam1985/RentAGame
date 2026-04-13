@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 9
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-009-availability-calendar
 - **PR:** #14
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## Description
 
@@ -33,9 +33,12 @@ A standalone `AvailabilityCalendar` component that displays a month calendar and
 2. **GREEN commit:** Create `AvailabilityCalendar.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file**.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 1)
+## QA Feedback (Attempt 2)
 
-~~Classification: env-failure — FIXED by CI agent: systemic CI E2E failure resolved (branch already had correct node healthcheck and exact-equality health-wait). Reset to dev-complete.~~
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342571415/job/71074901525
 
 ## Dev Notes
 
