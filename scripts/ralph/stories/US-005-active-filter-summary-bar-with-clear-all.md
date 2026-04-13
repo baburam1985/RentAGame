@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 5
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
 - **Branch:** feat/US-005-active-filter-summary-bar
 - **PR:** #0
