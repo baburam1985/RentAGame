@@ -394,9 +394,9 @@
       "source": "Form UX best practices: Baymard Institute; checkout UX: alfdesigngroup.com/post/checkout-ux; booking flow UX: paylode.com/use-cases/booking-flows",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-037"
     },
     {
       "id": "R-034",
@@ -406,9 +406,9 @@
       "source": "E-commerce UX: Airbnb, Viator recently-viewed patterns; peer-to-peer rental platform UX: shipturtle.com/blog/peer-to-peer-rental-marketplace-platform",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-045"
     },
     {
       "id": "R-035",
@@ -418,9 +418,9 @@
       "source": "WCAG 2.1 SC 2.4.1 Bypass Blocks; web accessibility guide 2026: webability.io/blog/wcag-ada-2025-making-websites-accessible-for-all; inclusiveweb.co/understanding-wcag",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-038"
     },
     {
       "id": "R-036",
@@ -430,9 +430,9 @@
       "source": "Event rental software trends 2026: gomomentus.com/blog/revolutionizing-event-and-venue-management-event-trends; party rental platform admin self-service patterns",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-046"
     },
     {
       "id": "R-037",
@@ -442,9 +442,9 @@
       "source": "Airbnb Experiences and Viator 'Instant Confirmation' trust badge patterns; rental trust signals: accessibe.com/blog/knowledgebase/accessible-short-term-rental-property; conversion optimisation: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-047"
     },
     {
       "id": "R-038",
@@ -454,8 +454,8 @@
       "source": "Party rental trends 2025: tentandtable.net/blog/post/trends-in-party-rentals; event rental trends: accio.com/business/event-rental-trends; event industry 2026: whova.com/blog/top-event-industry-trends-2025-incorporate-events",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: US-033 already covers occasion-based filtering (Wedding, Corporate, Kids Party); adding Backyard BBQ and Beach Day extends the same mechanism and should be scoped as a content update within US-033's implementation rather than a new story; backlog is healthy at 40+ pending stories",
       "convertedToStory": ""
     },
     {
@@ -466,9 +466,9 @@
       "source": "Mobile UX patterns: medium.com/@myousufraza/car-rental-mobile-app-ui-ux-design-in-2025; mobile booking conversion: ulansoftware.com/blog/ux-tips-improve-travel-booking-conversion",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-048"
     },
     {
       "id": "R-040",
@@ -478,9 +478,9 @@
       "source": "E-commerce comparison UX patterns; rental marketplace UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; peer-to-peer rental: shipturtle.com/blog/peer-to-peer-rental-marketplace",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-049"
     },
     {
       "id": "R-041",
@@ -490,9 +490,9 @@
       "source": "Mobile UX feedback patterns: Airbnb, Viator wishlist interactions; e-commerce micro-interaction best practices: mobiloud.com/blog/trust-signals-cart-abandonment",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-050"
     },
     {
       "id": "R-042",
@@ -502,8 +502,8 @@
       "source": "Rental platform UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; peer-to-peer rental SEO patterns (shipturtle.com); vacation rental booking engines: martalebre.com/blog/best-vacation-rental-booking-engines",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: already implemented — PRODUCT.md Current Feature Inventory lists /games/[id] page (web/src/app/games/[id]/page.tsx and GameDetailClient.tsx) as a built and working feature; nothing to build",
       "convertedToStory": ""
     },
     {
@@ -514,9 +514,9 @@
       "source": "Competitor UX: trianglelawngames.com and wonderflygames.com both show process steps near the top; conversion UX: spiltmilkwebdesign.com/conversion-rate-optimization-website-ux-for-boutique-hotels-in-2025",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted",
+      "convertedToStory": "US-051"
     },
     {
       "id": "R-044",
@@ -526,9 +526,9 @@
       "source": "Competitor analysis: partyproseastcoast.com/interactive-game-rentals-by-age-group; wonderflygames.com; losvirtuality.com/blog/party-game-rental-ideas-in-2025",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence; age-group filtering is a genuine discovery gap not covered by existing category/player filters; US-055 already created in prior run",
+      "convertedToStory": "US-055"
     },
     {
       "id": "R-045",
@@ -538,8 +538,8 @@
       "source": "Baymard Institute product list UX 2025: baymard.com/blog/current-state-product-list-and-filtering; filter UX best practices: lollypop.design/blog/2025/july/filter-ux-design",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: duplicate of US-005 (Active filter summary bar with clear-all) which already covers a consolidated active-filter chip bar with individual dismiss controls and a clear-all button",
       "convertedToStory": ""
     },
     {
@@ -550,9 +550,9 @@
       "source": "Baymard Institute product list filtering UX 2025: baymard.com/blog/current-state-product-list-and-filtering; filter UX design: aufaitux.com/blog/filter-ui-design",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; live result counts prevent dead-end zero-result filter selections; US-056 already created in prior run",
+      "convertedToStory": "US-056"
     },
     {
       "id": "R-047",
@@ -562,8 +562,8 @@
       "source": "WeddingWire forum discussions: weddingwire.com/wedding-forums/lawn-games-yay-or-nay; customer voice research on outdoor game booking concerns; competitor UX: upstatejamboree.com",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; R-031 (weather disclaimer) was already rejected; the indoor/outdoor suitability information is already conveyable via game descriptions and the FAQ (US-041); backlog is saturated at 40+ pending stories — defer to a future run after higher-priority discovery stories ship",
       "convertedToStory": ""
     },
     {
@@ -574,9 +574,9 @@
       "source": "WCAG 2.2 SC 2.5.5 Target Size; button accessibility guide: accessdesigns.net/tutorials/buttons; ADA compliance checklist 2026: shrtu.com/ada-compliance-for-websites-checklist",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; WCAG 2.2 SC 2.5.5 compliance is a clear legal and accessibility requirement; no existing story covers touch target sizing; directly improves motor-impaired user access",
+      "convertedToStory": "US-057"
     },
     {
       "id": "R-049",
@@ -586,8 +586,8 @@
       "source": "Competitor analysis: partyproseastcoast.com/interactive-game-rentals; lonestarparties.com; customer decision factor research: wellness.alibaba.com/outdoor/rent-outdoor-games-for-events",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; R-047 (indoor/outdoor tag) was rejected; this adds a filter dimension on top of a tag that hasn't been built yet; backlog is saturated — defer until age-group (US-055) and occasion (US-033) filters ship and user testing reveals a gap in venue-type discovery",
       "convertedToStory": ""
     },
     {
@@ -598,9 +598,9 @@
       "source": "PRODUCT.md design principle 3; empty state UX best practices: eleken.co/blog-posts/empty-state-ux; Baymard cart UX research",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; directly violates PRODUCT.md principle 3 ('never a dead end'); no existing story covers the empty cart state; analogous to US-018 which was accepted for the same reason",
+      "convertedToStory": "US-058"
     },
     {
       "id": "R-051",
@@ -610,9 +610,9 @@
       "source": "Competitor UX: bookextraordinary.com/game-rentals; reventals.com/blog/how-to-choose-game-rentals-for-your-next-event; event rental booking UX: integrarental.com/blog/party-and-event-rental-software",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: medium confidence + small effort; optional field adds genuine value for admin prep and personalized confirmation copy; no backend required; aligns with PRODUCT.md friendly/casual brand voice",
+      "convertedToStory": "US-059"
     },
     {
       "id": "R-052",
@@ -622,8 +622,8 @@
       "source": "Event planning accessibility guide: executivevents.com/post/event-planning-for-accessibility-your-essential-guide-to-inclusive-events; venue coordinator workflow research; Baymard order confirmation UX: baymard.com/checkout-usability/benchmark/step-type/receipt",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; print-to-PDF is a browser native capability customers can access without a dedicated button; US-007 (order confirmation page) is still qa-failed and must ship first before adding secondary actions to it; defer to a future run after confirmation page is stable",
       "convertedToStory": ""
     },
     {
@@ -634,8 +634,8 @@
       "source": "Filter and sort UX best practices: pencilandpaper.io/articles/ux-pattern-analysis-enterprise-filtering; ecommerce product listing UX: valido.ai/en/ecommerce-product-listing-page-ux-best-practices",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; sort state naturally resets on page reload on most e-commerce sites and is not a significant usability defect; US-003 (sort games) is already qa-passed; a prefix label on a native select element is trivial and better handled as a micro-improvement within a broader filter UX story; backlog saturated",
       "convertedToStory": ""
     },
     {
@@ -646,9 +646,9 @@
       "source": "Party and event rental software UX: integrarental.com/blog/party-and-event-rental-software; Goodshuffle Pro admin patterns: pro.goodshuffle.com/blog/event-rental-software-trends-2026-roadmap",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence; the order detail view is a clear operational necessity for the admin — without it the orders list page (US-016) is only marginally useful; medium effort is justified by the genuine pain it solves; feasible with localStorage only",
+      "convertedToStory": "US-060"
     },
     {
       "id": "R-055",
@@ -658,8 +658,8 @@
       "source": "Competitor UX: wonderflygames.com flexible availability; booking UX best practices: ralabs.org/blog/booking-ux-best-practices; Baymard availability display research",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; US-009 (availability calendar per game) already covers availability display and is still qa-failed; building an inline availability count before the calendar story ships risks inconsistent availability UX; defer until US-009 is qa-passed",
       "convertedToStory": ""
     },
     {
@@ -670,9 +670,9 @@
       "source": "WCAG 2.1 AA compliance guide 2026: lollypop.design/blog/2026/april/web-accessibility-guidelines-a-complete-guide-to-wcag-compliance-in-2026; accessibility statistics: allaccessible.org/blog/color-contrast-accessibility-wcag-guide-2025; WebAIM annual report",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; WCAG 2.1 SC 1.3.1 is a hard accessibility requirement; label associations are a structural fix that US-030 (focus rings and ARIA errors) does not cover; critical for screen reader users of the rental form",
+      "convertedToStory": "US-061"
     },
     {
       "id": "R-057",
@@ -682,9 +682,9 @@
       "source": "Google Core Web Vitals font loading best practices; Next.js font optimization docs: nextjs.org/docs/app/api-reference/components/font; web performance 2026: assist-software.net/business-insights/web-accessibility-2026-complete-guide-wcag-compliance",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort (one-line change); prevents FOIT on slow connections; satisfies Core Web Vitals CLS; aligns with PRODUCT.md design principle 5 ('fast perceived performance')",
+      "convertedToStory": "US-062"
     },
     {
       "id": "R-058",
@@ -694,8 +694,8 @@
       "source": "Party Pros East Coast guided recommendation pattern: partyproseastcoast.com/interactive-game-rentals; party rental trends 2026: thepartyspotca.com/2026-party-rental-trends; conversion UX: parallelhq.com/blog/ux-design-to-improve-website-conversions",
       "confidence": "medium",
       "effort": "large",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + large effort; a guided question wizard is a significant new UX surface area; defer until age-group (US-055) and occasion (US-033) filters ship — those independently cover the same discovery problem at much lower cost; re-evaluate if conversion data shows a gap",
       "convertedToStory": ""
     },
     {
@@ -706,9 +706,9 @@
       "source": "Rental marketplace UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; e-commerce navigation best practices; Nielsen Norman Group breadcrumb guidelines",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; the /games/[id] page is a built feature with a real navigation gap for direct-link visitors; no existing story addresses back navigation on the detail page",
+      "convertedToStory": "US-063"
     },
     {
       "id": "R-060",
@@ -718,9 +718,9 @@
       "source": "Party and event rental software workflows: integrarental.com/blog/party-and-event-rental-software; Goodshuffle Pro order management: pro.goodshuffle.com; event rental trends 2026: pro.goodshuffle.com/blog/event-rental-software-trends-2026-roadmap",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence; order status lifecycle (Confirmed/Delivered/Returned) is an operational necessity for any rental business; medium effort is justified — without it the admin dashboard cannot be used to manage real bookings; localStorage-only implementation is feasible",
+      "convertedToStory": "US-064"
     },
     {
       "id": "R-061",
@@ -730,9 +730,9 @@
       "source": "WCAG 2.2 SC 2.4.11 Focus Appearance; ADA compliance checklist 2026: d2itechnology.com/blogs/ada-website-accessibility-compliance-2026-wcag-guide; accessible button design: accessdesigns.net/tutorials/buttons",
       "confidence": "high",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: high confidence, small effort; WCAG 2.2 SC 2.4.11 is a firm accessibility requirement; Tailwind base CSS reset of outline:none is a well-known issue; a focused Navbar is used on every page so this has wide impact",
+      "convertedToStory": "US-065"
     },
     {
       "id": "R-062",
@@ -742,8 +742,8 @@
       "source": "Rental marketplace UX: easternpeak.com/blog/rental-marketplace-development-airbnb-example; Goodshuffle Pro wishlist integration: pro.goodshuffle.com/blog/best-event-rental-websites; peer-to-peer rental patterns: radicalstart.com/blog/peer-to-peer-rental-marketplace",
       "confidence": "medium",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence + medium effort; US-013 (wishlist) is still ci-pending — the base wishlist must ship and stabilize before adding shareable URL variants; URL-encoded wishlist state adds routing complexity that could interfere with existing filter URL patterns; defer until US-013 is qa-passed",
       "convertedToStory": ""
     },
     {
@@ -754,8 +754,8 @@
       "source": "Airbnb and Viator urgency signal UX patterns; trust signal research: mobiloud.com/blog/trust-signals-cart-abandonment; conversion rate optimization: bigcommerce.com/articles/ecommerce/checkout-optimization",
       "confidence": "low",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: low confidence; hardcoded fake view counts risk undermining trust with skeptical customers — the same concern that caused R-026 (social proof counter) to be rejected; PRODUCT.md brand voice is 'friendly and honest', not pressured; dark pattern risk outweighs conversion benefit",
       "convertedToStory": ""
     },
     {
@@ -766,8 +766,8 @@
       "source": "Event rental software trends 2026: pro.goodshuffle.com/blog/event-rental-software-trends-2026-roadmap; rental business operational intelligence: integrarental.com/blog/party-and-event-rental-software",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: medium confidence; US-015 (inventory management) is still pending — the base inventory page must ship before adding demand signals to it; backlog is saturated at 40+ pending stories; defer until US-015 is qa-passed and the admin can evaluate real order data",
       "convertedToStory": ""
     },
     {
@@ -778,8 +778,8 @@
       "source": "Mobile form UX: Baymard Institute mobile checkout research: baymard.com/blog/mobile-checkout; mobile date picker UX: storyly.io/post/best-user-experience-datepicker-examples-for-mobile-and-web; mobile booking conversion: ulansoftware.com/blog/ux-tips-improve-travel-booking-conversion",
       "confidence": "high",
       "effort": "medium",
-      "status": "pending",
-      "pmVerdict": "",
+      "status": "rejected",
+      "pmVerdict": "rejected: high confidence but medium effort; browser virtual keyboard viewport behaviour varies significantly across iOS/Android and is notoriously brittle to fix with CSS alone; the game detail page already has a sticky CTA (protected component); defer until the rental form stories (US-019, US-026, US-030) are qa-passed so the form structure is stable before attempting layout fixes",
       "convertedToStory": ""
     },
     {
@@ -790,9 +790,9 @@
       "source": "Wonderfly Games customer complaint (Yelp/Google review, sourced via BBB search); customer pain research: curatedevents.com/blog/avoid-these-luxury-event-rental-mistakes-in-2025; event rental trust signals",
       "confidence": "medium",
       "effort": "small",
-      "status": "pending",
-      "pmVerdict": "",
-      "convertedToStory": ""
+      "status": "accepted",
+      "pmVerdict": "accepted: medium confidence + small effort; hygiene trust signals are an underserved but high-stakes concern for parents booking for children's events; pure UI copy and icon change on a non-protected component; no existing story covers equipment hygiene signalling",
+      "convertedToStory": "US-066"
     }
   ]
 }

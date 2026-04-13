@@ -53,3 +53,13 @@ US-051,Discovery,"How it works compact strip above game catalog",51,pending,fals
 US-052,Checkout & Payments,"HTML autocomplete attributes on rental form fields",52,pending,false,,0,0
 US-053,Discovery,"Search bar type-ahead suggestions dropdown",53,pending,false,,0,0
 US-054,Checkout & Payments,"Featured game recommendations in empty cart state",54,pending,false,,0,0
+US-057,Discovery,"Touch target size audit (WCAG 2.5.5)",57,pending,false,,0,0
+US-058,Checkout & Payments,"Empty cart 'Browse games' CTA",58,pending,false,,0,0
+US-059,Checkout & Payments,"'What's this event for?' optional field on rental form",59,pending,false,,0,0
+US-060,Admin Dashboard,"Admin order detail view",60,pending,false,,0,0
+US-061,Checkout & Payments,"Programmatic label associations for all form inputs (WCAG 1.3.1)",61,pending,false,,0,0
+US-062,Discovery,"Add font-display: swap to custom font loading",62,pending,false,,0,0
+US-063,Discovery,"Back navigation on game detail pages",63,pending,false,,0,0
+US-064,Admin Dashboard,"Admin order status workflow (Confirmed / Delivered / Returned)",64,pending,false,,0,0
+US-065,Discovery,"Navbar focus indicators (WCAG 2.4.11)",65,pending,false,,0,0
+US-066,Discovery,"'Cleaned & inspected before every rental' badge on game detail pages",66,pending,false,,0,0
