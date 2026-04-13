@@ -18,3 +18,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 03:50 | US-003 | qa-failed | qa | E2E tests failed on feat/US-003-sort-games |
 | 2026-04-13 04:30 | US-004 | ci-pending | qa | PR #8 created, waiting for CI |
 | 2026-04-13 04:42 | US-002 | qa-failed | qa | CI E2E Tests failed (job 71016168942) — branch has merge conflicts with main; needs rebase + E2E investigation |
+| 2026-04-13 04:45 | US-004 | qa-failed | qa | CI E2E failed — catalog.spec.ts expects 8 game cards but app has 12; update e2e/catalog.spec.ts toHaveCount(8) to toHaveCount(12) |
