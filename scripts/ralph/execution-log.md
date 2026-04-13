@@ -169,3 +169,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:21 | US-024 | tests-written | dev | RED phase — 8 failing tests for radiogroup keyboard nav |
 | 2026-04-13 10:24 | US-024 | dev-complete | dev | all tests pass, 3 files changed |
 | 2026-04-13 10:24 | US-025 | in-progress | dev | starting work |
+| 2026-04-13 10:26 | US-025 | tests-written | dev | RED phase — 5 failing tests for cancellation policy in GameModal |

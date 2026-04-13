@@ -23,7 +23,7 @@ US-021,Checkout & Payments,"Live total price calculation in rental form",21,dev-
 US-022,Discovery,"Descriptive alt text for all game images",22,dev-complete,false,feat/US-022-descriptive-alt-text,0,0
 US-023,Checkout & Payments,"Add 'No hidden fees' trust statement near rental form CTA",23,dev-complete,false,feat/US-023-no-hidden-fees-trust-statement,0,0
 US-024,Discovery,"Keyboard navigation for category filter and player chip groups",24,dev-complete,false,feat/US-024-keyboard-nav-filter-chips,0,0
-US-025,Discovery,"Cancellation policy statement in game modal",25,in-progress,false,,0,0
+US-025,Discovery,"Cancellation policy statement in game modal",25,tests-written,false,feat/US-025-cancellation-policy-modal,0,0
 US-026,Checkout & Payments,"Inline on-blur validation for rental form contact fields",26,pending,false,,0,0
 US-027,Discovery,"Game modal 'What's included' section",27,pending,false,,0,0
 US-028,Discovery,"Skeleton loading state for game grid",28,pending,false,,0,0

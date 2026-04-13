@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 25
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-025-cancellation-policy-modal
 - **PR:** (none)
 - **QA Attempts:** 0
 
