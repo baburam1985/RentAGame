@@ -226,3 +226,4 @@ humans and the Retro agent a clear timeline of what happened and when.
   - CI.md: added E2E spec drift recognition and fix pattern for both message text and navigation changes
 - **Pipeline health:** stable — recurring env-failure pattern now documented and preventable
 ---
+| 2026-04-13 10:46 | US-004 | dev-complete | dev | rebuilt on fresh branch from main, all 58 tests pass, 3 files changed |

@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** feat/US-004-player-count-filter-chips
+- **Branch:** feat/US-004-player-count-filter-chips-v2
 - **PR:** #8
 - **QA Attempts:** 3
 
@@ -18,7 +18,13 @@ CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337817867/job/71
 
 ## Dev Notes
 
-Implemented PlayerCountFilter component (chips 2, 4, 6, 8+) with controlled selectedCounts/onCountsChange props. Added parsePlayers() and playerCountMatches() utilities to GameGrid.tsx to parse existing players strings ("2–10 players", "4 players (2v2)", "4–20+ players", etc.) and filter by selected count(s) using OR logic. Wired PlayerCountFilter into page.tsx below SearchBar/SortDropdown row.
+Rebuilt on fresh branch from main (feat/US-004-player-count-filter-chips-v2) to resolve systemic E2E env-failure. Added parsePlayers() and playerCountMatches() utilities to GameGrid.tsx, PlayerCountFilter component with 4 chips (2, 4, 6, 8+), OR logic, aria-pressed state. Wired into page.tsx. All 58 unit tests pass. TypeScript clean.
+
+## Files Changed
+
+- `web/src/components/PlayerCountFilter.tsx` — new chip filter component
+- `web/src/components/GameGrid.tsx` — added selectedPlayerCounts prop + parse/match utilities
+- `web/src/app/page.tsx` — wired PlayerCountFilter with state management
 
 ## Description
 
