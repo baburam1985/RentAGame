@@ -239,3 +239,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:49 | US-027 | tests-written | dev | RED phase — 6 failing tests for what's included section |
 | 2026-04-13 10:57 | US-027 | dev-complete | dev | GREEN commit pushed — required included:string[] on Game type, all 12 games populated, GameModal renders section, 52 tests pass |
 | 2026-04-13 11:08 | US-028 | dev-complete | dev | GREEN commit — GameGridSkeleton 8 cards animate-pulse, GameGrid useState+setTimeout skeleton, GameGrid.test.tsx updated to waitFor, 52 tests pass |
+| 2026-04-13 11:15 | US-029 | dev-complete | dev | GREEN commit — badge?: string in Game type, 2 badges assigned, pill overlay in GameCard, 52 tests pass |
