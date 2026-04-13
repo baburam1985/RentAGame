@@ -352,3 +352,5 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:02 | US-042 | in-progress | dev | starting new story — Navbar active page indicator |
 | 2026-04-13 14:03 | US-042 | tests-written | dev | RED commit — 4 tests, 1 failing (active class on matching pathname link) |
 | 2026-04-13 14:05 | US-042 | dev-complete | dev | GREEN commit — usePathname in Navbar, underline class on cart link and nav links when pathname matches, 50 tests pass |
+| 2026-04-13 14:07 | US-043 | in-progress | dev | starting new story — step progress indicator in checkout wizard |
+| 2026-04-13 14:08 | US-043 | tests-written | dev | RED commit — 6 failing tests for CheckoutProgress (currentStep label, completed steps, aria-labels) |

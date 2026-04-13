@@ -41,7 +41,7 @@ US-039,Discovery,Game modal mobile scroll affordance (bottom fade shadow),39,dev
 US-040,Discovery,Display minimum rental period label on each game card,40,dev-complete,false,feat/US-040-min-rental-period-label,0,0
 US-041,Discovery,FAQ accordion section on the homepage,41,dev-complete,false,feat/US-041-faq-accordion,0,0
 US-042,User Accounts,Navbar active page indicator,42,dev-complete,false,feat/US-042-navbar-active-indicator,0,0
-US-043,Checkout & Payments,Step progress indicator in the multi-step checkout wizard,43,in-progress,false,feat/US-043-checkout-progress-indicator,0,0
+US-043,Checkout & Payments,Step progress indicator in the multi-step checkout wizard,43,tests-written,false,feat/US-043-checkout-progress-indicator,0,0
 US-044,Discovery,Use Next.js Image component for all game images,44,pending,false,,0,0
 US-045,Discovery,Recently viewed games horizontal strip,45,pending,false,,0,0
 US-046,Admin Dashboard,Admin settings page for service copy,46,pending,false,,0,0
