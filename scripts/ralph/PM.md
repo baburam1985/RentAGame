@@ -30,6 +30,18 @@ git checkout main
 git pull origin main
 ```
 
+### Step 1.5 — Read the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`.
+
+- Update `agentHealth.pm.lastRun` to the current ISO 8601 timestamp
+- Update `agentHealth.pm.status` to `"active"`
+- Review `knownIssues` — if any issue has `occurrences >= 3`, it indicates a
+  systemic problem. Consider whether the affected stories need acceptance
+  criteria rewrites to avoid the pattern
+- Review recent `executions` — check for pipeline stalls (e.g. Dev stuck on the
+  same story for multiple runs, or QA failing the same story repeatedly)
+
 ### Step 2 — Read prd.json
 
 Read `/home/user/RentAGame/scripts/ralph/prd.json`.
@@ -107,11 +119,36 @@ backlog. Save the rest for future runs.
 Write updated `prd.json` (new stories added) and updated `research.json`
 (items marked accepted/rejected) if anything changed.
 
-### Step 8 — Commit and push if changed
+### Step 8 — Update the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`, then update it:
+
+1. Append an execution entry:
+   ```json
+   {
+     "id": "EX-NNN",
+     "agent": "pm",
+     "timestamp": "ISO8601",
+     "storyId": null,
+     "action": "PM health check + research processing",
+     "result": "success",
+     "errorCategory": null,
+     "details": "Pending: N, Accepted: N research items, Rewrote: [IDs or none]"
+   }
+   ```
+
+2. Update agent health: `agentHealth.pm.status` → `"idle"`,
+   `agentHealth.pm.lastAction` → summary.
+
+3. Trim `executions` to the last 100 entries if exceeded.
+
+4. Update `metadata.lastUpdated` and increment `metadata.totalExecutions`.
+
+### Step 9 — Commit and push if changed
 
 ```bash
 cd /home/user/RentAGame
-git add scripts/ralph/prd.json scripts/ralph/research.json
+git add scripts/ralph/prd.json scripts/ralph/research.json scripts/ralph/agent-log.json
 git commit -m "chore: PM processed research queue - N accepted, N rejected"
 git push origin main
 ```
@@ -122,7 +159,7 @@ Only commit if you actually changed something.
 to `main`. Implementation code must **never** be pushed directly to `main` —
 all code reaches `main` exclusively through PRs merged by the QA agent.
 
-### Step 9 — Report
+### Step 10 — Report
 
 Output a summary:
 ```

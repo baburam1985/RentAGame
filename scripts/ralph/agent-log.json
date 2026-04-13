@@ -1,0 +1,18 @@
+{
+  "metadata": {
+    "description": "Cross-agent execution tracker — prevents repeated mistakes and preserves institutional knowledge",
+    "created": "2026-04-13T00:00:00Z",
+    "lastUpdated": "",
+    "totalExecutions": 0
+  },
+  "agentHealth": {
+    "dev":      { "lastRun": "", "lastAction": "", "status": "idle" },
+    "qa":       { "lastRun": "", "lastAction": "", "status": "idle" },
+    "pm":       { "lastRun": "", "lastAction": "", "status": "idle" },
+    "ci":       { "lastRun": "", "lastAction": "", "status": "idle" },
+    "research": { "lastRun": "", "lastAction": "", "status": "idle" }
+  },
+  "executions": [],
+  "knownIssues": [],
+  "failedApproaches": []
+}

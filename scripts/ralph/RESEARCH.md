@@ -74,6 +74,15 @@ listed there (real payments, email, multi-vendor, etc.). The Non-Negotiables
 section tells you the tech constraints ideas must respect. The Target Users
 section tells you who to design for.
 
+### Step 0.5 — Read the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`.
+
+- Update `agentHealth.research.lastRun` to the current ISO 8601 timestamp
+- Update `agentHealth.research.status` to `"active"`
+- Review `knownIssues` — recurring error categories (e.g. many `e2e` or
+  `accessibility` failures) can guide which research areas to prioritise this run
+
 ### Step 1 — Read current app state
 
 Read these files to know what already exists before generating ideas:
@@ -137,7 +146,32 @@ Each item format:
 
 ID sequence: find the highest existing R-NNN and continue from there.
 
-### Step 6 — Commit and push
+### Step 6 — Update the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`, then update it:
+
+1. Append an execution entry:
+   ```json
+   {
+     "id": "EX-NNN",
+     "agent": "research",
+     "timestamp": "ISO8601",
+     "storyId": null,
+     "action": "Customer research run",
+     "result": "success",
+     "errorCategory": null,
+     "details": "Added N new items (N ideas, N ux-bugs, N accessibility, ...)"
+   }
+   ```
+
+2. Update agent health: `agentHealth.research.status` → `"idle"`,
+   `agentHealth.research.lastAction` → summary.
+
+3. Trim `executions` to the last 100 entries if exceeded.
+
+4. Update `metadata.lastUpdated` and increment `metadata.totalExecutions`.
+
+### Step 7 — Commit and push
 
 ```bash
 cd /home/user/RentAGame
@@ -145,7 +179,7 @@ git config user.email "research-agent@rentagame.ai"
 git config user.name "Research Agent"
 git checkout main
 git pull origin main
-git add scripts/ralph/research.json
+git add scripts/ralph/research.json scripts/ralph/agent-log.json
 git commit -m "research: add N new items from customer research run"
 git push origin main
 ```
@@ -154,7 +188,7 @@ git push origin main
 `main`. Implementation code must **never** be pushed directly to `main` — all
 code reaches `main` exclusively through PRs merged by the QA agent.
 
-### Step 7 — Output summary
+### Step 8 — Output summary
 
 ```
 Research Run Complete

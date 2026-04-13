@@ -72,6 +72,7 @@ All triggers: repo `baburam1985/RentAGame`, branch `main`.
 | `prd.json` | PM, Dev, QA | All agents | Story backlog — single source of truth |
 | `research.json` | Research | PM | Raw ideas/bugs from external research |
 | `progress.txt` | Dev | Dev | Codebase patterns and learnings |
+| `agent-log.json` | ALL agents | ALL agents | Cross-agent execution tracker — mistakes, known issues, failed approaches |
 
 ---
 
@@ -273,8 +274,99 @@ Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
 | Any agent pushing code directly to `main` | Non-Negotiable Git Rules above; QA is the only merge path |
 | QA marking `qa-passed` before merging | Branch Merge Policy: status advances only after `merge_pull_request` succeeds |
 | Feature branch left unmerged after QA | Branch Merge Policy mandates merge + deletion as final QA step |
+| Dev repeating a failed approach | `agent-log.json` `failedApproaches` checked before every qa-failed retry |
+| CI-Fix re-diagnosing a known error | `agent-log.json` `knownIssues` checked before every diagnosis — apply known fix directly |
+| Agents not learning from past runs | Every agent reads `agent-log.json` at start and writes results at end |
 
 `PRODUCT.md` is written by humans only — agents read it, never modify it.
+
+---
+
+## Agent Execution Tracker (`agent-log.json`)
+
+Every agent reads `agent-log.json` at the start of each run and writes back at
+the end. This prevents agents from repeating the same mistakes, retrying failed
+approaches, or rediscovering known solutions.
+
+### Schema
+
+```json
+{
+  "metadata": {
+    "description": "Cross-agent execution tracker",
+    "created": "ISO8601",
+    "lastUpdated": "ISO8601",
+    "totalExecutions": 0
+  },
+  "agentHealth": {
+    "dev":      { "lastRun": "ISO8601", "lastAction": "summary", "status": "idle | active" },
+    "qa":       { "lastRun": "ISO8601", "lastAction": "summary", "status": "idle | active" },
+    "pm":       { "lastRun": "ISO8601", "lastAction": "summary", "status": "idle | active" },
+    "ci":       { "lastRun": "ISO8601", "lastAction": "summary", "status": "idle | active" },
+    "research": { "lastRun": "ISO8601", "lastAction": "summary", "status": "idle | active" }
+  },
+  "executions": [
+    {
+      "id": "EX-NNN",
+      "agent": "dev | qa | pm | ci | research",
+      "timestamp": "ISO8601",
+      "storyId": "US-NNN or null",
+      "action": "What the agent did this run",
+      "result": "success | failure | skipped | no-op",
+      "errorCategory": "typescript | test-failure | e2e | docker | merge-conflict | ci-timeout | config | null",
+      "details": "Brief summary of outcome"
+    }
+  ],
+  "knownIssues": [
+    {
+      "id": "KI-NNN",
+      "category": "typescript | test-failure | e2e | docker | merge-conflict | ci-timeout | config | dependency | build",
+      "pattern": "Human-readable description of when this issue occurs",
+      "symptom": "Error message or grep-able pattern to identify this issue",
+      "fix": "The proven fix for this issue",
+      "preventionTip": "How to avoid triggering this in the future",
+      "occurrences": 1,
+      "lastSeen": "ISO8601",
+      "firstSeen": "ISO8601",
+      "relatedStories": ["US-NNN"]
+    }
+  ],
+  "failedApproaches": [
+    {
+      "id": "FA-NNN",
+      "storyId": "US-NNN",
+      "agent": "dev | qa | ci",
+      "timestamp": "ISO8601",
+      "approach": "What was tried",
+      "whyItFailed": "Why it didn't work",
+      "betterAlternative": "What worked instead (if known, else empty)"
+    }
+  ]
+}
+```
+
+### How Each Agent Uses `agent-log.json`
+
+| Agent | Reads | Writes |
+|-------|-------|--------|
+| Dev | `knownIssues` (before implementing) + `failedApproaches` for picked story | Execution entry + new `knownIssues` if error discovered + `failedApproaches` if qa-failed retry |
+| QA | `knownIssues` (to enrich `qaFeedback`) | Execution entry + new `knownIssues` on repeated failures |
+| PM | `executions` (to spot pipeline stalls) + `knownIssues` (to inform criteria rewrites) | Execution entry |
+| CI-Fix | `knownIssues` (before diagnosing) | Execution entry + new/updated `knownIssues` with fix |
+| Research | `knownIssues` (to generate relevant research queries) | Execution entry |
+
+### Rules
+
+| Rule | Detail |
+|------|--------|
+| Read before act | Every agent reads `agent-log.json` after git sync, before doing its main work |
+| Write after act | Every agent appends its execution entry before committing and pushing |
+| Check known issues first | Dev and CI-Fix MUST scan `knownIssues` for matching patterns before attempting a fix |
+| Check failed approaches | Dev MUST scan `failedApproaches` for the picked story before choosing an implementation strategy |
+| Rolling window | Keep only the last 100 entries in `executions`. Older entries are trimmed by any agent that writes |
+| `knownIssues` are permanent | Never delete a known issue — only update `occurrences` and `lastSeen` |
+| `failedApproaches` are permanent | Never delete — they are the institutional memory of what NOT to do |
+| ID sequencing | `EX-NNN`, `KI-NNN`, `FA-NNN` — find highest existing ID and increment |
 
 ---
 

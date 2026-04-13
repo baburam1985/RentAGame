@@ -44,6 +44,16 @@ git checkout main
 git pull origin main
 ```
 
+### Step 1.5 — Read the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`. This file tracks
+mistakes, known issues, and failed approaches across all agents.
+
+- Update `agentHealth.dev.lastRun` to the current ISO 8601 timestamp
+- Update `agentHealth.dev.status` to `"active"`
+
+You will use this data in Steps 2 and 6. Do not skip this step.
+
 ### Step 2 — Pick a story
 
 Read `prd.json`. Pick the **highest priority** story where:
@@ -86,6 +96,13 @@ git fetch origin
 git checkout feat/US-NNN-short-title
 git pull origin feat/US-NNN-short-title
 ```
+
+**Before fixing:** check `agent-log.json` for this story:
+- Scan `failedApproaches` for entries matching this story ID — do NOT repeat
+  any approach listed there
+- Scan `knownIssues` for patterns matching the `qaFeedback` — if a known fix
+  exists, apply it directly instead of debugging from scratch
+
 Then skip Step 5 entirely and go straight to Step 6.
 
 ### Step 5 — TDD RED phase (new stories only — skip if qa-failed)
@@ -207,6 +224,72 @@ section at the TOP of progress.txt (create section if it doesn't exist).
   Pull Request validated and merged by the QA agent.
 - The only things Dev pushes directly to `main` are state-file commits
   (`prd.json`, `progress.txt`) that record pipeline status — never source code.
+
+### Step 9 — Update the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`, then update it:
+
+1. **Append an execution entry** to `executions`:
+   ```json
+   {
+     "id": "EX-NNN",
+     "agent": "dev",
+     "timestamp": "ISO8601",
+     "storyId": "US-NNN",
+     "action": "Implemented US-NNN: short title",
+     "result": "success | failure",
+     "errorCategory": null,
+     "details": "Brief summary — e.g. 'All tests green, Docker passing'"
+   }
+   ```
+   Use the next available `EX-NNN` ID (find the highest existing and increment).
+
+2. **If you encountered a new error pattern**, add a `knownIssues` entry:
+   ```json
+   {
+     "id": "KI-NNN",
+     "category": "typescript | test-failure | e2e | docker | config",
+     "pattern": "When this happens",
+     "symptom": "Error message or grep pattern",
+     "fix": "What resolved it",
+     "preventionTip": "How to avoid it next time",
+     "occurrences": 1,
+     "lastSeen": "ISO8601",
+     "firstSeen": "ISO8601",
+     "relatedStories": ["US-NNN"]
+   }
+   ```
+   If a matching `knownIssues` entry already exists, increment `occurrences`
+   and update `lastSeen` instead of creating a duplicate.
+
+3. **If this was a `qa-failed` retry and you tried an approach that failed
+   before succeeding**, add a `failedApproaches` entry for the approach that
+   didn't work:
+   ```json
+   {
+     "id": "FA-NNN",
+     "storyId": "US-NNN",
+     "agent": "dev",
+     "timestamp": "ISO8601",
+     "approach": "What was tried and failed",
+     "whyItFailed": "Root cause",
+     "betterAlternative": "What worked instead"
+   }
+   ```
+
+4. **Update agent health:** `agentHealth.dev.status` → `"idle"`,
+   `agentHealth.dev.lastAction` → summary of what was done.
+
+5. **Trim `executions`** to the last 100 entries if it exceeds that.
+
+6. Update `metadata.lastUpdated` and increment `metadata.totalExecutions`.
+
+Commit and push `agent-log.json` alongside the state-file commits:
+```bash
+git add scripts/ralph/agent-log.json
+git commit -m "chore: [US-NNN] update agent-log"
+git push origin main
+```
 
 ## Stop Condition
 

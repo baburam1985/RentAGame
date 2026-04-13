@@ -42,6 +42,15 @@ git checkout main
 git pull origin main
 ```
 
+### Step 1.5 — Read the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`.
+
+- Update `agentHealth.qa.lastRun` to the current ISO 8601 timestamp
+- Update `agentHealth.qa.status` to `"active"`
+- Review `knownIssues` — if any match patterns you find during checks, reference
+  them in `qaFeedback` so Dev doesn't have to rediscover the fix
+
 ### Step 2 — Pick a story
 
 Read `prd.json`. Pick the **highest priority** story where:
@@ -270,6 +279,52 @@ qaAttempts: N
 | `ci-pending` | PR created, waiting for GitHub CI |
 | `qa-failed` | Failed QA, back to Dev |
 | `qa-passed` | Done, merged to main |
+
+---
+
+## Step — Update the agent execution tracker (after every pass or fail)
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`, then update it:
+
+1. **Append an execution entry** to `executions`:
+   ```json
+   {
+     "id": "EX-NNN",
+     "agent": "qa",
+     "timestamp": "ISO8601",
+     "storyId": "US-NNN",
+     "action": "Validated US-NNN: short title",
+     "result": "success | failure",
+     "errorCategory": "typescript | test-failure | e2e | ci-timeout | null",
+     "details": "Which checks passed/failed"
+   }
+   ```
+
+2. **On failure — check if the failure matches a known issue:**
+   - If a matching `knownIssues` entry exists, increment `occurrences`, update
+     `lastSeen`, and include the known fix in `qaFeedback` so Dev can apply it
+     directly: `"Known fix (see KI-NNN): <fix description>"`
+   - If this is a NEW failure pattern (seen for the first time or not in
+     `knownIssues`), add a new `knownIssues` entry with whatever diagnostic
+     information is available
+
+3. **On repeated failure of the same story (qaAttempts >= 2):** check
+   `failedApproaches` — if Dev keeps failing with the same approach, add a
+   `failedApproaches` entry describing what isn't working
+
+4. **Update agent health:** `agentHealth.qa.status` → `"idle"`,
+   `agentHealth.qa.lastAction` → summary.
+
+5. **Trim `executions`** to the last 100 entries if exceeded.
+
+6. Update `metadata.lastUpdated` and increment `metadata.totalExecutions`.
+
+Commit and push alongside other state-file commits:
+```bash
+git add scripts/ralph/agent-log.json
+git commit -m "chore: [US-NNN] update agent-log (QA)"
+git push origin main
+```
 
 ---
 

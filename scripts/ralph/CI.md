@@ -29,6 +29,16 @@ git checkout main
 git pull origin main
 ```
 
+### Step 1.5 — Read the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`.
+
+- Update `agentHealth.ci.lastRun` to the current ISO 8601 timestamp
+- Update `agentHealth.ci.status` to `"active"`
+- **Scan `knownIssues`** — if the build is broken and the error matches a known
+  issue, apply the documented fix directly instead of diagnosing from scratch.
+  This is the most important step for avoiding repeated work.
+
 ### Step 2 — Check GitHub CI status on main
 
 Use `mcp__github__list_commits` to get the latest commit SHA on main:
@@ -175,6 +185,47 @@ docker-compose down
 ```
 
 If still failing, repeat Steps 5–8 for the remaining failures.
+
+---
+
+### Step 10 — Update the agent execution tracker
+
+Read `/home/user/RentAGame/scripts/ralph/agent-log.json`, then update it:
+
+1. **Append an execution entry**:
+   ```json
+   {
+     "id": "EX-NNN",
+     "agent": "ci",
+     "timestamp": "ISO8601",
+     "storyId": "US-NNN (blame story) or null",
+     "action": "CI health check" or "CI hotfix for US-NNN",
+     "result": "success (green) | success (fixed) | failure",
+     "errorCategory": "typescript | test-failure | e2e | build | null",
+     "details": "main is green" or "Fixed: <root cause summary>"
+   }
+   ```
+
+2. **If you fixed a build break**, add or update a `knownIssues` entry:
+   - If a matching pattern already exists, increment `occurrences` and update
+     `lastSeen`
+   - If this is a new pattern, create a new entry with the full diagnosis:
+     `symptom`, `fix`, and `preventionTip` so future CI runs (and Dev) can
+     apply the fix instantly
+
+3. **Update agent health:** `agentHealth.ci.status` → `"idle"`,
+   `agentHealth.ci.lastAction` → summary.
+
+4. Trim `executions` to the last 100 entries if exceeded.
+
+5. Update `metadata.lastUpdated` and increment `metadata.totalExecutions`.
+
+Commit and push alongside the hotfix or separately if no fix was needed:
+```bash
+git add scripts/ralph/agent-log.json
+git commit -m "chore: [CI] update agent-log"
+git push origin main
+```
 
 ---
 
