@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 45
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-045-recently-viewed-strip
 - **PR:** 0
 - **QA Attempts:** 0
 
