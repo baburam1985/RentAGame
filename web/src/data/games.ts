@@ -9,6 +9,7 @@ export type Game = {
   players: string;
   dimensions: string;
   howToPlay: string[];
+  badge?: string;
 };
 
 export const CATEGORIES = [
@@ -28,6 +29,7 @@ export const games: Game[] = [
     category: "Lawn Games",
     description:
       "The #1 rented outdoor game. Stack giant cedar wood blocks as high as you dare — then watch the tower tumble. Works on any surface and thrills every age group.",
+    badge: "Most Popular",
     pricePerDay: 45,
     image:
       "https://images.unsplash.com/photo-1749320128113-10793ef5a82a?w=600&auto=format&fit=crop",
@@ -53,6 +55,7 @@ export const games: Game[] = [
     category: "Lawn Games",
     description:
       "America's favorite backyard game. Regulation-size boards with two sets of bean bags — the go-to for tailgates, BBQs, weddings, and festivals.",
+    badge: "Fan Favourite",
     pricePerDay: 35,
     image:
       "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=600&auto=format&fit=crop",

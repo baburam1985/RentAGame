@@ -41,6 +41,14 @@ export default function GameCard({ game, onSelect }: Props) {
           alt={game.name}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
+        {game.badge && (
+          <span
+            data-testid="badge-pill"
+            className="absolute top-2 left-2 rounded-full bg-yellow-400 px-2.5 py-0.5 text-xs font-bold text-gray-900 shadow-sm"
+          >
+            {game.badge}
+          </span>
+        )}
       </Link>
 
       {/* Content */}
