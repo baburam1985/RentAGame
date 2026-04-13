@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 24
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-024-keyboard-nav-filter-chips
 - **PR:** (none)
 - **QA Attempts:** 0
 
