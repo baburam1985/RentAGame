@@ -47,11 +47,12 @@ jobs:
         run: |
           echo "Waiting for app to be healthy..."
           for i in $(seq 1 30); do
-            if docker compose ps app | grep -q "healthy"; then
+            STATUS=$(docker inspect --format='{{.State.Health.Status}}' $(docker compose ps -q app) 2>/dev/null || echo "unknown")
+            echo "Attempt $i/30 — health status: $STATUS"
+            if [ "$STATUS" = "healthy" ]; then
               echo "App is healthy!"
               exit 0
             fi
-            echo "Attempt $i/30 — waiting..."
             sleep 5
           done
           echo "App failed to become healthy"
