@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 28
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
 - **Branch:** feat/US-028-skeleton-loading
 - **PR:** (none)

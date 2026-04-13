@@ -231,5 +231,6 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:52 | US-026 | tests-written | dev | RED commit pushed — 7 failing tests for blur validation |
 | 2026-04-13 10:55 | US-026 | dev-complete | dev | GREEN commit pushed — 7/7 tests pass, 53 total unit tests pass |
 | 2026-04-13 11:00 | US-028 | in-progress | dev | starting new story — skeleton loading state for game grid |
+| 2026-04-13 11:03 | US-028 | tests-written | dev | RED commit pushed — 6 failing tests for skeleton loading |
 | 2026-04-13 10:47 | US-027 | in-progress | dev | starting new story |
 | 2026-04-13 10:49 | US-027 | tests-written | dev | RED phase — 6 failing tests for what's included section |
