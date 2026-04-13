@@ -11,7 +11,7 @@ US-009,Checkout & Payments,"Availability calendar per game",9,dev-complete,false
 US-010,User Accounts,"Sign up and log in pages",10,dev-complete,false,feat/US-010-signup-login-pages,0,0
 US-011,User Accounts,"User profile page",11,dev-complete,false,feat/US-011-user-profile-page,0,0
 US-012,User Accounts,"Order history on profile",12,dev-complete,false,feat/US-012-order-history-profile,0,0
-US-013,User Accounts,"Wishlist and saved games",13,in-progress,false,feat/US-013-wishlist-saved-games,0,0
+US-013,User Accounts,"Wishlist and saved games",13,dev-complete,false,feat/US-013-wishlist-saved-games,0,0
 US-014,Admin Dashboard,"Admin layout and auth gate",14,pending,false,,0,0
 US-015,Admin Dashboard,"Inventory management page",15,pending,false,,0,0
 US-016,Admin Dashboard,"Orders management page",16,pending,false,,0,0
