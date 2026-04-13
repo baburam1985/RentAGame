@@ -342,3 +342,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 13:43 | US-038 | dev-complete | dev | skip link + main id in layout.tsx, 6 tests pass, 52 total tests pass |
 | 2026-04-13 13:44 | US-039 | in-progress | dev | starting new story — game modal mobile scroll affordance |
 | 2026-04-13 13:46 | US-039 | tests-written | dev | RED commit — 5 failing tests for scroll affordance (pointer-events-none overlay, scroll container) |
+| 2026-04-13 13:48 | US-039 | dev-complete | dev | pointer-events-none fade overlay in GameModal, data-scroll-container, 52 tests pass |

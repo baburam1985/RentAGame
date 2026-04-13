@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 39
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-039-modal-scroll-affordance
 - **PR:** 
@@ -24,3 +24,12 @@ On 375px screens, the GameModal content (description, dimensions, included items
 ## Dev Notes
 
 Wrap the scrollable content area of GameModal in a `relative overflow-y-auto` container. Add a sibling `div` with `pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent` inside the same relative parent. Use a scroll event listener (or `IntersectionObserver` on a sentinel element at the bottom of the content) to toggle a CSS class that hides the gradient when scrolled to the bottom. Keep changes within GameModal only.
+
+## Implementation Notes
+
+Added `data-scroll-container` attribute to the modal panel div, `onScroll` handler using `atBottom` useState, and an absolutely-positioned `pointer-events-none` fade div. Gradient fades from white (at bottom edge) to transparent. Opacity transitions to 0 when `atBottom` state is true. All 52 unit tests pass.
+
+## Files Changed
+
+- `web/src/components/GameModal.tsx` — scroll container attribute, onScroll handler, fade overlay div
+- `web/src/components/GameModal.scroll.test.tsx` — 6 scroll affordance tests
