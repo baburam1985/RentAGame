@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 19
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-019-inline-date-validation
-- **PR:** (none)
-- **QA Attempts:** 0
+- **PR:** #28
+- **QA Attempts:** 1
 
 ## Description
 
@@ -39,3 +39,10 @@ All 54 tests pass (0 failures).
 
 - `web/src/components/RentalForm.tsx`
 - `web/src/components/RentalForm.test.tsx` (updated existing test for new error message)
+
+## QA Feedback
+
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337713838/job/71058607023

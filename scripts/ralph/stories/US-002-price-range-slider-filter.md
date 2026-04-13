@@ -2,11 +2,11 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider
 - **PR:** #7
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## Description
 
@@ -25,7 +25,11 @@ Add a dual-handle price range slider (min/max) in the filter bar. Games outside 
 
 ## QA Feedback
 
-env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337817088/job/71058961608
+
 
 ## Dev Notes
 

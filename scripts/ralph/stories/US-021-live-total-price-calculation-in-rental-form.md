@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 21
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-021-live-price-calculation
-- **PR:** 0
-- **QA Attempts:** 0
+- **PR:** #30
+- **QA Attempts:** 1
 
 ## Description
 
@@ -28,3 +28,10 @@ Added `pricePerDay?: number` prop to RentalForm. Computes `days` from eventDate/
 ## Files Changed
 
 - web/src/components/RentalForm.tsx
+
+## QA Feedback
+
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337727597/job/71058652596

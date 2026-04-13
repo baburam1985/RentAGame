@@ -2,15 +2,19 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips
 - **PR:** #8
-- **QA Attempts:** 2
+- **QA Attempts:** 3
 
 ## QA Feedback
 
-env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
+Classification: env-failure
+Job: E2E Tests
+Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337817867/job/71058963672
+
 
 ## Dev Notes
 

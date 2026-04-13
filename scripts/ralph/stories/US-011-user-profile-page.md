@@ -2,12 +2,12 @@
 
 - **Epic:** User Accounts
 - **Priority:** 11
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-011-user-profile-page
 - **PR:** #16
-- **QA Attempts:** 2
-- **QA Attempts:** 0
+- **QA Attempts:** 3
+- **QA Attempts:** 3
 
 ## Description
 

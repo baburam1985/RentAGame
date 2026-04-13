@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 7
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
-- **QA Attempts:** 2
+- **QA Attempts:** 3
 
 ## Description
 

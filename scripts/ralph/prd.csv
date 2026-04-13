@@ -1,84 +1,84 @@
 id,epic,title,priority,status,passes,branch,qaAttempts,prNumber
-US-001,Discovery,"Search bar with live text filtering",1,qa-passed,true,feat/US-001-search-filter-merged,3,1
-US-002,Discovery,"Price range slider filter",2,dev-complete,false,feat/US-002-price-slider,1,7
-US-003,Discovery,"Sort games by price or name",3,qa-passed,true,feat/US-003-sort-games-rebased-merged,1,6
-US-004,Discovery,"Player count filter chips",4,dev-complete,false,feat/US-004-player-count-filter-chips,2,8
-US-005,Discovery,"Active filter summary bar with clear-all",5,dev-complete,false,feat/US-005-active-filter-summary-bar,2,10
-US-006,Checkout & Payments,"Multi-step checkout wizard",6,dev-complete,false,feat/US-006-multi-step-checkout-wizard,2,11
-US-007,Checkout & Payments,"Order confirmation page",7,dev-complete,false,feat/US-007-order-confirmation-page,2,12
-US-008,Checkout & Payments,"Rental cart for multiple games",8,dev-complete,false,feat/US-008-rental-cart-drawer,2,13
-US-009,Checkout & Payments,"Availability calendar per game",9,dev-complete,false,feat/US-009-availability-calendar,2,14
-US-010,User Accounts,"Sign up and log in pages",10,dev-complete,false,feat/US-010-signup-login-pages,2,15
-US-011,User Accounts,"User profile page",11,dev-complete,false,feat/US-011-user-profile-page,2,16
-US-012,User Accounts,"Order history on profile",12,dev-complete,false,feat/US-012-order-history-profile,1,17
-US-013,User Accounts,"Wishlist and saved games",13,dev-complete,false,feat/US-013-wishlist-saved-games,1,18
-US-014,Admin Dashboard,"Admin layout and auth gate",14,dev-complete,false,feat/US-014-admin-layout,1,19
-US-015,Admin Dashboard,"Inventory management page",15,dev-complete,false,feat/US-015-inventory-management-page,1,21
-US-016,Admin Dashboard,"Orders management page",16,dev-complete,false,feat/US-016-orders-management-page,1,22
-US-017,Admin Dashboard,"Overview dashboard with KPI cards",17,dev-complete,false,feat/US-017-admin-overview-dashboard,1,23
-US-018,Discovery,"Add 'Browse all' CTA to zero-results empty state",18,dev-complete,false,feat/US-018-browse-all-empty-state,0,0
-US-019,Checkout & Payments,"Inline date validation on rental form",19,dev-complete,false,feat/US-019-inline-date-validation,0,0
-US-020,Discovery,"Category filter chips horizontally scrollable on mobile",20,dev-complete,false,feat/US-020-mobile-scroll-category-filter,0,0
-US-021,Checkout & Payments,"Live total price calculation in rental form",21,dev-complete,false,feat/US-021-live-price-calculation,0,0
-US-022,Discovery,"Descriptive alt text for all game images",22,dev-complete,false,feat/US-022-descriptive-alt-text,0,0
-US-023,Checkout & Payments,"Add 'No hidden fees' trust statement near rental form CTA",23,dev-complete,false,feat/US-023-no-hidden-fees-trust-statement,0,0
-US-024,Discovery,"Keyboard navigation for category filter and player chip groups",24,dev-complete,false,feat/US-024-keyboard-nav-filter-chips,0,0
-US-025,Discovery,"Cancellation policy statement in game modal",25,tests-written,false,feat/US-025-cancellation-policy-modal,0,0
-US-026,Checkout & Payments,"Inline on-blur validation for rental form contact fields",26,pending,false,,0,0
-US-027,Discovery,"Game modal 'What's included' section",27,pending,false,,0,0
-US-028,Discovery,"Skeleton loading state for game grid",28,pending,false,,0,0
-US-029,Discovery,"'Most Popular' and social proof badges on game cards",29,pending,false,,0,0
-US-030,Discovery,"Rental form inputs: visible focus rings and ARIA error associations",30,pending,false,,0,0
-US-031,Discovery,"Service area notice in hero section",31,pending,false,,0,0
-US-032,Discovery,"Setup space callout in game modal",32,pending,false,,0,0
-US-033,Discovery,"Occasion-based quick-filter links on homepage",33,pending,false,,0,0
-US-034,Discovery,"Testimonials with star ratings and location for authenticity",34,pending,false,,0,0
-US-035,Discovery,"Game modal focus trap for keyboard navigation",35,pending,false,,0,0
-US-036,Discovery,"Game modal ARIA dialog role and attributes",36,pending,false,,0,0
-US-037,Checkout & Payments,"Rental form submit button loading and disabled state",37,pending,false,,0,0
-US-038,Discovery,"Skip to main content accessibility link",38,pending,false,,0,0
-US-039,Discovery,"Game modal mobile scroll affordance (bottom fade shadow)",39,pending,false,,0,0
-US-040,Discovery,"Display minimum rental period label on each game card",40,pending,false,,0,0
-US-041,Discovery,"FAQ accordion section on the homepage",41,pending,false,,0,0
-US-042,User Accounts,"Navbar active page indicator",42,pending,false,,0,0
-US-043,Checkout & Payments,"Step progress indicator in the multi-step checkout wizard",43,pending,false,,0,0
-US-044,Discovery,"Use Next.js Image component for all game images",44,pending,false,,0,0
-US-045,Discovery,"Recently viewed games horizontal strip",45,pending,false,,0,0
-US-046,Admin Dashboard,"Admin settings page for service copy",46,pending,false,,0,0
-US-047,Checkout & Payments,"Instant confirmation trust badge on rental form",47,pending,false,,0,0
-US-048,Discovery,"Back to top floating button",48,pending,false,,0,0
-US-049,Discovery,"Game comparison panel (select 2-3 games side-by-side)",49,pending,false,,0,0
-US-050,User Accounts,"Wishlist toast notifications for add/remove actions",50,pending,false,,0,0
-US-051,Discovery,"How it works compact strip above game catalog",51,pending,false,,0,0
-US-052,Checkout & Payments,"HTML autocomplete attributes on rental form fields",52,pending,false,,0,0
-US-053,Discovery,"Search bar type-ahead suggestions dropdown",53,pending,false,,0,0
-US-054,Checkout & Payments,"Featured game recommendations in empty cart state",54,pending,false,,0,0
-US-055,Discovery,"Age-range filter chip",55,pending,false,,0,0
-US-056,Discovery,"Live result count on filter chips",56,pending,false,,0,0
-US-057,Discovery,"Touch target size audit (WCAG 2.5.5)",57,pending,false,,0,0
-US-058,Checkout & Payments,"Empty cart 'Browse games' CTA",58,pending,false,,0,0
-US-059,Checkout & Payments,"'What's this event for?' optional field on rental form",59,pending,false,,0,0
-US-060,Admin Dashboard,"Admin order detail view",60,pending,false,,0,0
-US-061,Checkout & Payments,"Programmatic label associations for all form inputs (WCAG 1.3.1)",61,pending,false,,0,0
-US-062,Discovery,"Add font-display: swap to custom font loading",62,pending,false,,0,0
-US-063,Discovery,"Back navigation on game detail pages",63,pending,false,,0,0
-US-064,Admin Dashboard,"Admin order status workflow (Confirmed / Delivered / Returned)",64,pending,false,,0,0
-US-065,Discovery,"Navbar focus indicators (WCAG 2.4.11)",65,pending,false,,0,0
-US-066,Discovery,"'Cleaned & inspected before every rental' badge on game detail pages",66,pending,false,,0,0
-US-067,Discovery,"Preserve filters and scroll position on catalog back-navigation",67,pending,false,,0,0
-US-068,Checkout & Payments,"Sticky booking bar on game detail page (mobile)",68,pending,false,,0,0
-US-069,Discovery,"ARIA live region for cart add/remove screen reader announcements",69,pending,false,,0,0
-US-070,Discovery,"Color contrast audit — secondary text WCAG AA 4.5:1",70,pending,false,,0,0
-US-071,Checkout & Payments,"Event date field in rental form syncs with availability calendar",71,pending,false,,0,0
-US-072,Discovery,"Prefetch game detail pages on hover/focus",72,pending,false,,0,0
-US-073,Discovery,"Breadcrumb navigation on game detail pages",73,pending,false,,0,0
-US-074,Discovery,"Friendly error boundary for localStorage read failures",74,pending,false,,0,0
-US-075,Checkout & Payments,"Printable order confirmation page",75,pending,false,,0,0
-US-076,Discovery,"Game card quick-add button on hover (desktop)",76,pending,false,,0,0
-US-077,Discovery,"'Popular Together' bundle suggestions on game detail page",77,pending,false,,0,0
-US-078,Checkout & Payments,"Expected guest count field in rental form",78,pending,false,,0,0
-US-079,Admin Dashboard,"Admin bulk order status update",79,pending,false,,0,0
-US-080,Discovery,"Event size filter chip (Small / Medium / Large party)",80,pending,false,,0,0
-US-081,Admin Dashboard,"Admin orders and inventory tables keyboard accessibility",81,pending,false,,0,0
-US-082,Discovery,"Customer review excerpts on game cards and detail pages",82,pending,false,,0,0
-US-083,Discovery,"Occasion tags on games with occasion filter on catalog",83,pending,false,,0,0
+US-001,Discovery,Search bar with live text filtering,1,qa-passed,true,feat/US-001-search-filter-merged,3,1
+US-002,Discovery,Price range slider filter,2,qa-failed,false,feat/US-002-price-slider,2,7
+US-003,Discovery,Sort games by price or name,3,qa-passed,true,feat/US-003-sort-games-rebased-merged,1,6
+US-004,Discovery,Player count filter chips,4,qa-failed,false,feat/US-004-player-count-filter-chips,3,8
+US-005,Discovery,Active filter summary bar with clear-all,5,qa-failed,false,feat/US-005-active-filter-summary-bar,3,10
+US-006,Checkout & Payments,Multi-step checkout wizard,6,qa-failed,false,feat/US-006-multi-step-checkout-wizard,3,11
+US-007,Checkout & Payments,Order confirmation page,7,qa-failed,false,feat/US-007-order-confirmation-page,3,12
+US-008,Checkout & Payments,Rental cart for multiple games,8,qa-failed,false,feat/US-008-rental-cart-drawer,3,13
+US-009,Checkout & Payments,Availability calendar per game,9,qa-failed,false,feat/US-009-availability-calendar,3,14
+US-010,User Accounts,Sign up and log in pages,10,qa-failed,false,feat/US-010-signup-login-pages,3,15
+US-011,User Accounts,User profile page,11,qa-failed,false,feat/US-011-user-profile-page,3,16
+US-012,User Accounts,Order history on profile,12,qa-failed,false,feat/US-012-order-history-profile,2,17
+US-013,User Accounts,Wishlist and saved games,13,dev-complete,false,feat/US-013-wishlist-saved-games,1,18
+US-014,Admin Dashboard,Admin layout and auth gate,14,dev-complete,false,feat/US-014-admin-layout,1,19
+US-015,Admin Dashboard,Inventory management page,15,dev-complete,false,feat/US-015-inventory-management-page,1,21
+US-016,Admin Dashboard,Orders management page,16,dev-complete,false,feat/US-016-orders-management-page,1,22
+US-017,Admin Dashboard,Overview dashboard with KPI cards,17,dev-complete,false,feat/US-017-admin-overview-dashboard,1,23
+US-018,Discovery,Add 'Browse all' CTA to zero-results empty state,18,qa-failed,false,feat/US-018-browse-all-empty-state,1,27
+US-019,Checkout & Payments,Inline date validation on rental form,19,qa-failed,false,feat/US-019-inline-date-validation,1,28
+US-020,Discovery,Category filter chips horizontally scrollable on mobile,20,qa-failed,false,feat/US-020-mobile-scroll-category-filter,1,29
+US-021,Checkout & Payments,Live total price calculation in rental form,21,qa-failed,false,feat/US-021-live-price-calculation,1,30
+US-022,Discovery,Descriptive alt text for all game images,22,dev-complete,false,feat/US-022-descriptive-alt-text,0,0
+US-023,Checkout & Payments,Add 'No hidden fees' trust statement near rental form CTA,23,dev-complete,false,feat/US-023-no-hidden-fees-trust-statement,0,0
+US-024,Discovery,Keyboard navigation for category filter and player chip groups,24,dev-complete,false,feat/US-024-keyboard-nav-filter-chips,0,0
+US-025,Discovery,Cancellation policy statement in game modal,25,tests-written,false,feat/US-025-cancellation-policy-modal,0,0
+US-026,Checkout & Payments,Inline on-blur validation for rental form contact fields,26,pending,false,,0,0
+US-027,Discovery,Game modal 'What's included' section,27,pending,false,,0,0
+US-028,Discovery,Skeleton loading state for game grid,28,pending,false,,0,0
+US-029,Discovery,'Most Popular' and social proof badges on game cards,29,pending,false,,0,0
+US-030,Discovery,Rental form inputs: visible focus rings and ARIA error associations,30,pending,false,,0,0
+US-031,Discovery,Service area notice in hero section,31,pending,false,,0,0
+US-032,Discovery,Setup space callout in game modal,32,pending,false,,0,0
+US-033,Discovery,Occasion-based quick-filter links on homepage,33,pending,false,,0,0
+US-034,Discovery,Testimonials with star ratings and location for authenticity,34,pending,false,,0,0
+US-035,Discovery,Game modal focus trap for keyboard navigation,35,pending,false,,0,0
+US-036,Discovery,Game modal ARIA dialog role and attributes,36,pending,false,,0,0
+US-037,Checkout & Payments,Rental form submit button loading and disabled state,37,pending,false,,0,0
+US-038,Discovery,Skip to main content accessibility link,38,pending,false,,0,0
+US-039,Discovery,Game modal mobile scroll affordance (bottom fade shadow),39,pending,false,,0,0
+US-040,Discovery,Display minimum rental period label on each game card,40,pending,false,,0,0
+US-041,Discovery,FAQ accordion section on the homepage,41,pending,false,,0,0
+US-042,User Accounts,Navbar active page indicator,42,pending,false,,0,0
+US-043,Checkout & Payments,Step progress indicator in the multi-step checkout wizard,43,pending,false,,0,0
+US-044,Discovery,Use Next.js Image component for all game images,44,pending,false,,0,0
+US-045,Discovery,Recently viewed games horizontal strip,45,pending,false,,0,0
+US-046,Admin Dashboard,Admin settings page for service copy,46,pending,false,,0,0
+US-047,Checkout & Payments,Instant confirmation trust badge on rental form,47,pending,false,,0,0
+US-048,Discovery,Back to top floating button,48,pending,false,,0,0
+US-049,Discovery,Game comparison panel (select 2-3 games side-by-side),49,pending,false,,0,0
+US-050,User Accounts,Wishlist toast notifications for add/remove actions,50,pending,false,,0,0
+US-051,Discovery,How it works compact strip above game catalog,51,pending,false,,0,0
+US-052,Checkout & Payments,HTML autocomplete attributes on rental form fields,52,pending,false,,0,0
+US-053,Discovery,Search bar type-ahead suggestions dropdown,53,pending,false,,0,0
+US-054,Checkout & Payments,Featured game recommendations in empty cart state,54,pending,false,,0,0
+US-055,Discovery,Age-range filter chip,55,pending,false,,0,0
+US-056,Discovery,Live result count on filter chips,56,pending,false,,0,0
+US-057,Discovery,Touch target size audit (WCAG 2.5.5),57,pending,false,,0,0
+US-058,Checkout & Payments,Empty cart 'Browse games' CTA,58,pending,false,,0,0
+US-059,Checkout & Payments,'What's this event for?' optional field on rental form,59,pending,false,,0,0
+US-060,Admin Dashboard,Admin order detail view,60,pending,false,,0,0
+US-061,Checkout & Payments,Programmatic label associations for all form inputs (WCAG 1.3.1),61,pending,false,,0,0
+US-062,Discovery,Add font-display: swap to custom font loading,62,pending,false,,0,0
+US-063,Discovery,Back navigation on game detail pages,63,pending,false,,0,0
+US-064,Admin Dashboard,Admin order status workflow (Confirmed / Delivered / Returned),64,pending,false,,0,0
+US-065,Discovery,Navbar focus indicators (WCAG 2.4.11),65,pending,false,,0,0
+US-066,Discovery,'Cleaned & inspected before every rental' badge on game detail pages,66,pending,false,,0,0
+US-067,Discovery,Preserve filters and scroll position on catalog back-navigation,67,pending,false,,0,0
+US-068,Checkout & Payments,Sticky booking bar on game detail page (mobile),68,pending,false,,0,0
+US-069,Discovery,ARIA live region for cart add/remove screen reader announcements,69,pending,false,,0,0
+US-070,Discovery,Color contrast audit — secondary text WCAG AA 4.5:1,70,pending,false,,0,0
+US-071,Checkout & Payments,Event date field in rental form syncs with availability calendar,71,pending,false,,0,0
+US-072,Discovery,Prefetch game detail pages on hover/focus,72,pending,false,,0,0
+US-073,Discovery,Breadcrumb navigation on game detail pages,73,pending,false,,0,0
+US-074,Discovery,Friendly error boundary for localStorage read failures,74,pending,false,,0,0
+US-075,Checkout & Payments,Printable order confirmation page,75,pending,false,,0,0
+US-076,Discovery,Game card quick-add button on hover (desktop),76,pending,false,,0,0
+US-077,Discovery,'Popular Together' bundle suggestions on game detail page,77,pending,false,,0,0
+US-078,Checkout & Payments,Expected guest count field in rental form,78,pending,false,,0,0
+US-079,Admin Dashboard,Admin bulk order status update,79,pending,false,,0,0
+US-080,Discovery,Event size filter chip (Small / Medium / Large party),80,pending,false,,0,0
+US-081,Admin Dashboard,Admin orders and inventory tables keyboard accessibility,81,pending,false,,0,0
+US-082,Discovery,Customer review excerpts on game cards and detail pages,82,pending,false,,0,0
+US-083,Discovery,Occasion tags on games with occasion filter on catalog,83,pending,false,,0,0

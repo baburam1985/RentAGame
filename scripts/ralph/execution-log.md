@@ -170,3 +170,17 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:24 | US-024 | dev-complete | dev | all tests pass, 3 files changed |
 | 2026-04-13 10:24 | US-025 | in-progress | dev | starting work |
 | 2026-04-13 10:26 | US-025 | tests-written | dev | RED phase — 5 failing tests for cancellation policy in GameModal |
+| 2026-04-13 10:30 | US-002 | qa-failed | qa | Check 0: E2E failure (attempt 2) — systemic env-failure |
+| 2026-04-13 10:30 | US-004 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-005 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-006 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-007 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-008 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-009 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-010 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-011 | qa-failed | qa | Check 0: E2E failure (attempt 3) — systemic env-failure |
+| 2026-04-13 10:30 | US-012 | qa-failed | qa | Check 0: E2E failure (attempt 2) — systemic env-failure |
+| 2026-04-13 10:30 | US-018 | qa-failed | qa | PR #27, Check 0: E2E failure (attempt 1) — systemic env-failure |
+| 2026-04-13 10:30 | US-019 | qa-failed | qa | PR #28, Check 0: E2E failure (attempt 1) — systemic env-failure |
+| 2026-04-13 10:30 | US-020 | qa-failed | qa | PR #29, Check 0: E2E failure (attempt 1) — systemic env-failure |
+| 2026-04-13 10:30 | US-021 | qa-failed | qa | PR #30, Check 0: E2E failure (attempt 1) — systemic env-failure |
