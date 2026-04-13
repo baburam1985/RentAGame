@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
-- **QA Attempts:** 0
+- **QA Attempts:** 1
 
 ## Description
 
@@ -50,15 +50,15 @@ Add an `OrderHistory` component that reads from `localStorage` (`rg_orders`) and
 **Check 9 — SCOPE VIOLATION (PROTECTED FILE):**
 `web/src/components/GameCard.tsx` was modified. This is a protected file. Story US-012 does NOT authorize changes to GameCard.tsx. Additional out-of-scope changes: `GameGrid.tsx`, `app/page.tsx`, `catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`.
 
-## QA Feedback (Attempt 3)
+## QA Feedback (Attempt 1)
 
-**Check 0 — CI E2E FAILED:**
-- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339157386/job/71063489254
-- All local checks 1–6 and 9 pass. Branch needs CI E2E to pass before QA can approve.
+**Check 2 — TDD INTEGRITY FAILED:**
+`web/e2e/catalog.spec.ts` was modified between the RED commit (878c828) and the GREEN commit (048c4ab). A functional line was added: `await page.waitForSelector('main[data-hydrated]', { timeout: 30000 })`. This is a test file modification after RED — not permitted. Revert `catalog.spec.ts` to main's version: `git checkout main -- web/e2e/catalog.spec.ts`.
 
-env-failure resolved by CI-Fix agent (PR #37): Added Docker healthcheck to app service and updated ci.yml to use docker inspect exact-equality health status wait. Branch rebased on main. Ready for re-QA.
+**Check 9 — SCOPE VIOLATION:**
+`web/e2e/catalog.spec.ts` was modified despite the story explicitly prohibiting it ("Do NOT touch any other files. Do not modify... `web/e2e/catalog.spec.ts`..."). Remove this change.
+
+Note: Unit tests (52/52), TypeScript, and scope of implementation files are all correct — only the E2E spec modification needs fixing.
 
 ## Dev Notes
 

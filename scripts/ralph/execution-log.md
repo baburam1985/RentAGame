@@ -299,3 +299,12 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:36 | US-037 | in-progress | dev | starting new story — rental form submit button loading and disabled state |
 | 2026-04-13 12:38 | US-037 | tests-written | dev | RED commit pushed — 5 tests, 2 failing (button not disabled, no Submitting label) |
 | 2026-04-13 12:43 | US-037 | dev-complete | dev | GREEN commit — isSubmitting state + useRef DOM disable, Submitting… label; 51 tests pass |
+| 2026-04-13 13:04 | US-002 | qa-failed | qa | Check 0: env-failure — wget healthcheck not available on Alpine (attempt 3), routed to CI-Fix |
+| 2026-04-13 13:04 | US-004 | qa-failed | qa | Check 0: env-failure — wget healthcheck not available on Alpine (attempt 4), routed to CI-Fix |
+| 2026-04-13 13:04 | US-005 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
+| 2026-04-13 13:04 | US-007 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
+| 2026-04-13 13:04 | US-008 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
+| 2026-04-13 13:04 | US-009 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
+| 2026-04-13 13:04 | US-010 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
+| 2026-04-13 13:04 | US-011 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
+| 2026-04-13 13:04 | US-012 | qa-failed | qa | Check 2: catalog.spec.ts modified RED→GREEN + Check 9: E2E spec scope violation (attempt 1) |

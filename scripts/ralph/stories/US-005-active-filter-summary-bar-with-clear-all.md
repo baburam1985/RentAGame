@@ -2,11 +2,11 @@
 
 - **Epic:** Discovery
 - **Priority:** 5
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-005-active-filter-summary-bar
 - **PR:** #10
-- **QA Attempts:** 0
+- **QA Attempts:** 1
 
 ## Description
 
@@ -31,9 +31,12 @@ Show a 'Clear all filters' button below the filter row whenever any filter (sear
 2. **GREEN commit:** Implement the component and wire it into `page.tsx`. Do NOT change `ActiveFilterBar.test.tsx` at all between RED and GREEN — zero changes, not even formatting or imports.
 3. **E2E boundary:** Do NOT modify any existing E2E spec files (`catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, etc.). Do not create new E2E specs.
 
-## QA Feedback (Attempt 4)
+## QA Feedback (Attempt 1)
 
-env-failure resolved by CI-Fix agent (PR #37): Added Docker healthcheck to app service and updated ci.yml to use docker inspect exact-equality health status wait. Branch rebased on main. Ready for re-QA.
+Classification: env-failure
+Job: E2E Tests
+Error: ALL open PRs fail E2E while unit tests pass — systemic CI E2E environment failure. Local checks 1–7, 9 all pass (3 ACs covered by 8 tests, TypeScript clean, 54 unit tests pass). Branch has correct docker-compose.yml (node healthcheck) and ci.yml (docker inspect exact-equality).
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342131248/job/71073425764
 
 ## Dev Notes
 

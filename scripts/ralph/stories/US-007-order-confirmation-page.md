@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 7
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
-- **QA Attempts:** 0
+- **QA Attempts:** 1
 
 ## Description
 
@@ -35,18 +35,12 @@ A static `/order-confirmation` page that reads the most recent order from `local
 2. **GREEN commit:** Create `page.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file** — not `RentalForm.tsx`, not `rental-form.spec.ts`, not any `*.spec.ts`.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 4)
+## QA Feedback (Attempt 1)
 
-**Check 0 — CI E2E FAILED:**
-- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339129484/job/71063397142
-
-**Check 2 — TDD INTEGRITY FAILED:**
-`web/e2e/rental-form.spec.ts` was modified between the RED commit and the GREEN commit. Zero changes to test files are permitted between RED and GREEN.
-
-**Check 9 — SCOPE VIOLATION:**
-`web/e2e/rental-form.spec.ts` modified despite story explicitly prohibiting it.
+Classification: env-failure
+Job: E2E Tests
+Error: ALL open PRs fail E2E while unit tests pass — systemic CI E2E environment failure. Local checks 1–7, 9 all pass (4 ACs covered by 4 tests, TypeScript clean, 50 unit tests pass). Branch has correct docker-compose.yml (node healthcheck) and ci.yml (docker inspect exact-equality).
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342460231/job/71074523142
 
 ## Dev Notes
 

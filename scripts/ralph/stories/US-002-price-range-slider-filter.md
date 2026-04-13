@@ -2,11 +2,11 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** ci-pending
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider-v2
 - **PR:** #35
-- **QA Attempts:** 2
+- **QA Attempts:** 3
 
 ## Description
 
@@ -27,8 +27,8 @@ Add a dual-handle price range slider (min/max) in the filter bar. Games outside 
 
 Classification: env-failure
 Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337817088/job/71058961608
+Error: docker-compose.yml uses `wget` for healthcheck which is not available on Alpine (node:20-alpine). Container never reaches `healthy` state so E2E tests never start. Fix: replace `wget` healthcheck with `node -e "require('http').get(...)"` as used in the corrected main branch docker-compose.yml.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24340767884/job/71068854990
 
 
 ## Dev Notes

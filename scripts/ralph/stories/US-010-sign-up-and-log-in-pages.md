@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 10
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-010-signup-login-pages
 - **PR:** #15
-- **QA Attempts:** 0
+- **QA Attempts:** 1
 
 ## Description
 
@@ -34,15 +34,12 @@ Create a `/signup` page with a form. On submit, store a mock user object in `loc
 2. **GREEN commit:** Create `page.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file** — not `Navbar.tsx`, not `Navbar.test.tsx`, not any `*.spec.ts`.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 4)
+## QA Feedback (Attempt 1)
 
-**Check 0 — CI E2E FAILED:**
-- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
-- Job: E2E Tests
-- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339174263/job/71063543849
-
-**Check 2 — TDD INTEGRITY FAILED:**
-`web/src/components/Navbar.test.tsx` was modified between the RED and GREEN commits. Zero changes to test files are permitted between RED and GREEN.
+Classification: env-failure
+Job: E2E Tests
+Error: ALL open PRs fail E2E while unit tests pass — systemic CI E2E environment failure. Local checks 1–7, 9 all pass (4 ACs covered by 4 tests, TypeScript clean, 50 unit tests pass). Branch has correct docker-compose.yml (node healthcheck) and ci.yml (docker inspect exact-equality).
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342131248/job/71073425764
 
 ## Dev Notes
 

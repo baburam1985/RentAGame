@@ -2,18 +2,18 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** ci-pending
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips-v2
 - **PR:** #36
-- **QA Attempts:** 3
+- **QA Attempts:** 4
 
 ## QA Feedback
 
 Classification: env-failure
 Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337817867/job/71058963672
+Error: docker-compose.yml uses `wget` for healthcheck which is not available on Alpine (node:20-alpine). Container never reaches `healthy` state so E2E tests never start. Fix: replace `wget` healthcheck with `node -e "require('http').get(...)"` as used in the corrected main branch docker-compose.yml.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24340833044/job/71069077821
 
 
 ## Dev Notes
