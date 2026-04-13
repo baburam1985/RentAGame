@@ -75,3 +75,10 @@ US-073,Discovery,"Breadcrumb navigation on game detail pages",73,pending,false,,
 US-074,Discovery,"Friendly error boundary for localStorage read failures",74,pending,false,,0,0
 US-075,Checkout & Payments,"Printable order confirmation page",75,pending,false,,0,0
 US-076,Discovery,"Game card quick-add button on hover (desktop)",76,pending,false,,0,0
+US-077,Discovery,"'Popular Together' bundle suggestions on game detail page",77,pending,false,,0,0
+US-078,Checkout & Payments,"Expected guest count field in rental form",78,pending,false,,0,0
+US-079,Admin Dashboard,"Admin bulk order status update",79,pending,false,,0,0
+US-080,Discovery,"Event size filter chip (Small / Medium / Large party)",80,pending,false,,0,0
+US-081,Admin Dashboard,"Admin orders and inventory tables keyboard accessibility",81,pending,false,,0,0
+US-082,Discovery,"Customer review excerpts on game cards and detail pages",82,pending,false,,0,0
+US-083,Discovery,"Occasion tags on games with occasion filter on catalog",83,pending,false,,0,0
