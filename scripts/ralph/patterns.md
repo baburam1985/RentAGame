@@ -32,6 +32,11 @@ before starting work. The Retro agent maintains this file.
 - `[...array].sort(fn)` — never mutate filtered array in-place (affects React re-renders)
 - When appending tests to existing file, add new `describe` block — never restructure passing tests
 
+## E2E Test Fragility
+- <!-- retro: US-003 --> `catalog.spec.ts` hardcoded `toHaveCount(N)` for game card counts — broke in US-003 and US-004 when the catalog grew from 8 to 12 games. Fixed in PR #9 to use `toBeGreaterThanOrEqual(8)`.
+- Use exact `toHaveCount(N)` only when the count is a semantic contract (e.g. "exactly 4 filter chips"). Use `toBeGreaterThanOrEqual(N)` for "at least N cards/items" catalog checks.
+- If you change default catalog visibility (new filter, price range, etc.) grep `web/e2e/` for `toHaveCount` before pushing.
+
 ## Styling
 - Tailwind CSS v4 with `@import "tailwindcss"` — requires `postcss.config.mjs` with `@tailwindcss/postcss`
 - CSS vars in `:root` in globals.css, reference via `var()` in components

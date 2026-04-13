@@ -208,6 +208,28 @@ git checkout -- web/src/components/Navbar.tsx   # example — revert unscoped fi
 
 Only proceed to commit after you have verified every changed file is in scope.
 
+<!-- retro: US-003 -->
+**Before creating the RED commit: rebase on current main.**
+Stale feature branches with old commits from other stories cause complex rebase conflicts
+that force branch resets and lost work. Run this immediately after creating your branch
+(Step 4) and again before the RED commit if you spent time reading before writing:
+```bash
+git fetch origin
+git rebase origin/main
+```
+A clean rebase now means zero conflicts when QA runs its checks later.
+
+<!-- retro: US-003 -->
+**Pre-push E2E catalog count check:** If your story touches `GameGrid`, `page.tsx`,
+`games.ts`, or any filter that changes the default number of visible cards, check for
+fragile exact-count assertions in the E2E test suite:
+```bash
+grep -r "toHaveCount\|HaveCount" /home/user/RentAGame/web/e2e/
+```
+Exact counts break silently when catalog size changes. Prefer `toBeGreaterThanOrEqual(N)`
+for "at least N items" assertions, and `toHaveCount(N)` only when exact count is the
+semantic contract being tested.
+
 <!-- retro: US-001 -->
 **Pre-commit: scan for `console.log` in all modified source files.**
 `console.log` in any component — including protected ones like `RentalForm` —

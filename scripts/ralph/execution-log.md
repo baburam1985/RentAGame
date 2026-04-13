@@ -34,3 +34,15 @@ humans and the Retro agent a clear timeline of what happened and when.
 ---
 | 2026-04-13 05:26 | US-002 | ci-pending | qa | PR #7 updated with clean TDD implementation, waiting for CI |
 | 2026-04-13 05:26 | US-004 | ci-pending | qa | PR #8 updated with E2E count fix, waiting for CI |
+
+## Retro: [US-003] - Sort games by price or name
+- **QA attempts:** 1
+- **Issues found:**
+  - Flaky E2E: `catalog.spec.ts` hardcoded `toHaveCount(8)` — broke when catalog grew to 12 games. Same root cause as US-004. CI-Fix hotfix PR #9 replaced both assertions with `toBeGreaterThanOrEqual(8)`.
+  - Stale branch: `feat/US-003-sort-games` needed a full rebase to `feat/US-003-sort-games-rebased-merged` before CI passed — 1 extra QA round-trip.
+- **Improvements applied:**
+  - DEV.md (Step 6a): Added mandatory E2E catalog count check — `grep toHaveCount web/e2e/` before push when story touches catalog visibility.
+  - DEV.md (Step 4): Added note — rebase on origin/main immediately before the RED commit to prevent entangled branch history.
+  - patterns.md: Documented E2E catalog count fragility pattern with root cause and fix convention.
+- **Pipeline health:** improving — US-003 had 1 QA attempt (down from US-001's 3). Recurring E2E count breakage is now addressed at root (PR #9 + DEV.md check). Target remains ≤1 QA attempt per story.
+---
