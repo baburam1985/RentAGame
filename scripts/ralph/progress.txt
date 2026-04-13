@@ -9,6 +9,26 @@
 - Docker test image uses `node:20-bookworm-slim` (Debian), NOT Alpine — Alpine lacks `xvfb`/`udev` causing build failure
 - E2E playwright.config.ts: skip `webServer` when `BASE_URL` env var is set (Docker CI uses http://app:3000)
 - Playwright system Chromium: set `executablePath: process.env.CHROMIUM_PATH` when that env var is present
+- Sort tests: pass a `games` prop with minimal mock data to GameGrid for deterministic ordering tests; use `getAllByRole("heading", { level: 3 })` to get card names in DOM order
+- GameGrid accepts optional `games` override prop — lets tests inject controlled data without mocking modules
+---
+
+## 2026-04-13 - US-003 - Sort games by price or name
+- What was implemented:
+  - SortDropdown component: controlled `<select>` with aria-label="Sort", 4 options (featured/price-asc/price-desc/name-asc). Renders inline next to SearchBar in the filter row.
+  - GameGrid updated: added optional `games` prop (defaults to imported games array) and `sortOrder` prop (defaults to "featured"). Sort applied after category+search filtering using a single `.sort()` with localeCompare for name-asc and arithmetic for price sort. Featured = preserve incoming order (return 0).
+  - page.tsx wired: added `sortOrder` state (default "featured"), SortDropdown rendered alongside SearchBar, sortOrder passed to GameGrid.
+- Files changed:
+  - web/src/components/SortDropdown.tsx (new)
+  - web/src/components/SortDropdown.test.tsx (new, 6 tests — RED committed first)
+  - web/src/components/GameGrid.tsx (modified — added games+sortOrder props and sort logic)
+  - web/src/components/GameGrid.test.tsx (modified — appended 6 sort tests to existing search tests)
+  - web/src/app/page.tsx (modified — added SortDropdown import, sortOrder state, wiring)
+- Learnings for future iterations:
+  - To test sort order deterministically, pass a `games` prop with minimal mock data (3 games with distinct names and prices). Do NOT mock the module — use the optional prop override pattern.
+  - Use `getAllByRole("heading", { level: 3 })` to get game card names in DOM order for sort assertions.
+  - `[...array].sort(fn)` is important — never mutate the filtered array in-place as it could affect re-renders.
+  - When appending tests to an existing test file, preserve the original describe block and add a new describe block. Never restructure existing passing tests.
 ---
 
 ## 2026-04-12 - US-001 - Search bar with live text filtering
