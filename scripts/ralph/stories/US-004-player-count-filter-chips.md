@@ -2,10 +2,10 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** dev-complete
+- **Status:** ci-pending
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips-v2
-- **PR:** #8
+- **PR:** #36
 - **QA Attempts:** 3
 
 ## QA Feedback
