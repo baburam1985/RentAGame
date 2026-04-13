@@ -2,8 +2,8 @@
 
 - **Epic:** Discovery
 - **Priority:** 35
-- **Status:** in-progress
-- **Passes:** false
+- **Status:** dev-complete
+- **Passes:** true
 - **Branch:** 
 - **PR:** 
 - **QA Attempts:** 0

@@ -291,3 +291,5 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:25 | US-034 | tests-written | dev | RED commit pushed — 3 failing tests for star ratings and location |
 | 2026-04-13 12:27 | US-034 | dev-complete | dev | GREEN commit — StarRating component, rating+location on all testimonials, 50 tests pass |
 | 2026-04-13 12:27 | US-035 | in-progress | dev | starting new story — game modal focus trap |
+| 2026-04-13 12:28 | US-035 | tests-written | dev | RED commit pushed — 4 failing tests for focus trap (auto-focus, Escape key, ref container, null game) |
+| 2026-04-13 12:31 | US-035 | dev-complete | dev | GREEN commit — useRef+useEffect in GameModal: auto-focus first focusable, Escape→onClose, Tab wrap; 50 tests pass |
