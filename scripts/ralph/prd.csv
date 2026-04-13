@@ -33,3 +33,8 @@ US-031,Discovery,"Service area notice in hero section",31,pending,false,,0,0
 US-032,Discovery,"Setup space callout in game modal",32,pending,false,,0,0
 US-033,Discovery,"Occasion-based quick-filter links on homepage",33,pending,false,,0,0
 US-034,Discovery,"Testimonials with star ratings and location for authenticity",34,pending,false,,0,0
+US-035,Discovery,"Game modal focus trap for keyboard navigation",35,pending,false,,0,0
+US-036,Discovery,"Game modal ARIA dialog role and attributes",36,pending,false,,0,0
+US-037,Checkout & Payments,"Rental form submit button loading and disabled state",37,pending,false,,0,0
+US-038,Discovery,"Skip to main content accessibility link",38,pending,false,,0,0
+US-039,Discovery,"Game modal mobile scroll affordance (bottom fade shadow)",39,pending,false,,0,0
