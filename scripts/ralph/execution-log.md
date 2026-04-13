@@ -33,3 +33,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 - **Pipeline health:** degrading — US-001 required 3 QA attempts and a post-merge hotfix. Target is ≤1 QA attempt per story. CI environment issues need to be caught locally before first push.
 ---
 | 2026-04-13 05:26 | US-002 | ci-pending | qa | PR #7 updated with clean TDD implementation, waiting for CI |
+| 2026-04-13 05:26 | US-004 | ci-pending | qa | PR #8 updated with E2E count fix, waiting for CI |
