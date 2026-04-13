@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 8
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-008-rental-cart-drawer
 - **PR:** #13
-- **QA Attempts:** 3
+- **QA Attempts:** 4
 
 ## Description
 
@@ -21,6 +21,22 @@ Add a cart system. 'Add to Cart' button on each GameCard and GameModal. Cart ico
 - [ ] Running total shown at the bottom of the drawer
 - [ ] Checkout CTA in drawer opens the multi-step wizard pre-populated with cart items
 - [ ] Items can be removed from the cart
+
+## QA Feedback (Attempt 4)
+
+**Check 0 — CI E2E FAILED:**
+- Classification: env-failure (systemic — ALL open PRs fail E2E simultaneously, unit tests pass on all)
+- Job: E2E Tests
+- CI run: https://github.com/baburam1985/RentAGame/actions/runs/24339138264/job/71063424718
+
+**Check 2 — TDD INTEGRITY FAILED:**
+Both `CartDrawer.test.tsx` and `GameModal.test.tsx` were modified between RED commit (`fc82bdd test: [US-008] RED`) and GREEN commit (`c6c37af feat: [US-008] GREEN`):
+- `CartDrawer.test.tsx`: assertion changed from `expect(screen.getByText(/\$70/)).toBeInTheDocument()` to `expect(screen.getAllByText(/\$70/).length).toBeGreaterThanOrEqual(1)`
+- `GameModal.test.tsx`: `CartProvider` wrapper added, `useRouter` mock added, new `renderModal()` helper function added, new "renders an Add to Cart button" test added
+
+**Required fix:**
+1. All test changes (CartProvider wrapper, useRouter mock, renderModal helper, new test) must be in the RED commit.
+2. The GREEN commit must contain ONLY production code changes — zero test file modifications.
 
 ## Dev Notes
 
