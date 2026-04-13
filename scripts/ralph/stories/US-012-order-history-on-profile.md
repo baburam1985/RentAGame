@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
@@ -14,12 +14,12 @@ Add an Order History section to /profile. Store completed orders in localStorage
 
 ## Acceptance Criteria
 
-- [ ] Order History section renders on /profile
-- [ ] Completed orders are stored in localStorage when Place Order is submitted
-- [ ] Table shows columns: Order #, Game, Dates, Total, Status
-- [ ] Orders are listed in reverse chronological order
-- [ ] Empty state renders with a 'Browse Games' CTA when no orders exist
-- [ ] Status shows 'confirmed' for newly placed orders
+- [x] Order History section renders on /profile
+- [x] Completed orders are stored in localStorage when Place Order is submitted
+- [x] Table shows columns: Order #, Game, Dates, Total, Status
+- [x] Orders are listed in reverse chronological order
+- [x] Empty state renders with a 'Browse Games' CTA when no orders exist
+- [x] Status shows 'confirmed' for newly placed orders
 
 ## QA Feedback (Attempt 1)
 
@@ -46,3 +46,18 @@ Story scope: OrderHistory component on /profile, localStorage order storage in R
 **Required fixes:**
 1. Remove all changes to `GameCard.tsx`, `GameGrid.tsx`, `app/page.tsx`, and the three E2E specs from this branch
 2. Add a test for AC #6: "Status shows 'confirmed' for newly placed orders"
+
+## Dev Notes
+
+Fixed all QA-flagged issues:
+1. Reverted `web/src/app/page.tsx` to main (removed hydration state - out of scope)
+2. Reverted `web/e2e/catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts` to main (out of scope)
+3. Added 6th test in `OrderHistory.test.tsx` for AC#6: "status shows 'confirmed' for newly placed orders"
+4. Created `/profile` page (`web/src/app/profile/page.tsx`) integrating OrderHistory component
+
+## Files Changed
+
+- `web/src/components/OrderHistory.tsx` — new OrderHistory component
+- `web/src/components/OrderHistory.test.tsx` — 6 unit tests (one per AC)
+- `web/src/components/RentalForm.tsx` — save order to rg_orders localStorage on submit
+- `web/src/app/profile/page.tsx` — new /profile page with user info + OrderHistory section
