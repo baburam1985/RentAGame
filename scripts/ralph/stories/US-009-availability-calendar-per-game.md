@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 9
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-009-availability-calendar
 - **PR:** #14

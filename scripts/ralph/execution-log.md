@@ -264,6 +264,7 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:07 | US-008 | dev-complete | dev | branch rebuilt from main, 4 tests pass, CartDrawer.tsx created |
 | 2026-04-13 12:07 | US-009 | in-progress | dev | starting fix for qa-failed — rebuilding branch from main |
 | 2026-04-13 12:08 | US-009 | tests-written | dev | RED commit pushed — 4 failing tests for AvailabilityCalendar |
+| 2026-04-13 12:10 | US-009 | dev-complete | dev | branch rebuilt from main, 4 tests pass, AvailabilityCalendar.tsx created |
 
 ## Retro: CI-Fix-PR37-38 - Docker IPv6/IPv4 healthcheck + systemic TDD Check 2 failures
 - **QA attempts:** N/A for CI infrastructure; Check 2 failed on US-006, US-008, US-009, US-010 (4 stories in one run)
