@@ -10,6 +10,8 @@ type Props = {
   searchQuery?: string;
   sortOrder?: string;
   onSelect?: (game: Game) => void;
+  onClearFilters?: () => void;
+  games?: Game[];
 };
 
 export default function GameGrid({
@@ -17,10 +19,13 @@ export default function GameGrid({
   searchQuery = "",
   sortOrder = "featured",
   onSelect,
+  onClearFilters,
+  games: gamesProp,
 }: Props) {
   const query = searchQuery.toLowerCase();
+  const sourceGames = gamesProp ?? games;
 
-  const filtered = games.filter((g) => {
+  const filtered = sourceGames.filter((g) => {
     const matchesCategory =
       activeCategory === "All" || g.category === activeCategory;
     const matchesSearch =
@@ -40,9 +45,17 @@ export default function GameGrid({
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
       {sorted.length === 0 ? (
-        <p className="text-gray-400 text-center py-16">
-          No games found. Try a different search or category.
-        </p>
+        <div className="flex flex-col items-center py-16 gap-4">
+          <p className="text-gray-400 text-center text-lg">No games found.</p>
+          <p className="text-gray-400 text-center text-sm">Try clearing some filters</p>
+          <button
+            onClick={onClearFilters}
+            aria-label="Browse all games"
+            className="rounded-full bg-yellow-400 px-6 py-2.5 text-sm font-semibold text-gray-900 hover:bg-yellow-500 transition-colors focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:ring-offset-2"
+          >
+            Browse all games
+          </button>
+        </div>
       ) : (
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
