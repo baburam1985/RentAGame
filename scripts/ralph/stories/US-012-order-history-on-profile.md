@@ -55,6 +55,8 @@ Fixed all QA-flagged issues:
 3. Added 6th test in `OrderHistory.test.tsx` for AC#6: "status shows 'confirmed' for newly placed orders"
 4. Created `/profile` page (`web/src/app/profile/page.tsx`) integrating OrderHistory component
 
+**Fix (QA Attempt 2):** Reverted out-of-scope `catalog.spec.ts` modification (trailing newline). Skipped out-of-scope GameCard.tsx commit (8cfb9e7) during rebase. Rebased on main. 52 unit tests pass. Force-pushed.
+
 ## Files Changed
 
 - `web/src/components/OrderHistory.tsx` — new OrderHistory component
