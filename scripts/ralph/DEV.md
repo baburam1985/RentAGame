@@ -11,12 +11,13 @@ tests after the RED commit.**
 - Tests: Vitest + Testing Library (`npm run test:run`)
 - E2E: Playwright (`npm run test:e2e`)
 - Docker: `docker-compose.yml` at `/home/user/RentAGame/`
-- Shared state: `/home/user/RentAGame/scripts/ralph/prd.json`
+- Story dashboard: `/home/user/RentAGame/scripts/ralph/prd.csv`
+- Story details: `/home/user/RentAGame/scripts/ralph/stories/*.md`
 - Base branch: `main`
 
 ## Codebase Patterns
 
-Read `progress.txt` (if it exists) for patterns discovered in previous runs
+Read `patterns.md` for codebase knowledge discovered in previous runs
 before starting. Key existing patterns:
 - Components live in `web/src/components/`
 - Data types in `web/src/data/games.ts`
@@ -46,7 +47,7 @@ git pull origin main
 
 ### Step 2 — Pick a story
 
-Read `prd.json`. Pick the **highest priority** story where:
+Read `prd.csv`. Pick the **highest priority** story where:
 - `status == "qa-failed"` — HIGHEST priority, fix before anything new
 - `status == "pending"` — next in queue
 
@@ -56,11 +57,11 @@ Note whether the picked story is `qa-failed` or `pending` — this changes Steps
 
 ### Step 3 — Lock the story
 
-Set `status: "in-progress"` in prd.json and write it back immediately.
+Set `status: "in-progress"` in prd.csv and the story's .md file.
 This prevents another Dev instance from double-picking the same story.
 
 ```bash
-git add scripts/ralph/prd.json
+git add scripts/ralph/prd.csv scripts/ralph/stories/
 git commit -m "chore: [US-NNN] mark in-progress"
 git push origin main
 ```
@@ -80,7 +81,7 @@ git checkout -b feat/US-NNN-short-title
 **If story was `qa-failed` (fix existing work):**
 
 The branch and PR already exist — do NOT create a new branch.
-Checkout the existing branch from the story's `branch` field in prd.json:
+Checkout the existing branch from the story's `branch` field in prd.csv:
 ```bash
 git fetch origin
 git checkout feat/US-NNN-short-title
@@ -94,7 +95,7 @@ Then skip Step 5 entirely and go straight to Step 6.
   `-merged` suffix (e.g. `feat/US-001-search-filter` → `feat/US-001-search-filter-merged`).
 - Branches ending in `-merged` are **read-only history** — never check out,
   push to, or modify a `-merged` branch.
-- If you see a `-merged` suffix in the prd.json `branch` field, that story is
+- If you see a `-merged` suffix in the prd.csv `branch` field, that story is
   done. Do NOT try to use that branch for new work.
 - If a story needs rework after merge, create a new branch with a `-v2` suffix
   (e.g. `feat/US-001-search-filter-v2`).
@@ -121,12 +122,12 @@ git commit -m "test: [US-NNN] RED - failing tests"
 git push origin feat/US-NNN-short-title
 ```
 
-Update prd.json: `status: "tests-written"`, push to main:
+Update prd.csv and story .md: set `status: "tests-written"`, push to main:
 ```bash
 git checkout main
 git pull origin main
-# edit prd.json status -> "tests-written"
-git add scripts/ralph/prd.json
+# edit prd.csv status -> "tests-written" and update stories/US-NNN-*.md
+git add scripts/ralph/prd.csv scripts/ralph/stories/
 git commit -m "chore: [US-NNN] tests written (RED)"
 git push origin main
 git checkout feat/US-NNN-short-title
@@ -136,7 +137,7 @@ git checkout feat/US-NNN-short-title
 
 Write the minimum implementation to make ALL tests pass.
 
-**If story was `qa-failed`:** Read `qaFeedback` in prd.json first. Fix only
+**If story was `qa-failed`:** Read `qaFeedback` in the story's .md file first. Fix only
 what the QA agent flagged — do not refactor unrelated code.
 
 **Hard rules:**
@@ -190,19 +191,19 @@ git commit -m "feat: [US-NNN] GREEN - implementation"
 git push origin feat/US-NNN-short-title
 ```
 
-### Step 7 — Update prd.json
+### Step 7 — Update story tracking
 
-Switch to main, update prd.json, push:
+Switch to main, update prd.csv and story .md, push:
 
 ```bash
 git checkout main
 git pull origin main
 ```
 
-Edit prd.json for this story:
-- `status`: `"dev-complete"`
-- `branch`: `"feat/US-NNN-short-title"`
-- `devNotes`: brief summary of what was implemented and files changed
+Update tracking for this story:
+
+1. **prd.csv** — change the story's row: set status to `dev-complete`, set branch to `feat/US-NNN-short-title`
+2. **stories/US-NNN-*.md** — update Status to `dev-complete`, add Dev Notes section with implementation summary, add Files Changed section with list of modified files
 - `filesChanged`: array of file paths modified (run `git diff main --name-only` to get the list)
 
 **Also append to `scripts/ralph/execution-log.md`** — one row per status change:
@@ -215,14 +216,17 @@ Log every status change you make (in-progress, tests-written, dev-complete).
 This gives humans and the Retro agent a readable timeline of the story.
 
 ```bash
-git add scripts/ralph/prd.json
+git add scripts/ralph/prd.csv scripts/ralph/stories/
 git commit -m "chore: [US-NNN] dev-complete"
 git push origin main
 ```
 
-### Step 8 — Update progress.txt
+### Step 8 — Update patterns.md (if applicable)
 
-Append to `/home/user/RentAGame/scripts/ralph/progress.txt`:
+If you discovered a reusable codebase pattern, add it to `/home/user/RentAGame/scripts/ralph/patterns.md`.
+Only add patterns that are general and reusable — not story-specific details (those go in the story .md).
+
+Examples of good patterns:
 
 ```
 ## [Date] - [STORY-ID] - [Title]
@@ -236,7 +240,7 @@ Append to `/home/user/RentAGame/scripts/ralph/progress.txt`:
 ```
 
 If you discovered a reusable pattern, add it to the `## Codebase Patterns`
-section at the TOP of progress.txt (create section if it doesn't exist).
+section in `patterns.md`.
 
 ## Quality Requirements
 
@@ -251,11 +255,11 @@ section at the TOP of progress.txt (create section if it doesn't exist).
   must be on a `feat/US-NNN-*` branch and reach `main` exclusively through a
   Pull Request validated and merged by the QA agent.
 - The only things Dev pushes directly to `main` are state-file commits
-  (`prd.json`, `progress.txt`) that record pipeline status — never source code.
+  (`prd.csv`, `stories/*.md`, `patterns.md`) that record pipeline status — never source code.
 
 ## Stop Condition
 
 After completing a story:
-- If all stories in prd.json have `status: "qa-passed"`, output:
+- If all stories in prd.csv have `status: "qa-passed"`, output:
   `<promise>COMPLETE</promise>`
 - Otherwise, end your response normally — the next run picks up the next story.

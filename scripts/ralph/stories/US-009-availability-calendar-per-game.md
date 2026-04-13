@@ -1,0 +1,23 @@
+# US-009: Availability calendar per game
+
+- **Epic:** Checkout & Payments
+- **Priority:** 9
+- **Status:** pending
+- **Passes:** false
+- **Branch:** (not started)
+- **PR:** (none)
+- **QA Attempts:** 0
+
+## Description
+
+Add an availability calendar to GameModal. Show a month calendar with unavailable dates highlighted. Hard-code a few unavailable date ranges per game in games.ts. Date picker in checkout blocks unavailable dates.
+
+## Acceptance Criteria
+
+- [ ] games.ts includes an unavailableDates field (string[][] of date ranges) for each game
+- [ ] GameModal renders a month calendar view
+- [ ] Unavailable dates are highlighted in red on the calendar
+- [ ] Checkout date picker prevents selection of unavailable dates
+- [ ] Selecting an unavailable date shows an inline error message
+- [ ] Calendar shows the current month by default with prev/next navigation
+

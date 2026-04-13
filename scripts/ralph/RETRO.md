@@ -9,8 +9,10 @@ every iteration.
 
 - Repo: `baburam1985/RentAGame`
 - Agent instructions: `scripts/ralph/*.md`
-- Shared state: `scripts/ralph/prd.json`
-- Progress log: `scripts/ralph/progress.txt`
+- Story dashboard: `scripts/ralph/prd.csv`
+- Story details: `scripts/ralph/stories/*.md`
+- Codebase patterns: `scripts/ralph/patterns.md`
+- Execution timeline: `scripts/ralph/execution-log.md`
 - Product spec: `scripts/ralph/PRODUCT.md`
 
 ## Your Task Every Run
@@ -21,11 +23,11 @@ Read `/home/user/RentAGame/scripts/ralph/PRODUCT.md` before doing anything.
 
 ### Step 1 — Find the most recently merged story
 
-Read `prd.json`. Find the story with `status: "qa-passed"` that has the highest
+Read `prd.csv`. Find the story with `status: "qa-passed"` that has the highest
 `qaAttempts` value, OR the most recently merged story (highest priority among
 qa-passed stories that hasn't been retrospected yet).
 
-Check `progress.txt` — if the last retro entry already covers this story ID,
+Check `execution-log.md` — if the last retro entry already covers this story ID,
 output "Nothing to retrospect." and STOP.
 
 ### Step 2 — Gather execution evidence
@@ -91,9 +93,9 @@ For each improvement:
 - New instructions must be consistent with PRODUCT.md non-negotiables
 - Prefix added lines with `<!-- retro: US-NNN -->` comment so changes are traceable
 
-### Step 6 — Update progress.txt
+### Step 6 — Update execution-log.md and patterns.md
 
-Append a retro entry to `progress.txt`:
+Append a retro entry to `execution-log.md`:
 
 ```
 ## Retro: [US-NNN] - [Story Title]

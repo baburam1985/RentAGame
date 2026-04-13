@@ -12,7 +12,8 @@ specific feedback.
 - Next.js 19 + TypeScript + Tailwind CSS
 - Source: `/home/user/RentAGame/web/`
 - Docker: `docker-compose.yml` at `/home/user/RentAGame/`
-- Shared state: `/home/user/RentAGame/scripts/ralph/prd.json`
+- Story dashboard: `/home/user/RentAGame/scripts/ralph/prd.csv`
+- Story details: `/home/user/RentAGame/scripts/ralph/stories/*.md`
 - Base branch: `main`
 
 ## Non-Negotiable Git Rule
@@ -44,7 +45,7 @@ git pull origin main
 
 ### Step 2 — Pick a story
 
-Read `prd.json`. Pick the **highest priority** story where:
+Read `prd.csv`. Pick the **highest priority** story where:
 - `status == "dev-complete"` — needs full validation (Checks 0–8)
 - `status == "ci-pending"` — PR already created, jump straight to Check 0
 
@@ -71,12 +72,12 @@ tool:
 - head: `feat/US-NNN-short-title`
 - base: `main`
 
-Store the returned PR number in prd.json (`prNumber`) and push:
+Store the returned PR number in prd.csv and the story .md, then push:
 
 ```bash
 git checkout main
-# edit prd.json prNumber -> <returned number>
-git add scripts/ralph/prd.json
+# edit prd.csv prNumber and stories/US-NNN-*.md
+git add scripts/ralph/prd.csv scripts/ralph/stories/
 git commit -m "chore: [US-NNN] PR #<number> created"
 git push origin main
 git checkout feat/US-NNN-short-title
@@ -92,7 +93,7 @@ Use `mcp__github__pull_request_read` with:
 - method: `get_check_runs`
 - owner: `baburam1985`
 - repo: `RentAGame`
-- pullNumber: `<prNumber from prd.json>`
+- pullNumber: `<prNumber from prd.csv>`
 
 Evaluate each check run's `conclusion` field:
 
@@ -102,7 +103,7 @@ Evaluate each check run's `conclusion` field:
 | `success` for ALL runs | Proceed to Check 1 |
 | `failure` / `cancelled` on any run | FAIL — collect log details, go to On Fail |
 
-**If CI is pending:** update prd.json `status: "ci-pending"`. Append to execution log:
+**If CI is pending:** update prd.csv and story .md `status: "ci-pending"`. Append to execution log:
 ```bash
 TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
 echo "| $TIMESTAMP | US-NNN | ci-pending | qa | PR #N created, waiting for CI |" >> scripts/ralph/execution-log.md
@@ -168,7 +169,7 @@ grep -rE "expect\(true\)|expect\(1\)\.toBe\(1\)|expect\(\w+\)\.toBeDefined\(\)" 
 ### Check 5 — Test count vs acceptance criteria count
 
 Count `it(` or `test(` blocks in the story's test file(s).
-Count the story's `acceptanceCriteria` array length in prd.json.
+Count the story's acceptance criteria in the story's .md file.
 
 **FAIL if:** Test count < acceptance criteria count.
 
@@ -259,11 +260,9 @@ should never check out or push to a `-merged` branch.
 - After merge: `feat/US-001-search-filter-merged`
 - Any branch ending in `-merged` is read-only history — do not modify it.
 
-Update prd.json:
-- `status`: `"qa-passed"`
-- `passes`: `true`
-- `qaFeedback`: `""`
-- `branch`: `"feat/US-NNN-short-title-merged"` (reflects the renamed branch)
+Update tracking:
+- **prd.csv**: set status to `qa-passed`, passes to `true`, branch to `feat/US-NNN-short-title-merged`
+- **stories/US-NNN-*.md**: update Status, Passes, Branch. Clear QA Feedback. Check all acceptance criteria boxes.
 
 ### Post-merge: Capture UI screenshots
 
@@ -283,7 +282,7 @@ This runs `scripts/capture-screenshots.mjs` which captures:
 - Game detail page (above fold + full page)
 
 The screenshots and `screenshots/manifest.json` are committed alongside the
-prd.json update so each merge has a visual snapshot.
+prd.csv update so each merge has a visual snapshot.
 
 To add new pages: edit the `PAGES` array in `scripts/capture-screenshots.mjs`.
 
@@ -294,7 +293,7 @@ echo "| $TIMESTAMP | US-NNN | qa-passed | qa | all checks passed, merged to main
 ```
 
 ```bash
-git add scripts/ralph/prd.json scripts/ralph/execution-log.md web/screenshots/
+git add scripts/ralph/prd.csv scripts/ralph/stories/ scripts/ralph/execution-log.md web/screenshots/
 git commit -m "chore: [US-NNN] qa-passed, merged to main"
 git push origin main
 ```
@@ -312,7 +311,7 @@ Execution log updated.
 
 ## On Any Check Failing — Send Back to Dev
 
-Do NOT merge. Update prd.json:
+Do NOT merge. Update prd.csv and the story .md:
 - `status`: `"qa-failed"`
 - `passes`: `false`
 - `qaFeedback`: specific description of every failed check with evidence
@@ -323,7 +322,7 @@ CI will re-run automatically.
 
 ```bash
 git checkout main
-git add scripts/ralph/prd.json
+git add scripts/ralph/prd.csv scripts/ralph/stories/
 git commit -m "chore: [US-NNN] qa-failed (attempt N)"
 git push origin main
 ```
@@ -355,7 +354,7 @@ qaAttempts: N
 
 ## Stop Condition
 
-After completing validation, check if ALL stories in prd.json have
+After completing validation, check if ALL stories in prd.csv have
 `status: "qa-passed"` (count dynamically — Research agent may have added
 stories beyond the original 17).
 

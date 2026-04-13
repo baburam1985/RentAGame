@@ -18,7 +18,7 @@ start, stop, or extend it.
 │                    │                                        │
 │                    ▼                                        │
 │  PM (every 10 min)                                          │
-│    └─ Reads research.json → vets items → prd.json           │
+│    └─ Reads research.json → vets items → prd.csv + stories/  │
 │    └─ Keeps backlog healthy (pending ≥ 3)                   │
 │    └─ Rewrites failing acceptance criteria                  │
 │                    │                                        │
@@ -70,9 +70,10 @@ All triggers: repo `baburam1985/RentAGame`, branch `main`.
 | File | Written by | Read by | Purpose |
 |------|-----------|---------|---------|
 | `PRODUCT.md` | humans only | ALL agents (Step 0) | Authoritative product spec — non-negotiables, scope, constraints |
-| `prd.json` | PM, Dev, QA | All agents | Story backlog — single source of truth |
+| `prd.csv` | PM, Dev, QA | All agents | Story dashboard — status, branch, QA attempts (replaces prd.json) |
+| `stories/*.md` | PM, Dev, QA | All agents | Full detail per story — acceptance criteria, dev notes, QA feedback |
 | `research.json` | Research | PM | Raw ideas/bugs from external research |
-| `progress.txt` | Dev, Retro | Dev, Retro | Codebase patterns and learnings |
+| `patterns.md` | Dev, Retro | Dev, Retro | Reusable codebase knowledge (replaces progress.txt patterns section) |
 | `execution-log.md` | Dev, QA, PM, CI, Retro | Retro, humans | Human-readable timeline of all status changes |
 
 ---
@@ -240,10 +241,10 @@ Retro agent can both scan easily:
 
 | Who | May push directly to `main`? | What they push |
 |-----|------------------------------|----------------|
-| Dev | State files only | `prd.json`, `progress.txt` |
-| QA | State files only | `prd.json` (after merging via PR) |
+| Dev | State files only | `prd.csv`, `stories/*.md`, `patterns.md`, `execution-log.md` |
+| QA | State files only | `prd.csv`, `stories/*.md`, `execution-log.md` (after merging via PR) |
 | CI-Fix | **No code** | Uses `fix/ci-hotfix` branch → PR → merge |
-| PM | State files only | `prd.json`, `research.json` |
+| PM | State files only | `prd.csv`, `stories/*.md`, `research.json` |
 | Research | State files only | `research.json` |
 
 Code reaches `main` **exclusively** through Pull Requests validated by the QA
@@ -276,7 +277,7 @@ Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
 1. Ensure all 5 triggers exist at **https://claude.ai/code/scheduled**
    (see Agent Registry table above for prompts and schedules)
 2. Ensure `main` branch is green: `docker-compose run --rm unit-tests`
-3. Verify `prd.json` has stories with `status: "pending"`
+3. Verify `prd.csv` has stories with `status: "pending"`
 4. Agents self-coordinate via `prd.json` — no manual intervention needed
 
 ## How to Pause
