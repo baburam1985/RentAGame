@@ -2,11 +2,11 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider
 - **PR:** #7
-- **QA Attempts:** 2
+- **QA Attempts:** 0
 
 ## Description
 
@@ -14,12 +14,14 @@ Add a dual-handle price range slider (min/max) in the filter bar. Games outside 
 
 ## Acceptance Criteria
 
-- [ ] Dual-handle price slider renders in the filter bar
-- [ ] Min and max handles are independently draggable
-- [ ] Games outside selected price range are hidden
-- [ ] Selected range displays as '$X – $Y / day'
-- [ ] Default state shows full price range (min to max of all games)
-- [ ] Price filter works simultaneously with search and category filters
+<!-- PM Tier-1 rewrite: criteria made more explicit after 2 QA failures due to merge conflicts and E2E test mismatches -->
+- [ ] A PriceRangeSlider component renders below the SearchBar row and above the game grid; it has a min-price handle and a max-price handle
+- [ ] Moving the min handle to value X immediately hides all games whose pricePerDay is less than X from the grid (no form submit required)
+- [ ] Moving the max handle to value Y immediately hides all games whose pricePerDay is greater than Y from the grid
+- [ ] A text label reading '$[min] – $[max] / day' updates in real time as either handle moves
+- [ ] On initial render, min defaults to the lowest pricePerDay across all games and max defaults to the highest pricePerDay across all games
+- [ ] With price range set, the category filter, search text, and player-count filter all continue to work simultaneously (AND logic across all active filters)
+- [ ] Branch is rebased on current main before pushing — all unit tests and E2E tests pass in Docker locally before the PR is updated
 
 ## QA Feedback
 

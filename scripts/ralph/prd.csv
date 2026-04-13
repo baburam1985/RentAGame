@@ -1,8 +1,8 @@
 id,epic,title,priority,status,passes,branch,qaAttempts,prNumber
 US-001,Discovery,"Search bar with live text filtering",1,qa-passed,true,feat/US-001-search-filter-merged,3,1
-US-002,Discovery,"Price range slider filter",2,qa-failed,false,feat/US-002-price-slider,2,7
-US-003,Discovery,"Sort games by price or name",3,in-progress,false,feat/US-003-sort-games,1,6
-US-004,Discovery,"Player count filter chips",4,qa-failed,false,feat/US-004-player-count-filter-chips,1,8
+US-002,Discovery,"Price range slider filter",2,ci-pending,false,feat/US-002-price-slider,0,7
+US-003,Discovery,"Sort games by price or name",3,qa-passed,true,feat/US-003-sort-games-rebased-merged,1,6
+US-004,Discovery,"Player count filter chips",4,dev-complete,false,feat/US-004-player-count-filter-chips,1,8
 US-005,Discovery,"Active filter summary bar with clear-all",5,pending,false,,0,0
 US-006,Checkout & Payments,"Multi-step checkout wizard",6,pending,false,,0,0
 US-007,Checkout & Payments,"Order confirmation page",7,pending,false,,0,0
@@ -43,3 +43,13 @@ US-041,Discovery,"FAQ accordion section on the homepage",41,pending,false,,0,0
 US-042,User Accounts,"Navbar active page indicator",42,pending,false,,0,0
 US-043,Checkout & Payments,"Step progress indicator in the multi-step checkout wizard",43,pending,false,,0,0
 US-044,Discovery,"Use Next.js Image component for all game images",44,pending,false,,0,0
+US-045,Discovery,"Recently viewed games horizontal strip",45,pending,false,,0,0
+US-046,Admin Dashboard,"Admin settings page for service copy",46,pending,false,,0,0
+US-047,Checkout & Payments,"Instant confirmation trust badge on rental form",47,pending,false,,0,0
+US-048,Discovery,"Back to top floating button",48,pending,false,,0,0
+US-049,Discovery,"Game comparison panel (select 2-3 games side-by-side)",49,pending,false,,0,0
+US-050,User Accounts,"Wishlist toast notifications for add/remove actions",50,pending,false,,0,0
+US-051,Discovery,"How it works compact strip above game catalog",51,pending,false,,0,0
+US-052,Checkout & Payments,"HTML autocomplete attributes on rental form fields",52,pending,false,,0,0
+US-053,Discovery,"Search bar type-ahead suggestions dropdown",53,pending,false,,0,0
+US-054,Checkout & Payments,"Featured game recommendations in empty cart state",54,pending,false,,0,0
