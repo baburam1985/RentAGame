@@ -4,7 +4,11 @@ test.describe("Rental request form", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/#contact");
     await page.waitForSelector("#contact");
-    await page.waitForLoadState("networkidle");
+    // Wait for React hydration: check that React fiber is attached to the form
+    await page.waitForFunction(() => {
+      const form = document.querySelector("#contact form");
+      return form !== null && Object.keys(form).some((k) => k.startsWith("__reactFiber"));
+    });
   });
 
   test("submitting empty form shows validation errors", async ({ page }) => {

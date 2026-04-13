@@ -5,7 +5,11 @@ test.describe("Game catalog", () => {
     await page.goto("/");
     // Wait for catalog to be visible
     await page.waitForSelector("#catalog");
-    await page.waitForLoadState("networkidle");
+    // Wait for React hydration: check that React fiber is attached to a game card
+    await page.waitForFunction(() => {
+      const card = document.querySelector("#catalog .group");
+      return card !== null && Object.keys(card).some((k) => k.startsWith("__reactFiber"));
+    });
   });
 
   test("shows at least 8 game cards", async ({ page }) => {
