@@ -37,7 +37,7 @@
         "Price filter works simultaneously with search and category filters"
       ],
       "priority": 2,
-      "status": "qa-failed",
+      "status": "in-progress",
       "passes": false,
       "branch": "feat/US-002-price-slider",
       "devNotes": "PriceRangeSlider component built with two overlaid native range inputs (no external library). Uses onKeyDown handlers for arrow-key increment/decrement to ensure Testing Library compatibility. Price label rendered as a single text node using template literal to satisfy regex matcher tests. GameGrid updated with optional minPrice/maxPrice props for combined AND-filtering alongside search and category. page.tsx wired with PRICE_MIN/PRICE_MAX derived from games array as default state.",
