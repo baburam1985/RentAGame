@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 28
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-028-skeleton-loading
 - **PR:** (none)
 - **QA Attempts:** 0
 
