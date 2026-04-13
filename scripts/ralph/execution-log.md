@@ -358,3 +358,5 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:11 | US-044 | in-progress | dev | starting new story — next/image migration for game images |
 | 2026-04-13 14:13 | US-044 | tests-written | dev | RED commit — 3 tests, 1 failing (imageAlt field in GameCard, priority prop) |
 | 2026-04-13 14:16 | US-044 | dev-complete | dev | GREEN commit — next/image in GameCard (priority+imageAlt) and game detail page; 49 tests pass |
+| 2026-04-13 14:17 | US-045 | in-progress | dev | starting new story — recently viewed games horizontal strip |
+| 2026-04-13 14:18 | US-045 | tests-written | dev | RED commit — 6 failing tests for RecentlyViewed (localStorage rg_recent_views, ordered strip) |

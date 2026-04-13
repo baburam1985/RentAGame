@@ -43,7 +43,7 @@ US-041,Discovery,FAQ accordion section on the homepage,41,dev-complete,false,fea
 US-042,User Accounts,Navbar active page indicator,42,dev-complete,false,feat/US-042-navbar-active-indicator,0,0
 US-043,Checkout & Payments,Step progress indicator in the multi-step checkout wizard,43,dev-complete,false,feat/US-043-checkout-progress-indicator,0,0
 US-044,Discovery,Use Next.js Image component for all game images,44,dev-complete,false,feat/US-044-nextjs-image,0,0
-US-045,Discovery,Recently viewed games horizontal strip,45,in-progress,false,feat/US-045-recently-viewed-strip,0,0
+US-045,Discovery,Recently viewed games horizontal strip,45,tests-written,false,feat/US-045-recently-viewed-strip,0,0
 US-046,Admin Dashboard,Admin settings page for service copy,46,pending,false,,0,0
 US-047,Checkout & Payments,Instant confirmation trust badge on rental form,47,pending,false,,0,0
 US-048,Discovery,Back to top floating button,48,pending,false,,0,0
