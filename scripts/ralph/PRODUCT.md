@@ -54,22 +54,54 @@ Log in → View order history → Rebook or wishlist games
 
 | Feature | Location |
 |---------|---------|
-| Game catalog grid | `web/src/components/GameGrid.tsx` |
-| Category filter (Lawn, Party, Kids, Team, Water) | `web/src/components/CategoryFilter.tsx` |
+| Game catalog grid + search + sort | `web/src/components/GameGrid.tsx` |
+| Category filter (Lawn, Party, Kids, Team) | `web/src/components/CategoryFilter.tsx` |
+| Search bar (live text filtering) | `web/src/components/SearchBar.tsx` |
+| Sort dropdown (price, name, featured) | `web/src/components/SortDropdown.tsx` |
+| Game detail page (gallery, how-to-play) | `web/src/app/games/[id]/page.tsx` |
+| Game detail cart interaction | `web/src/app/games/[id]/GameDetailClient.tsx` |
+| Cart page | `web/src/app/cart/page.tsx` |
+| Cart state management | `web/src/context/CartContext.tsx` |
+| Game card (cart-aware) | `web/src/components/GameCard.tsx` |
 | Game detail modal | `web/src/components/GameModal.tsx` |
 | Rental enquiry form | `web/src/components/RentalForm.tsx` |
-| Hero section | `web/src/components/Hero.tsx` |
+| Hero section (Kinetic Games branded) | `web/src/components/Hero.tsx` |
 | How It Works section | `web/src/components/HowItWorks.tsx` |
 | Testimonials section | `web/src/components/Testimonials.tsx` |
-| Navbar | `web/src/components/Navbar.tsx` |
-| Footer | `web/src/components/Footer.tsx` |
-| Game data | `web/src/data/games.ts` |
+| Navbar (yellow, cart icon, Kinetic Games) | `web/src/components/Navbar.tsx` |
+| Footer (blue-900, rounded) | `web/src/components/Footer.tsx` |
+| Game data (12 games) | `web/src/data/games.ts` |
+
+---
+
+## PROTECTED COMPONENTS — Do Not Modify Without Explicit Story
+
+The following files define the "Kinetic Games" visual brand and core user flows.
+**Agents MUST NOT modify these files unless the story explicitly names the component
+and describes the visual/structural change required in its acceptance criteria.**
+
+| Component | File | Protected aspects |
+|-----------|------|-------------------|
+| Navbar | `web/src/components/Navbar.tsx` | Yellow bg, "Kinetic Games" brand, cart icon, nav links |
+| Hero | `web/src/components/Hero.tsx` | #fffde1 bg, gradient headline, game preview grid, CTAs |
+| Footer | `web/src/components/Footer.tsx` | bg-blue-900, rounded-t corners, brand, link structure |
+| GameCard | `web/src/components/GameCard.tsx` | Cart-aware buttons, Link to /games/[id], card layout |
+| Layout | `web/src/app/layout.tsx` | CartProvider, Plus Jakarta Sans font, Material Symbols |
+| Globals CSS | `web/src/app/globals.css` | Color vars, font assignments, #fffde1 body bg |
+| CartContext | `web/src/context/CartContext.tsx` | addItem/removeItem/updateDays API surface |
+| Cart page | `web/src/app/cart/page.tsx` | Cart flow: items, days selector, order summary |
+| Game detail | `web/src/app/games/[id]/` | Gallery, how-to-play, sticky CTA |
+
+**Rule:** If a story says "add search to the catalog page" that does NOT authorize
+changing Navbar, Hero, Footer, Layout, CartContext, or the cart/detail pages.
+Only touch what the story explicitly scopes. If you need to modify a protected
+component, the story must say so and QA will verify it.
 
 ---
 
 ## Game Catalog
 
-8 games across 5 categories. The `Game` type is:
+12 games across 4 categories (Lawn, Party, Kids, Team). The `Game` type is:
 
 ```typescript
 type Game = {
@@ -78,9 +110,11 @@ type Game = {
   category: string;       // one of CATEGORIES
   description: string;
   pricePerDay: number;    // in USD, e.g. 45
-  image: string;          // Unsplash URL
+  image: string;          // primary Unsplash URL
+  images: string[];       // gallery images for detail page
   players: string;        // e.g. "2–10 players"
   dimensions: string;     // e.g. "4 ft tall when fully stacked"
+  howToPlay: string[];    // step-by-step instructions
 }
 ```
 

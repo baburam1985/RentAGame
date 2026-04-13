@@ -1,60 +1,72 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import Link from "next/link";
+import { useCart } from "@/context/CartContext";
 
 const navLinks = [
-  { label: "Games", href: "#catalog" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "All Games", href: "#catalog" },
+  { label: "Family Sets", href: "#catalog" },
+  { label: "Party Packs", href: "#catalog" },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 10);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const { totalCount } = useCart();
 
   return (
-    <header
-      className={`sticky top-0 z-50 bg-white transition-shadow duration-200 ${
-        scrolled ? "shadow-md" : "shadow-none"
-      }`}
-    >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="flex h-16 items-center justify-between">
-          {/* Logo */}
-          <a href="/" className="text-xl font-bold text-gray-900">
-            RentAGame
-          </a>
+    <header className="sticky top-0 w-full z-50 bg-yellow-400 shadow-[0_20px_40px_rgba(119,99,0,0.08)]">
+      <nav className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
+        {/* Brand */}
+        <a
+          href="/"
+          className="text-2xl font-black italic text-blue-800 tracking-tight"
+          style={{ fontFamily: "var(--font-plus-jakarta, 'Plus Jakarta Sans'), sans-serif" }}
+        >
+          Kinetic Games
+        </a>
 
-          {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+        {/* Desktop nav */}
+        <div className="hidden md:flex gap-8 items-center font-bold">
+          {navLinks.map((link, i) => (
             <a
-              href="#contact"
-              className="rounded-full px-5 py-2 text-sm font-semibold text-gray-900 transition-colors hover:brightness-95"
-              style={{ backgroundColor: "var(--color-accent)" }}
+              key={link.label}
+              href={link.href}
+              className={
+                i === 0
+                  ? "text-blue-800 border-b-4 border-orange-500 pb-1 transition-all duration-300"
+                  : "text-blue-800/80 hover:text-blue-900 transition-all duration-300 hover:scale-105"
+              }
             >
-              Rent Now
+              {link.label}
             </a>
-          </nav>
+          ))}
+        </div>
+
+        {/* Right icons */}
+        <div className="flex items-center gap-2">
+          <Link
+            href="/cart"
+            className="p-2 rounded-full hover:bg-white/20 transition-all duration-300 relative active:scale-95 cursor-pointer inline-flex"
+            aria-label={`Cart — ${totalCount} items`}
+          >
+            <span className="material-symbols-outlined text-blue-700">shopping_cart</span>
+            {totalCount > 0 && (
+              <span className="absolute top-0 right-0 bg-orange-500 text-white text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-bold">
+                {totalCount}
+              </span>
+            )}
+          </Link>
+          <button
+            className="p-2 rounded-full hover:bg-white/20 transition-all duration-300 active:scale-95 cursor-pointer"
+            aria-label="Account"
+          >
+            <span className="material-symbols-outlined text-blue-700">account_circle</span>
+          </button>
 
           {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100"
+            className="md:hidden p-2 rounded-md text-blue-800 ml-1"
             onClick={() => setMenuOpen((prev) => !prev)}
             aria-expanded={menuOpen}
             aria-label="Toggle menu"
@@ -64,29 +76,21 @@ export default function Navbar() {
             <span className="block w-5 h-0.5 bg-current" />
           </button>
         </div>
-      </div>
+      </nav>
 
       {/* Mobile dropdown */}
       {menuOpen && (
-        <div className="md:hidden border-t border-gray-100 bg-white px-4 py-3 flex flex-col gap-3">
+        <div className="md:hidden border-t border-yellow-500/40 bg-yellow-400 px-6 py-4 flex flex-col gap-4">
           {navLinks.map((link) => (
             <a
-              key={link.href}
+              key={link.label}
               href={link.href}
-              className="text-sm font-medium text-gray-700 hover:text-gray-900"
+              className="text-blue-800 font-bold hover:text-blue-900 transition-colors"
               onClick={() => setMenuOpen(false)}
             >
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="inline-block rounded-full px-5 py-2 text-sm font-semibold text-gray-900 text-center"
-            style={{ backgroundColor: "var(--color-accent)" }}
-            onClick={() => setMenuOpen(false)}
-          >
-            Rent Now
-          </a>
         </div>
       )}
     </header>

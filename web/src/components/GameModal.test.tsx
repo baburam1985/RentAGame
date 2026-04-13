@@ -13,6 +13,11 @@ const mockGame: Game = {
   image: "https://images.unsplash.com/photo-bocce",
   players: "2–8 players",
   dimensions: "107 mm balls",
+  howToPlay: ["Step 1: Toss the pallino.", "Step 2: Roll your bocce ball."],
+  images: [
+    "https://images.unsplash.com/photo-bocce",
+    "https://images.unsplash.com/photo-bocce2",
+  ],
 };
 
 describe("GameModal", () => {

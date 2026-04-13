@@ -147,6 +147,30 @@ docker-compose run --rm unit-tests 2>&1 | tail -30
 
 Both must be green before committing.
 
+### Step 6a — Scope check (before committing implementation)
+
+Before committing, verify you only modified files in scope for this story:
+
+```bash
+git diff --name-only
+```
+
+Cross-reference with the story's `acceptanceCriteria`. For each changed file, ask:
+"Is this file required to pass the acceptance criteria?"
+
+Check PRODUCT.md's **Protected Components** table. If you modified any of these
+files (Navbar, Hero, Footer, GameCard, layout.tsx, globals.css, CartContext,
+cart page, game detail pages) **and the story does not explicitly authorize it**,
+you have scope creep. Revert those changes:
+
+```bash
+git checkout -- web/src/components/Navbar.tsx   # example — revert unscoped file
+```
+
+Only proceed to commit after you have verified every changed file is in scope.
+
+---
+
 Commit ALL implementation files (not test files — they're already committed):
 ```bash
 cd /home/user/RentAGame

@@ -191,6 +191,32 @@ docker-compose down
 
 **FAIL if:** Any Playwright failures.
 
+### Check 9 — Scope Validation (protected component guard)
+
+Read the story's `acceptanceCriteria` and `title` to determine which files
+should have been modified. Then list all changed files:
+
+```bash
+git diff main...HEAD --name-only
+```
+
+For each changed file, verify:
+1. It is directly related to the story's scope (new component, wiring in page.tsx, etc.)
+2. If it is a **protected component** (see PRODUCT.md "Protected Components" table),
+   the story MUST explicitly name that component and describe the change
+
+**FAIL if:**
+- A protected component was modified but the story does not mention it
+- Files unrelated to the story scope were modified (e.g., a search story
+  should not touch Hero.tsx, Footer.tsx, layout.tsx, or globals.css)
+- The Navbar brand, background color, or cart icon were altered
+- The Hero gradient, background, or layout structure was changed
+- The Footer color scheme or branding was changed
+- CartContext API surface was changed (addItem/removeItem/updateDays signatures)
+- Layout.tsx providers, fonts, or head links were changed
+
+Evidence: list each out-of-scope file change and quote the story scope.
+
 ---
 
 ## On ALL Checks Pass — Merge via GitHub API

@@ -1,25 +1,19 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
   --color-accent: #F5C518;
   --color-dark: #1A1A1A;
   --color-muted: #6B7280;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-plus-jakarta);
+  --font-headline: var(--font-plus-jakarta);
+  --font-body: var(--font-be-vietnam);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
 }
 
 html {
@@ -27,6 +21,7 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #fffde1;
+  font-family: var(--font-plus-jakarta), 'Plus Jakarta Sans', sans-serif;
+  color: #1c1c17;
 }

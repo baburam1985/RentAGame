@@ -3,7 +3,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import CategoryFilter from "./CategoryFilter";
 
-const categories = ["All", "Lawn Games", "Party Games", "Kids Games", "Team Games", "Water Games"];
+const categories = ["All", "Lawn Games", "Party Games", "Kids Games", "Team Games"];
 
 describe("CategoryFilter", () => {
   it("renders all category pill labels", () => {

@@ -17,8 +17,10 @@ describe("games data", () => {
       "description",
       "pricePerDay",
       "image",
+      "images",
       "players",
       "dimensions",
+      "howToPlay",
     ];
     games.forEach((game) => {
       requiredFields.forEach((field) => {

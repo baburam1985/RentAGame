@@ -1,36 +1,48 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import Navbar from "./Navbar";
+import { CartProvider } from "@/context/CartContext";
+
+vi.mock("next/link", () => ({
+  default: ({ children, ...props }: { children: React.ReactNode; href: string; [key: string]: unknown }) => (
+    <a {...props}>{children}</a>
+  ),
+}));
+
+function renderNavbar() {
+  return render(
+    <CartProvider>
+      <Navbar />
+    </CartProvider>
+  );
+}
 
 describe("Navbar", () => {
-  it("renders brand name RentAGame", () => {
-    render(<Navbar />);
-    expect(screen.getByText("RentAGame")).toBeInTheDocument();
+  it("renders brand name Kinetic Games", () => {
+    renderNavbar();
+    expect(screen.getByText("Kinetic Games")).toBeInTheDocument();
   });
 
   it("renders all nav link labels", () => {
-    render(<Navbar />);
-    expect(screen.getByText("Games")).toBeInTheDocument();
-    expect(screen.getByText("How It Works")).toBeInTheDocument();
-    expect(screen.getByText("About")).toBeInTheDocument();
-    expect(screen.getByText("Contact")).toBeInTheDocument();
+    renderNavbar();
+    expect(screen.getByText("All Games")).toBeInTheDocument();
+    expect(screen.getByText("Family Sets")).toBeInTheDocument();
+    expect(screen.getByText("Party Packs")).toBeInTheDocument();
   });
 
-  it("renders Rent Now CTA button", () => {
-    render(<Navbar />);
-    // There may be multiple (desktop + mobile) — just check at least one exists
-    const rentNowLinks = screen.getAllByText("Rent Now");
-    expect(rentNowLinks.length).toBeGreaterThanOrEqual(1);
+  it("renders cart icon with aria label", () => {
+    renderNavbar();
+    expect(screen.getByLabelText(/cart/i)).toBeInTheDocument();
   });
 
   it("hamburger button is present in the DOM", () => {
-    render(<Navbar />);
+    renderNavbar();
     expect(screen.getByLabelText("Toggle menu")).toBeInTheDocument();
   });
 
   it("clicking hamburger button toggles mobile menu visibility", async () => {
-    render(<Navbar />);
+    renderNavbar();
     const hamburger = screen.getByLabelText("Toggle menu");
     expect(hamburger).toHaveAttribute("aria-expanded", "false");
     await userEvent.click(hamburger);
