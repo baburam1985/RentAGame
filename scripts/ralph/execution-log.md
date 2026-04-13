@@ -290,3 +290,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:24 | US-034 | in-progress | dev | starting new story — testimonials with star ratings and location |
 | 2026-04-13 12:25 | US-034 | tests-written | dev | RED commit pushed — 3 failing tests for star ratings and location |
 | 2026-04-13 12:27 | US-034 | dev-complete | dev | GREEN commit — StarRating component, rating+location on all testimonials, 50 tests pass |
+| 2026-04-13 12:27 | US-035 | in-progress | dev | starting new story — game modal focus trap |
