@@ -88,3 +88,15 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 08:03 | US-015 | ci-pending | qa | PR #21 created, waiting for CI |
 | 2026-04-13 08:03 | US-016 | ci-pending | qa | PR #22 created, waiting for CI |
 | 2026-04-13 08:03 | US-017 | ci-pending | qa | PR #23 created, waiting for CI |
+| 2026-04-13 08:08 | US-002 | qa-failed | qa | env-failure: E2E fails on all PRs — Docker networking issue, routed to CI-Fix (attempt 1) |
+| 2026-04-13 08:08 | US-004 | qa-failed | qa | env-failure: E2E fails on all PRs — Docker networking issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:08 | US-005 | qa-failed | qa | env-failure: E2E fails on all PRs — Docker networking issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:08 | US-006 | qa-failed | qa | env-failure: E2E fails on all PRs — Docker networking issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:08 | US-008 | qa-failed | qa | env-failure: E2E fails on all PRs — Docker networking issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:08 | US-010 | qa-failed | qa | env-failure: E2E fails on all PRs — Docker networking issue, routed to CI-Fix (attempt 2) |
+| 2026-04-13 08:08 | US-007 | ci-pending | qa | E2E still in progress, will retry next run |
+| 2026-04-13 08:08 | US-009 | ci-pending | qa | E2E still in progress, will retry next run |
+| 2026-04-13 08:08 | US-011 | ci-pending | qa | E2E still in progress, will retry next run |
+| 2026-04-13 08:08 | US-012 | ci-pending | qa | E2E still in progress, will retry next run |
+| 2026-04-13 08:08 | US-013 | ci-pending | qa | E2E still in progress, will retry next run |
+| 2026-04-13 08:08 | US-014 | ci-pending | qa | E2E still in progress, will retry next run |

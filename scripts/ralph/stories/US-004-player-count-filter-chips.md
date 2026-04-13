@@ -2,47 +2,24 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips
 - **PR:** #8
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## QA Feedback
 
-**Check 0 FAILED — GitHub CI E2E Tests job (conclusion: failure, twice)**
+**Check 0 FAILED — GitHub CI E2E Tests job (conclusion: failure)**
 
-CI runs on PR #8 (2026-04-13 04:26 and 04:29 UTC):
-- Unit Tests: SUCCESS (both runs)
-- Docker Build: SUCCESS (both runs)
-- E2E Tests: FAILURE (both runs, jobs 71020246167 and 71020434164)
+Classification: env-failure
+Job: E2E Tests
+Error: E2E job fails consistently across all open PRs (US-002 through US-017). Unit Tests and Docker Build pass on every run. The failure pattern — same E2E outcome across all feature branches regardless of their changes — indicates a systemic Docker networking or Playwright startup issue, not a per-story code regression.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332345339/job/71040896976
 
-**Root cause identified:** `e2e/catalog.spec.ts` has hardcoded game count assertions that no longer match the app:
+Prior attempts (jobs 71020246167, 71020434164, 71040896976) all show same pattern. catalog.spec.ts count fix and networkidle wait have already been applied to branch; root issue is infrastructure. Routed to CI-Fix agent.
 
-```
-test("shows at least 8 game cards") → expects toHaveCount(8)
-test("clicking All pill restores full catalog") → expects toHaveCount(8)
-```
-
-The app now has **12 games** in `web/src/data/games.ts`, so both assertions fail (Received: 12, Expected: 8). The E2E tests were written when the catalog had 8 games but main has since been updated to 12.
-
-**Local checks (all pass):**
-- TDD integrity: RED (482c92f) before GREEN (00fe2f7) ✓
-- Test files unchanged between RED and GREEN ✓
-- No skipped tests ✓
-- No trivial assertions ✓
-- Test count (6 PlayerCountFilter + 12 GameGrid = 18) >= AC count (6) ✓
-- TypeScript: pre-existing env issues only, same as main ✓
-- Unit tests: 58/58 pass ✓
-- Scope: only 5 files changed, all in scope ✓
-
-**Action required:**
-1. Update `e2e/catalog.spec.ts` to reflect the current game count (12):
-   - Change `await expect(cards).toHaveCount(8)` → `await expect(cards).toHaveCount(12)` (or use `toHaveCountGreaterThan(8)`)
-   - Fix both occurrences: "shows at least 8 game cards" test and "clicking All pill restores full catalog" test
-2. Push the fix to `feat/US-004-player-count-filter-chips` to trigger a new CI run
-
-Note: No merge conflicts — PR #8 is `mergeable_state: unstable` (CI failure only, no conflicts).
+PR #8 remains open.
 
 ## Dev Notes
 
