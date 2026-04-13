@@ -4,6 +4,7 @@ test.describe("Game detail modal", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.waitForSelector("#catalog");
+    await page.waitForLoadState("networkidle");
   });
 
   test("clicking first game card opens modal with game name", async ({ page }) => {
