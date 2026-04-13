@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 6
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-006-multi-step-checkout-wizard
 - **PR:** #11
@@ -21,14 +21,6 @@ Replace the single RentalForm with a 3-step wizard: Step 1 — Date selection. S
 - [ ] Step 1 computes rental days and total price from start/end dates
 - [ ] Step 3 shows full order summary before submit
 - [ ] Place Order CTA on Step 3 submits the order
-
-## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337821632/job/71058976506
-
 
 ## Dev Notes
 

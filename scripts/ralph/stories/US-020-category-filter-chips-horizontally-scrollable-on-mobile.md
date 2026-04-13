@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 20
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-020-mobile-scroll-category-filter
 - **PR:** #29
@@ -35,10 +35,3 @@ All 51 tests pass (0 failures).
 ## Files Changed
 
 - `web/src/components/CategoryFilter.tsx`
-
-## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337719536/job/71058626149

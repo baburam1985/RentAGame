@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 8
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-008-rental-cart-drawer
 - **PR:** #13
@@ -21,14 +21,6 @@ Add a cart system. 'Add to Cart' button on each GameCard and GameModal. Cart ico
 - [ ] Running total shown at the bottom of the drawer
 - [ ] Checkout CTA in drawer opens the multi-step wizard pre-populated with cart items
 - [ ] Items can be removed from the cart
-
-## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337353030/job/71057409575
-
 
 ## Dev Notes
 

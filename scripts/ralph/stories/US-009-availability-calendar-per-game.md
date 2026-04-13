@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 9
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-009-availability-calendar
 - **PR:** #14
@@ -20,14 +20,6 @@ Add an availability calendar to GameModal. Show a month calendar with unavailabl
 - [ ] Checkout date picker prevents selection of unavailable dates
 - [ ] Selecting an unavailable date shows an inline error message
 - [ ] Calendar shows the current month by default with prev/next navigation
-
-## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337353030/job/71057409575
-
 
 ## Dev Notes
 

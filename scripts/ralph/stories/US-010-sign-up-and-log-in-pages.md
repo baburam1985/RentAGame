@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 10
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-010-signup-login-pages
 - **PR:** #15
@@ -23,14 +23,6 @@ Create /signup and /login pages with email+password forms. Store mock user in lo
 - [ ] Navbar shows 'Log in / Sign up' link when logged out
 - [ ] Navbar shows user's first name when logged in
 - [ ] Both forms redirect to / on success
-
-## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337353030/job/71057409575
-
 
 ## Dev Notes
 

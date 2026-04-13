@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 5
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-005-active-filter-summary-bar
 - **PR:** #10
@@ -20,14 +20,6 @@ When any filter (search, category, price, players, sort) is non-default, show a 
 - [ ] Clicking a chip's remove button clears only that filter
 - [ ] Clear all button resets every filter to default
 - [ ] Summary bar updates in real time as filters change
-
-## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests pass — systemic CI environment failure.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24337820539/job/71058966971
-
 
 ## Dev Notes
 

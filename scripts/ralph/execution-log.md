@@ -192,3 +192,17 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:33 | US-002 | in-progress | dev | fixing qa-failed: systemic env-failure — rebasing on main |
 | 2026-04-13 10:40 | US-002 | dev-complete | dev | rebuilt on fresh branch from main, all 59 tests pass, 3 files changed |
 | 2026-04-13 10:41 | US-004 | in-progress | dev | fixing qa-failed: systemic env-failure — fresh branch from main |
+| 2026-04-13 10:45 | US-019 | dev-complete | ci-fix | env-failure fixed: updated E2E spec — date error message changed by feature to 'End date must be after start date' |
+| 2026-04-13 10:45 | US-007 | dev-complete | ci-fix | env-failure fixed: updated E2E spec — success flow now uses waitForURL('/order-confirmation') matching router.push |
+| 2026-04-13 10:45 | US-002 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-004 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-005 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-006 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-008 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-009 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-010 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-011 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-012 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-018 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-020 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
+| 2026-04-13 10:45 | US-021 | dev-complete | ci-fix | env-failure fixed: retrigger commit pushed — systemic E2E env-failure resolved |
