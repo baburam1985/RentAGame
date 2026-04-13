@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 11
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-011-user-profile-page
 - **PR:** #16
@@ -69,3 +69,10 @@ Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. 
 **Fix (QA Attempt 2):** Reverted out-of-scope `catalog.spec.ts` modification (trailing newline). RED commit (ff704dc) already had correct 8 tests with `waitFor`, async, and separate AC-7/AC-8. Rebased on main. 54 unit tests pass. Force-pushed.
 
 PM Tier-1 rewrite (run 8): tightened AC wording to be fully explicit about what `localStorage` state to set up and what assertions to make; pinned selector guidance per AC; added explicit `beforeEach` setup guidance; reinforced that E2E spec files must never be touched even for trailing-newline changes.
+
+**Fix (QA Attempt 3 - dev review):** Verified branch state — 8 tests in RED commit covering all ACs (AC-7 and AC-8 separate), no test file changes between RED and GREEN, correct scope (only profile/page.tsx modified), TypeScript clean, 54 unit tests pass. Previous qa-failed was env-failure resolved by CI-Fix. Status reset to dev-complete.
+
+## Files Changed
+
+- `web/src/app/profile/ProfilePage.test.tsx` — 8 unit tests (one per AC)
+- `web/src/app/profile/page.tsx` — profile page with auth gate, avatar initial, inline name edit, logout
