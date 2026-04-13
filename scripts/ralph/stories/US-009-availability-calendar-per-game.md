@@ -2,11 +2,11 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 9
-- **Status:** ci-pending
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-009-availability-calendar
 - **PR:** #14
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## Description
 
@@ -21,13 +21,14 @@ Add an availability calendar to GameModal. Show a month calendar with unavailabl
 - [ ] Selecting an unavailable date shows an inline error message
 - [ ] Calendar shows the current month by default with prev/next navigation
 
-## QA Feedback (Attempt 1)
+## QA Feedback (Attempt 2)
 
-- **Classification:** env-failure
-- **Job:** E2E Tests
-- **Error:** `catalog.spec.ts` — "clicking Lawn Games filter shows only lawn games" fails: `cards.locator("text=Lawn Games")` finds 0 elements inside `.group` cards because `GameCard.tsx` does not render a category badge after commit `88e076e` ("fix: restore Kinetic Games UI") removed it. Systemic failure affecting all open PRs.
-- **Fix needed:** CI-Fix agent must add `<span>{game.category}</span>` back to `GameCard.tsx` so the E2E assertion passes.
-- **Next step:** After CI-Fix restores green E2E, rebase branch on main and re-queue for QA.
+Classification: env-failure
+Job: E2E Tests
+Error: E2E tests fail consistently across ALL open PRs (#7–#23). Unit Tests and Docker Build pass on every run. Prior fixes applied (category badge, networkidle wait, modal selector, catalog count). Root issue is systemic — Playwright e2e-tests container cannot reliably connect to app container at http://app:3000, or there is a Docker networking regression in CI environment. Not a per-story code issue.
+CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332403831/job/71041084894
+
+Routed to CI-Fix agent. PR #14 remains open.
 
 ## Dev Notes
 
