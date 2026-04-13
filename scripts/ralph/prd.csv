@@ -31,7 +31,7 @@ US-029,Discovery,'Most Popular' and social proof badges on game cards,29,dev-com
 US-030,Discovery,Rental form inputs: visible focus rings and ARIA error associations,30,dev-complete,false,feat/US-030-focus-rings-aria-errors,0,0
 US-031,Discovery,Service area notice in hero section,31,dev-complete,false,feat/US-031-service-area-notice,0,0
 US-032,Discovery,Setup space callout in game modal,32,dev-complete,false,feat/US-032-setup-space-callout,0,0
-US-033,Discovery,Occasion-based quick-filter links on homepage,33,pending,false,,0,0
+US-033,Discovery,Occasion-based quick-filter links on homepage,33,in-progress,false,feat/US-033-occasion-quick-filters,0,0
 US-034,Discovery,Testimonials with star ratings and location for authenticity,34,pending,false,,0,0
 US-035,Discovery,Game modal focus trap for keyboard navigation,35,pending,false,,0,0
 US-036,Discovery,Game modal ARIA dialog role and attributes,36,pending,false,,0,0
