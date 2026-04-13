@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 44
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-044-nextjs-image
 - **PR:** 
 - **QA Attempts:** 0
 

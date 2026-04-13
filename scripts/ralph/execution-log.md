@@ -357,3 +357,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:09 | US-043 | dev-complete | dev | GREEN commit — CheckoutProgress.tsx with step circles, completed indicator, aria-labels; 52 tests pass |
 | 2026-04-13 14:11 | US-044 | in-progress | dev | starting new story — next/image migration for game images |
 | 2026-04-13 14:13 | US-044 | tests-written | dev | RED commit — 3 tests, 1 failing (imageAlt field in GameCard, priority prop) |
+| 2026-04-13 14:16 | US-044 | dev-complete | dev | GREEN commit — next/image in GameCard (priority+imageAlt) and game detail page; 49 tests pass |
