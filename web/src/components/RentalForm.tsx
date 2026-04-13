@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 type Props = {
   defaultGame?: string;
@@ -34,6 +34,8 @@ export default function RentalForm({ defaultGame = "" }: Props) {
   const [form, setForm] = useState<FormState>({ ...empty, games: defaultGame });
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const submitBtnRef = useRef<HTMLButtonElement>(null);
 
   function validate(): Errors {
     const e: Errors = {};
@@ -55,13 +57,27 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     return e;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    setSubmitted(true);
-    setForm({ ...empty, games: defaultGame });
+    // Immediately disable via DOM ref (synchronous, before React re-render)
+    if (submitBtnRef.current) {
+      submitBtnRef.current.disabled = true;
+      submitBtnRef.current.textContent = "Submitting…";
+    }
+    setIsSubmitting(true);
+    try {
+      await Promise.resolve();
+      setSubmitted(true);
+      setForm({ ...empty, games: defaultGame });
+    } finally {
+      setIsSubmitting(false);
+      if (submitBtnRef.current) {
+        submitBtnRef.current.disabled = false;
+      }
+    }
   }
 
   function field(
@@ -173,11 +189,23 @@ export default function RentalForm({ defaultGame = "" }: Props) {
             </div>
 
             <button
+              ref={submitBtnRef}
               type="submit"
-              className="w-full rounded-full py-3.5 text-sm font-semibold text-gray-900 hover:brightness-95 transition-all shadow-sm mt-2"
+              disabled={isSubmitting}
+              className="w-full rounded-full py-3.5 text-sm font-semibold text-gray-900 hover:brightness-95 transition-all shadow-sm mt-2 disabled:opacity-60 disabled:cursor-not-allowed flex items-center justify-center gap-2"
               style={{ backgroundColor: "var(--color-accent)" }}
             >
-              Send Rental Request
+              {isSubmitting ? (
+                <>
+                  <span
+                    className="inline-block h-4 w-4 rounded-full border-2 border-gray-700 border-t-transparent animate-spin"
+                    aria-hidden="true"
+                  />
+                  Submitting…
+                </>
+              ) : (
+                "Send Rental Request"
+              )}
             </button>
           </form>
         )}
