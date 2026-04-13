@@ -295,3 +295,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 12:31 | US-035 | dev-complete | dev | GREEN commit — useRef+useEffect in GameModal: auto-focus first focusable, Escape→onClose, Tab wrap; 50 tests pass |
 | 2026-04-13 12:32 | US-036 | in-progress | dev | starting new story — GameModal ARIA dialog role and attributes |
 | 2026-04-13 12:34 | US-036 | tests-written | dev | RED commit pushed — 5 tests, 3 failing (aria-labelledby, heading id, combined check) |
+| 2026-04-13 12:35 | US-036 | dev-complete | dev | GREEN commit — aria-labelledby on dialog, id="game-modal-title" on h2; 51 tests pass |

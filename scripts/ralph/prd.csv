@@ -34,7 +34,7 @@ US-032,Discovery,Setup space callout in game modal,32,dev-complete,false,feat/US
 US-033,Discovery,Occasion-based quick-filter links on homepage,33,dev-complete,false,feat/US-033-occasion-quick-filters,0,0
 US-034,Discovery,Testimonials with star ratings and location for authenticity,34,dev-complete,false,feat/US-034-testimonials-star-ratings,0,0
 US-035,Discovery,Game modal focus trap for keyboard navigation,35,dev-complete,false,feat/US-035-game-modal-focus-trap,0,0
-US-036,Discovery,Game modal ARIA dialog role and attributes,36,in-progress,false,feat/US-036-game-modal-aria-dialog,0,0
+US-036,Discovery,Game modal ARIA dialog role and attributes,36,dev-complete,false,feat/US-036-game-modal-aria-dialog,0,0
 US-037,Checkout & Payments,Rental form submit button loading and disabled state,37,pending,false,,0,0
 US-038,Discovery,Skip to main content accessibility link,38,pending,false,,0,0
 US-039,Discovery,Game modal mobile scroll affordance (bottom fade shadow),39,pending,false,,0,0
