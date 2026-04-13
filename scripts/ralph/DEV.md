@@ -151,13 +151,18 @@ Run tests frequently during implementation:
 cd /home/user/RentAGame/web && npm run test:run 2>&1 | tail -20
 ```
 
-When all tests pass locally, run in Docker for a clean-environment check:
+When all tests pass locally, run a full Docker pre-validation to catch CI
+failures before they ever reach GitHub:
 ```bash
 cd /home/user/RentAGame
 docker-compose run --rm unit-tests 2>&1 | tail -30
+docker-compose up --abort-on-container-exit --exit-code-from e2e-tests e2e-tests 2>&1 | tail -30
+docker-compose down
 ```
 
-Both must be green before committing.
+Both must be green before committing. If either fails, fix and re-run —
+do NOT push a GREEN commit that fails locally. This prevents CI failures
+from reaching GitHub and requiring QA round-trips.
 
 ### Step 6a — Scope check (before committing implementation)
 

@@ -249,6 +249,7 @@ Retro agent can both scan easily:
 | CI-Fix | **No code** | Uses `fix/ci-hotfix` branch → PR → merge |
 | PM | State files only | `prd.csv`, `stories/*.md`, `research.json` |
 | Research | State files only | `research.json` |
+| Humans | **Never** | Platform-enforced: branch protection + squash-only merge (enforce_admins=true) |
 
 Code reaches `main` **exclusively** through Pull Requests validated by the QA
 agent and merged via the GitHub API (`mcp__github__merge_pull_request`).
@@ -277,11 +278,53 @@ Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:
 
 ## How to Start the Pipeline
 
+### Step 0: Configure GitHub Repo (one-time, run from repo root)
+
+Lock the repo so `main` can only be updated via squash-merged PRs — matching
+what the QA agent does programmatically. `enforce_admins=true` is safe because
+CI-Fix handles all CI breakage via `fix/ci-hotfix` branches; no human escape
+hatch to `main` is needed.
+
+**a) Restrict merge methods to squash only:**
+```bash
+gh api repos/baburam1985/RentAGame \
+  --method PATCH \
+  -f allow_squash_merge=true \
+  -f allow_merge_commit=false \
+  -f allow_rebase_merge=false \
+  -f squash_merge_commit_title=PR_TITLE \
+  -f squash_merge_commit_message=BLANK
+```
+
+**b) Protect `main` branch — require CI on PRs, enforce squash rule for everyone including admins:**
+```bash
+gh api repos/baburam1985/RentAGame/branches/main/protection \
+  --method PUT \
+  --field required_status_checks='{"strict":true,"contexts":["ci"]}' \
+  --field enforce_admins=true \
+  --field required_pull_request_reviews=null \
+  --field restrictions=null
+```
+
+> **Note:** Direct pushes to `main` remain allowed so agents can commit state
+> files (`prd.csv`, `stories/*.md`, `execution-log.md`) without a PR.
+> `enforce_admins=true` ensures that when a PR *is* merged, the squash-only
+> rule applies to everyone — no admin bypass of the merge method.
+
+Verify:
+```bash
+gh api repos/baburam1985/RentAGame \
+  | jq '{squash: .allow_squash_merge, merge: .allow_merge_commit, rebase: .allow_rebase_merge}'
+# Expected: { "squash": true, "merge": false, "rebase": false }
+```
+
+### Step 1–4 (pipeline startup)
+
 1. Ensure all 5 triggers exist at **https://claude.ai/code/scheduled**
    (see Agent Registry table above for prompts and schedules)
 2. Ensure `main` branch is green: `docker-compose run --rm unit-tests`
 3. Verify `prd.csv` has stories with `status: "pending"`
-4. Agents self-coordinate via `prd.json` — no manual intervention needed
+4. Agents self-coordinate via `prd.csv` — no manual intervention needed
 
 ## How to Pause
 

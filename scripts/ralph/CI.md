@@ -29,7 +29,54 @@ git checkout main
 git pull origin main
 ```
 
-### Step 2 — Check GitHub CI status on main
+### Step 2a — Check for env-failure escalations from QA
+
+Before checking main, scan `prd.csv` for any story where:
+- `status == "qa-failed"`
+- `qaFeedback` contains `Classification: env-failure`
+
+These are CI environment failures that QA could not route to Dev (they are not
+code bugs). Fix the environment issue on the feature branch:
+
+```bash
+git fetch origin
+git checkout feat/US-NNN-short-title
+git pull origin feat/US-NNN-short-title
+```
+
+Diagnose and fix the environment issue (build config, missing env var, Docker
+layer, etc.). Then push the fix:
+
+```bash
+git add web/src/   # or whichever config/infra file was broken
+git commit -m "fix: [CI] env fix for US-NNN - <one line summary>"
+git push origin feat/US-NNN-short-title
+```
+
+Update prd.csv and the story .md: reset `status` to `dev-complete`, clear
+`qaFeedback`. This allows QA to re-pick it up and create a fresh CI run.
+
+```bash
+git checkout main
+git pull origin main
+# edit prd.csv and stories/US-NNN-*.md
+git add scripts/ralph/prd.csv scripts/ralph/stories/
+git commit -m "chore: [US-NNN] env-failure fixed, reset to dev-complete"
+git push origin main
+```
+
+Append to execution log:
+```bash
+TIMESTAMP=$(date -u +"%Y-%m-%d %H:%M")
+echo "| $TIMESTAMP | US-NNN | dev-complete | ci | env-failure fixed: <summary> |" >> scripts/ralph/execution-log.md
+git add scripts/ralph/execution-log.md
+git commit -m "chore: [US-NNN] execution log update"
+git push origin main
+```
+
+If no env-failure escalations exist, continue to Step 2b.
+
+### Step 2b — Check GitHub CI status on main
 
 Use `mcp__github__list_commits` to get the latest commit SHA on main:
 - owner: `baburam1985`

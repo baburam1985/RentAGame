@@ -110,11 +110,39 @@ echo "| $TIMESTAMP | US-NNN | ci-pending | qa | PR #N created, waiting for CI |"
 ```
 Push to main, then exit. On next run, if `status == "ci-pending"`, skip straight to Check 0.
 
-**If CI failed:** collect the name of the failing job and any available error
-summary. Set `status: "qa-failed"`, `qaFeedback: "CI failed: <job name> — <details>"`.
+**If CI failed:** read the CI job logs and classify the failure before routing:
+
+| Classification | Criteria | Route |
+|---------------|----------|-------|
+| `code-failure` | test assertion error, TypeScript error, import error, runtime exception | Back to Dev |
+| `env-failure` | Docker build error, network timeout, missing env var, infrastructure issue | CI-Fix agent |
+| `flaky` | job timed out or non-deterministic failure with no clear code cause | Retry once, then classify again |
+
+**For `code-failure`:** set `status: "qa-failed"`, qaFeedback must include:
+```
+Classification: code-failure
+Job: <job name>
+Error: <exact error message from CI logs>
+File: <file and line number if available>
+CI run: <URL>
+```
+
+**For `env-failure`:** set `status: "qa-failed"`, qaFeedback must include:
+```
+Classification: env-failure
+Job: <job name>
+Error: <error from CI logs>
+CI run: <URL>
+```
+CI-Fix will detect this and handle it — Dev will NOT be routed this failure.
+
+**For `flaky`:** re-trigger CI by pushing an empty commit to the feature branch,
+then exit. On next run, re-check CI status and classify normally. If it fails
+again, treat as `code-failure` or `env-failure` based on the error.
+
 Append to execution log:
 ```bash
-echo "| $TIMESTAMP | US-NNN | qa-failed | qa | CI failed: <job name> — <brief reason> |" >> scripts/ralph/execution-log.md
+echo "| $TIMESTAMP | US-NNN | qa-failed | qa | CI failed: <classification> — <brief reason> |" >> scripts/ralph/execution-log.md
 ```
 
 ---
