@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** qa-failed
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17

@@ -141,3 +141,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 09:17 | US-011 | in-progress | dev | fixing qa-failed: TDD integrity, test count (8 tests), scope violations |
 | 2026-04-13 09:19 | US-011 | tests-written | dev | RED commit with 8 tests (one per AC, AC-7 and AC-8 separate) |
 | 2026-04-13 09:21 | US-011 | dev-complete | dev | rebuilt branch: 8 tests (AC-7/AC-8 separate), proper RED/GREEN, no scope violations, 54 tests pass |
+| 2026-04-13 09:21 | US-012 | in-progress | dev | fixing qa-failed: missing test AC#6 status confirmed, scope violations |
