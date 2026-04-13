@@ -9,6 +9,7 @@ import GameGrid from "@/components/GameGrid";
 import GameModal from "@/components/GameModal";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
+import FAQ from "@/components/FAQ";
 import RentalForm from "@/components/RentalForm";
 import type { Game } from "@/data/games";
 
@@ -53,6 +54,7 @@ export default function Home() {
 
       <HowItWorks />
       <Testimonials />
+      <FAQ />
       <RentalForm defaultGame={prefilledGame} />
 
       <GameModal
