@@ -78,16 +78,15 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
           {/* Cancellation policy */}
           <div
             data-testid="cancellation-policy"
-            className="flex items-center gap-2 rounded-xl bg-green-50 px-3 py-2 text-xs text-green-700"
+            className="flex items-center gap-2 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-800"
           >
             <span
-              className="material-symbols-outlined"
-              style={{ fontSize: "16px" }}
+              className="material-symbols-outlined text-green-600 text-base leading-none"
               aria-hidden="true"
             >
               event_available
             </span>
-            {CANCELLATION_POLICY}
+            <span>{CANCELLATION_POLICY}</span>
           </div>
 
           {/* Price + CTA */}
