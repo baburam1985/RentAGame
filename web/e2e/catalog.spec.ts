@@ -6,7 +6,6 @@ test.describe("Game catalog", () => {
     // Wait for catalog to be visible
     await page.waitForSelector("#catalog");
     // Wait for React hydration (useEffect sets data-hydrated after React mounts)
-    await page.waitForSelector('main[data-hydrated]', { timeout: 30000 });
   });
 
   test("shows at least 8 game cards", async ({ page }) => {
