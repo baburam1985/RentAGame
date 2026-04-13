@@ -9,7 +9,7 @@ test.describe("Game detail modal", () => {
   test("clicking first game card opens modal with game name", async ({ page }) => {
     // Get first game card name
     const firstCard = page.locator("#catalog .group").first();
-    const gameName = await firstCard.locator("h3").textContent();
+    const gameName = await firstCard.locator(".min-w-0 a").textContent();
     await firstCard.locator("button", { hasText: "Rent Now" }).click();
     // Modal should appear
     const modal = page.getByRole("dialog");
