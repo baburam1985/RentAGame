@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState, useCallback } from "react";
 import type { Game } from "@/data/games";
 
 type Props = {
@@ -10,6 +11,14 @@ type Props = {
 };
 
 export default function GameModal({ game, onClose, onRentNow }: Props) {
+  const [atBottom, setAtBottom] = useState(false);
+
+  const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const isAtBottom = el.scrollTop + el.clientHeight >= el.scrollHeight - 4;
+    setAtBottom(isAtBottom);
+  }, []);
+
   if (!game) return null;
 
   return (
@@ -26,7 +35,17 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
       />
 
       {/* Modal panel */}
-      <div className="relative z-10 bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+      <div
+        className="relative z-10 bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto"
+        data-scroll-container
+        onScroll={handleScroll}
+      >
+        {/* Bottom fade overlay — pointer-events-none so it never blocks scroll */}
+        <div
+          className={`pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent rounded-b-2xl transition-opacity duration-200 ${
+            atBottom ? "opacity-0" : "opacity-100"
+          }`}
+        />
         {/* Close button */}
         <button
           onClick={onClose}
