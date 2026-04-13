@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 33
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-033-occasion-quick-filters
 - **PR:** (none)
 - **QA Attempts:** 0
 
