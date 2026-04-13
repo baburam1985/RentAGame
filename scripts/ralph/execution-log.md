@@ -351,3 +351,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:00 | US-041 | dev-complete | dev | GREEN commit — FAQ.tsx with 7 items, useState accordion, aria-expanded/aria-controls, page.tsx wired; 52 tests pass |
 | 2026-04-13 14:02 | US-042 | in-progress | dev | starting new story — Navbar active page indicator |
 | 2026-04-13 14:03 | US-042 | tests-written | dev | RED commit — 4 tests, 1 failing (active class on matching pathname link) |
+| 2026-04-13 14:05 | US-042 | dev-complete | dev | GREEN commit — usePathname in Navbar, underline class on cart link and nav links when pathname matches, 50 tests pass |

@@ -2,9 +2,9 @@
 
 - **Epic:** User Accounts
 - **Priority:** 42
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** 
+- **Branch:** feat/US-042-navbar-active-indicator
 - **PR:** 
 - **QA Attempts:** 0
 
