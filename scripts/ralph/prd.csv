@@ -1,0 +1,18 @@
+id,title,epic,status,priority,qaAttempts
+US-001,Game Detail Page,Discovery,pending,100,0
+US-002,Cart Context & Cart Page,Checkout & Payments,pending,95,0
+US-003,Checkout Flow - Step 1 Dates & Contact,Checkout & Payments,pending,90,0
+US-004,Checkout Flow - Step 2 Review Order,Checkout & Payments,pending,85,0
+US-005,Order Confirmation Page,Checkout & Payments,pending,80,0
+US-006,Search Bar with Live Filtering,Discovery,pending,75,0
+US-007,Sort Dropdown,Discovery,pending,70,0
+US-008,Price Range Filter,Discovery,pending,65,0
+US-009,Customer Sign-Up & Login,User Accounts,pending,60,0
+US-010,Order History Page,User Accounts,pending,55,0
+US-011,Wishlist Feature,User Accounts,pending,50,0
+US-012,Customer Profile Page,User Accounts,pending,45,0
+US-013,Admin Login,Admin Dashboard,pending,40,0
+US-014,Admin Inventory Management,Admin Dashboard,pending,35,0
+US-015,Admin Order Management,Admin Dashboard,pending,30,0
+US-016,Admin KPI Dashboard,Admin Dashboard,pending,25,0
+US-017,Admin Add/Edit Game,Admin Dashboard,pending,20,0
