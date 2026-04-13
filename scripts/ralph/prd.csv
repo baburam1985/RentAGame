@@ -25,7 +25,7 @@ US-023,Checkout & Payments,Add 'No hidden fees' trust statement near rental form
 US-024,Discovery,Keyboard navigation for category filter and player chip groups,24,dev-complete,false,feat/US-024-keyboard-nav-filter-chips,0,0
 US-025,Discovery,Cancellation policy statement in game modal,25,dev-complete,false,feat/US-025-cancellation-policy-modal,0,0
 US-026,Checkout & Payments,Inline on-blur validation for rental form contact fields,26,tests-written,false,feat/US-026-inline-blur-validation,0,0
-US-027,Discovery,Game modal 'What's included' section,27,pending,false,,0,0
+US-027,Discovery,Game modal 'What's included' section,27,in-progress,false,,0,0
 US-028,Discovery,Skeleton loading state for game grid,28,pending,false,,0,0
 US-029,Discovery,'Most Popular' and social proof badges on game cards,29,pending,false,,0,0
 US-030,Discovery,Rental form inputs: visible focus rings and ARIA error associations,30,pending,false,,0,0
