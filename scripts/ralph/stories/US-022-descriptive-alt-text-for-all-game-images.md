@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 22
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-022-descriptive-alt-text
 - **PR:** (none)
 - **QA Attempts:** 0
 
