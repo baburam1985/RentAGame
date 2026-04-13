@@ -186,3 +186,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 10:30 | US-021 | qa-failed | qa | PR #30, Check 0: E2E failure (attempt 1) — systemic env-failure |
 | 2026-04-13 10:28 | US-025 | dev-complete | dev | all tests pass, 2 files changed |
 | 2026-04-13 10:29 | US-007 | in-progress | dev | fixing qa-failed: TDD integrity + scope violation |
+| 2026-04-13 10:33 | US-007 | dev-complete | dev | qa-failed fixed: reverted out-of-scope E2E mods, rebased on main, all tests pass |
