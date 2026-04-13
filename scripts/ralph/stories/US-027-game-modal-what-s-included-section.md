@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 27
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-027-whats-included-section
 - **PR:** (none)
 - **QA Attempts:** 0
 
