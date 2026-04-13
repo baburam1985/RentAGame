@@ -54,6 +54,14 @@ before starting work. The Retro agent maintains this file.
 - Fix: PR #25 replaced `grep -q "healthy"` with `docker inspect --format` + exact `= "healthy"` comparison in `.github/workflows/ci.yml`.
 - When ALL PRs fail E2E at once, suspect this pattern before routing any story back to Dev.
 
+## Stale CI Config on Feature Branches (CRITICAL)
+<!-- retro: CI-Fix-wget-Alpine -->
+- Feature branches do NOT automatically inherit CI config changes merged to main. A branch created before a `docker-compose.yml` or `ci.yml` fix carries the old (broken) config until it is rebased.
+- Observed: US-002 and US-004 failed with "wget healthcheck not available on Alpine" at 13:04 even though main had already been fixed (PR #38 replaced wget with node CMD healthcheck). US-013 failed with "old CI config, no healthcheck" — it predated PR #37 entirely.
+- **Fix pattern**: after any CI infrastructure fix lands on main, rebase ALL open feature branches immediately (see CI.md Step 2a proactive rebase directive).
+- **Dev prevention**: before pushing a feature branch, `grep -A 3 "healthcheck:" docker-compose.yml` to verify the node CMD form is in place. If stale, `git rebase origin/main`.
+- Root cause: CI infrastructure changes (PR #37, #38) fix main but leave diverged branches with stale configs — each branch will independently trigger the same env-failure when QA processes it.
+
 ## Styling
 - Tailwind CSS v4 with `@import "tailwindcss"` — requires `postcss.config.mjs` with `@tailwindcss/postcss`
 - CSS vars in `:root` in globals.css, reference via `var()` in components

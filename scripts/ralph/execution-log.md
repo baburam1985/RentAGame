@@ -318,3 +318,16 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:00 | US-010 | dev-complete | ci | env-failure fixed: systemic CI E2E failure resolved (branch already had correct env config) |
 | 2026-04-13 14:00 | US-013 | dev-complete | ci | env-failure fixed: added node CMD healthcheck + docker inspect exact-equality health-wait in docker-compose.yml and ci.yml |
 | 2026-04-13 13:25 | US-006 | dev-complete | dev | recovered orphaned branch — prd.csv was stale, GREEN commit confirmed on feat/US-006-multi-step-checkout-wizard |
+
+## Retro: CI-Fix-wget-Alpine - Stale CI config on feature branches (wget not available on Alpine)
+- **QA attempts:** N/A — systemic infrastructure pattern, not tied to a single story; affected US-002 (attempt 3), US-004 (attempt 4), US-013 (attempt 2)
+- **Issues found:**
+  - CI environment issue (systemic): Feature branches created before PR #38 (IPv4 node CMD healthcheck fix) carried stale `docker-compose.yml` entries using `wget` or no healthcheck at all. `wget` is not installed on Alpine Linux, so the healthcheck command errored immediately. US-002 and US-004 failed with "wget healthcheck not available on Alpine"; US-013 failed with "old CI config, no healthcheck". All three were env-failures unrelated to their story code.
+  - Slow triage: Each branch was fixed individually by CI-Fix after QA detected the env-failure — one at a time, each requiring a separate QA round-trip. There was no mechanism to proactively push the CI config fix to all open branches when PR #38 landed on main.
+  - Missing pre-push guard: DEV.md had no check to verify the docker-compose.yml healthcheck form before pushing. A stale healthcheck is invisible locally (npm tests pass) but fails CI immediately.
+- **Improvements applied:**
+  - CI.md (Step 2a): Added proactive rebase directive — after any CI infrastructure fix lands on main, rebase ALL open feature branches immediately so they inherit the fix before QA processes them.
+  - DEV.md (Step 6): Added pre-push guard — `grep -A 3 "healthcheck:" docker-compose.yml` to verify node CMD form; if stale, `git rebase origin/main` to pick up the canonical fix rather than manual editing.
+  - patterns.md: Documented the "stale CI config on feature branches" pattern with root cause (diverged branches don't inherit main's CI fixes), symptoms, and prevention (post-fix proactive rebase by CI agent + pre-push check by Dev).
+- **Pipeline health:** degrading — this is the 5th distinct CI infrastructure failure pattern. US-002 and US-004 have now each had 3–4 QA attempts, all env-failures. Pipeline cannot reach green until CI config is fully stable and proactively propagated to open branches.
+---

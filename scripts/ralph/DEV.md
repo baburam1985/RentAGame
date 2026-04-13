@@ -363,6 +363,25 @@ if [ "$STATUS" = "healthy" ]; then
 This check is especially important after any CI workflow edit — even unrelated ones —
 because a bad health-wait in `ci.yml` will silently fail every E2E run on every branch.
 
+<!-- retro: CI-Fix-wget-Alpine -->
+**Pre-push: verify `docker-compose.yml` uses the node CMD healthcheck, not wget or curl.**
+Feature branches created before PR #38 may carry a stale `docker-compose.yml` that uses
+`wget` or `curl` for the app healthcheck — both are absent on Alpine Linux. If the branch
+was started while main had a different healthcheck, it will fail CI with "wget not found"
+or "curl: command not found" even though all source code is correct.
+Before pushing any feature branch, run:
+```bash
+grep -A 3 "healthcheck:" /home/user/RentAGame/docker-compose.yml | head -5
+```
+The `test:` line must be: `["CMD", "node", "-e", "require('http').get(...)"]`
+If it uses `wget`, `curl`, or CMD-SHELL form, rebase the branch on current main to pick up
+the canonical healthcheck from PR #38:
+```bash
+git rebase origin/main
+```
+Do NOT manually edit `docker-compose.yml` to fix the healthcheck — rebase so the fix comes
+from main's history and stays in sync with future CI config changes.
+
 <!-- retro: CI-Fix-batch-01 -->
 **Pre-push: when the story changes user-facing strings or navigation behavior, sync the E2E spec.**
 E2E specs in `web/e2e/` are acceptance tests that verify story behavior. They must stay

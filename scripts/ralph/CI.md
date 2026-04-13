@@ -75,6 +75,25 @@ git commit -m "chore: [US-NNN] execution log update"
 git push origin main
 ```
 
+<!-- retro: CI-Fix-wget-Alpine -->
+**After fixing a systemic CI config (ci.yml or docker-compose.yml) on main, proactively rebase ALL open feature branches.**
+Feature branches diverged before the fix was merged will carry the old (broken) CI config and will trigger the same env-failure again when QA picks them up. The webpack/Alpine pattern (US-002, US-004, US-013 — see execution log 13:04–14:00) showed that patching one branch at a time after QA fails them wastes multiple pipeline cycles.
+After merging any CI infrastructure fix to main, run:
+```bash
+git fetch origin
+# list all non-merged feature branches
+git branch -r | grep "origin/feat/" | grep -v "\-merged$"
+```
+For each open feature branch, rebase it onto main:
+```bash
+git checkout feat/US-NNN-short-title
+git pull origin feat/US-NNN-short-title
+git rebase origin/main
+git push origin feat/US-NNN-short-title --force-with-lease
+```
+This ensures every open branch immediately picks up the CI fix without a QA round-trip.
+If a feature branch's status in prd.csv is `dev-complete` (not yet in CI), no action needed — QA will create the PR after the branch is already on the fixed base.
+
 If no env-failure escalations exist, continue to Step 2b.
 
 ### Step 2b — Check GitHub CI status on main
