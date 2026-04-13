@@ -2,7 +2,7 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 16
-- **Status:** pending
+- **Status:** in-progress
 - **Passes:** false
 - **Branch:** (not started)
 - **PR:** (none)
@@ -21,4 +21,3 @@ At /admin/orders, list all orders from localStorage. Status dropdown per row. Fi
 - [ ] Filter bar filters by status and date range
 - [ ] Export button downloads all orders as a CSV file
 - [ ] Aggregate stats shown at top: Total Orders, Total Revenue, Pending Count
-
