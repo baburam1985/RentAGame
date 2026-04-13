@@ -23,6 +23,7 @@ const mockGame: Game = {
     "https://images.unsplash.com/photo-test",
     "https://images.unsplash.com/photo-test2",
   ],
+  included: ["Complete game set", "Carrying bag", "Delivery and setup included"],
 };
 
 function renderCard() {

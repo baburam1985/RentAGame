@@ -18,6 +18,7 @@ const mockGame: Game = {
     "https://images.unsplash.com/photo-bocce",
     "https://images.unsplash.com/photo-bocce2",
   ],
+  included: ["8 bocce balls", "Pallino", "Carrying case", "Delivery and setup included"],
 };
 
 describe("GameModal", () => {

@@ -72,6 +72,21 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
             </div>
           </div>
 
+          {/* What's included */}
+          <div>
+            <h3 className="text-sm font-semibold text-gray-900 mb-2">
+              What&apos;s included
+            </h3>
+            <ul className="flex flex-col gap-1">
+              {game.included.map((item) => (
+                <li key={item} className="flex items-start gap-2 text-sm text-gray-700">
+                  <span className="mt-1 h-1.5 w-1.5 flex-shrink-0 rounded-full bg-gray-400" aria-hidden="true" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Price + CTA */}
           <div className="flex items-center justify-between pt-2 border-t border-gray-100">
             <div>

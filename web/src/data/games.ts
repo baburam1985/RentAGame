@@ -9,6 +9,7 @@ export type Game = {
   players: string;
   dimensions: string;
   howToPlay: string[];
+  included: string[];
 };
 
 export const CATEGORIES = [
@@ -46,6 +47,11 @@ export const games: Game[] = [
       "You may tap a block to test stability before committing to pull it.",
       "The player who causes the tower to fall loses — pick it back up and go again!",
     ],
+    included: [
+      "54 giant cedar wood blocks",
+      "Sturdy carrying bag",
+      "Delivery, setup, and teardown included",
+    ],
   },
   {
     id: "cornhole-set",
@@ -70,6 +76,11 @@ export const games: Game[] = [
       "Alternate throws — toss underhand trying to land in or on the board.",
       "Bag in the hole = 3 points. Bag on the board = 1 point. Cancel your opponent's points each round.",
       "First team to reach exactly 21 points wins. Going over resets you to 15.",
+    ],
+    included: [
+      "2 regulation cornhole boards",
+      "8 bean bags (4 per team)",
+      "Delivery, setup, and teardown included",
     ],
   },
   {
@@ -96,6 +107,12 @@ export const games: Game[] = [
       "The team that scored last throws the pallino to start the next frame.",
       "First team to reach 12 points wins the match.",
     ],
+    included: [
+      "8 premium resin bocce balls (2 sets of 4 colors)",
+      "1 pallino target ball",
+      "Carry bag and measuring rope",
+      "Delivery, setup, and teardown included",
+    ],
   },
   {
     id: "giant-connect-four",
@@ -120,6 +137,11 @@ export const games: Game[] = [
       "Discs fall to the lowest available slot in the chosen column.",
       "First player to connect 4 of their discs in a row — horizontal, vertical, or diagonal — wins!",
       "Pull the release lever at the bottom to drop all discs and start a new game.",
+    ],
+    included: [
+      "Giant Connect Four frame with release lever",
+      "42 oversized discs (21 yellow, 21 red)",
+      "Delivery, setup, and teardown included",
     ],
   },
   {
@@ -146,6 +168,12 @@ export const games: Game[] = [
       "No boundaries — play moves 360 degrees around the net at all times.",
       "A team scores when the opposing team can't return the ball cleanly. First to 21 (win by 2) wins.",
     ],
+    included: [
+      "Spikeball round net with frame",
+      "3 Spikeball balls",
+      "Carry bag and ball pump",
+      "Delivery, setup, and teardown included",
+    ],
   },
   {
     id: "horseshoes-set",
@@ -170,6 +198,12 @@ export const games: Game[] = [
       "A ringer (horseshoe encircling the stake) scores 3 points.",
       "If no ringers, the closest horseshoe within 6 inches of the stake scores 1 point. Cancel scoring applies.",
       "First player or team to reach 21 points wins the game.",
+    ],
+    included: [
+      "4 solid steel horseshoes (2 per player)",
+      "2 metal stakes",
+      "Carry bag and scoring guide",
+      "Delivery, setup, and teardown included",
     ],
   },
   {
@@ -196,6 +230,12 @@ export const games: Game[] = [
       "Scoring: Deflector hits the can = 1 pt · Thrower hits the can = 2 pts · Deflector tips it into the slot = 3 pts · Disc goes straight into the slot = instant win!",
       "First team to exactly 21 points wins. Going over resets to 15.",
     ],
+    included: [
+      "2 KanJam goal cans",
+      "1 official flying disc",
+      "Carry bag with strap",
+      "Delivery, setup, and teardown included",
+    ],
   },
   {
     id: "ladder-toss",
@@ -220,6 +260,12 @@ export const games: Game[] = [
       "Top rung = 3 points · Middle rung = 2 points · Bottom rung = 1 point.",
       "Bolas must stay wrapped around a rung at the end of the round to score — knocked-off bolas don't count.",
       "Cancel scoring applies: subtract the other team's points from yours each round. First team to exactly 21 wins.",
+    ],
+    included: [
+      "2 freestanding ladder frames",
+      "6 bolas (3 per team, 2 colors)",
+      "Carry bag and scorekeeping guide",
+      "Delivery, setup, and teardown included",
     ],
   },
   {
@@ -246,6 +292,11 @@ export const games: Game[] = [
       "Four Corners: place a cone at each corner of a square; one player in the middle tries to tag others as they swap corners.",
       "Mix and match activities to keep energy high — the cones reset in seconds for a brand-new game.",
     ],
+    included: [
+      "50 multi-color agility cones",
+      "Activity instruction card",
+      "Delivery and pickup included",
+    ],
   },
   {
     id: "outdoor-badminton",
@@ -270,6 +321,13 @@ export const games: Game[] = [
       "Hit the shuttlecock back and forth over the net — it must not touch the ground on your side.",
       "A point is scored when the shuttle lands in bounds on the opponent's side or they hit it out/into the net.",
       "Singles games go to 21 points (win by 2). Doubles use the same scoring with both players sharing the court.",
+    ],
+    included: [
+      "Portable badminton net with poles and stakes",
+      "4 rackets",
+      "6 shuttlecocks",
+      "Carry bag and setup guide",
+      "Delivery, setup, and teardown included",
     ],
   },
   {
@@ -296,6 +354,13 @@ export const games: Game[] = [
       "Once the two-bounce rule is satisfied, players can volley freely — except inside the kitchen (no-volley zone).",
       "Games go to 11 points (win by 2) and only the serving team can score. Rally scoring is a beginner-friendly alternative where every rally scores a point.",
     ],
+    included: [
+      "Portable pickleball net with poles",
+      "4 beginner paddles",
+      "6 outdoor pickleballs",
+      "Court boundary tape and rules card",
+      "Delivery, setup, and teardown included",
+    ],
   },
   {
     id: "giant-chess",
@@ -320,6 +385,12 @@ export const games: Game[] = [
       "Each piece type moves differently: pawns advance forward, rooks move in straight lines, bishops diagonally, knights in an L-shape, queens any direction, kings one square.",
       "Capture opponent pieces by landing on their square. Protect your king at all times.",
       "The game ends when a player's king is in checkmate — put your opponent in check with no escape to win!",
+    ],
+    included: [
+      "32 giant solid resin chess pieces",
+      "8×8 ground chess mat",
+      "Piece storage bag",
+      "Delivery, setup, and teardown included",
     ],
   },
 ];
