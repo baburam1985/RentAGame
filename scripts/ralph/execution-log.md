@@ -159,3 +159,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 09:59 | US-020 | dev-complete | dev | all tests pass, 1 file changed (CategoryFilter.tsx) |
 | 2026-04-13 09:59 | US-021 | tests-written | dev | 5 failing tests for live price calculation |
 | 2026-04-13 10:02 | US-021 | dev-complete | dev | all 52 tests pass, 1 file changed |
+| 2026-04-13 10:04 | US-022 | in-progress | dev | starting new story |
