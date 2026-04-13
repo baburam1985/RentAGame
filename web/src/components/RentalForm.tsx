@@ -60,7 +60,6 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
-    console.log("Rental request:", form);
     setSubmitted(true);
     setForm({ ...empty, games: defaultGame });
   }
