@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 42
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
 - **Branch:** 
 - **PR:** 
