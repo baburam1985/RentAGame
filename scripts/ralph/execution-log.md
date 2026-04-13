@@ -371,3 +371,13 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 14:32 | US-010 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
 | 2026-04-13 14:32 | US-011 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
 | 2026-04-13 14:32 | US-012 | qa-failed | qa | Check 0: env-failure — E2E fails on all open PRs simultaneously (attempt 2), routed to CI-Fix |
+| 2026-04-13 14:45 | US-002 | dev-complete | ci | env-failure fixed: retrigger commit pushed — branch carries correct docker inspect healthcheck config |
+| 2026-04-13 14:45 | US-004 | dev-complete | ci | env-failure fixed: retrigger commit pushed — branch carries correct docker inspect healthcheck config |
+| 2026-04-13 14:45 | US-005 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
+| 2026-04-13 14:45 | US-006 | dev-complete | ci | env-failure fixed: added node CMD healthcheck to docker-compose.yml + docker inspect exact-equality health wait in ci.yml |
+| 2026-04-13 14:45 | US-007 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
+| 2026-04-13 14:45 | US-008 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
+| 2026-04-13 14:45 | US-009 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
+| 2026-04-13 14:45 | US-010 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
+| 2026-04-13 14:45 | US-011 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
+| 2026-04-13 14:45 | US-012 | dev-complete | ci | env-failure fixed: rebased onto main — all CI infrastructure fixes now on branch |
