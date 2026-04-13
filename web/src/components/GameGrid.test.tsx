@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import GameGrid from "./GameGrid";
 import { CartProvider } from "@/context/CartContext";
 
@@ -7,10 +8,14 @@ vi.mock("next/navigation", () => ({
   useRouter: () => ({ push: vi.fn() }),
 }));
 
-function renderGrid(props: { activeCategory?: string; searchQuery?: string }) {
+function renderGrid(props: { activeCategory?: string; searchQuery?: string; onClearFilters?: () => void }) {
   return render(
     <CartProvider>
-      <GameGrid activeCategory={props.activeCategory ?? "All"} searchQuery={props.searchQuery} />
+      <GameGrid
+        activeCategory={props.activeCategory ?? "All"}
+        searchQuery={props.searchQuery}
+        onClearFilters={props.onClearFilters}
+      />
     </CartProvider>
   );
 }
@@ -53,5 +58,39 @@ describe("GameGrid — search filtering", () => {
     expect(screen.getByText("Giant Jenga")).toBeInTheDocument();
     expect(screen.getByText("Cornhole Set")).toBeInTheDocument();
     expect(screen.getByText("Spikeball Set")).toBeInTheDocument();
+  });
+});
+
+describe("GameGrid — zero-results empty state CTA", () => {
+  it("shows 'Browse all games' button in zero-results state", () => {
+    renderGrid({ searchQuery: "zzzznoexist" });
+    expect(screen.getByRole("button", { name: /browse all games/i })).toBeInTheDocument();
+  });
+
+  it("shows a friendly tip 'Try clearing some filters' in zero-results state", () => {
+    renderGrid({ searchQuery: "zzzznoexist" });
+    expect(screen.getByText(/try clearing some filters/i)).toBeInTheDocument();
+  });
+
+  it("'Browse all games' button calls onClearFilters when clicked", async () => {
+    const onClearFilters = vi.fn();
+    renderGrid({ searchQuery: "zzzznoexist", onClearFilters });
+    const button = screen.getByRole("button", { name: /browse all games/i });
+    await userEvent.click(button);
+    expect(onClearFilters).toHaveBeenCalledTimes(1);
+  });
+
+  it("'Browse all games' button is keyboard accessible (aria-label present)", () => {
+    renderGrid({ searchQuery: "zzzznoexist" });
+    const button = screen.getByRole("button", { name: /browse all games/i });
+    expect(button).toBeInTheDocument();
+    // Keyboard accessible means it's a button element (native keyboard support)
+    expect(button.tagName.toLowerCase()).toBe("button");
+  });
+
+  it("empty state does NOT render when there are results (catalog not empty)", () => {
+    renderGrid({ searchQuery: "" });
+    expect(screen.queryByRole("button", { name: /browse all games/i })).not.toBeInTheDocument();
+    expect(screen.queryByText(/try clearing some filters/i)).not.toBeInTheDocument();
   });
 });
