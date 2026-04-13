@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 31
-- **Status:** in-progress
+- **Status:** tests-written
 - **Passes:** false
 - **Branch:** feat/US-031-service-area-notice
 - **PR:** (none)

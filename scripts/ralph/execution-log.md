@@ -243,3 +243,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 11:13 | US-030 | tests-written | qa | recovered orphaned branch feat/US-030-focus-rings-aria-errors |
 | 2026-04-13 11:22 | US-030 | dev-complete | dev | GREEN commit — aria-describedby on inputs, id on error messages, 52 tests pass |
 | 2026-04-13 11:24 | US-031 | in-progress | dev | starting new story — service area notice in hero section |
+| 2026-04-13 11:26 | US-031 | tests-written | dev | RED commit — 6 tests for service area notice; 5 fail (empty constant, Hero missing notice) |
