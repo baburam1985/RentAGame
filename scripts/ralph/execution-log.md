@@ -136,3 +136,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 08:34 | US-015 | dev-complete | ci | env-failure fixed: ci.yml healthcheck grep corrected (PR #25 on main). Branch rebased on main. All 56 unit tests pass. TypeScript clean. Status reset for QA re-pick. |
 | 2026-04-13 08:46 | main | hotfix | ci | E2E modal.spec.ts failing: GameCard had no h3 element but test used locator("h3"). Fixed by wrapping game name Link in h3. PR #26 merged. All 46 unit tests pass. |
 | 2026-04-13 09:05 | US-007 | in-progress | dev | fixing qa-failed: TDD integrity + scope violations |
+| 2026-04-13 09:13 | US-007 | tests-written | dev | RED commit with 5 OrderConfirmationPage tests + RentalForm redirect test |
