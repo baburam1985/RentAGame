@@ -2,7 +2,7 @@ id,epic,title,priority,status,passes,branch,qaAttempts,prNumber
 US-001,Discovery,"Search bar with live text filtering",1,qa-passed,true,feat/US-001-search-filter-merged,3,1
 US-002,Discovery,"Price range slider filter",2,ci-pending,false,feat/US-002-price-slider,1,7
 US-003,Discovery,"Sort games by price or name",3,in-progress,false,feat/US-003-sort-games,1,6
-US-004,Discovery,"Player count filter chips",4,tests-written,false,feat/US-004-player-count-filter-chips,0,0
+US-004,Discovery,"Player count filter chips",4,dev-complete,false,feat/US-004-player-count-filter-chips,0,0
 US-005,Discovery,"Active filter summary bar with clear-all",5,pending,false,,0,0
 US-006,Checkout & Payments,"Multi-step checkout wizard",6,pending,false,,0,0
 US-007,Checkout & Payments,"Order confirmation page",7,pending,false,,0,0

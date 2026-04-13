@@ -2,11 +2,15 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** in-progress
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-004-player-count-filter-chips
 - **PR:** (none)
 - **QA Attempts:** 0
+
+## Dev Notes
+
+Implemented PlayerCountFilter component (chips 2, 4, 6, 8+) with controlled selectedCounts/onCountsChange props. Added parsePlayers() and playerCountMatches() utilities to GameGrid.tsx to parse existing players strings ("2–10 players", "4 players (2v2)", "4–20+ players", etc.) and filter by selected count(s) using OR logic. Wired PlayerCountFilter into page.tsx below SearchBar/SortDropdown row.
 
 ## Description
 
