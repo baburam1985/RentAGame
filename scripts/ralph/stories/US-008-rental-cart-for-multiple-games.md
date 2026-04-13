@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 8
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-008-rental-cart-drawer
 - **PR:** #13
@@ -34,12 +34,7 @@ A `CartDrawer` component that slides in from the right showing items added to th
 2. **GREEN commit:** Create `CartDrawer.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file**.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 2)
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342461522/job/71074526559
+## QA Feedback
 
 ## Dev Notes
 

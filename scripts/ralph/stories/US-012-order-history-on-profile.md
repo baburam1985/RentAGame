@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 12
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-012-order-history-profile
 - **PR:** #17
@@ -37,12 +37,7 @@ Add an `OrderHistory` component that reads from `localStorage` (`rg_orders`) and
 2. **GREEN commit:** Create `OrderHistory.tsx`, make the minimal change to `RentalForm.tsx` (add one `localStorage.setItem` call), and make the minimal change to `profile/page.tsx` (mount `OrderHistory`). The GREEN commit must contain **zero changes to `OrderHistory.test.tsx`** or any other test file or spec file.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 2)
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24346453475/job/71088554610
+## QA Feedback
 
 ## Dev Notes
 

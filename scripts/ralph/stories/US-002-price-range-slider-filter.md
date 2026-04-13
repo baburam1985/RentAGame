@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 2
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-002-price-slider-v2
 - **PR:** #35
@@ -24,11 +24,6 @@ Add a dual-handle price range slider (min/max) in the filter bar. Games outside 
 - [ ] Branch is rebased on current main before pushing — all unit tests and E2E tests pass in Docker locally before the PR is updated
 
 ## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests: 59/59 pass. TypeScript: clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24345333222/job/71084524411
 
 
 ## Dev Notes

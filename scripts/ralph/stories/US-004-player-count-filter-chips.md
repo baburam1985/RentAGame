@@ -2,18 +2,13 @@
 
 - **Epic:** Discovery
 - **Priority:** 4
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-004-player-count-filter-chips-v2
 - **PR:** #36
 - **QA Attempts:** 5
 
 ## QA Feedback
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript: clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24345360684/job/71084623656
 
 
 ## Dev Notes

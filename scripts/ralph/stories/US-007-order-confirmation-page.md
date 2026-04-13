@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 7
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
@@ -35,12 +35,7 @@ A static `/order-confirmation` page that reads the most recent order from `local
 2. **GREEN commit:** Create `page.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file** — not `RentalForm.tsx`, not `rental-form.spec.ts`, not any `*.spec.ts`.
 3. **E2E boundary:** Do NOT touch any existing E2E spec. Do NOT create new E2E specs for this story.
 
-## QA Feedback (Attempt 2)
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342315256/job/71074041587
+## QA Feedback
 
 ## Dev Notes
 

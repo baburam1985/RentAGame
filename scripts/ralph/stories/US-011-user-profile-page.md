@@ -2,7 +2,7 @@
 
 - **Epic:** User Accounts
 - **Priority:** 11
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-011-user-profile-page
 - **PR:** #16
@@ -39,12 +39,7 @@ Create a `/profile` page that is auth-gated. Authenticated users see their avata
 2. **GREEN commit:** Create `page.tsx` only. The GREEN commit must contain **zero changes to any test file or existing source file** — not `ProfilePage.test.tsx`, not `catalog.spec.ts`, not `modal.spec.ts`, not `rental-form.spec.ts`, not any other file.
 3. **E2E boundary:** You may add a new `web/e2e/profile.spec.ts` if desired. Never modify any existing E2E spec file.
 
-## QA Feedback (Attempt 2)
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Unit tests pass. TypeScript clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342141119/job/71073457369
+## QA Feedback
 
 ## Dev Notes
 

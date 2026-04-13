@@ -2,7 +2,7 @@
 
 - **Epic:** Discovery
 - **Priority:** 5
-- **Status:** qa-failed
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-005-active-filter-summary-bar
 - **PR:** #10
@@ -31,12 +31,7 @@ Show a 'Clear all filters' button below the filter row whenever any filter (sear
 2. **GREEN commit:** Implement the component and wire it into `page.tsx`. Do NOT change `ActiveFilterBar.test.tsx` at all between RED and GREEN — zero changes, not even formatting or imports.
 3. **E2E boundary:** Do NOT modify any existing E2E spec files (`catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, etc.). Do not create new E2E specs.
 
-## QA Feedback (Attempt 2)
-
-Classification: env-failure
-Job: E2E Tests
-Error: E2E Tests fail on ALL open PRs simultaneously while Unit Tests and Docker Build pass — systemic CI environment failure (app container not reachable from e2e-tests container). Local unit tests and TypeScript clean.
-CI run: https://github.com/baburam1985/RentAGame/actions/runs/24342131248/job/71073425764
+## QA Feedback
 
 ## Dev Notes
 
