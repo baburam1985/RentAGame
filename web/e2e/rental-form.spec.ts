@@ -26,7 +26,7 @@ test.describe("Rental request form", () => {
     await page.getByLabel("Return Date").fill("2026-07-05");
     await page.getByRole("button", { name: "Send Rental Request" }).click();
     await expect(
-      page.getByText("Return date must be on or after the event date.")
+      page.getByText("End date must be after start date")
     ).toBeVisible();
   });
 
