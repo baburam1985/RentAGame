@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 7
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-007-order-confirmation-page
 - **PR:** #12
@@ -50,6 +50,12 @@ A static `/order-confirmation` page that reads the most recent order from `local
 
 ## Dev Notes
 
-Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. Branch rebased on main. All 53 unit tests pass (includes OrderConfirmationPage tests). TypeScript clean. Branch force-pushed.
+Branch rebuilt from main (fix for qa-failed attempt 4). Previous branch had scope violations — modified rental-form.spec.ts and RentalForm.tsx which are explicitly out of scope. New implementation:
+- Test file uses exact story-specified field names: { id, gameName, startDate, endDate, totalPrice, email }
+- Selectors pinned per AC: getByText('ABC123'), getByText('Giant Jenga'), getByRole('link', { name: 'Browse More Games' })
+- No E2E specs created or modified
+- 50 unit tests pass, TypeScript clean
 
-PM Tier-2 rewrite (run 8): stripped to 4 ACs; removed RentalForm redirect requirement (out of scope for this story — that is a separate integration concern); pinned exact selector strings per AC; explicitly prohibited E2E spec creation; tightened scope to new file only.
+## Files Changed
+- web/src/app/order-confirmation/OrderConfirmationPage.test.tsx (new)
+- web/src/app/order-confirmation/page.tsx (new)
