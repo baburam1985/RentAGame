@@ -2,7 +2,7 @@ id,epic,title,priority,status,passes,branch,qaAttempts,prNumber
 US-001,Discovery,Search bar with live text filtering,1,qa-passed,true,feat/US-001-search-filter-merged,3,1
 US-002,Discovery,Price range slider filter,2,dev-complete,false,feat/US-002-price-slider-v2,2,7
 US-003,Discovery,Sort games by price or name,3,qa-passed,true,feat/US-003-sort-games-rebased-merged,1,6
-US-004,Discovery,Player count filter chips,4,dev-complete,false,feat/US-004-player-count-filter-chips-v2,3,8
+US-004,Discovery,Player count filter chips,4,in-progress,false,feat/US-004-player-count-filter-chips,3,8
 US-005,Discovery,Active filter summary bar with clear-all,5,dev-complete,false,feat/US-005-active-filter-summary-bar,3,10
 US-006,Checkout & Payments,Multi-step checkout wizard,6,dev-complete,false,feat/US-006-multi-step-checkout-wizard,3,11
 US-007,Checkout & Payments,Order confirmation page,7,dev-complete,false,feat/US-007-order-confirmation-page,3,12
@@ -20,12 +20,12 @@ US-018,Discovery,Add 'Browse all' CTA to zero-results empty state,18,dev-complet
 US-019,Checkout & Payments,Inline date validation on rental form,19,dev-complete,false,feat/US-019-inline-date-validation,1,28
 US-020,Discovery,Category filter chips horizontally scrollable on mobile,20,dev-complete,false,feat/US-020-mobile-scroll-category-filter,1,29
 US-021,Checkout & Payments,Live total price calculation in rental form,21,dev-complete,false,feat/US-021-live-price-calculation,1,30
-US-022,Discovery,Descriptive alt text for all game images,22,dev-complete,false,feat/US-022-descriptive-alt-text,0,0
-US-023,Checkout & Payments,Add 'No hidden fees' trust statement near rental form CTA,23,dev-complete,false,feat/US-023-no-hidden-fees-trust-statement,0,0
-US-024,Discovery,Keyboard navigation for category filter and player chip groups,24,dev-complete,false,feat/US-024-keyboard-nav-filter-chips,0,0
-US-025,Discovery,Cancellation policy statement in game modal,25,dev-complete,false,feat/US-025-cancellation-policy-modal,0,0
-US-026,Checkout & Payments,Inline on-blur validation for rental form contact fields,26,tests-written,false,feat/US-026-inline-blur-validation,0,0
-US-027,Discovery,Game modal 'What's included' section,27,in-progress,false,,0,0
+US-022,Discovery,Descriptive alt text for all game images,22,dev-complete,false,feat/US-022-descriptive-alt-text,0,31
+US-023,Checkout & Payments,Add 'No hidden fees' trust statement near rental form CTA,23,dev-complete,false,feat/US-023-no-hidden-fees-trust-statement,0,32
+US-024,Discovery,Keyboard navigation for category filter and player chip groups,24,dev-complete,false,feat/US-024-keyboard-nav-filter-chips,0,33
+US-025,Discovery,Cancellation policy statement in game modal,25,dev-complete,false,feat/US-025-cancellation-policy-modal,0,34
+US-026,Checkout & Payments,Inline on-blur validation for rental form contact fields,26,pending,false,,0,0
+US-027,Discovery,Game modal 'What's included' section,27,pending,false,,0,0
 US-028,Discovery,Skeleton loading state for game grid,28,pending,false,,0,0
 US-029,Discovery,'Most Popular' and social proof badges on game cards,29,pending,false,,0,0
 US-030,Discovery,Rental form inputs: visible focus rings and ARIA error associations,30,pending,false,,0,0
