@@ -2,11 +2,11 @@
 
 - **Epic:** User Accounts
 - **Priority:** 13
-- **Status:** dev-complete
+- **Status:** qa-failed
 - **Passes:** false
 - **Branch:** feat/US-013-wishlist-saved-games
 - **PR:** #18
-- **QA Attempts:** 1
+- **QA Attempts:** 2
 
 ## Description
 
@@ -23,7 +23,11 @@ Add a heart toggle on GameCard and GameModal. Logged-in users can wishlist games
 - [ ] Saved Games tab shows wishlisted games as a mini grid
 - [ ] Remove button on each saved game card removes it from the wishlist
 
-## QA Feedback
+## QA Feedback (Attempt 2)
 
-env-failure fixed by CI-Fix PR #25 (2026-04-13). Root cause: grep -q "healthy" in CI wait loop matched "(health: starting)" prematurely. Fixed with docker inspect exact status check. Status reset to dev-complete for QA re-pick.
+**Check 5 — TEST COUNT FAILED (code-failure):**
+5 tests found in `WishlistButton.test.tsx` but story has 8 acceptance criteria. Need at least 8 tests — one per AC. Missing tests for: AC-5 (logged-out user sees 'Log in to save games' prompt), AC-6 (Saved Games tab on /profile), AC-7 (saved games mini grid), AC-8 (remove button removes from wishlist). Add 3 more tests to cover ACs 5-8.
+
+**Check 0 — CI env-failure:**
+Branch has old docker-compose.yml with HTTP polling healthcheck instead of `node` CMD healthcheck. Fix: update docker-compose.yml to use `node -e "require('http').get('http://127.0.0.1:3000', r => process.exit(r.statusCode < 500 ? 0 : 1)).on('error', () => process.exit(1))"` and add `depends_on: app: condition: service_healthy` for e2e-tests service.
 

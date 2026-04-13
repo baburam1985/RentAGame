@@ -308,3 +308,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 13:04 | US-010 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
 | 2026-04-13 13:04 | US-011 | qa-failed | qa | Check 0: env-failure — systemic E2E failure all PRs; local checks 1-7,9 pass (attempt 1) |
 | 2026-04-13 13:04 | US-012 | qa-failed | qa | Check 2: catalog.spec.ts modified RED→GREEN + Check 9: E2E spec scope violation (attempt 1) |
+| 2026-04-13 13:07 | US-013 | qa-failed | qa | Check 5: 5 tests < 8 ACs + Check 0: env-failure (old CI config, no healthcheck) — attempt 2 |
