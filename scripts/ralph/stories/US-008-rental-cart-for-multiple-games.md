@@ -2,7 +2,7 @@
 
 - **Epic:** Checkout & Payments
 - **Priority:** 8
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
 - **Branch:** feat/US-008-rental-cart-drawer
 - **PR:** #13
