@@ -2,10 +2,10 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 15
-- **Status:** dev-complete
+- **Status:** ci-pending
 - **Passes:** false
 - **Branch:** feat/US-015-inventory-management-page
-- **PR:** (none)
+- **PR:** #21
 - **QA Attempts:** 0
 
 ## Description

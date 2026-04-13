@@ -2,10 +2,10 @@
 
 - **Epic:** Admin Dashboard
 - **Priority:** 17
-- **Status:** dev-complete
+- **Status:** ci-pending
 - **Passes:** false
 - **Branch:** feat/US-017-admin-overview-dashboard
-- **PR:** (none)
+- **PR:** #23
 - **QA Attempts:** 0
 
 ## Description
