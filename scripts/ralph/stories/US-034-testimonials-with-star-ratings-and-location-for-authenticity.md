@@ -2,9 +2,9 @@
 
 - **Epic:** Discovery
 - **Priority:** 34
-- **Status:** tests-written
+- **Status:** dev-complete
 - **Passes:** false
-- **Branch:** (not started)
+- **Branch:** feat/US-034-testimonials-star-ratings
 - **PR:** (none)
 - **QA Attempts:** 0
 
