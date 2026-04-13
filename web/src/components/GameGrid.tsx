@@ -1,6 +1,7 @@
 "use client";
 
 import { games } from "@/data/games";
+import type { Game } from "@/data/games";
 import GameCard from "./GameCard";
 
 type Props = {
@@ -9,6 +10,7 @@ type Props = {
   sortOrder?: string;
   minPrice?: number;
   maxPrice?: number;
+  onSelect?: (game: Game) => void;
 };
 
 export default function GameGrid({
@@ -17,6 +19,7 @@ export default function GameGrid({
   sortOrder = "featured",
   minPrice,
   maxPrice,
+  onSelect,
 }: Props) {
   const query = searchQuery.toLowerCase();
 
@@ -49,7 +52,7 @@ export default function GameGrid({
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {sorted.map((game) => (
-              <GameCard key={game.id} game={game} />
+              <GameCard key={game.id} game={game} onSelect={onSelect} />
             ))}
           </div>
 

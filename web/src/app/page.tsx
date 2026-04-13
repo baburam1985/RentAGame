@@ -7,9 +7,11 @@ import SearchBar from "@/components/SearchBar";
 import SortDropdown from "@/components/SortDropdown";
 import PriceRangeSlider from "@/components/PriceRangeSlider";
 import GameGrid from "@/components/GameGrid";
+import GameModal from "@/components/GameModal";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
 import RentalForm from "@/components/RentalForm";
+import type { Game } from "@/data/games";
 
 const PRICE_MIN = 20;
 const PRICE_MAX = 55;
@@ -20,6 +22,16 @@ export default function Home() {
   const [sortOrder, setSortOrder] = useState("featured");
   const [minPrice, setMinPrice] = useState(PRICE_MIN);
   const [maxPrice, setMaxPrice] = useState(PRICE_MAX);
+  const [selectedGame, setSelectedGame] = useState<Game | null>(null);
+  const [prefilledGame, setPrefilledGame] = useState("");
+
+  function handleRentNow(game: Game) {
+    setSelectedGame(null);
+    setPrefilledGame(game.name);
+    setTimeout(() => {
+      document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+    }, 100);
+  }
 
   return (
     <main className="min-h-screen" style={{ background: "#fffde1" }}>
@@ -53,12 +65,19 @@ export default function Home() {
           sortOrder={sortOrder}
           minPrice={minPrice}
           maxPrice={maxPrice}
+          onSelect={setSelectedGame}
         />
       </section>
 
       <HowItWorks />
       <Testimonials />
-      <RentalForm defaultGame="" />
+      <RentalForm defaultGame={prefilledGame} />
+
+      <GameModal
+        game={selectedGame}
+        onClose={() => setSelectedGame(null)}
+        onRentNow={handleRentNow}
+      />
     </main>
   );
 }
