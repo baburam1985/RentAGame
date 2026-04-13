@@ -50,12 +50,14 @@ export default function GameCard({ game, onSelect }: Props) {
           <span className="text-xs font-medium text-blue-700 bg-blue-50 rounded-full px-2 py-0.5 mb-1 inline-block">
             {game.category}
           </span>
-          <Link
-            href={`/games/${game.id}`}
-            className="text-sm font-semibold text-gray-900 truncate block hover:text-blue-800 transition-colors"
-          >
-            {game.name}
-          </Link>
+          <h3 className="text-sm font-semibold text-gray-900 truncate">
+            <Link
+              href={`/games/${game.id}`}
+              className="hover:text-blue-800 transition-colors"
+            >
+              {game.name}
+            </Link>
+          </h3>
           <p className="text-xs text-gray-400 mt-0.5">${game.pricePerDay} · day</p>
         </div>
         <div className="flex items-center gap-1">
