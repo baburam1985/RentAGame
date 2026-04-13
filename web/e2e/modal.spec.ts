@@ -11,7 +11,7 @@ test.describe("Game detail modal", () => {
   test("clicking first game card opens modal with game name", async ({ page }) => {
     // Get first game card name
     const firstCard = page.locator("#catalog .group").first();
-    const gameName = await firstCard.locator(".min-w-0 a").textContent();
+    const gameName = await firstCard.locator("h3").textContent();
     await firstCard.locator("button", { hasText: "Rent Now" }).click();
     // Modal should appear
     const modal = page.getByRole("dialog");
@@ -25,7 +25,7 @@ test.describe("Game detail modal", () => {
     const modal = page.getByRole("dialog");
     await expect(modal).toBeVisible();
     // Check that spec grid is visible (players + dimensions)
-    await expect(modal.getByText("Players", { exact: true })).toBeVisible();
+    await expect(modal.getByText("Players")).toBeVisible();
     await expect(modal.getByText("Dimensions")).toBeVisible();
     // Price
     await expect(modal.locator("text=/\\$\\d+/").first()).toBeVisible();
