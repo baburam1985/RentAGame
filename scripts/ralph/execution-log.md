@@ -77,3 +77,4 @@ humans and the Retro agent a clear timeline of what happened and when.
 | 2026-04-13 07:45 | US-016 | dev-complete | dev | orders page built; 5/9 tests pass; 4 fail due to test design issues (combobox count conflict + non-unique Pending text) |
 | 2026-04-13 07:45 | US-017 | in-progress | dev | starting overview dashboard with KPI cards |
 | 2026-04-13 07:47 | US-017 | tests-written | dev | RED tests committed for admin overview dashboard |
+| 2026-04-13 07:52 | US-017 | dev-complete | dev | overview dashboard built; all 10 tests pass; KPI cards, CSS bar chart, recent orders table, 30s auto-refresh |
