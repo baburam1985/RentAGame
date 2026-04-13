@@ -256,6 +256,28 @@ agent and merged via the GitHub API (`mcp__github__merge_pull_request`).
 
 ---
 
+## Known Loophole — Orphaned Branches (FIXED)
+
+**Symptom:** Feature branches (`feat/US-NNN-*`) accumulate on the remote with valid
+RED/GREEN commits, but `prd.csv` on `main` still shows those stories as `pending`.
+QA never creates PRs; Dev picks them up again and creates duplicate branches.
+
+**Root cause:** Dev sessions run on a `claude/...` working branch. If the session
+crashes, is interrupted, or runs `git push origin main` without first explicitly
+checking out `main`, state-file commits land on the wrong branch instead of `main`.
+The QA agent reads `prd.csv` from `main`, so it never sees the completed work.
+
+**Fix applied (2026-04-13):**
+1. **DEV.md Step 1**: Explicit `git branch --show-current` guard — aborts if not on `main`.
+2. **DEV.md Step 1.5**: Orphaned-branch recovery — scans remote for `feat/US-NNN-*`
+   branches whose stories show `pending` in `prd.csv`, auto-corrects status to
+   `dev-complete`, and pushes the fix to `main`.
+3. **DEV.md Step 2**: Duplicate-branch guard before picking any `pending` story —
+   refuses to start fresh work if a remote branch already exists for it.
+4. **DEV.md Step 4**: Checks for existing remote branch before `git checkout -b`.
+5. **DEV.md Step 7**: Re-verifies `main` before the state push.
+6. **QA.md Step 1.5**: Same orphaned-branch recovery — QA is a second line of defence.
+
 ## Anti-Hallucination Strategy
 
 Every agent reads `PRODUCT.md` as Step 0 before acting. This prevents:

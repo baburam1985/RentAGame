@@ -50,6 +50,54 @@ git checkout main
 git pull origin main
 ```
 
+**IMPORTANT — verify you are on `main` before any state push.** This session
+may have been started on a `claude/...` working branch. Steps 3 and 7 push
+state files to `main`; if the current branch is wrong those commits land on
+the wrong branch and the QA agent will never see the story as `dev-complete`.
+Verify immediately:
+```bash
+CURRENT=$(git branch --show-current)
+if [ "$CURRENT" != "main" ]; then
+  echo "ERROR: not on main (on $CURRENT). Aborting."
+  exit 1
+fi
+```
+
+### Step 1.5 — Orphaned-branch recovery (run every time)
+
+After syncing, check whether any `pending` story in `prd.csv` already has a
+remote `feat/US-NNN-*` branch. This happens when a previous session created
+the branch and pushed code but crashed before updating `prd.csv`.
+
+```bash
+git fetch origin
+```
+
+For **every** story where `status == "pending"` and `branch == ""` in prd.csv:
+1. Derive the expected branch prefix: `feat/US-NNN-`
+2. Check if any matching remote branch exists:
+   ```bash
+   git branch -r | grep "origin/feat/US-NNN-"
+   ```
+3. **If a match is found** (and it does NOT end in `-merged`):
+   - Read the branch's commits to confirm a GREEN commit exists:
+     ```bash
+     git log --oneline origin/feat/US-NNN-<title> | grep "GREEN"
+     ```
+   - If GREEN commit exists → update prd.csv: set `status: "dev-complete"`,
+     `branch: "feat/US-NNN-<title>"`. Push to main and log:
+     ```bash
+     echo "| $(date -u +"%Y-%m-%d %H:%M") | US-NNN | dev-complete | dev | recovered orphaned branch — prd.csv was stale |" >> scripts/ralph/execution-log.md
+     git add scripts/ralph/prd.csv scripts/ralph/execution-log.md
+     git commit -m "chore: [US-NNN] recover orphaned branch → dev-complete"
+     git push origin main
+     ```
+   - If only RED commit exists → set `status: "tests-written"`, `branch: "feat/US-NNN-<title>"`, push.
+   - Do **not** pick this story for new work this run — QA will take it from here.
+
+This recovery ensures the QA agent sees the correct status and creates PRs
+even when a previous Dev session failed to update `prd.csv`.
+
 ### Step 2 — Pick a story
 
 Check batch cap first:
@@ -63,11 +111,25 @@ Read `prd.csv`. Pick the **highest priority** story where:
 - `status == "qa-failed"` — HIGHEST priority, fix before anything new
 - `status == "pending"` — next in queue
 
+**Before picking a `pending` story, run the duplicate-branch guard:**
+```bash
+git fetch origin
+git branch -r | grep "origin/feat/US-NNN-" | grep -v "\-merged$"
+```
+If a non-merged remote branch already exists for this story, the story was
+worked on but `prd.csv` was not updated. Do **not** start fresh work — run
+Step 1.5 recovery for it and then skip to the next story.
+
 If no such story exists, output "No stories available." and STOP.
 
 Note whether the picked story is `qa-failed` or `pending` — this changes Steps 3–5.
 
 ### Step 3 — Lock the story
+
+**Before committing, confirm you are on `main`:**
+```bash
+[ "$(git branch --show-current)" = "main" ] || { echo "ERROR: not on main"; exit 1; }
+```
 
 Set `status: "in-progress"` in prd.csv and the story's .md file.
 This prevents another Dev instance from double-picking the same story.
@@ -82,9 +144,17 @@ git push origin main
 
 **If story was `pending` (new work):**
 
-Create a new feature branch from main:
+First check if the branch already exists remotely (catches the race where Step 1.5
+ran in a parallel session):
 ```bash
-git checkout -b feat/US-NNN-short-title
+git fetch origin
+if git branch -r | grep -q "origin/feat/US-NNN-short-title$"; then
+  echo "Branch already exists remotely — checking out instead of creating"
+  git checkout feat/US-NNN-short-title
+  git pull origin feat/US-NNN-short-title
+else
+  git checkout -b feat/US-NNN-short-title
+fi
 # Example: feat/US-001-search-filter
 #          feat/US-006-checkout-wizard
 #          feat/US-014-admin-layout
@@ -259,6 +329,8 @@ Switch to main, update prd.csv and story .md, push:
 ```bash
 git checkout main
 git pull origin main
+# Verify we landed on main — never push state from a feature or session branch
+[ "$(git branch --show-current)" = "main" ] || { echo "ERROR: not on main"; exit 1; }
 ```
 
 Update tracking for this story:

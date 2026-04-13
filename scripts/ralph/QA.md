@@ -46,7 +46,40 @@ git config user.email "qa-agent@rentagame.ai"
 git config user.name "QA Agent"
 git checkout main
 git pull origin main
+# Verify we are on main before any state push
+[ "$(git branch --show-current)" = "main" ] || { echo "ERROR: not on main"; exit 1; }
 ```
+
+### Step 1.5 — Orphaned-branch recovery (run every time)
+
+The Dev agent may have pushed feature branches but failed to update `prd.csv`.
+This guard catches the mismatch so QA can pick up the work.
+
+```bash
+git fetch origin
+```
+
+For every story in `prd.csv` where `status == "pending"` and `branch == ""`:
+1. Derive the branch prefix: `feat/US-NNN-`
+2. Check for a matching remote branch:
+   ```bash
+   git branch -r | grep "origin/feat/US-NNN-" | grep -v "\-merged$"
+   ```
+3. If a match is found, inspect it:
+   ```bash
+   git log --oneline origin/<branch> | grep "GREEN"
+   ```
+   - GREEN commit present → set `status: "dev-complete"`, `branch: "<branch>"` in prd.csv
+   - Only RED commit → set `status: "tests-written"`, `branch: "<branch>"` in prd.csv
+4. Commit and push to `main`:
+   ```bash
+   echo "| $(date -u +"%Y-%m-%d %H:%M") | US-NNN | dev-complete | qa | recovered orphaned branch |" >> scripts/ralph/execution-log.md
+   git add scripts/ralph/prd.csv scripts/ralph/execution-log.md
+   git commit -m "chore: [US-NNN] recover orphaned branch → dev-complete"
+   git push origin main
+   ```
+
+After recovery, the standard Step 2 loop will pick these stories up normally.
 
 ### Step 2 — Pick a story
 
