@@ -53,6 +53,8 @@ US-051,Discovery,"How it works compact strip above game catalog",51,pending,fals
 US-052,Checkout & Payments,"HTML autocomplete attributes on rental form fields",52,pending,false,,0,0
 US-053,Discovery,"Search bar type-ahead suggestions dropdown",53,pending,false,,0,0
 US-054,Checkout & Payments,"Featured game recommendations in empty cart state",54,pending,false,,0,0
+US-055,Discovery,"Age-range filter chip",55,pending,false,,0,0
+US-056,Discovery,"Live result count on filter chips",56,pending,false,,0,0
 US-057,Discovery,"Touch target size audit (WCAG 2.5.5)",57,pending,false,,0,0
 US-058,Checkout & Payments,"Empty cart 'Browse games' CTA",58,pending,false,,0,0
 US-059,Checkout & Payments,"'What's this event for?' optional field on rental form",59,pending,false,,0,0

@@ -10,20 +10,29 @@
 
 ## Description
 
-After submitting the rental form, redirect to `/order-confirmation`. The page reads order data from `localStorage` (`rg_orders`) and displays the most recent order's details. Include a 'Browse More Games' link back to `/`. Only files in `web/src/app/order-confirmation/` and `web/src/components/RentalForm.tsx` (and their test files) are in scope — do not modify any other E2E specs or components.
+After submitting the rental form, redirect to `/order-confirmation`. The page reads order data from `localStorage` (`rg_orders`) and displays the most recent order's details. Include a 'Browse More Games' link back to `/`.
+
+**Scope is strictly limited to:**
+- `web/src/app/order-confirmation/page.tsx` (new file)
+- `web/src/app/order-confirmation/OrderConfirmationPage.test.tsx` (new test file)
+- `web/src/components/RentalForm.tsx` (add redirect after submit only)
+- `web/src/components/RentalForm.test.tsx` (add router mock and redirect test only)
+
+**Do NOT touch any other files.** In particular, `web/e2e/catalog.spec.ts`, `web/e2e/modal.spec.ts`, and any E2E spec unrelated to the order-confirmation flow must not be modified under any circumstances.
 
 ## Acceptance Criteria
 
-- [ ] A `"use client"` component at `web/src/app/order-confirmation/page.tsx` renders without error when `rg_orders` contains at least one order
-- [ ] The page displays the order reference: a unique 8-character alphanumeric string (e.g. `A1B2C3D4`) stored on the order object in `rg_orders`
+- [ ] A `"use client"` component at `web/src/app/order-confirmation/page.tsx` renders without error when `rg_orders` in `localStorage` contains at least one order
+- [ ] The page displays the order reference: the unique alphanumeric string stored on the order object in `rg_orders` (e.g. `A1B2C3D4`)
 - [ ] The page displays the game name, rental start date (formatted `YYYY-MM-DD`), rental end date (formatted `YYYY-MM-DD`), and total price (formatted as `$XX.XX`) from the most recent entry in `rg_orders`
 - [ ] The page displays the customer email address stored on the order object
-- [ ] A link or button labelled exactly `'Browse More Games'` navigates the user to `/` (home page)
-- [ ] The RED commit test file already includes all mocks required for the tests to compile (e.g. `vi.mock("next/navigation", ...)` must be present in the RED commit, not added during GREEN)
+- [ ] A link or button labelled exactly `'Browse More Games'` is present and its `href` is `/`
 
-## TDD Notes
+## TDD Rules — Read Before Writing Any Code
 
-Write tests first in `web/src/app/order-confirmation/OrderConfirmationPage.test.tsx`. The RED commit must have all mocks in place so tests fail due to missing implementation only. The GREEN commit must not modify test files. Do not modify `web/e2e/catalog.spec.ts`, `web/e2e/modal.spec.ts`, or any E2E file unrelated to the order-confirmation flow.
+1. **RED commit:** Create `OrderConfirmationPage.test.tsx` with 5 tests (one per AC above). The test file MUST include `vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }))` at the top so the file compiles. All 5 tests must fail because the component does not exist yet. If `RentalForm.test.tsx` also needs a router mock, add it in the RED commit too.
+2. **GREEN commit:** Implement `page.tsx` and update `RentalForm.tsx` to redirect. Do NOT change any test files (`*.test.tsx`, `*.spec.ts`) between the RED and GREEN commits — not even imports, not even formatting. Zero changes to test files in GREEN.
+3. **E2E boundary:** You may add a new `web/e2e/order-confirmation.spec.ts` file if desired. You must never modify `catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, or any other existing E2E spec.
 
 ## QA Feedback (Attempt 2)
 
@@ -33,28 +42,12 @@ Write tests first in `web/src/app/order-confirmation/OrderConfirmationPage.test.
 - CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332401616/job/71041077897
 
 **Check 2 — TDD INTEGRITY FAILED:**
-`web/src/components/RentalForm.test.tsx` was modified between the RED commit (`9306a2b test: [US-007] RED`) and the GREEN commit (`ce3a85c feat: [US-007] GREEN`). Test files must not change after the RED commit. Specifically, a `vi.mock("next/navigation", ...)` import and useRouter mock were added in the GREEN commit. The test mock must be present in the RED commit, not added during implementation.
+`web/src/components/RentalForm.test.tsx` was modified between the RED commit (`9306a2b test: [US-007] RED`) and the GREEN commit (`ce3a85c feat: [US-007] GREEN`). A `vi.mock("next/navigation", ...)` import and useRouter mock were added in the GREEN commit. The test mock must be present in the RED commit.
 
 **Check 9 — SCOPE VIOLATION:**
-The following E2E spec files were modified but are out of scope for a story about `/order-confirmation`:
-- `web/e2e/catalog.spec.ts` — added `networkidle` wait (unrelated to this story)
-- `web/e2e/modal.spec.ts` — added `networkidle` wait and changed `.h3` selector (unrelated to this story)
-
-Story scope: `/order-confirmation` route, order details display, Browse More Games link. Changes to catalog and modal E2E specs are not authorized by this story.
-
-**Required fixes:**
-1. Move `vi.mock("next/navigation", ...)` into the RED commit's test file so tests fail at RED without the implementation
-2. Remove `catalog.spec.ts` and `modal.spec.ts` changes from this branch (these belong on main or a separate branch)
+- `web/e2e/catalog.spec.ts` — modified (not in scope)
+- `web/e2e/modal.spec.ts` — modified (not in scope)
 
 ## Dev Notes
 
 Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. Branch rebased on main. All 53 unit tests pass (includes OrderConfirmationPage tests). TypeScript clean. Branch force-pushed.
-
-## Files Changed
-
-- web/src/app/order-confirmation/page.tsx
-- web/src/app/order-confirmation/OrderConfirmationPage.test.tsx
-- web/src/components/RentalForm.tsx
-- web/src/components/RentalForm.test.tsx
-- web/e2e/rental-form.spec.ts
-- web/e2e/modal.spec.ts

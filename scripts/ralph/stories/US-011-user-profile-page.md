@@ -10,22 +10,34 @@
 
 ## Description
 
-Create a `/profile` page that is auth-gated. Authenticated users see their avatar (initial-based), name, email, and member-since date. They can edit their name inline. A log-out button clears the user from `localStorage` (`rg_user`) and redirects to `/`. Only `web/src/app/profile/` files are in scope — do not modify catalog, modal, or rental-form E2E specs.
+Create a `/profile` page that is auth-gated. Authenticated users see their avatar (initial-based), name, email, and member-since date. They can edit their name inline. A log-out button clears the user from `localStorage` (`rg_user`) and redirects to `/`.
+
+**Scope is strictly limited to:**
+- `web/src/app/profile/page.tsx` (new file)
+- `web/src/app/profile/ProfilePage.test.tsx` (new test file)
+
+**Do NOT touch any other files.** In particular, `web/e2e/catalog.spec.ts`, `web/e2e/modal.spec.ts`, and `web/e2e/rental-form.spec.ts` must not be modified under any circumstances.
 
 ## Acceptance Criteria
 
-- [ ] A `"use client"` component at `web/src/app/profile/page.tsx` renders the profile UI when `rg_user` in `localStorage` contains a valid user object (standalone test required for this criterion alone)
-- [ ] When no user is found in `rg_user`, the component redirects to `/login` using `router.push('/login')` before rendering any profile content
-- [ ] An avatar element displays the first letter of the user's name as uppercase text inside a solid-colored circle (color may be hardcoded or derived from the name)
-- [ ] The page displays the user's full name, email address, and member-since date (formatted `YYYY-MM-DD`) read from `rg_user`
-- [ ] Clicking the displayed name replaces it with a text input pre-filled with the current name; the input is focused automatically
-- [ ] Pressing Enter or blurring the input saves the new name to `rg_user` in `localStorage` and switches back to display mode
-- [ ] Clicking the 'Log out' button removes `rg_user` from `localStorage`
-- [ ] After logout, the user is redirected to `/` via `router.push('/')`
+- [ ] AC-1: A `"use client"` component at `web/src/app/profile/page.tsx` renders the profile UI (name, email visible) when `rg_user` in `localStorage` contains a valid user object — this criterion requires its own standalone test
+- [ ] AC-2: When `rg_user` is absent from `localStorage`, the component calls `router.push('/login')` before rendering any profile content
+- [ ] AC-3: An avatar element displays the first letter of the user's name as uppercase text inside a solid-colored circle
+- [ ] AC-4: The page displays the user's full name, email address, and member-since date (formatted `YYYY-MM-DD`) from `rg_user`
+- [ ] AC-5: Clicking the displayed name replaces it with a text `<input>` pre-filled with the current name
+- [ ] AC-6: Pressing Enter or blurring the input saves the new name to `rg_user` in `localStorage` and returns to display mode showing the updated name
+- [ ] AC-7: Clicking the 'Log out' button removes `rg_user` from `localStorage`
+- [ ] AC-8: After clicking 'Log out', the component calls `router.push('/')`
 
-## TDD Notes
+## TDD Rules — Read Before Writing Any Code
 
-Write 8 tests in `web/src/app/profile/ProfilePage.test.tsx` — one test per acceptance criterion. The RED commit must include `async`/`waitFor` patterns in the test file so all 8 tests fail at RED due to missing implementation only. The GREEN commit must not modify test files. Do not modify `web/e2e/catalog.spec.ts`, `web/e2e/modal.spec.ts`, `web/e2e/rental-form.spec.ts`, or any E2E file outside the profile flow.
+1. **RED commit:** Create `ProfilePage.test.tsx` with exactly **8 tests** — one per AC above (AC-7 and AC-8 must be separate tests). The test file MUST include:
+   - `vi.mock("next/navigation", () => ({ useRouter: () => ({ push: vi.fn() }) }))` at the top
+   - `import { waitFor } from "@testing-library/react"` 
+   - All test functions that test async state changes must be `async` and use `await waitFor(...)` 
+   All 8 tests must fail at RED because the component does not exist yet. Do not leave any test as a placeholder that passes.
+2. **GREEN commit:** Implement `page.tsx` only. Do NOT change `ProfilePage.test.tsx` at all — not imports, not async/await, not test names, not assertions. Zero test file changes in GREEN.
+3. **E2E boundary:** You may add a new `web/e2e/profile.spec.ts` if desired. Never modify `catalog.spec.ts`, `modal.spec.ts`, `rental-form.spec.ts`, or any other existing E2E spec.
 
 ## QA Feedback (Attempt 2)
 
@@ -35,28 +47,14 @@ Write 8 tests in `web/src/app/profile/ProfilePage.test.tsx` — one test per acc
 - CI run: https://github.com/baburam1985/RentAGame/actions/runs/24332405953/job/71041092270
 
 **Check 2 — TDD INTEGRITY FAILED:**
-`web/src/app/profile/ProfilePage.test.tsx` was modified between the RED commit (`8f5e2cf test: [US-011] RED`) and the GREEN commit (`e26f719 feat: [US-011] GREEN`). Changes: added `waitFor` import, made test functions `async`, wrapped assertions in `waitFor(...)`, added `await waitFor` setup calls before user interactions. These test logic changes must be present in the RED commit, not added during implementation.
+`ProfilePage.test.tsx` was modified between the RED and GREEN commits: `waitFor` import added, test functions made async, assertions wrapped in `waitFor`. These must be in the RED commit.
 
 **Check 5 — TEST COUNT FAILED:**
-7 tests found but 8 acceptance criteria defined. Missing standalone test for AC #1: "/profile page renders for authenticated users". AC #7 and #8 (logout) are tested together in one test.
+7 tests found, 8 required. AC-7 and AC-8 (logout) were combined into one test — they must be separate.
 
 **Check 9 — SCOPE VIOLATION:**
-Out-of-scope E2E files modified:
-- `web/e2e/catalog.spec.ts` — networkidle wait added (unrelated)
-- `web/e2e/modal.spec.ts` — networkidle wait and selector change (unrelated)
-- `web/e2e/rental-form.spec.ts` — networkidle wait and test logic changes (unrelated)
-
-Story scope: `/profile` page, auth gate, avatar, inline name edit, logout only.
-
-**Required fixes:**
-1. Rewrite RED commit to include `waitFor`/async structure so tests fail at RED without the component
-2. Add standalone test for AC #1: authenticated user sees the profile page render
-3. Remove catalog/modal/rental-form E2E spec changes from this branch
+`catalog.spec.ts`, `modal.spec.ts`, and `rental-form.spec.ts` were modified (networkidle waits, selector changes). These are not in scope.
 
 ## Dev Notes
 
 Env-failure resolved: GameCard.tsx category badge was restored by CI-Fix agent. Branch rebased on main. All 53 unit tests pass. TypeScript clean. Branch force-pushed.
-
-## Files Changed
-
-- web/src/app/profile/page.tsx
