@@ -5,6 +5,7 @@ import Hero from "@/components/Hero";
 import CategoryFilter from "@/components/CategoryFilter";
 import SearchBar from "@/components/SearchBar";
 import SortDropdown from "@/components/SortDropdown";
+import PriceRangeSlider from "@/components/PriceRangeSlider";
 import GameGrid from "@/components/GameGrid";
 import GameModal from "@/components/GameModal";
 import HowItWorks from "@/components/HowItWorks";
@@ -16,6 +17,8 @@ export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOrder, setSortOrder] = useState("featured");
+  const [minPrice, setMinPrice] = useState(20);
+  const [maxPrice, setMaxPrice] = useState(55);
   const [selectedGame, setSelectedGame] = useState<Game | null>(null);
   const [prefilledGame, setPrefilledGame] = useState("");
 
@@ -43,10 +46,22 @@ export default function Home() {
           />
           <SortDropdown value={sortOrder} onChange={setSortOrder} />
         </div>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-2">
+          <PriceRangeSlider
+            min={20}
+            max={55}
+            minValue={minPrice}
+            maxValue={maxPrice}
+            onMinChange={setMinPrice}
+            onMaxChange={setMaxPrice}
+          />
+        </div>
         <GameGrid
           activeCategory={activeCategory}
           searchQuery={searchQuery}
           sortOrder={sortOrder}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
           onSelect={setSelectedGame}
         />
       </section>
