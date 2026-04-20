@@ -40,7 +40,7 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
         <div className="relative w-full aspect-[16/9] bg-gray-100 rounded-t-2xl overflow-hidden">
           <Image
             src={game.image}
-            alt={game.name}
+            alt={game.imageAlt}
             fill
             sizes="(max-width: 640px) 100vw, 512px"
             className="object-cover"

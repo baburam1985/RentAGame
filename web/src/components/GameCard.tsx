@@ -38,7 +38,7 @@ export default function GameCard({ game, onSelect }: Props) {
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={game.image}
-          alt={game.name}
+          alt={game.imageAlt}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
         />
       </Link>

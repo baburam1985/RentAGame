@@ -5,6 +5,7 @@ export type Game = {
   description: string;
   pricePerDay: number;
   image: string;
+  imageAlt: string;
   images: string[];
   players: string;
   dimensions: string;
@@ -31,6 +32,7 @@ export const games: Game[] = [
     pricePerDay: 45,
     image:
       "https://images.unsplash.com/photo-1749320128113-10793ef5a82a?w=600&auto=format&fit=crop",
+    imageAlt: "Tall wooden block tower standing on a sunny outdoor patio",
     images: [
       "https://images.unsplash.com/photo-1749320128113-10793ef5a82a?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1489850846882-35ef10a4b480?w=800&auto=format&fit=crop",
@@ -56,6 +58,7 @@ export const games: Game[] = [
     pricePerDay: 35,
     image:
       "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=600&auto=format&fit=crop",
+    imageAlt: "Two colorful cornhole boards set up on green grass at a backyard party",
     images: [
       "https://images.unsplash.com/photo-1607962837359-5e7e89f86776?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop",
@@ -81,6 +84,7 @@ export const games: Game[] = [
     pricePerDay: 30,
     image:
       "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=600&auto=format&fit=crop",
+    imageAlt: "Colorful bocce balls clustered near a white pallino on a sandy court",
     images: [
       "https://images.unsplash.com/photo-1599058945522-28d584b6f0ff?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1553361371-9b22f78e8b1d?w=800&auto=format&fit=crop",
@@ -106,6 +110,7 @@ export const games: Game[] = [
     pricePerDay: 40,
     image:
       "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=600&auto=format&fit=crop",
+    imageAlt: "Oversized connect-four frame with yellow and red discs outdoors",
     images: [
       "https://images.unsplash.com/photo-1612287230202-1ff1d85d1bdf?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=800&auto=format&fit=crop",
@@ -131,6 +136,7 @@ export const games: Game[] = [
     pricePerDay: 35,
     image:
       "https://images.unsplash.com/photo-1611153390859-33cce9fe1b45?w=600&auto=format&fit=crop",
+    imageAlt: "Players diving and spiking a ball on a circular spikeball net at a beach",
     images: [
       "https://images.unsplash.com/photo-1611153390859-33cce9fe1b45?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?w=800&auto=format&fit=crop",
@@ -156,6 +162,7 @@ export const games: Game[] = [
     pricePerDay: 25,
     image:
       "https://images.unsplash.com/photo-1584304474795-74fb0b42e66a?w=600&auto=format&fit=crop",
+    imageAlt: "Steel horseshoe arcing through the air toward a metal stake in the lawn",
     images: [
       "https://images.unsplash.com/photo-1584304474795-74fb0b42e66a?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop",
@@ -181,6 +188,7 @@ export const games: Game[] = [
     pricePerDay: 25,
     image:
       "https://images.unsplash.com/photo-1575503802870-45de6a6217c8?w=600&auto=format&fit=crop",
+    imageAlt: "Player releasing a flying disc toward a cylindrical KanJam goal can",
     images: [
       "https://images.unsplash.com/photo-1575503802870-45de6a6217c8?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1558008258-3256797b43f3?w=800&auto=format&fit=crop",
@@ -206,6 +214,7 @@ export const games: Game[] = [
     pricePerDay: 25,
     image:
       "https://images.unsplash.com/photo-1584304474795-74fb0b42e66a?w=600&auto=format&fit=crop",
+    imageAlt: "Two freestanding ladder frames on grass with bolas wrapped around rungs",
     images: [
       "https://images.unsplash.com/photo-1584304474795-74fb0b42e66a?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?w=800&auto=format&fit=crop",
@@ -231,6 +240,7 @@ export const games: Game[] = [
     pricePerDay: 20,
     image:
       "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=600&auto=format&fit=crop",
+    imageAlt: "Bright orange sports cones arranged in a zigzag course on green grass",
     images: [
       "https://images.unsplash.com/photo-1526232761682-d26e03ac148e?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&auto=format&fit=crop",
@@ -256,6 +266,7 @@ export const games: Game[] = [
     pricePerDay: 30,
     image:
       "https://images.unsplash.com/photo-1722003180803-577efd6d2ecc?w=600&auto=format&fit=crop",
+    imageAlt: "Portable badminton net set up on a grassy lawn with rackets nearby",
     images: [
       "https://images.unsplash.com/photo-1722003180803-577efd6d2ecc?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1564226803380-91139fdcb4d0?w=800&auto=format&fit=crop",
@@ -281,6 +292,7 @@ export const games: Game[] = [
     pricePerDay: 35,
     image:
       "https://images.unsplash.com/photo-1693142518820-78d7a05f1546?w=600&auto=format&fit=crop",
+    imageAlt: "Pickleball paddles and bright yellow balls laid out on an outdoor court",
     images: [
       "https://images.unsplash.com/photo-1693142518820-78d7a05f1546?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1762423570127-c36ff11b883f?w=800&auto=format&fit=crop",
@@ -306,6 +318,7 @@ export const games: Game[] = [
     pricePerDay: 55,
     image:
       "https://images.unsplash.com/photo-1586165368502-1bad197a6461?w=600&auto=format&fit=crop",
+    imageAlt: "Life-size chess pieces arranged on a large outdoor checkered board",
     images: [
       "https://images.unsplash.com/photo-1586165368502-1bad197a6461?w=800&auto=format&fit=crop",
       "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?w=800&auto=format&fit=crop",
