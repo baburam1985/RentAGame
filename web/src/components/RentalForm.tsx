@@ -60,6 +60,21 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     const errs = validate();
     setErrors(errs);
     if (Object.keys(errs).length > 0) return;
+
+    // Save order to rg_orders in localStorage
+    const newOrder = {
+      id: Math.random().toString(36).slice(2, 10).toUpperCase(),
+      gameName: form.games,
+      eventDate: form.eventDate,
+      returnDate: form.returnDate,
+      totalPrice: 0,
+      status: "confirmed" as const,
+      createdAt: new Date().toISOString(),
+    };
+    const existing = localStorage.getItem("rg_orders");
+    const orders = existing ? (JSON.parse(existing) as typeof newOrder[]) : [];
+    localStorage.setItem("rg_orders", JSON.stringify([...orders, newOrder]));
+
     setSubmitted(true);
     setForm({ ...empty, games: defaultGame });
   }
