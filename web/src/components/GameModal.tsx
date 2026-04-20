@@ -3,6 +3,9 @@
 import Image from "next/image";
 import type { Game } from "@/data/games";
 
+export const CANCELLATION_POLICY =
+  "Free cancellation up to 24 hours before your rental start date";
+
 type Props = {
   game: Game | null;
   onClose: () => void;
@@ -70,6 +73,20 @@ export default function GameModal({ game, onClose, onRentNow }: Props) {
               <p className="text-gray-400 text-xs mb-1">Dimensions</p>
               <p className="font-medium text-gray-800">{game.dimensions}</p>
             </div>
+          </div>
+
+          {/* Cancellation policy */}
+          <div
+            data-testid="cancellation-policy"
+            className="flex items-center gap-2 rounded-xl bg-green-50 px-4 py-3 text-sm text-green-800"
+          >
+            <span
+              className="material-symbols-outlined text-green-600 text-base leading-none"
+              aria-hidden="true"
+            >
+              event_available
+            </span>
+            <span>{CANCELLATION_POLICY}</span>
           </div>
 
           {/* Price + CTA */}
