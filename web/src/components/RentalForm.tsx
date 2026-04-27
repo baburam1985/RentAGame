@@ -30,10 +30,31 @@ const empty: FormState = {
   notes: "",
 };
 
+function getTodayString(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 export default function RentalForm({ defaultGame = "" }: Props) {
   const [form, setForm] = useState<FormState>({ ...empty, games: defaultGame });
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
+
+  function validateEventDate(value: string): string | undefined {
+    if (!value) return "Event date is required.";
+    const today = getTodayString();
+    if (value < today) return "Start date must be today or later";
+    return undefined;
+  }
+
+  function validateReturnDate(value: string, eventDate: string): string | undefined {
+    if (!value) return "Return date is required.";
+    if (eventDate && value <= eventDate) return "End date must be after start date";
+    return undefined;
+  }
 
   function validate(): Errors {
     const e: Errors = {};
@@ -44,12 +65,13 @@ export default function RentalForm({ defaultGame = "" }: Props) {
       e.email = "Please enter a valid email address.";
     }
     if (!form.phone.trim()) e.phone = "Phone is required.";
-    if (!form.eventDate) e.eventDate = "Event date is required.";
-    if (!form.returnDate) {
-      e.returnDate = "Return date is required.";
-    } else if (form.eventDate && form.returnDate < form.eventDate) {
-      e.returnDate = "Return date must be on or after the event date.";
-    }
+
+    const eventDateError = validateEventDate(form.eventDate);
+    if (eventDateError) e.eventDate = eventDateError;
+
+    const returnDateError = validateReturnDate(form.returnDate, form.eventDate);
+    if (returnDateError) e.returnDate = returnDateError;
+
     if (!form.games.trim()) e.games = "Please tell us which game(s) you want.";
     if (!form.address.trim()) e.address = "Event address is required.";
     return e;
@@ -62,6 +84,16 @@ export default function RentalForm({ defaultGame = "" }: Props) {
     if (Object.keys(errs).length > 0) return;
     setSubmitted(true);
     setForm({ ...empty, games: defaultGame });
+  }
+
+  function handleEventDateBlur() {
+    const err = validateEventDate(form.eventDate);
+    setErrors((prev) => ({ ...prev, eventDate: err }));
+  }
+
+  function handleReturnDateBlur() {
+    const err = validateReturnDate(form.returnDate, form.eventDate);
+    setErrors((prev) => ({ ...prev, returnDate: err }));
   }
 
   function field(
@@ -90,6 +122,39 @@ export default function RentalForm({ defaultGame = "" }: Props) {
         />
         {errors[id] && (
           <p className="text-xs text-red-500">{errors[id]}</p>
+        )}
+      </div>
+    );
+  }
+
+  function dateField(
+    id: "eventDate" | "returnDate",
+    label: string,
+    onBlur: () => void
+  ) {
+    const errorId = `${id}-error`;
+    return (
+      <div className="flex flex-col gap-1">
+        <label htmlFor={id} className="text-sm font-medium text-gray-700">
+          {label}
+          <span className="text-red-500 ml-0.5">*</span>
+        </label>
+        <input
+          id={id}
+          type="date"
+          value={form[id]}
+          onChange={(e) => {
+            setForm((prev) => ({ ...prev, [id]: e.target.value }));
+            if (errors[id]) setErrors((prev) => ({ ...prev, [id]: undefined }));
+          }}
+          onBlur={onBlur}
+          aria-describedby={errors[id] ? errorId : undefined}
+          className={`rounded-xl border px-4 py-2.5 text-sm text-gray-900 outline-none transition-colors focus:ring-2 focus:ring-yellow-400 ${
+            errors[id] ? "border-red-400 bg-red-50" : "border-gray-200 bg-white"
+          }`}
+        />
+        {errors[id] && (
+          <p id={errorId} className="text-xs text-red-500">{errors[id]}</p>
         )}
       </div>
     );
@@ -130,8 +195,8 @@ export default function RentalForm({ defaultGame = "" }: Props) {
               {field("name", "Your Name")}
               {field("email", "Email", "email")}
               {field("phone", "Phone", "tel")}
-              {field("eventDate", "Event Date", "date")}
-              {field("returnDate", "Return Date", "date")}
+              {dateField("eventDate", "Event Date", handleEventDateBlur)}
+              {dateField("returnDate", "Return Date", handleReturnDateBlur)}
               {field("address", "Event Address")}
             </div>
 
