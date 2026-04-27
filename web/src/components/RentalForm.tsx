@@ -4,6 +4,7 @@ import { useState } from "react";
 
 type Props = {
   defaultGame?: string;
+  pricePerDay?: number;
 };
 
 type FormState = {
@@ -30,10 +31,20 @@ const empty: FormState = {
   notes: "",
 };
 
-export default function RentalForm({ defaultGame = "" }: Props) {
+function calcDays(start: string, end: string): number {
+  if (!start || !end) return 0;
+  const diff = new Date(end).getTime() - new Date(start).getTime();
+  return Math.round(diff / (1000 * 60 * 60 * 24));
+}
+
+export default function RentalForm({ defaultGame = "", pricePerDay }: Props) {
   const [form, setForm] = useState<FormState>({ ...empty, games: defaultGame });
   const [errors, setErrors] = useState<Errors>({});
   const [submitted, setSubmitted] = useState(false);
+
+  const days = calcDays(form.eventDate, form.returnDate);
+  const showTotal = typeof pricePerDay === "number" && days > 0;
+  const total = showTotal ? pricePerDay * days : 0;
 
   function validate(): Errors {
     const e: Errors = {};
@@ -49,6 +60,8 @@ export default function RentalForm({ defaultGame = "" }: Props) {
       e.returnDate = "Return date is required.";
     } else if (form.eventDate && form.returnDate < form.eventDate) {
       e.returnDate = "Return date must be on or after the event date.";
+    } else if (form.eventDate && form.returnDate === form.eventDate) {
+      e.returnDate = "Minimum rental is 1 day. Please select a return date after the event date.";
     }
     if (!form.games.trim()) e.games = "Please tell us which game(s) you want.";
     if (!form.address.trim()) e.address = "Event address is required.";
@@ -170,6 +183,26 @@ export default function RentalForm({ defaultGame = "" }: Props) {
                 }
                 className="rounded-xl border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-900 outline-none focus:ring-2 focus:ring-yellow-400 resize-none"
               />
+            </div>
+
+            <div className="rounded-xl border border-gray-200 bg-white px-5 py-4 text-center">
+              {showTotal ? (
+                <>
+                  <p className="text-2xl font-bold text-gray-900">
+                    ${total}{" "}
+                    <span className="text-base font-normal text-gray-500">
+                      for {days} days
+                    </span>
+                  </p>
+                  <p className="mt-1 text-sm text-gray-500">
+                    ${pricePerDay} / day
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-gray-400">
+                  Select dates to see total
+                </p>
+              )}
             </div>
 
             <button
