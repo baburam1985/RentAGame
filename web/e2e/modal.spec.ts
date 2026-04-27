@@ -4,6 +4,7 @@ test.describe("Game detail modal", () => {
   test.beforeEach(async ({ page }) => {
     await page.goto("/");
     await page.waitForSelector("#catalog");
+    // Wait for React hydration (useEffect sets data-hydrated after React mounts)
   });
 
   test("clicking first game card opens modal with game name", async ({ page }) => {

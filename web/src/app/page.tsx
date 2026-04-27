@@ -9,8 +9,9 @@ import GameGrid from "@/components/GameGrid";
 import GameModal from "@/components/GameModal";
 import HowItWorks from "@/components/HowItWorks";
 import Testimonials from "@/components/Testimonials";
-import RentalForm from "@/components/RentalForm";
 import type { Game } from "@/data/games";
+import CheckoutWizard from "@/components/CheckoutWizard";
+import RentalForm from "@/components/RentalForm";
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -26,6 +27,7 @@ export default function Home() {
       document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
     }, 100);
   }
+
 
   return (
     <main className="min-h-screen" style={{ background: "#fffde1" }}>
@@ -53,6 +55,7 @@ export default function Home() {
 
       <HowItWorks />
       <Testimonials />
+      <CheckoutWizard />
       <RentalForm defaultGame={prefilledGame} />
 
       <GameModal
